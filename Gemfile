@@ -25,7 +25,12 @@ group :development, :test do
   gem 'factory_girl', '4.2.0'
   gem 'factory_girl_rails', '4.2.1'
   gem 'shoulda', '3.5.0'
+end
+
+group :development do
   gem 'capistrano', '2.15.5'
+  gem 'capistrano-unicorn', require: false
+  gem 'rvm-capistrano', require: false
 end
 
 # Third Party
