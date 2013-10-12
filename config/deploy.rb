@@ -1,4 +1,3 @@
-require 'capistrano-unicorn'
 require 'rvm/capistrano' 
 require 'bundler/capistrano'
 
@@ -27,6 +26,12 @@ namespace :deploy do
   task :symlink_database_config, roles: [:app, :web] do
     run "ln -s #{release_path}/config/database.example.yml #{release_path}/config/database.yml"
   end
+
+  desc 'Zero downtime'
+  task :restart do
+    run "kill -s USR2 `cat /tmp/unicorn.my_site.pid`"
+  end
+
 end
 
 # Before / After Tasks
