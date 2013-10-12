@@ -29,7 +29,7 @@ namespace :deploy do
 
   desc 'Zero downtime'
   task :restart do
-    run "kill -s USR2 `cat /tmp/unicorn.my_site.pid`"
+    run "kill -s USR2 `cat /tmp/unicorn.puhsh.pid`"
   end
 
 end
