@@ -25,5 +25,5 @@ production:
   database: puhsh_production
   pool: 5
   username: root
-  password: Puh5hd33b33!
+  password:
   socket: /tmp/mysql.sock
