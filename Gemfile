@@ -12,6 +12,9 @@ gem 'mysql2'
 
 # View Engine
 
+# Web Server
+gem 'unicorn', '4.6.3'
+
 # Assets
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -29,8 +32,8 @@ end
 
 group :development do
   gem 'capistrano', '2.15.5'
-  gem 'capistrano-unicorn', require: false
-  gem 'rvm-capistrano', require: false
+  gem 'capistrano-unicorn', '0.1.10', require: false
+  gem 'rvm-capistrano', '1.5.1', require: false
 end
 
 # Third Party
