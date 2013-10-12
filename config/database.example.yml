@@ -22,8 +22,9 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: puhsh_production
   pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  database: puhsh_production
+  host: puhsh-production.c0hit0u0x5jp.us-east-1.rds.amazonaws.com
+  port: 3306
+  username:
+  password: 
