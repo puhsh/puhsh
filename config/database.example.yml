@@ -26,5 +26,5 @@ production:
   database: puhsh_production
   host: puhsh-production.c0hit0u0x5jp.us-east-1.rds.amazonaws.com
   port: 3306
-  username:
-  password: 
+  username: puhsh
+  password: d13tp3ps11

@@ -22,3 +22,12 @@ ssh_options[:forward_agent] = true
 set :use_sudo, false
 
 server 'ec2-54-205-78-73.compute-1.amazonaws.com', :web, :app, :db, :primary => true
+
+namespace :deploy do
+  task :symlink_database_config, roles: [:app, :web] do
+    run "ln -s #{release_path}/config/database.eample.yml #{release_path}/config/database.yml"
+  end
+end
+
+# Before / After Tasks
+after 'deploy:finalize_update', 'deploy:symlink_database_config'
