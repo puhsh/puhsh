@@ -15,11 +15,11 @@ set :git_enable_submodules, 1
 set :use_sudo, false
 set :rvm_ruby_string, 'ruby-1.9.3-p448@puhsh'
 set :rake, "#{rake} --trace"
-
 set :user, 'ubuntu'
+set :use_sudo, false
+
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/keys/puhsh/puhsh-key-pair-nvirgina.pem", "#{ENV["HOME"]}/.ssh/id_rsa"]
 ssh_options[:forward_agent] = true
-set :use_sudo, false
 
 server 'ec2-54-205-78-73.compute-1.amazonaws.com', :web, :app, :db, :primary => true
 
