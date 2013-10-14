@@ -20,6 +20,7 @@ gem 'unicorn', '4.6.3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails', '1.0.3'
 end
 
 # Development / Testing
@@ -37,3 +38,4 @@ end
 
 # Third Party
 gem 'jquery-rails'
+gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'

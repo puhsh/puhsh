@@ -1,0 +1,17 @@
+@import 'core/base';
+
+html, body { height: 100%; }
+
+body {
+  section {
+    .container {
+      .row { 
+        div { 
+          background-color: red; 
+          height: 75px;
+          border: 1px solid black;
+        }
+      }
+    }
+  }
+}
