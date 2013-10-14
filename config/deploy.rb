@@ -35,6 +35,11 @@ namespace :deploy do
     run "kill -s USR2 `cat /tmp/unicorn.puhsh.pid`"
   end
 
+  desc 'Restart nginx'
+  task :restart_nginx do
+    run 'sudo service nginx restart'
+  end
+
 end
 
 # Before / After Tasks
