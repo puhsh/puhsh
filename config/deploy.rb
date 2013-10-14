@@ -25,13 +25,13 @@ server '54.221.223.155', :web, :app, :db, :primary => true
 
 namespace :deploy do
 
-  desc 'Since we do not store local creds, symlink the example file'
+  desc 'Symlinks database.example.yml to database.yml'
   task :symlink_database_config, roles: [:app, :web] do
     run "ln -s #{release_path}/config/database.example.yml #{release_path}/config/database.yml"
   end
 
-  desc 'Zero downtime'
-  task :restart do
+  desc 'Restart unicorn'
+  task :restart_unicorn do
     run "kill -s USR2 `cat /tmp/unicorn.puhsh.pid`"
   end
 
