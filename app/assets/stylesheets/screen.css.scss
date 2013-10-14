@@ -10,6 +10,34 @@ body {
           background-color: red; 
           height: 75px;
           border: 1px solid black;
+          &.light-pink { 
+            background-color: $lightPink;
+          }
+          &.pink { 
+            background-color: $pink;
+          }
+          &.tiffany { 
+            background-color: $tiffany;
+          }
+          &.gold { 
+            background-color: $gold;
+          }
+          &.black { 
+            background-color: $black;
+          }
+          &.dark { 
+            background-color: $dark;
+          }
+          &.mid { 
+            background-color: $mid;
+          }
+          &.light { 
+            background-color: $light;
+          }
+          &.white { 
+            background-color: $white;
+            border: none;
+          }
         }
       }
     }
