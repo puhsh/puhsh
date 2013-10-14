@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 
 set :application, 'puhsh'
 set :keep_releases, 10
-set :repository, 'git@github.com:bryanmikaelian/puhsh.git'
+set :repository, 'git@github.com:puhsh/puhsh.git'
 set :scm, :git
 set :branch, 'master'
 set :deploy_to, '/web/puhsh'
