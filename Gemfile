@@ -11,6 +11,7 @@ gem 'mysql2'
 # Solr
 
 # View Engine
+gem 'haml'
 
 # Web Server
 gem 'unicorn', '4.6.3'
