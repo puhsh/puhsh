@@ -44,4 +44,3 @@ end
 
 # Before / After Tasks
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
-after
