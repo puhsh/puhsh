@@ -20,8 +20,7 @@ set :use_sudo, false
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/keys/puhsh/ec2-keypair.pem", "#{ENV["HOME"]}/.ssh/id_rsa"]
 ssh_options[:forward_agent] = true
 
-# server 'ec2-54-205-78-73.compute-1.amazonaws.com', :web, :app, :db, :primary => true
-server '54.221.223.155', :web, :app, :db, :primary => true
+server 'ec2-54-205-78-73.compute-1.amazonaws.com', :web, :app, :db, :primary => true
 
 namespace :deploy do
 
