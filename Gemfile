@@ -6,10 +6,6 @@ gem 'rails', '3.2.14'
 # MySQL
 gem 'mysql2'
 
-# Redis
-
-# Solr
-
 # View Engine
 gem 'haml'
 
