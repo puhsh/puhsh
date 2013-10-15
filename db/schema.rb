@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131015024118) do
+ActiveRecord::Schema.define(:version => 20131015031815) do
 
   create_table "users", :force => true do |t|
     t.string   "uid"
@@ -23,8 +23,13 @@ ActiveRecord::Schema.define(:version => 20131015024118) do
     t.string   "gender"
     t.string   "facebook_email"
     t.string   "contact_email"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "sign_in_count",      :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "users", ["first_name"], :name => "index_users_on_first_name"

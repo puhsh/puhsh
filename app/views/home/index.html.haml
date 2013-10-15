@@ -85,3 +85,11 @@
       %p
     .col-md-1.white
     .col-md-1.white
+  .row
+    .col-md-12.white
+      - if current_user
+        %h1="Hi there #{current_user.first_name}"
+      - else
+        = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary'
+
+
