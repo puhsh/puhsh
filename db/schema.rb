@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131015023300) do
+ActiveRecord::Schema.define(:version => 20131015023920) do
 
   create_table "users", :force => true do |t|
     t.string   "uid"
@@ -25,5 +25,9 @@ ActiveRecord::Schema.define(:version => 20131015023300) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  add_index "users", ["first_name"], :name => "index_users_on_first_name"
+  add_index "users", ["last_name"], :name => "index_users_on_last_name"
+  add_index "users", ["uid"], :name => "index_users_on_uid"
 
 end
