@@ -1,0 +1,11 @@
+development:
+  id:
+  secret:
+
+test:
+  id:
+  secret:
+
+production:
+  id: '315176221956246'
+  secret: 'c1475745f20d3aa7db3b9e43b208b857'
