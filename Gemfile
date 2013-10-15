@@ -41,5 +41,6 @@ group :development do
 end
 
 # Third Party
-gem 'jquery-rails'
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
+gem 'devise', '2.2.4'
+gem 'jquery-rails'
