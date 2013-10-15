@@ -31,7 +31,7 @@ namespace :deploy do
   end
 
   desc 'Restart unicorn'
-  task :restart_unicorn do
+  task :restart do
     run "kill -s USR2 `cat /tmp/unicorn.puhsh.pid`"
   end
 
@@ -44,3 +44,4 @@ end
 
 # Before / After Tasks
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
+after
