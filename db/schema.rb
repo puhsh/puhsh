@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016033220) do
+ActiveRecord::Schema.define(:version => 20131016033552) do
 
   create_table "users", :force => true do |t|
     t.string   "uid"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(:version => 20131016033220) do
     t.string   "avatar_url"
     t.string   "city"
     t.string   "state"
-    t.string   "location"
     t.string   "gender"
     t.string   "facebook_email"
     t.string   "contact_email"
