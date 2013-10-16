@@ -205,6 +205,6 @@ DEPENDENCIES
   rvm-capistrano (= 1.5.1)
   sass-rails (~> 3.2.3)
   shoulda (= 3.5.0)
-  spork
+  spork (= 1.0.0rc4)
   uglifier (>= 1.0.3)
   unicorn (= 4.6.3)
