@@ -29,6 +29,7 @@ group :development, :test do
   gem 'factory_girl', '4.2.0'
   gem 'factory_girl_rails', '4.2.1'
   gem 'shoulda', '3.5.0'
+  gem 'spork', '1.0.0rc4'
 end
 
 group :development do
