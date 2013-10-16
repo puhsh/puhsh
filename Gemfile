@@ -39,5 +39,8 @@ end
 
 # Third Party
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
+gem 'carmen', '1.0.0'
 gem 'devise', '2.2.4'
+gem 'geocoder', '1.1.8'
 gem 'jquery-rails'
+

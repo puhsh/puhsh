@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
 
+  geocoded_by :address
+  after_validation :geocode
+
   def self.find_for_facebook_oauth(auth)
     auth = HashWithIndifferentAccess.new(auth)
 
@@ -31,4 +34,9 @@ class User < ActiveRecord::Base
       user
     end
   end
+
+  def address
+    "#{city}, #{state}, US"
+  end
+
 end
