@@ -35,6 +35,7 @@ end
 group :development do
   gem 'capistrano', '2.15.5'
   gem 'rvm-capistrano', '1.5.1', require: false
+  gem 'hipchat', '0.12.0'
 end
 
 # Third Party

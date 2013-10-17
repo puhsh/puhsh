@@ -1,5 +1,6 @@
 require 'rvm/capistrano' 
 require 'bundler/capistrano'
+require 'hipchat/capistrano'
 
 set :application, 'puhsh'
 set :keep_releases, 10
@@ -16,6 +17,17 @@ set :rvm_ruby_string, 'ruby-1.9.3-p448@puhsh'
 set :rake, "#{rake} --trace"
 set :user, 'ubuntu'
 set :use_sudo, false
+set :max_asset_age, 2 
+
+# HipChat settngs
+set :hipchat_token, 'cc96625c3ca88a6ac4d79958addc4c'
+set :hipchat_room_name, 'Fun Town'
+set :hipchat_announce, false
+set :hipchat_color, 'yellow'
+set :hipchat_success_color, 'green'
+set :hipchat_failed_color, 'red'
+set :hipchat_message_format, 'text'
+
 
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/keys/puhsh/ec2-keypair.pem", "#{ENV["HOME"]}/.ssh/id_rsa"]
 ssh_options[:forward_agent] = true
@@ -39,7 +51,26 @@ namespace :deploy do
     run 'sudo service nginx restart'
   end
 
+  # Compliments of https://gist.github.com/mrpunkin/2784462
+  namespace :assets do
+    desc "Figure out modified assets."
+    task :determine_modified_assets, :roles => assets_role, :except => { :no_release => true } do
+      set :updated_assets, capture("find #{latest_release}/app/assets -type d -name .git -prune -o -mmin -#{max_asset_age} -type f -print", :except => { :no_release => true }).split
+    end
+
+    desc "Remove callback for asset precompiling unless assets were updated in most recent git commit."
+    task :conditionally_precompile, :roles => assets_role, :except => { :no_release => true } do
+      if(updated_assets.empty?)
+        callback = callbacks[:after].find{|c| c.source == "deploy:assets:precompile" }
+        callbacks[:after].delete(callback)
+        logger.info("Skipping asset precompiling, no updated assets.")
+      else
+        logger.info("#{updated_assets.length} updated assets. Will precompile.")
+      end
+    end
+  end
 end
 
 # Before / After Tasks
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
+after "deploy:finalize_update", "deploy:assets:determine_modified_assets", "deploy:assets:conditionally_precompile"
