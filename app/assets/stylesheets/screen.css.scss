@@ -5,17 +5,7 @@ html, body { height: 100%; }
 body {
   header {
     nav.default-nav {
-      @extend .navbar;
-      @extend .navbar-default;
       @include puhsh-nav;
-      .content {
-        @extend .navbar-header;
-      }
-      .menu { 
-        @extend .collapse;
-        @extend .navbar-collapse;
-        @extend .navbar-ex1-collapse;
-      }
     }
   }
 }

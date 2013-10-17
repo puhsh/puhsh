@@ -4,13 +4,29 @@
 
 // UI Elements
 @mixin puhsh-nav {
+  @extend .navbar;
+  @extend .navbar-default;
+
   background-color: $pink;
   border: none;
   border-radius: 0px;
-  button.navbar-toggle {
-    border-color: $black;
-    &:hover, &:focus { 
-      background-color: $pink;
+
+  #nav-visible-content {
+    @extend .navbar-header;
+    button#toggle {
+      @extend .navbar-toggle;
+    }
+  }
+
+  #nav-menu { 
+    @extend .navbar-collapse;
+    @extend .navbar-ex1-collapse;
+    ul#menu-items {
+      @extend .nav;
+      @extend .navbar-nav;
+      li {
+        a { color: $white; }
+      }
     }
   }
 }
