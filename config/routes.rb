@@ -1,4 +1,11 @@
 Puhsh::Application.routes.draw do
+  # Dev Tools
+  mount Peek::Railtie => '/peek'
+
+  ###############
+  # BEGIN ROUTES
+  ###############
+  
   root to: 'home#index'
 
   # Devise
