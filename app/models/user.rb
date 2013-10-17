@@ -42,10 +42,6 @@ class User < ActiveRecord::Base
     "#{city}, #{state}, US"
   end
 
-  def admin?
-    has_role? :admin
-  end
-
   protected
 
   def add_default_role

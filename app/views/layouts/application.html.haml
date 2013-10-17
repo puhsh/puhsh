@@ -9,8 +9,7 @@
     = csrf_meta_tags
   %body
     %header
-      - if current_user && current_user.try(&:admin?)
-        = render 'peek/bar'
+      = render 'peek/bar'
       = yield :nav
     %section#main
       = yield
