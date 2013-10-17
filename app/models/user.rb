@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  # Setup accessible (or protected) attributes for your model
+  attr_accessible :uid
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :address
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     auth = HashWithIndifferentAccess.new(auth)
 
     user = User.where(uid: auth[:uid]).first
-    unless user
+    if user.blank?
       self.create! do |user|
         user.uid = auth[:uid]
         user.name = auth[:info][:name]
@@ -47,3 +47,4 @@ class User < ActiveRecord::Base
     Rails.env.development? ? self.add_role(:admin) : self.add_role(:member)
   end
 end
+

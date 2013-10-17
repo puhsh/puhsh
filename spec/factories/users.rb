@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
+    first_name 'Tester'
+    sequence(:last_name) { |n| "#{n}" }
+    name "Tester #{:last_name}"
   end
 end
