@@ -45,6 +45,10 @@ group :development do
   gem 'hipchat', '0.12.0'
 end
 
+group :test do
+  gem 'ci_reporter', '1.9.0'
+end
+
 # Third Party
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 gem 'carmen', '1.0.0'
