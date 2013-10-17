@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    has_role :admin
+    has_role? :admin
   end
 
   protected
