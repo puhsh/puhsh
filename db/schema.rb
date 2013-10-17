@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131017011902) do
+ActiveRecord::Schema.define(:version => 20131017020336) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20131017011902) do
 
   add_index "users", ["first_name"], :name => "index_users_on_first_name"
   add_index "users", ["last_name"], :name => "index_users_on_last_name"
+  add_index "users", ["latitude"], :name => "index_users_on_latitude"
+  add_index "users", ["longitude"], :name => "index_users_on_longitude"
   add_index "users", ["uid"], :name => "index_users_on_uid"
 
 end
