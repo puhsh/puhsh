@@ -1,3 +1,3 @@
 class City < ActiveRecord::Base
-  # attr_accessible :title, :body
+  geocoded_by :address
 end
