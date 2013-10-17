@@ -9,6 +9,7 @@
     = javascript_include_tag 'tracking/google'
     = csrf_meta_tags
   %body
-    %nav
+    %header
+      = yield :nav
     %section#main
       = yield

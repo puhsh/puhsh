@@ -1,2 +1,16 @@
 @import 'core/variables';
 @import 'bootstrap';
+@import 'bootstrap/glyphicons';
+
+// UI Elements
+@mixin puhsh-nav {
+  background-color: $pink;
+  border: none;
+  border-radius: 0px;
+  button.navbar-toggle {
+    border-color: $black;
+    &:hover, &:focus { 
+      background-color: $pink;
+    }
+  }
+}
