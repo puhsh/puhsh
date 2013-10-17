@@ -3,8 +3,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
   rolify
-
   geocoded_by :address
+
+  # Callbacks
+  after_create :add_default_role
   after_validation :geocode
 
   def self.find_for_facebook_oauth(auth)
@@ -40,4 +42,9 @@ class User < ActiveRecord::Base
     "#{city}, #{state}, US"
   end
 
+  protected
+
+  def add_default_role
+    self.add_role :member
+  end
 end
