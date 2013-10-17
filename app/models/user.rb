@@ -49,6 +49,6 @@ class User < ActiveRecord::Base
   protected
 
   def add_default_role
-    self.add_role :member
+    Rails.env.development? ? self.add_role(:admin) : self.add_role(:member)
   end
 end
