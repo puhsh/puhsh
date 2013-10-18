@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   geocoded_by :zipcode
 
   # Relations
+  has_many :posts
 
   # Callbacks
   after_create :add_default_role
