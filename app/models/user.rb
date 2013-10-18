@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :uid
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
   rolify
-  geocoded_by :address
+  geocoded_by :zipcode
 
   # Callbacks
   after_create :add_default_role
@@ -29,10 +29,6 @@ class User < ActiveRecord::Base
       end
       user
     end
-  end
-
-  def address
-    "#{city}, #{state}, US"
   end
 
   protected
