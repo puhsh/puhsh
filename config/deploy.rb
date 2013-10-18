@@ -27,6 +27,7 @@ set :hipchat_color, 'yellow'
 set :hipchat_success_color, 'green'
 set :hipchat_failed_color, 'red'
 set :hipchat_message_format, 'text'
+set :hipchat_client, HipChat::Client.new(hipchat_token)
 
 
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/keys/puhsh/ec2-keypair.pem", "#{ENV["HOME"]}/.ssh/id_rsa"]
@@ -44,11 +45,13 @@ namespace :deploy do
   desc 'Restart unicorn'
   task :restart do
     run "kill -s USR2 `cat /tmp/unicorn.puhsh.pid`"
+    hipchat_client[hipchat_room_name].send('Capistrano', 'Unicorn has been restarted in production')
   end
 
   desc 'Restart nginx'
   task :restart_nginx do
     run 'sudo service nginx restart'
+    hipchat_client[hipchat_room_name].send('Capistrano', 'Nginx has been restarted in production')
   end
 
   # Compliments of https://gist.github.com/mrpunkin/2784462
