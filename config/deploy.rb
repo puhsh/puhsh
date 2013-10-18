@@ -45,7 +45,6 @@ namespace :deploy do
   desc 'Restart unicorn'
   task :restart do
     run "kill -s USR2 `cat /tmp/unicorn.puhsh.pid`"
-    hipchat_client[hipchat_room_name].send('Capistrano', 'Unicorn has been restarted in production')
   end
 
   desc 'Restart nginx'
