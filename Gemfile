@@ -54,6 +54,7 @@ gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.g
 gem 'carmen', '1.0.0'
 gem 'devise', '2.2.4'
 gem 'geocoder', '1.1.8'
-gem 'newrelic_rpm'
 gem 'jquery-rails'
+gem 'money-rails', '0.8.1'
+gem 'newrelic_rpm'
 gem 'rolify', '3.2.0'
