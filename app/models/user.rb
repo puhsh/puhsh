@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   rolify
   geocoded_by :zipcode
 
+  # Relations
+  has_many :items
+
   # Callbacks
   after_create :add_default_role
   after_validation :geocode
