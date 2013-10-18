@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131018190241) do
+ActiveRecord::Schema.define(:version => 20131018202241) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(:version => 20131018190241) do
   add_index "cities", ["latitude"], :name => "index_cities_on_latitude"
   add_index "cities", ["longitude"], :name => "index_cities_on_longitude"
   add_index "cities", ["zipcode"], :name => "index_cities_on_zipcode"
-
-  create_table "item_prices", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "price_cents",    :default => 0,     :null => false
-    t.string   "price_currency", :default => "USD", :null => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-  end
 
   create_table "items", :force => true do |t|
     t.integer  "user_id"
