@@ -19,12 +19,6 @@ class User < ActiveRecord::Base
         user.first_name = auth[:info][:first_name]
         user.last_name = auth[:info][:last_name]
         user.avatar_url = auth[:info][:image]
-        location = auth[:info][:location]
-        if location
-          city,state = location.split(',')
-          user.city = city
-          user.state = state
-        end
         user.gender = auth[:extra][:raw_info][:gender] if auth[:extra][:raw_info].present?
         user.facebook_email = auth[:info][:email]
       end
