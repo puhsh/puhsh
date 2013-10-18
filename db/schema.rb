@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131017200204) do
+ActiveRecord::Schema.define(:version => 20131018145241) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -45,14 +45,15 @@ ActiveRecord::Schema.define(:version => 20131017200204) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
+    t.string   "location_description"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "gender"
     t.string   "facebook_email"
     t.string   "contact_email"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.integer  "sign_in_count",      :default => 0
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.integer  "sign_in_count",        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
