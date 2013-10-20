@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   # Relations
   has_many :posts
+  has_many :followed_cities, dependent: :destroy
+  has_many :cities, through: :followed_cities
 
   # Callbacks
   after_create :add_default_role

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131018205359) do
+ActiveRecord::Schema.define(:version => 20131020210722) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(:version => 20131018205359) do
   add_index "cities", ["latitude"], :name => "index_cities_on_latitude"
   add_index "cities", ["longitude"], :name => "index_cities_on_longitude"
   add_index "cities", ["zipcode"], :name => "index_cities_on_zipcode"
+
+  create_table "followed_cities", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "city_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "followed_cities", ["city_id"], :name => "index_followed_cities_on_city_id"
+  add_index "followed_cities", ["user_id"], :name => "index_followed_cities_on_user_id"
 
   create_table "items", :force => true do |t|
     t.integer  "post_id"
