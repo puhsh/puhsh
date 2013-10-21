@@ -64,4 +64,3 @@ gem 'money-rails', '0.8.1'
 gem 'rolify', '3.2.0'
 gem 'sunspot_rails', '2.0.0'
 gem 'symbolize', '4.4.1'
-
