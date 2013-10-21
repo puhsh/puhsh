@@ -54,4 +54,17 @@ describe Offer do
       expect(offer.reload.free?).to be_true
     end
   end
+
+  context '.question' do
+    it 'is not required' do
+      offer.save
+      expect(offer.reload).to be_valid
+    end
+
+    it 'can be provided' do
+      offer.question = 'Is this item a test?'
+      offer.save
+      expect(offer.reload.question).to_not be_nil
+    end
+  end
 end
