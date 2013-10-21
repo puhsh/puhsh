@@ -47,4 +47,7 @@ describe Post do
       expect(post.payment_type).to eql(:both)
     end
   end
+
+  context '.pick_up_location' do
+  end
 end

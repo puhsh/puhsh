@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :post do
+    pick_up_location :other
     payment_type :both
   end
 
