@@ -13,6 +13,18 @@ describe Offer do
       offer.save
       expect(offer.reload.status).to eq(:pending)
     end
+
+    it 'can be set to accepted' do
+      offer.status = :accepted
+      offer.save
+      expect(offer.reload.status).to eq(:accepted)
+    end
+
+    it 'can be set to rejected' do
+      offer.status = :rejected
+      offer.save
+      expect(offer.reload.status).to eq(:rejected)
+    end
   end
 
   context '.amount_cents' do
