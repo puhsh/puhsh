@@ -13,6 +13,11 @@ describe Post do
       expect(post).to_not be_valid
     end
 
+    it 'cannot exceed 50 characters' do
+      post.title = "Post " * 11
+      expect(post).to_not be_valid
+    end
+
   end
 
   context '.description' do
@@ -23,6 +28,9 @@ describe Post do
       expect(post).to_not be_valid
     end
 
+    it 'cannot exceed 500 characters' do
+      post.description = "Post " * 101
+      expect(post).to_not be_valid
+    end
   end
-
 end
