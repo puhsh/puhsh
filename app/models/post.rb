@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   symbolize :payment_type, in: [both: 'Insta-Payment & Cash', cash: 'Cash Only', insta_payment: 'Insta-Payment Only', free: 'Item is Free'],
-            methods: true, scope: false
+            methods: true, scope: false, validates: true
 
   # Relations
   has_many :items, dependent: :destroy
