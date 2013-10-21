@@ -3,6 +3,8 @@ require 'spec_helper'
 describe User do
 
   it { should have_many(:posts) }
+  it { should have_many(:user_cities) }
+  it { should have_many(:cities).through(:user_cities) }
 
   context '.default_role' do
     let(:user) { FactoryGirl.build(:user) }
