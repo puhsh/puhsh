@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   after_create :add_default_role
   after_validation :geocode
 
+  # Validations
+
   def self.find_for_facebook_oauth(auth)
     auth = HashWithIndifferentAccess.new(auth)
 
