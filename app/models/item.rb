@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
 
   # Relations
   belongs_to :post
+  has_many :offers
 
   # Callbacks
   
