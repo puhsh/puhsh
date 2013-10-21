@@ -49,6 +49,11 @@ group :test do
   gem 'ci_reporter', '1.9.0'
 end
 
+# Production Specific gems
+group :production do
+  gem 'newrelic_rpm', '3.5.8.72'
+end
+
 # Third Party
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 gem 'carmen', '1.0.0'
@@ -56,7 +61,6 @@ gem 'devise', '2.2.4'
 gem 'geocoder', '1.1.8'
 gem 'jquery-rails'
 gem 'money-rails', '0.8.1'
-gem 'newrelic_rpm', '3.5.8.72'
 gem 'rolify', '3.2.0'
 gem 'sunspot_rails', '2.0.0'
 gem 'symbolize', '4.4.1'
