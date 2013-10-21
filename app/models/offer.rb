@@ -1,5 +1,6 @@
 class Offer < ActiveRecord::Base
   symbolize :status, in: [:pending, :accepted, :rejected], methods: true, scopes: false, validates: true, default: :pending
+  monetize :amount_cents
 
   # Relations
   belongs_to :user
@@ -8,4 +9,9 @@ class Offer < ActiveRecord::Base
   # Callbacks
 
   # Validations
+  
+  # Methods
+  def free?
+    self.amount_cents == 0
+  end
 end
