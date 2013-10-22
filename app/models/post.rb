@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
   has_many :items, dependent: :destroy
   belongs_to :user
   belongs_to :city
+  has_many :flagged_posts
 
   # Callbacks
 

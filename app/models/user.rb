@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :user_cities, dependent: :destroy
   has_many :cities, through: :user_cities
   has_many :offers
+  has_many :flagged_posts
 
   # Callbacks
   after_create :add_default_role
