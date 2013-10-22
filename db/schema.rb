@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022131723) do
+ActiveRecord::Schema.define(:version => 20131022191210) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20131022131723) do
     t.string   "location_description"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "city_id"
     t.string   "gender"
     t.string   "facebook_email"
     t.string   "contact_email"
@@ -118,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20131022131723) do
     t.integer  "posts_flagged_count",  :default => 0
   end
 
+  add_index "users", ["city_id"], :name => "index_users_on_city_id"
   add_index "users", ["first_name"], :name => "index_users_on_first_name"
   add_index "users", ["last_name"], :name => "index_users_on_last_name"
   add_index "users", ["latitude"], :name => "index_users_on_latitude"
