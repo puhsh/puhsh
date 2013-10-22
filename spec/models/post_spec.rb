@@ -4,6 +4,7 @@ describe Post do
   it { should belong_to(:user) }
   it { should have_many(:items) }
   it { should belong_to(:city) }
+  it { should have_many(:flagged_posts) }
 
   context '.title' do
     let(:post) { FactoryGirl.build(:post, description: 'Foo bar') }

@@ -6,6 +6,7 @@ describe User do
   it { should have_many(:user_cities) }
   it { should have_many(:cities).through(:user_cities) }
   it { should have_many(:offers) }
+  it { should have_many(:flagged_posts) }
 
   context '.default_role' do
     let(:user) { FactoryGirl.build(:user) }

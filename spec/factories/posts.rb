@@ -2,7 +2,9 @@
 
 FactoryGirl.define do
   factory :post do
-    pick_up_location :other
+    sequence(:title) { |n| "Test Post #{n}" }
+    sequence(:description) { |n| "Description #{n}" }
+    pick_up_location :porch
     payment_type :both
   end
 

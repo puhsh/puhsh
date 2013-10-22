@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :city do
+    zipcode '75002'
+    state 'TX'
+    city 'Allen'
   end
 end
