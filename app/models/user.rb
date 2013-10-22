@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :uid
-  devise :trackable, :omniauthable, omniauth_providers: [:facebook]
+  devise :trackable, :omniauthable, :timeoutable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
 
