@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Post do
   it { should belong_to(:user) }
   it { should have_many(:items) }
-
+  it { should belong_to(:city) }
 
   context '.title' do
     let(:post) { FactoryGirl.build(:post, description: 'Foo bar') }
