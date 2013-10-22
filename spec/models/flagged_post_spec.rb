@@ -15,5 +15,10 @@ describe FlaggedPost do
       flagged_post.save
       expect(post.reload.flags_count).to eq(1)
     end
+
+    it 'updates the posts flagged count for users' do
+      flagged_post.save
+      expect(user.reload.posts_flagged_count).to eq(1)
+    end
   end
 end

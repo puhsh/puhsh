@@ -10,6 +10,7 @@ describe Post do
     let(:post) { FactoryGirl.build(:post, description: 'Foo bar') }
 
     it 'is required' do
+      post.title = nil
       post.save
       expect(post).to_not be_valid
     end
@@ -24,6 +25,7 @@ describe Post do
     let(:post) { FactoryGirl.build(:post, title: 'Foo bar') }
 
     it 'is required' do
+      post.description = nil
       post.save
       expect(post).to_not be_valid
     end
@@ -42,13 +44,15 @@ describe Post do
       post.save
       expect(post).to_not be_valid
     end
-
-    it 'defaults to both' do
-      post.save
-      expect(post.payment_type).to eql(:both)
-    end
   end
 
   context '.pick_up_location' do
+    let(:post) { FactoryGirl.build(:post, title: 'Foo bar', description: 'Foo') }
+
+    it 'is required' do
+      post.pick_up_location= nil
+      post.save
+      expect(post).to_not be_valid
+    end
   end
 end

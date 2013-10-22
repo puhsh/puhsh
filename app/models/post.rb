@@ -17,5 +17,6 @@ class Post < ActiveRecord::Base
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 500 }
-  validates :payment_type, inclusion: { in: [:both, :cash, :insta_payment, :free] }
+  validates :pick_up_location, presence: true
+  validates :payment_type, presence: true
 end

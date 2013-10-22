@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022122637) do
+ActiveRecord::Schema.define(:version => 20131022131723) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20131022122637) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "posts_flagged_count",  :default => 0
   end
 
   add_index "users", ["first_name"], :name => "index_users_on_first_name"

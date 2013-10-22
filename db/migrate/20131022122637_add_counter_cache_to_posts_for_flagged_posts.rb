@@ -3,7 +3,7 @@ class AddCounterCacheToPostsForFlaggedPosts < ActiveRecord::Migration
     add_column :posts, :flags_count, :integer, default: 0, after: :payment_type
     Post.reset_column_information
     Post.find(:all).each do |p|
-      p.update_counters p.id, flags_count: p.flagged_posts.count
+      Post.reset_counters p.id, :flagged_posts
     end
   end
 
