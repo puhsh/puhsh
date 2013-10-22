@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021233516) do
+ActiveRecord::Schema.define(:version => 20131022000428) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20131021233516) do
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "city_id"
     t.string   "title"
     t.string   "description"
     t.string   "pick_up_location"
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20131021233516) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "posts", ["city_id"], :name => "index_posts_on_city_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "roles", :force => true do |t|
