@@ -35,4 +35,30 @@ describe WaitingList do
       expect(waiting_list.reload).to be_active
     end
   end
+
+  describe '.position' do
+    let(:waiting_list) { FactoryGirl.create(:waiting_list) }
+    let(:waiting_list2) { FactoryGirl.create(:waiting_list) }
+
+    it 'gets the correct position' do
+      expect(waiting_list.position).to eq(1)
+      expect(waiting_list2.position).to eq(2)
+    end
+  end
+
+  describe '.devices_in_front_of_current_device' do
+    let(:waiting_list) { FactoryGirl.create(:waiting_list) }
+    let(:waiting_list2) { FactoryGirl.create(:waiting_list) }
+
+    it 'determines number of devices you are behind' do
+      expect(waiting_list.devices_in_front_of_current_device).to eq(0)
+      expect(waiting_list2.devices_in_front_of_current_device).to eq(1)
+    end
+
+    it 'updates when a device in front of the current device activates' do
+      waiting_list.activate!
+      expect(waiting_list2.devices_in_front_of_current_device).to eq(0)
+    end
+  end
+
 end

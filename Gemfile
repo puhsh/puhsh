@@ -55,6 +55,7 @@ group :production do
 end
 
 # Third Party
+gem 'acts_as_list', '0.3.0'
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 gem 'cancan', '1.6.10'
 gem 'carmen', '1.0.0'

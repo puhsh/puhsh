@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023184315) do
+ActiveRecord::Schema.define(:version => 20131023200823) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -139,8 +139,10 @@ ActiveRecord::Schema.define(:version => 20131023184315) do
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "position"
   end
 
   add_index "waiting_lists", ["device_id"], :name => "index_waiting_lists_on_device_id"
+  add_index "waiting_lists", ["status"], :name => "index_waiting_lists_on_status"
 
 end

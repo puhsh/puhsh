@@ -1,6 +1,7 @@
 class WaitingList < ActiveRecord::Base
   attr_accessible :status
-  symbolize :status, in: [:inactive, :active], methods: true, validate: false
+  acts_as_list
+  symbolize :status, in: [:inactive, :active], scopes: true, methods: true, validate: false
 
   # Relations
   
@@ -11,8 +12,16 @@ class WaitingList < ActiveRecord::Base
   validates :device_id, presence: true
   validates :status, presence: true
 
+  def self.total_active
+    WaitingList.status(:active).count
+  end
+
   def activate!
     self.update_attributes(status: :active)
+  end
+
+  def devices_in_front_of_current_device
+    (self.position - self.class.total_active) - 1
   end
 
   protected
