@@ -31,4 +31,29 @@ describe User do
 
   describe '.find_for_facebook_oauth' do
   end
+
+  describe 'abilities' do
+    subject(:ability) { Ability.new(user) }
+    let(:user) { nil }
+
+    context 'admin' do
+      let(:user) { FactoryGirl.create(:user) } 
+      before { user.add_role :admin }
+
+      it { should be_able_to(:manage, User.new) }
+      it { should be_able_to(:manage, Post.new) }
+      it { should be_able_to(:manage, Item.new) }
+      it { should be_able_to(:manage, Offer.new) }
+      it { should be_able_to(:manage, FlaggedPost.new) }
+      it { should be_able_to(:manage, UserCity.new) }
+      it { should be_able_to(:manage, City.new) }
+    end
+
+    context 'member' do
+      let(:user) { FactoryGirl.create(:user) } 
+
+      it { should be_able_to(:manage, user) }
+      it { should_not be_able_to(:manage, User.new) }
+    end
+  end
 end
