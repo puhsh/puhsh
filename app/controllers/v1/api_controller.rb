@@ -14,9 +14,4 @@ class V1::ApiController < ActionController::Metal
   include CanCan::ControllerAdditions
 
   respond_to :json
-
-  def index
-    @null = { test: true }
-    respond_with @null
-  end
 end
