@@ -6,7 +6,19 @@ describe Post do
   it { should belong_to(:city) }
   it { should have_many(:flagged_posts) }
 
-  context '.title' do
+  let(:user) { FactoryGirl.create(:user) }
+
+  describe '.create' do
+    let(:post) { FactoryGirl.build(:post) }
+
+    it 'updates the user\'s post count' do
+      post.user = user
+      post.save
+      expect(user.reload.posts_count).to eq(1)
+    end
+  end
+
+  describe '.title' do
     let(:post) { FactoryGirl.build(:post, description: 'Foo bar') }
 
     it 'is required' do
@@ -21,7 +33,7 @@ describe Post do
     end
   end
 
-  context '.description' do
+  describe '.description' do
     let(:post) { FactoryGirl.build(:post, title: 'Foo bar') }
 
     it 'is required' do
@@ -36,7 +48,7 @@ describe Post do
     end
   end
 
-  context '.payment_type' do
+  describe '.payment_type' do
     let(:post) { FactoryGirl.build(:post, title: 'Foo bar', description: 'Foo') }
 
     it 'is required' do
@@ -46,7 +58,7 @@ describe Post do
     end
   end
 
-  context '.pick_up_location' do
+  describe '.pick_up_location' do
     let(:post) { FactoryGirl.build(:post, title: 'Foo bar', description: 'Foo') }
 
     it 'is required' do

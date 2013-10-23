@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
   # Relations
   has_many :items, dependent: :destroy
-  belongs_to :user
+  belongs_to :user, counter_cache: :posts_count
   belongs_to :city
   has_many :flagged_posts, dependent: :destroy
 
