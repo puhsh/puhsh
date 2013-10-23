@@ -49,6 +49,7 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     carmen (1.0.0)
       unicode_utils (~> 1.4.0)
+    chronic (0.10.2)
     chunky_png (1.2.8)
     ci_reporter (1.9.0)
       builder (>= 2.1.2)
@@ -239,6 +240,9 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
+    whenever (0.8.4)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -278,3 +282,4 @@ DEPENDENCIES
   symbolize (= 4.4.1)
   uglifier (>= 1.0.3)
   unicorn (= 4.6.3)
+  whenever (= 0.8.4)
