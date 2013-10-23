@@ -15,5 +15,6 @@ Puhsh::Application.routes.draw do
   # API ROUTES
   ###############
   namespace :v1 do
+    get '/api' => 'api#index'
   end
 end
