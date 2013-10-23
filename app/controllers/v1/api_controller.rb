@@ -13,5 +13,22 @@ class V1::ApiController < ActionController::Metal
   include Devise::Controllers::Helpers    
   include CanCan::ControllerAdditions
 
+  load_and_authorize_resource
   respond_to :json
+
+  rescue_from CanCan::AccessDenied do |exception|
+    forbidden!(exception.message)
+  end
+
+  def forbidden!(error_message)
+    respond_to do |format|
+      format.json { render json: { error: error_message }, status: :forbidden }
+    end
+  end
+
+  def not_found!
+    respond_to do |format|
+      format.json { render json: { error: 'Resource not found' }, status: :not_found }
+    end
+  end
 end
