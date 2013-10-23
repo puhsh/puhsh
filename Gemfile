@@ -55,6 +55,7 @@ group :production do
 end
 
 # Third Party
+gem 'active_model_serializers', '0.8.1'
 gem 'acts_as_list', '0.3.0'
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 gem 'cancan', '1.6.10'
