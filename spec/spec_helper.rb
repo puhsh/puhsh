@@ -45,5 +45,9 @@ RSpec.configure do |config|
     }
 
   OmniAuth.config.add_mock(:facebook, omniauth_hash)
+  Geocoder.configure(:lookup => :test)
+  Geocoder::Lookup::Test.add_stub(
+    '75033', []
+  )
 
 end

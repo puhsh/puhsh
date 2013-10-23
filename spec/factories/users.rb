@@ -7,5 +7,6 @@ FactoryGirl.define do
     sequence(:last_name) { |n| "#{n}" }
     name "Tester #{:last_name}"
     sequence(:facebook_email) { |n| "#{n}@facebook-test.local" }
+    zipcode '75033'
   end
 end
