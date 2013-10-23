@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   # Validations
+  validates :uid, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :name, presence: true
+  validates :facebook_email, presence: true
 
   # Methods
   def self.find_for_facebook_oauth(auth)

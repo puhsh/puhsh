@@ -8,7 +8,7 @@ describe User do
   it { should have_many(:offers) }
   it { should have_many(:flagged_posts) }
 
-  context '.default_role' do
+  describe '.default_role' do
     let(:user) { FactoryGirl.build(:user) }
 
     it 'sets the user role to member' do
@@ -26,6 +26,56 @@ describe User do
     it 'never sets the user role to admin' do
       user.save
       expect(user.reload.has_role?(:admin)).to be_false
+    end
+  end
+
+  describe '.uid' do
+    let(:user) { FactoryGirl.build(:user) }
+
+    it 'is required' do
+      user.uid = nil
+      user.save
+      expect(user).to_not be_valid
+    end
+  end
+
+  describe '.first_name' do
+    let(:user) { FactoryGirl.build(:user) }
+
+    it 'is required' do
+      user.first_name = nil
+      user.save
+      expect(user).to_not be_valid
+    end
+  end
+
+  describe '.last_name' do
+    let(:user) { FactoryGirl.build(:user) }
+
+    it 'is required' do
+      user.last_name = nil
+      user.save
+      expect(user).to_not be_valid
+    end
+  end
+
+  describe '.name' do
+    let(:user) { FactoryGirl.build(:user) }
+
+    it 'is required' do
+      user.name = nil
+      user.save
+      expect(user).to_not be_valid
+    end
+  end
+
+  describe '.facebook_email' do
+    let(:user) { FactoryGirl.build(:user) }
+
+    it 'is required' do
+      user.facebook_email = nil
+      user.save
+      expect(user).to_not be_valid
     end
   end
 
