@@ -11,5 +11,9 @@ Puhsh::Application.routes.draw do
   # Devise
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
   
-  # Main Routes
+  ###############
+  # API ROUTES
+  ###############
+  namespace :v1 do
+  end
 end
