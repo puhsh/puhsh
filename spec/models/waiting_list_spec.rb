@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe WaitingList do
+  let(:user) { FactoryGirl.create(:user) } 
 
   describe '.device_id' do
     let(:waiting_list) { FactoryGirl.build(:waiting_list) }

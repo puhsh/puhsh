@@ -1,9 +1,10 @@
 class WaitingList < ActiveRecord::Base
-  attr_accessible :status
+  attr_accessible :status, :user
   acts_as_list
   symbolize :status, in: [:inactive, :active], scopes: true, methods: true, validate: false
 
   # Relations
+  belongs_to :user
   
   # Callbacks
   before_create :set_status
