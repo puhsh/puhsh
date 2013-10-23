@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023180855) do
+ActiveRecord::Schema.define(:version => 20131023182728) do
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -133,5 +133,12 @@ ActiveRecord::Schema.define(:version => 20131023180855) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "waiting_lists", :force => true do |t|
+    t.string   "device_id"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
