@@ -17,18 +17,16 @@ class V1::ApiController < ActionController::Metal
   respond_to :json
 
   rescue_from CanCan::AccessDenied do |exception|
-    forbidden!(exception.message)
+    forbidden!
   end
 
-  def forbidden!(error_message)
-    respond_to do |format|
-      format.json { render json: { error: error_message }, status: :forbidden }
-    end
+  protected
+
+  def forbidden!
+    render json: { error: 'forbidden' }, status: :forbidden
   end
 
   def not_found!
-    respond_to do |format|
-      format.json { render json: { error: 'Resource not found' }, status: :not_found }
-    end
+    render json: { error: 'not found' }, status: :not_found
   end
 end
