@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   # Methods
   def self.find_for_facebook_oauth(auth)
     auth = HashWithIndifferentAccess.new(auth)
+    return unless auth[:info][:verified]
 
     user = User.where(uid: auth[:uid]).first
     if user.blank?
@@ -39,7 +40,7 @@ class User < ActiveRecord::Base
         user.facebook_email = auth[:info][:email]
       end
     else
-      if user.avatar_url != auth['info']['image']
+      if user.avatar_url != auth[:info][:image]
         user.avatar_url = auth[:info][:image]
         user.save
       end

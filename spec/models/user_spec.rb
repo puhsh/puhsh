@@ -96,6 +96,72 @@ describe User do
   end
 
   describe '.find_for_facebook_oauth' do
+    before { @facebook_invalid = OmniAuth.config.mock_auth[:facebook_invalid] }
+    before { @facebook_valid = OmniAuth.config.mock_auth[:facebook] }
+
+    context 'new valid user' do
+      it 'creates records for verified users' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user).to_not be_nil
+      end
+
+      it 'saves the uid' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user.reload.uid).to eq(@facebook_valid[:uid])
+      end
+
+      it 'saves the first name' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user.reload.first_name).to eq(@facebook_valid[:info][:first_name])
+      end
+
+      it 'saves the last name' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user.reload.last_name).to eq(@facebook_valid[:info][:last_name])
+      end
+
+      it 'saves the full name' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user.reload.name).to eq(@facebook_valid[:info][:name])
+      end
+
+      it 'saves the avatar url' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user.reload.avatar_url).to eq(@facebook_valid[:info][:image])
+      end
+
+      it 'saves the facebook email' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user.reload.facebook_email).to eq(@facebook_valid[:info][:email])
+      end
+
+      it 'saves the gender' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user.reload.gender).to eq(@facebook_valid[:extra][:raw_info][:gender])
+      end
+    end
+
+    context 'invalid user' do
+      it 'does not create a record for non verified users' do
+        user = User.find_for_facebook_oauth(@facebook_invalid)
+        expect(user).to be_nil
+      end
+    end
+
+    context 'existing user' do
+      let(:user) { FactoryGirl.create(:user, uid: '1234', avatar_url: 'http://test.local/image.png') }
+
+      it 'does not create a record for an existing user' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user).to eql(user)
+        expect(User.count).to eq(1)
+      end
+
+      it 'updates the avatar to the latest one if existing one differs from facebook' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        expect(user.reload.avatar_url).to eq(@facebook_valid[:info][:image])
+      end
+    end
   end
 
   describe 'abilities' do

@@ -44,7 +44,32 @@ RSpec.configure do |config|
       }
     }
 
+  omniauth_hash_invalid =
+    {:provider => "facebook",
+      :uid      => "4321",
+      :info   => {
+        :name       => "Bob Doe",
+        :first_name => "Bob",
+        :last_name  => "Doe",
+        :nickname   => "bobdoe",
+        :email      => "bobdoe@email.com",
+        :location   => "Dallas, TX",
+        :image      => "http://graph.facebook.com/1234567/picture?type=square",
+        :verified   => false
+      },
+      :credentials => {
+        :token  => "testtoken234tsdf",
+        :secret => "foobar"
+      },
+      :extra => {
+        :raw_info => {
+          :gender => 'male'
+        }
+      }
+    }
+
   OmniAuth.config.add_mock(:facebook, omniauth_hash)
+  OmniAuth.config.add_mock(:facebook_invalid, omniauth_hash_invalid)
   Geocoder.configure(:lookup => :test)
   Geocoder::Lookup::Test.add_stub(
     '75033', []
