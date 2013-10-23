@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023202238) do
+ActiveRecord::Schema.define(:version => 20131023205816) do
+
+  create_table "app_invites", :force => true do |t|
+    t.string   "device_id"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "position"
+    t.integer  "user_id"
+  end
+
+  add_index "app_invites", ["device_id"], :name => "index_waiting_lists_on_device_id"
+  add_index "app_invites", ["status"], :name => "index_waiting_lists_on_status"
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -133,17 +145,5 @@ ActiveRecord::Schema.define(:version => 20131023202238) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
-
-  create_table "waiting_lists", :force => true do |t|
-    t.string   "device_id"
-    t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "position"
-    t.integer  "user_id"
-  end
-
-  add_index "waiting_lists", ["device_id"], :name => "index_waiting_lists_on_device_id"
-  add_index "waiting_lists", ["status"], :name => "index_waiting_lists_on_status"
 
 end

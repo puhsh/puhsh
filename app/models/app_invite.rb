@@ -1,4 +1,4 @@
-class WaitingList < ActiveRecord::Base
+class AppInvite < ActiveRecord::Base
   attr_accessible :status, :user
   acts_as_list
   symbolize :status, in: [:inactive, :active], scopes: true, methods: true, validate: false
@@ -14,7 +14,7 @@ class WaitingList < ActiveRecord::Base
   validates :status, presence: true
 
   def self.total_active
-    WaitingList.status(:active).count
+    AppInvite.status(:active).count
   end
 
   def activate!
