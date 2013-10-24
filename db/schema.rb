@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023205816) do
+ActiveRecord::Schema.define(:version => 20131024181947) do
 
   create_table "app_invites", :force => true do |t|
     t.string   "device_id"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20131023205816) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "authentication_token"
     t.integer  "posts_count",          :default => 0
     t.integer  "posts_flagged_count",  :default => 0
   end

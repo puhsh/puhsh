@@ -164,6 +164,15 @@ describe User do
     end
   end
 
+  describe '.generate_access_token!' do
+    let(:user) { FactoryGirl.create(:user) }
+
+    it 'generates an access token for the user' do
+      user.generate_access_token!
+      expect(user.reload.authentication_token).to_not be_nil
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :uid
-  devise :trackable, :omniauthable, :timeoutable, omniauth_providers: [:facebook]
+  attr_accessible :uid, :authentication_token
+  devise :trackable, :omniauthable, :timeoutable, :token_authenticatable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
 
@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
       end
       user
     end
+  end
+
+  def generate_access_token!
+    self.update_attributes(authentication_token: SecureRandom.hex)
   end
 
   protected
