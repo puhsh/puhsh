@@ -12,21 +12,23 @@ class V1::ApiController < ActionController::Metal
   include ActionController::Rescue    
   include Devise::Controllers::Helpers    
   include CanCan::ControllerAdditions
+  include Rails.application.routes.url_helpers
 
-  load_and_authorize_resource
   respond_to :json
 
   rescue_from CanCan::AccessDenied do |exception|
     forbidden!
   end
 
+  rescue_from Koala::Facebook::APIError, with: :forbidden!
+
   protected
 
-  def forbidden!
-    render json: { error: 'forbidden' }, status: :forbidden
+  def forbidden!(extra_info = nil)
+    render json: { error: 'Forbidden.', meta: extra_info }, status: :forbidden
   end
 
   def not_found!
-    render json: { error: 'not found' }, status: :not_found
+    render json: { error: 'Not Found.' }, status: :not_found
   end
 end

@@ -75,4 +75,8 @@ RSpec.configure do |config|
     '75033', []
   )
 
+  @facebook = YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env]
+
+  FACEBOOK_APP_ID = @facebook['id']
+  FACEBOOK_APP_SECRET = @facebook['secret']
 end

@@ -3,8 +3,8 @@ development:
   secret: 'a68155b041911fd97471c4a178d20376'
 
 test:
-  id:
-  secret:
+  id: '190163724500680'
+  secret: 'a68155b041911fd97471c4a178d20376'
 
 production:
   id: '315176221956246'

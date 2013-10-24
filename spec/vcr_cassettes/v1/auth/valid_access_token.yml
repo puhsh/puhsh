@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://graph.facebook.com/oauth/access_token
+    body:
+      encoding: US-ASCII
+      string: client_id=190163724500680&client_secret=a68155b041911fd97471c4a178d20376&type=client_cred
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '979206'
+      X-Fb-Debug:
+      - v1fz2lQeYN6EXvRJGhojIUYzvCb5dmwNBhF12kzrAi4=
+      Date:
+      - Thu, 24 Oct 2013 15:14:58 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '56'
+    body:
+      encoding: US-ASCII
+      string: access_token=190163724500680|LaUu0hIY6ZnPfyTpWaaOArBWxec
+    http_version: 
+  recorded_at: Thu, 24 Oct 2013 15:14:58 GMT
+- request:
+    method: post
+    uri: https://graph.facebook.com/190163724500680/accounts/test-users
+    body:
+      encoding: US-ASCII
+      string: installed=true&permissions&access_token=190163724500680%7CLaUu0hIY6ZnPfyTpWaaOArBWxec
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '979206'
+      X-Fb-Debug:
+      - dEXJlUQ74W1Clg2U7C3HTlAxW9Uq6KVzjhbMtCd43DY=
+      Date:
+      - Thu, 24 Oct 2013 15:15:01 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '441'
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"100006988532355","access_token":"CAACs8ZCEZCfsgBAPvnS6T0rt9VH36TZBzRf4ONjNnX1AESHM6fLG7MHerPmgZApnZAeEyeLTpjd8x75gvoBPtHLKIf3J2kO91I80CHe0Nub8MIl4kyFh7RMd8K958BTYL1mDjQmZCyGg7WZCGtZBx5TZADPnUxC1nFTpcKTA0zZA3zNXs4m3qwK4vFUlBD3gcL3ZCYZD","login_url":"https:\/\/www.facebook.com\/platform\/test_account_login.php?user_id=100006988532355&n=JeE3WAdUHV0praC","email":"phlzctt_narayanansen_1382627698\u0040tfbnw.net","password":"1729632845"}'
+    http_version: 
+  recorded_at: Thu, 24 Oct 2013 15:15:02 GMT
+- request:
+    method: get
+    uri: https://graph.facebook.com/me?access_token=CAACs8ZCEZCfsgBAPvnS6T0rt9VH36TZBzRf4ONjNnX1AESHM6fLG7MHerPmgZApnZAeEyeLTpjd8x75gvoBPtHLKIf3J2kO91I80CHe0Nub8MIl4kyFh7RMd8K958BTYL1mDjQmZCyGg7WZCGtZBx5TZADPnUxC1nFTpcKTA0zZA3zNXs4m3qwK4vFUlBD3gcL3ZCYZD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Etag:
+      - ! '"f5be572ae1ff7c9f7d33d960ac573bd42fc6ae93"'
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '979206'
+      X-Fb-Debug:
+      - OnsbTzDsaTCab2kAWl0XHtgZwF8nO3mSZM2ur5eanV4=
+      Date:
+      - Thu, 24 Oct 2013 15:15:02 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '252'
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"100006988532355","name":"Bob Amfihhecbcee Narayanansen","first_name":"Bob","middle_name":"Amfihhecbcee","last_name":"Narayanansen","link":"https:\/\/www.facebook.com\/profile.php?id=100006988532355","gender":"male","timezone":0,"locale":"en_US"}'
+    http_version: 
+  recorded_at: Thu, 24 Oct 2013 15:15:02 GMT
+- request:
+    method: post
+    uri: https://graph.facebook.com/100006988532355
+    body:
+      encoding: US-ASCII
+      string: access_token=190163724500680%7CLaUu0hIY6ZnPfyTpWaaOArBWxec&method=delete
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '979206'
+      X-Fb-Debug:
+      - kMLjd7ICSNh276mu2rJIwFVcgSFv0AfW9HsO4GHsGzY=
+      Date:
+      - Thu, 24 Oct 2013 15:15:03 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '4'
+    body:
+      encoding: US-ASCII
+      string: 'true'
+    http_version: 
+  recorded_at: Thu, 24 Oct 2013 15:15:04 GMT
+recorded_with: VCR 2.6.0

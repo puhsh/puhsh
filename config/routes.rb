@@ -15,6 +15,9 @@ Puhsh::Application.routes.draw do
   # API ROUTES
   ###############
   namespace :v1 do
+    # Authentication
+    post 'auth', to: 'auth#create'
+
     resources :users, except: [:new, :edit]
   end
 end

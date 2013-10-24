@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://graph.facebook.com/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json; charset=UTF-8
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Www-Authenticate:
+      - OAuth "Facebook Platform" "invalid_request" "An active access token must be
+        used to query information about the current user."
+      X-Fb-Rev:
+      - '979206'
+      X-Fb-Debug:
+      - ZbjtMOFPvr5k7F6F6vQrpoADJT2ktRI8pLqT31A5nQI=
+      Date:
+      - Thu, 24 Oct 2013 15:14:53 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '140'
+    body:
+      encoding: US-ASCII
+      string: ! '{"error":{"message":"An active access token must be used to query
+        information about the current user.","type":"OAuthException","code":2500}}'
+    http_version: 
+  recorded_at: Thu, 24 Oct 2013 15:14:53 GMT
+recorded_with: VCR 2.6.0

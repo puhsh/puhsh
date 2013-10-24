@@ -37,6 +37,8 @@ group :development, :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'shoulda', '3.5.0'
   gem 'spork', '1.0.0rc4'
+  gem 'vcr', '2.6.0'
+  gem 'webmock', '1.13.0', require: false
 end
 
 group :development do
@@ -68,4 +70,4 @@ gem 'money-rails', '0.8.1'
 gem 'rolify', '3.2.0'
 gem 'sunspot_rails', '2.0.0'
 gem 'symbolize', '4.4.1'
-gem 'whenever', '0.8.4', :require => false
+gem 'whenever', '0.8.4', require: false
