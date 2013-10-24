@@ -15,7 +15,7 @@ stderr_path '/web/puhsh/shared/log/unicorn.stderr.log'
 stdout_path '/web/puhsh/shared/log/unicorn.stdout.log'
 
 # Listener on unix domain socket / TCP port
-listen "/tmp/puhsh.socket", :backlog => 64
+listen "/tmp/unicorn.puhsh.sock", :backlog => 64
 
 # PID name
 pid "/tmp/unicorn.puhsh.pid"
