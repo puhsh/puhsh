@@ -71,6 +71,13 @@ namespace :deploy do
       end
     end
   end
+
+  namespace :sitemap do
+    desc 'Refreshes the sitemap'
+    task :refresh_sitemap, :roles => [:app] do
+      run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+    end
+  end
 end
 
 # Before / After Tasks

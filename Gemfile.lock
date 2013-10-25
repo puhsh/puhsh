@@ -221,6 +221,8 @@ GEM
     shoulda-context (1.1.5)
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
+    sitemap_generator (4.2.0)
+      builder
     spork (1.0.0rc4)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -296,6 +298,7 @@ DEPENDENCIES
   rvm-capistrano (= 1.5.1)
   sass-rails (~> 3.2.3)
   shoulda (= 3.5.0)
+  sitemap_generator (= 4.2.0)
   spork (= 1.0.0rc4)
   sunspot_rails (= 2.0.0)
   symbolize (= 4.4.1)

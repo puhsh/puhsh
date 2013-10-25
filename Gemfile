@@ -54,6 +54,7 @@ end
 # Production Specific gems
 group :production do
   gem 'newrelic_rpm', '3.5.8.72'
+  gem 'sitemap_generator', '4.2.0'
 end
 
 # Third Party
