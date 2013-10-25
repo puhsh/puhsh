@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :uid, :authentication_token
+  attr_accessible :uid, :authentication_token, :city
   devise :trackable, :omniauthable, :timeoutable, :token_authenticatable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
@@ -11,9 +11,10 @@ class User < ActiveRecord::Base
   has_many :offers, dependent: :destroy
   has_many :flagged_posts, dependent: :destroy
   has_one :app_invite
+  belongs_to :city
 
   # Callbacks
-  after_create :add_default_role
+  after_create :add_default_role, :set_home_city
   after_validation :geocode
 
   # Validations
@@ -56,6 +57,10 @@ class User < ActiveRecord::Base
 
   def add_default_role
     Rails.env.development? ? self.add_role(:admin) : self.add_role(:member)
+  end
+
+  def set_home_city
+    self.update_attributes(city: City.near(self, 5).first)
   end
 end
 
