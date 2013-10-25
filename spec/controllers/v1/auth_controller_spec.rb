@@ -26,6 +26,52 @@ describe V1::AuthController do
           test_users.delete(user)
         end
       end
+
+      it 'finds an existing user' do
+        VCR.use_cassette('/v1/auth/find_existing_user') do
+          user = test_users.create(true)
+          user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
+          puhsh_user = FactoryGirl.create(:user, uid: user['id'])
+
+          request.env['HTTP_AUTHORIZATION'] = user['access_token']
+          post :create, { facebook_id: user['id'] }, format: :json
+          expect(assigns[:user]).to eql(puhsh_user)
+        end
+      end
+
+      it 'generates an access token for existing user' do
+        VCR.use_cassette('/v1/auth/find_existing_user') do
+          user = test_users.create(true)
+          user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
+          puhsh_user = FactoryGirl.create(:user, uid: user['id'])
+
+          request.env['HTTP_AUTHORIZATION'] = user['access_token']
+          post :create, { facebook_id: user['id'] }, format: :json
+          expect(assigns[:user].authentication_token).to_not be_nil
+        end
+      end
+
+      it 'creates a new user' do
+        VCR.use_cassette('/v1/auth/find_existing_user') do
+          user = test_users.create(true)
+          user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
+
+          request.env['HTTP_AUTHORIZATION'] = user['access_token']
+          post :create, { facebook_id: user['id'] }, format: :json
+          expect(assigns[:user]).to eql(User.last)
+        end
+      end
+
+      it 'creates an access token for a new user' do
+        VCR.use_cassette('/v1/auth/find_existing_user') do
+          user = test_users.create(true)
+          user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
+
+          request.env['HTTP_AUTHORIZATION'] = user['access_token']
+          post :create, { facebook_id: user['id'] }, format: :json
+          expect(assigns[:user].authentication_token).to_not be_nil
+        end
+      end
     end
 
     context 'with invalid FB access token' do

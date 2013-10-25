@@ -112,32 +112,32 @@ describe User do
 
       it 'saves the first name' do
         user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user.reload.first_name).to eq(@facebook_valid[:info][:first_name])
+        expect(user.reload.first_name).to eq(@facebook_valid[:first_name])
       end
 
       it 'saves the last name' do
         user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user.reload.last_name).to eq(@facebook_valid[:info][:last_name])
+        expect(user.reload.last_name).to eq(@facebook_valid[:last_name])
       end
 
       it 'saves the full name' do
         user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user.reload.name).to eq(@facebook_valid[:info][:name])
+        expect(user.reload.name).to eq(@facebook_valid[:name])
       end
 
       it 'saves the avatar url' do
         user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user.reload.avatar_url).to eq(@facebook_valid[:info][:image])
+        expect(user.reload.avatar_url).to eq("http://graph.facebook.com/#{@facebook_valid[:id]}/picture?type=square")
       end
 
       it 'saves the facebook email' do
         user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user.reload.facebook_email).to eq(@facebook_valid[:info][:email])
+        expect(user.reload.facebook_email).to eq(@facebook_valid[:email])
       end
 
       it 'saves the gender' do
         user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user.reload.gender).to eq(@facebook_valid[:extra][:raw_info][:gender])
+        expect(user.reload.gender).to eq(@facebook_valid[:gender])
       end
     end
 
@@ -159,7 +159,7 @@ describe User do
 
       it 'updates the avatar to the latest one if existing one differs from facebook' do
         user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user.reload.avatar_url).to eq(@facebook_valid[:info][:image])
+        expect(user.reload.avatar_url).to eq("http://graph.facebook.com/#{@facebook_valid[:id]}/picture?type=square")
       end
     end
   end

@@ -20,53 +20,29 @@ RSpec.configure do |config|
   end
 
   OmniAuth.config.test_mode = true
-  omniauth_hash =
-    {:provider => "facebook",
-      :uid      => "1234",
-      :info   => {
-        :name       => "John Doe",
-        :first_name => "John",
-        :last_name  => "Doe",
-        :nickname   => "johndoe",
-        :email      => "johndoe@email.com",
-        :location   => "Dallas, TX",
-        :image      => "http://graph.facebook.com/1234567/picture?type=square",
-        :verified   => true
-      },
-      :credentials => {
-        :token  => "testtoken234tsdf",
-        :secret => "foobar"
-      },
-      :extra => {
-        :raw_info => {
-          :gender => 'male'
-        }
-      }
-    }
+  omniauth_hash = {
+    :id => '1234',
+    :name => 'John Doe',
+    :first_name => 'John',
+    :last_name => 'Doe',
+    :username => 'johndoe',
+    :location => { :name => 'Dallas, TX' },
+    :gender => 'male',
+    :email => 'john@test.local',
+    :verified => true
+  }
 
-  omniauth_hash_invalid =
-    {:provider => "facebook",
-      :uid      => "4321",
-      :info   => {
-        :name       => "Bob Doe",
-        :first_name => "Bob",
-        :last_name  => "Doe",
-        :nickname   => "bobdoe",
-        :email      => "bobdoe@email.com",
-        :location   => "Dallas, TX",
-        :image      => "http://graph.facebook.com/1234567/picture?type=square",
-        :verified   => false
-      },
-      :credentials => {
-        :token  => "testtoken234tsdf",
-        :secret => "foobar"
-      },
-      :extra => {
-        :raw_info => {
-          :gender => 'male'
-        }
-      }
-    }
+  omniauth_hash_invalid = {
+    :id => '1234',
+    :name => 'John Doe',
+    :first_name => 'John',
+    :last_name => 'Doe',
+    :username => 'johndoe',
+    :location => { :name => 'Dallas, TX' },
+    :gender => 'male',
+    :email => 'john@test.local',
+    :verified => false
+  }
 
   OmniAuth.config.add_mock(:facebook, omniauth_hash)
   OmniAuth.config.add_mock(:facebook_invalid, omniauth_hash_invalid)

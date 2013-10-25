@@ -29,11 +29,11 @@ http_interactions:
       Pragma:
       - no-cache
       X-Fb-Rev:
-      - '979206'
+      - '980660'
       X-Fb-Debug:
-      - dsgTSSe6SjpC6fwSsa9HlfnVxKe8JSQfIYcPeP9ihoo=
+      - km07RbDHSl3+RO0mUlIvoMAG7VNlKEWIm5G/wySM+Rw=
       Date:
-      - Thu, 24 Oct 2013 15:14:53 GMT
+      - Fri, 25 Oct 2013 02:59:51 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -42,7 +42,7 @@ http_interactions:
       encoding: US-ASCII
       string: access_token=190163724500680|LaUu0hIY6ZnPfyTpWaaOArBWxec
     http_version: 
-  recorded_at: Thu, 24 Oct 2013 15:14:53 GMT
+  recorded_at: Fri, 25 Oct 2013 02:59:51 GMT
 - request:
     method: post
     uri: https://graph.facebook.com/190163724500680/accounts/test-users
@@ -72,20 +72,20 @@ http_interactions:
       Pragma:
       - no-cache
       X-Fb-Rev:
-      - '979206'
+      - '980660'
       X-Fb-Debug:
-      - TRAnajCXjYWiCRuanRTCoJdsRcCb0WDPWOnEwTFS9t8=
+      - XuZ0Hp/RH3PB9nGSHnreNwLnzte2qgI251PiW4+w8ew=
       Date:
-      - Thu, 24 Oct 2013 15:14:56 GMT
+      - Fri, 25 Oct 2013 02:59:55 GMT
       Connection:
       - keep-alive
       Content-Length:
-      - '452'
+      - '436'
     body:
       encoding: US-ASCII
-      string: ! '{"id":"100006898087594","access_token":"CAACs8ZCEZCfsgBAEOs51Hs0mbKZBl7qzva0wPf1DlReZBZC4G3u34Mqi7kZA26rwAHS2qEmnIYkVYVWzUTulldj2HZBwJI4wp6UDW2EIMfCi97zzYGUfrsuOh1bDpdZAFD84ZAZCIYprBomkqOq34IZB9yB8COmJ37gVNGAuP6Y6VWqJdIi5C3nlr5ZAUKMwzDZC9bJg75My3Eq1IdgZDZD","login_url":"https:\/\/www.facebook.com\/platform\/test_account_login.php?user_id=100006898087594&n=OOeLvbVZQKdaKQ7","email":"efmutds_fallerson_1382627693\u0040tfbnw.net","password":"351455773"}'
+      string: ! '{"id":"100006897008076","access_token":"CAACs8ZCEZCfsgBAI5XeKDISfQGTIULwmsmhsRoGKOETsZAJ09veLoc8op0CwjnhK3ZBXBqTSoAeNS8TSZBJ7IiawZC4DRdVdGxwmy8g51qBOLj0djkOxXyn7kZB5gcPVpBUPzP9c8b6LgoDjrGjlGVmZBZAlKNmrUPTjmAiPZCuWK0LDN3k4BPWrjxEV53tZBj5hk4ZD","login_url":"https:\/\/www.facebook.com\/platform\/test_account_login.php?user_id=100006897008076&n=bQRZb9ygoIIVIJ1","email":"fjgapql_riceman_1382669993\u0040tfbnw.net","password":"1828190874"}'
     http_version: 
-  recorded_at: Thu, 24 Oct 2013 15:14:56 GMT
+  recorded_at: Fri, 25 Oct 2013 02:59:56 GMT
 - request:
     method: get
     uri: https://graph.facebook.com/me?access_token=garbage_token
@@ -117,11 +117,11 @@ http_interactions:
       Www-Authenticate:
       - OAuth "Facebook Platform" "invalid_token" "Invalid OAuth access token."
       X-Fb-Rev:
-      - '979206'
+      - '980660'
       X-Fb-Debug:
-      - rseagaCpaewiYBPijLPuO4j1YNGJO0/igR7z49KSFKM=
+      - SyB5KXU3G/d5iXlhsinzhAivvGf5sIj4Qmt8mbLumVU=
       Date:
-      - Thu, 24 Oct 2013 15:14:56 GMT
+      - Fri, 25 Oct 2013 02:59:56 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -130,10 +130,10 @@ http_interactions:
       encoding: US-ASCII
       string: ! '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190}}'
     http_version: 
-  recorded_at: Thu, 24 Oct 2013 15:14:56 GMT
+  recorded_at: Fri, 25 Oct 2013 02:59:56 GMT
 - request:
     method: post
-    uri: https://graph.facebook.com/100006898087594
+    uri: https://graph.facebook.com/100006897008076
     body:
       encoding: US-ASCII
       string: access_token=190163724500680%7CLaUu0hIY6ZnPfyTpWaaOArBWxec&method=delete
@@ -160,11 +160,11 @@ http_interactions:
       Pragma:
       - no-cache
       X-Fb-Rev:
-      - '979206'
+      - '980660'
       X-Fb-Debug:
-      - slxfd0K+X46TrOTR5ibmtPJPzhv8FevzTBudZ9D+s3o=
+      - 7pc5p8D+jRfKTEHJHPCQV0aq5nUjQxXrC3QQy4kjekU=
       Date:
-      - Thu, 24 Oct 2013 15:14:58 GMT
+      - Fri, 25 Oct 2013 02:59:58 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -173,5 +173,5 @@ http_interactions:
       encoding: US-ASCII
       string: 'true'
     http_version: 
-  recorded_at: Thu, 24 Oct 2013 15:14:58 GMT
+  recorded_at: Fri, 25 Oct 2013 02:59:58 GMT
 recorded_with: VCR 2.6.0

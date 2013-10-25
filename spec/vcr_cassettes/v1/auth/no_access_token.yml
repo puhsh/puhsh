@@ -32,11 +32,11 @@ http_interactions:
       - OAuth "Facebook Platform" "invalid_request" "An active access token must be
         used to query information about the current user."
       X-Fb-Rev:
-      - '979206'
+      - '980660'
       X-Fb-Debug:
-      - ZbjtMOFPvr5k7F6F6vQrpoADJT2ktRI8pLqT31A5nQI=
+      - FdIo9ffBP0bABDS3O2WA86g3CXUNSC+/yzQfmfZQhU4=
       Date:
-      - Thu, 24 Oct 2013 15:14:53 GMT
+      - Fri, 25 Oct 2013 02:59:41 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -46,5 +46,5 @@ http_interactions:
       string: ! '{"error":{"message":"An active access token must be used to query
         information about the current user.","type":"OAuthException","code":2500}}'
     http_version: 
-  recorded_at: Thu, 24 Oct 2013 15:14:53 GMT
+  recorded_at: Fri, 25 Oct 2013 02:59:41 GMT
 recorded_with: VCR 2.6.0

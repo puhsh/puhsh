@@ -27,22 +27,22 @@ class User < ActiveRecord::Base
   # Methods
   def self.find_for_facebook_oauth(auth)
     auth = HashWithIndifferentAccess.new(auth)
-    return unless auth[:info][:verified]
+    return unless auth[:verified]
 
-    user = User.where(uid: auth[:uid]).first
+    user = User.where(uid: auth[:id]).first
     if user.blank?
       self.create! do |user|
-        user.uid = auth[:uid]
-        user.name = auth[:info][:name]
-        user.first_name = auth[:info][:first_name]
-        user.last_name = auth[:info][:last_name]
-        user.avatar_url = auth[:info][:image]
-        user.gender = auth[:extra][:raw_info][:gender] if auth[:extra][:raw_info].present?
-        user.facebook_email = auth[:info][:email]
+        user.uid = auth[:id]
+        user.name = auth[:name]
+        user.first_name = auth[:first_name]
+        user.last_name = auth[:last_name]
+        user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
+        user.gender = auth[:gender]
+        user.facebook_email = auth[:email]
       end
     else
-      if user.avatar_url != auth[:info][:image]
-        user.avatar_url = auth[:info][:image]
+      if user.avatar_url != "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
+        user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square",
         user.save
       end
       user

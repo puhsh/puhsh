@@ -2,7 +2,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   respond_to :html
 
   def facebook
-    @user = User.find_for_facebook_oauth(request.env['omniauth.auth'])
+    @user = User.find_for_facebook_oauth(request.env['omniauth.auth'][:extra][:raw_info])
 
     respond_with @user do |format|
       if @user.persisted?
