@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131025125426) do
+ActiveRecord::Schema.define(:version => 20131025200905) do
 
   create_table "app_invites", :force => true do |t|
     t.string   "device_id"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20131025125426) do
 
   add_index "app_invites", ["device_id"], :name => "index_waiting_lists_on_device_id"
   add_index "app_invites", ["status"], :name => "index_waiting_lists_on_status"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "status",     :default => "active"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "cities", :force => true do |t|
     t.string "zipcode"
@@ -84,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20131025125426) do
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "city_id"
+    t.integer  "category_id"
     t.string   "title"
     t.string   "description"
     t.string   "pick_up_location"
@@ -93,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20131025125426) do
     t.datetime "updated_at",                      :null => false
   end
 
+  add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
   add_index "posts", ["city_id"], :name => "index_posts_on_city_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 

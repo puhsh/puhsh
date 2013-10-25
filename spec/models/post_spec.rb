@@ -7,6 +7,7 @@ describe Post do
   it { should have_many(:flagged_posts) }
 
   let(:user) { FactoryGirl.create(:user) }
+  let(:category) { FactoryGirl.create(:category) }
 
   describe '.create' do
     let(:post) { FactoryGirl.build(:post) }
@@ -67,4 +68,14 @@ describe Post do
       expect(post).to_not be_valid
     end
   end
+
+  describe '.category' do
+    let!(:category) { FactoryGirl.create(:category) }
+    let(:post) { FactoryGirl.create(:post, title: 'Foo bar', description: 'Foo') }
+
+    it 'defaults to the first and only category' do
+      expect(post.category).to eq(category)
+    end
+  end
+
 end
