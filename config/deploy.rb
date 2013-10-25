@@ -33,7 +33,7 @@ set :hipchat_client, HipChat::Client.new(hipchat_token)
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/keys/puhsh/ec2-keypair.pem", "#{ENV["HOME"]}/.ssh/id_rsa"]
 ssh_options[:forward_agent] = true
 
-server 'ec2-54-221-223-155.compute-1.amazonaws.com', :web, :app, :db, primary: true
+server 'ec2-54-227-196-172.compute-1.amazonaws.com', :web, :app, :db, primary: true
 
 namespace :deploy do
 
