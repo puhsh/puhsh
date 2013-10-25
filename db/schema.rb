@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131024181947) do
+ActiveRecord::Schema.define(:version => 20131025125426) do
 
   create_table "app_invites", :force => true do |t|
     t.string   "device_id"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(:version => 20131024181947) do
 
   add_index "flagged_posts", ["post_id"], :name => "index_flagged_posts_on_post_id"
   add_index "flagged_posts", ["user_id"], :name => "index_flagged_posts_on_user_id"
+
+  create_table "followed_cities", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "city_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "followed_cities", ["city_id"], :name => "index_followed_cities_on_city_id"
+  add_index "followed_cities", ["user_id"], :name => "index_followed_cities_on_user_id"
 
   create_table "items", :force => true do |t|
     t.integer  "post_id"
@@ -96,16 +106,6 @@ ActiveRecord::Schema.define(:version => 20131024181947) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
-
-  create_table "user_cities", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "city_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "user_cities", ["city_id"], :name => "index_followed_cities_on_city_id"
-  add_index "user_cities", ["user_id"], :name => "index_followed_cities_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "uid"

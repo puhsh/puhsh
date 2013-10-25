@@ -1,17 +1,17 @@
 class User < ActiveRecord::Base
-  attr_accessible :uid, :authentication_token, :city
+  attr_accessible :uid, :authentication_token, :home_city
   devise :trackable, :omniauthable, :timeoutable, :token_authenticatable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
 
   # Relations
   has_many :posts
-  has_many :user_cities, dependent: :destroy
-  has_many :cities, through: :user_cities
+  has_many :followed_cities, dependent: :destroy
+  has_many :cities, through: :followed_cities
+  belongs_to :home_city, class_name: 'City', foreign_key: 'city_id'
   has_many :offers, dependent: :destroy
   has_many :flagged_posts, dependent: :destroy
   has_one :app_invite
-  belongs_to :city
 
   # Callbacks
   after_create :add_default_role, :set_home_city
@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def set_home_city
-    self.update_attributes(city: City.near(self, 5).first)
+    self.update_attributes(home_city: City.near(self, 5).first)
   end
 end
 

@@ -3,10 +3,11 @@ require 'spec_helper'
 describe User do
 
   it { should have_many(:posts) }
-  it { should have_many(:user_cities) }
-  it { should have_many(:cities).through(:user_cities) }
+  it { should have_many(:followed_cities) }
+  it { should have_many(:cities).through(:followed_cities) }
   it { should have_many(:offers) }
   it { should have_many(:flagged_posts) }
+  it { should belong_to(:home_city) }
 
   describe '.default_role' do
     let(:user) { FactoryGirl.build(:user) }
@@ -190,7 +191,7 @@ describe User do
       it { should be_able_to(:manage, Item.new) }
       it { should be_able_to(:manage, Offer.new) }
       it { should be_able_to(:manage, FlaggedPost.new) }
-      it { should be_able_to(:manage, UserCity.new) }
+      it { should be_able_to(:manage, FollowedCity.new) }
       it { should be_able_to(:manage, City.new) }
     end
 
