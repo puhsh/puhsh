@@ -74,8 +74,8 @@ namespace :deploy do
 
   namespace :sitemap do
     desc 'Refreshes the sitemap'
-    task :refresh_sitemap, :roles => [:app] do
-      run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+    task :refresh, :roles => [:app] do
+      run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
       hipchat_client[hipchat_room_name].send('Capistrano', 'Refreshing the sitemap in production.')
     end
   end
