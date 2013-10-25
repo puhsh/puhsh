@@ -83,15 +83,8 @@ describe User do
     let(:user) { FactoryGirl.build(:user) }
     let(:existing_user) { FactoryGirl.create(:user) }
 
-    it 'is not required on create' do
+    it 'is not required' do
       expect(existing_user).to be_valid
-    end
-
-    it 'is required on update' do
-      user.save
-      user.zipcode = nil
-      user.save
-      expect(user).to_not be_valid
     end
   end
 

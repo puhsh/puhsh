@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :name, presence: true
   validates :facebook_email, presence: true
-  validates :zipcode, presence: true, on: :update
 
   # Methods
   def self.find_for_facebook_oauth(auth)
