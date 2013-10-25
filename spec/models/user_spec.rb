@@ -166,6 +166,17 @@ describe User do
     end
   end
 
+  describe '.set_home_city' do
+    let(:user) { FactoryGirl.build(:user) }
+    let(:city) { FactoryGirl.create(:city) }
+
+    it 'sets the correct city on create' do
+      user.zipcode = '75033'
+      expect(user).to receive(:set_home_city)
+      user.save
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }
