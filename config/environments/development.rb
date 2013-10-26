@@ -37,4 +37,7 @@ Puhsh::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Warden
+  config.gem 'rails_warden'
 end

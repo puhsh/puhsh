@@ -34,4 +34,7 @@ Puhsh::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # Warden
+  config.gem 'rails_warden'
 end
