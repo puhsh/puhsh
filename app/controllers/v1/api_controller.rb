@@ -17,10 +17,18 @@ class V1::ApiController < ActionController::Metal
   respond_to :json
 
   rescue_from CanCan::AccessDenied do |exception|
-    forbidden!
+    forbidden!('Access denied.')
   end
 
   rescue_from Koala::Facebook::APIError, with: :forbidden!
+
+  def verify_access_token
+    if current_user.access_token.token == params[:access_token]
+      unauthorized! if current_user.access_token.expired?
+    else
+      forbidden!('Invalid Access token') 
+    end
+  end
 
   protected
 
@@ -30,5 +38,9 @@ class V1::ApiController < ActionController::Metal
 
   def not_found!
     render json: { error: 'Not Found.' }, status: :not_found
+  end
+
+  def unauthorized!
+    render json: { error: 'Access Token expired. Please renew it.' }, status: :unauthorized
   end
 end

@@ -16,11 +16,11 @@ end
 
 Warden::Strategies.add(:token_authentication) do
   def valid?
-    params['auth_token']
+    params['access_token']
   end
 
   def authenticate!
-    auth_token = AccessToken.where(user_id: env['warden'].user.id, token: params['auth_token'])
-    auth_token.nil? ? fail!('Forbidden') : success!(auth_token)
+    auth_token = AccessToken.where(token: params['access_token']).first
+    auth_token.nil? ? fail!('Forbidden') : success!(auth_token.user)
   end
 end

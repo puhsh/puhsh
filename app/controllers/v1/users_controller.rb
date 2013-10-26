@@ -1,6 +1,7 @@
 class V1::UsersController < V1::ApiController
-  load_and_authorize_resource
   before_filter :authenticate_user!
+  before_filter :verify_access_token
+  load_and_authorize_resource
 
   def show
     @user = User.find(params[:id])
