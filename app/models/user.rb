@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_access_token!
-    AccessToken.create!(user: self)
+    self.access_token.nil? ? AccessToken.create!(user: self) : self.access_token.touch
   end
 
   protected
