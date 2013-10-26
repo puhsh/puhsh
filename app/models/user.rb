@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :uid, :authentication_token, :home_city
-  devise :trackable, :omniauthable, :timeoutable, :token_authenticatable, omniauth_providers: [:facebook]
+  devise :trackable, :omniauthable, :timeoutable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
 
@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :offers, dependent: :destroy
   has_many :flagged_posts, dependent: :destroy
   has_one :app_invite
+  has_one :access_token
 
   # Callbacks
   after_create :add_default_role, :set_home_city
@@ -50,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_access_token!
-    self.update_attributes(authentication_token: SecureRandom.hex)
+    AccessToken.create!(user: self)
   end
 
   protected

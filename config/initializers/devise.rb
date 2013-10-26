@@ -139,7 +139,7 @@ Devise.setup do |config|
   config.timeout_in = Rails.env.production? ? 2.weeks : 15.minutes
 
   # If true, expires auth token on session timeout.
-  config.expire_auth_token_on_timeout = true
+  # config.expire_auth_token_on_timeout = true
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -186,7 +186,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  config.token_authentication_key = :auth_token
+  # config.token_authentication_key = :auth_token
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for

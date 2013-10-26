@@ -242,6 +242,7 @@ GEM
       activesupport (>= 3.2, < 5)
     thor (0.18.1)
     tilt (1.4.1)
+    timecop (0.6.3)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -305,6 +306,7 @@ DEPENDENCIES
   spork (= 1.0.0rc4)
   sunspot_rails (= 2.0.0)
   symbolize (= 4.4.1)
+  timecop (= 0.6.3)
   uglifier (>= 1.0.3)
   unicorn (= 4.6.3)
   vcr (= 2.6.0)

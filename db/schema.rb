@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131026124803) do
+ActiveRecord::Schema.define(:version => 20131026155854) do
+
+  create_table "access_tokens", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.datetime "expires_at", :default => '2013-11-09 15:03:25'
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
+
+  add_index "access_tokens", ["token"], :name => "index_access_tokens_on_token"
+  add_index "access_tokens", ["user_id"], :name => "index_access_tokens_on_user_id"
 
   create_table "app_invites", :force => true do |t|
     t.string   "device_id"
@@ -149,7 +160,6 @@ ActiveRecord::Schema.define(:version => 20131026124803) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "authentication_token"
     t.integer  "posts_count",          :default => 0
     t.integer  "posts_flagged_count",  :default => 0
   end

@@ -14,6 +14,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
   config.include Devise::TestHelpers, :type => :controller
+  config.include Warden::Test::Helpers
   config.order = "random"
   config.expect_with :rspec do |c|
     c.syntax = :expect

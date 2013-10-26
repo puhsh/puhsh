@@ -8,6 +8,7 @@ describe User do
   it { should have_many(:offers) }
   it { should have_many(:flagged_posts) }
   it { should belong_to(:home_city) }
+  it { should have_one(:access_token) }
 
   describe '.default_role' do
     let(:user) { FactoryGirl.build(:user) }
@@ -160,10 +161,25 @@ describe User do
 
   describe '.generate_access_token!' do
     let(:user) { FactoryGirl.create(:user) }
+    let(:existing_user) { FactoryGirl.create(:user) }
+    let(:existing_user2) { FactoryGirl.create(:user) }
+    let!(:expired_access_token) { FactoryGirl.create(:access_token, user: existing_user, expires_at: 2.weeks.ago) }
+    let!(:valid_access_token) { FactoryGirl.create(:access_token, user: existing_user2) }
+    
 
-    it 'generates an access token for the user' do
+    it 'generates an access token for a new user' do
       user.generate_access_token!
-      expect(user.reload.authentication_token).to_not be_nil
+      expect(user.reload.access_token).to_not be_nil
+    end
+
+    it 'refreshes an access token for an existing user if the token is expired' do
+      existing_user.generate_access_token!
+      expect(existing_user.reload.access_token).to eq(expired_access_token.reload)
+    end
+
+    it 'does not refresh an access token for an existing user if the token is valid' do
+      existing_user2.generate_access_token!
+      expect(existing_user2.reload.access_token).to eql(valid_access_token)
     end
   end
 
