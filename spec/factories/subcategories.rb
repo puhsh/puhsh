@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :subcategory do
-    category FactoryGirl.create(:category)
+    category { FactoryGirl.create(:category) }
     name 'Baby Clothes'
   end
 end
