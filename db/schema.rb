@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131025200905) do
+ActiveRecord::Schema.define(:version => 20131026124803) do
 
   create_table "app_invites", :force => true do |t|
     t.string   "device_id"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20131025200905) do
     t.integer  "user_id"
     t.integer  "city_id"
     t.integer  "category_id"
+    t.integer  "subcategory_id"
     t.string   "title"
     t.string   "description"
     t.string   "pick_up_location"
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20131025200905) do
 
   add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
   add_index "posts", ["city_id"], :name => "index_posts_on_city_id"
+  add_index "posts", ["subcategory_id"], :name => "index_posts_on_subcategory_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "roles", :force => true do |t|
@@ -115,6 +117,16 @@ ActiveRecord::Schema.define(:version => 20131025200905) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "subcategories", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.string   "status",      :default => "active"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  add_index "subcategories", ["category_id"], :name => "index_subcategories_on_category_id"
 
   create_table "users", :force => true do |t|
     t.string   "uid"

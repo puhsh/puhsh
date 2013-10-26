@@ -1,13 +1,14 @@
-class Category < ActiveRecord::Base
+class Subcategory < ActiveRecord::Base
   attr_accessible :name
   symbolize :status, in: [:active, :inactive], methods: true, scopes: true
 
   # Relations
+  belongs_to :category
   has_many :posts
-  has_many :subcategories
 
   # Callbacks
 
   # Validations
+  validates :category, presence: true
   validates :name, presence: true
 end

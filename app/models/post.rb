@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :description, :pick_up_location, :payment_type, :category
+  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :subcategory
   symbolize :pick_up_location, in: [porch: 'Porch Pick Up', public_location: 'Meet at Public Location', house: 'Pickup at House', other: 'Other'],
             methods: true, scope: false, i18n: false, validate: false
 
@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
   belongs_to :city
   has_many :flagged_posts, dependent: :destroy
   belongs_to :category
+  belongs_to :subcategory
 
   # Callbacks
   after_create :add_category
@@ -21,6 +22,7 @@ class Post < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 500 }
   validates :pick_up_location, presence: true
   validates :payment_type, presence: true
+  validates :category, presence: true
 
   protected
 

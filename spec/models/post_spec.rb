@@ -5,6 +5,8 @@ describe Post do
   it { should have_many(:items) }
   it { should belong_to(:city) }
   it { should have_many(:flagged_posts) }
+  it { should belong_to(:category) }
+  it { should belong_to(:subcategory) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }
@@ -70,12 +72,27 @@ describe Post do
   end
 
   describe '.category' do
-    let!(:category) { FactoryGirl.create(:category) }
     let(:post) { FactoryGirl.create(:post, title: 'Foo bar', description: 'Foo') }
 
     it 'defaults to the first and only category' do
-      expect(post.category).to eq(category)
+      expect(post.category).to eq(Category.first)
+    end
+
+    it 'is required' do
+      post.category = nil
+      post.save
+      expect(post).to_not be_valid
     end
   end
 
+  describe '.subcategory' do
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let(:post) { FactoryGirl.build(:post, title: 'Foo bar', description: 'Foo') }
+
+    it 'can be assigned to any subcategory' do
+      post.subcategory = subcategory
+      post.save
+      expect(post.reload.subcategory).to eql(subcategory)
+    end
+  end
 end
