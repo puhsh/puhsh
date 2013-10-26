@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
       end
     else
       if user.avatar_url != "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
-        user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square",
+        user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
         user.save
       end
       user
