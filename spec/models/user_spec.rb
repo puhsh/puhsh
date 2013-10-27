@@ -148,8 +148,8 @@ describe User do
 
       it 'does not create a record for an existing user' do
         user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user).to eql(user)
-        expect(User.count).to eq(1)
+        expect(User).to_not receive(:create)
+        expect(user.reload).to eql(user)
       end
 
       it 'updates the avatar to the latest one if existing one differs from facebook' do
