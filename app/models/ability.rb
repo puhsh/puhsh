@@ -7,6 +7,7 @@ class Ability
       can :manage, :all
     else
       can :manage, user
+      can :read, AppInvite.where(user_id: user.id)
     end
   end
 end
