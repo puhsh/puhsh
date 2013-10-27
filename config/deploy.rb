@@ -1,6 +1,7 @@
 require 'rvm/capistrano' 
 require 'bundler/capistrano'
 require 'hipchat/capistrano'
+require 'whenever/capistrano'
 
 set :application, 'puhsh'
 set :keep_releases, 10
@@ -28,6 +29,9 @@ set :hipchat_success_color, 'green'
 set :hipchat_failed_color, 'red'
 set :hipchat_message_format, 'text'
 set :hipchat_client, HipChat::Client.new(hipchat_token)
+
+# CRON
+set :whenever_command, 'bundle exec whenever'
 
 
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/keys/puhsh/ec2-keypair.pem", "#{ENV["HOME"]}/.ssh/id_rsa"]
