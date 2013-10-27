@@ -1,7 +1,7 @@
 class V1::ApiController < ActionController::Metal
   include ActionController::Rendering
-  include ActionController::Redirecting
   include ActionController::Renderers::All  
+  include ActionController::Redirecting
   include AbstractController::Callbacks
   include AbstractController::Helpers
   include ActionController::Instrumentation
@@ -10,6 +10,7 @@ class V1::ApiController < ActionController::Metal
   include ActionController::RequestForgeryProtection
   include ActionController::ForceSSL
   include ActionController::Rescue    
+  include ActionController::Serialization
   include Devise::Controllers::Helpers    
   include CanCan::ControllerAdditions
   include Rails.application.routes.url_helpers
