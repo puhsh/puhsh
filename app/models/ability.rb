@@ -6,8 +6,8 @@ class Ability
     if user.has_role?(:admin)
       can :manage, :all
     else
-      can :manage, user
-      can :read, AppInvite.where(user_id: user.id)
+      can :manage, User, active: true, user_id: user.id
+      can :read, AppInvite, active: true, user_id: user.id
     end
   end
 end
