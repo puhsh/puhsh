@@ -1,17 +1,23 @@
 class V1::AuthController < V1::ApiController
   def create
     @facebook_record = Koala::Facebook::API.new(request.headers['HTTP_AUTHORIZATION']).get_object('me')
-    if @facebook_record['id'] == params[:facebook_id]
-      @user = User.find_for_facebook_oauth(@facebook_record['id'])
+    if @facebook_record['id'] == params[:facebook_id] && verifed?(@facebook_record)
+      @user = User.find_for_facebook_oauth(@facebook_record)
       if @user
         @user.generate_access_token!
         sign_in @user, event: :token_authentication
         render json: { user: @user, access_token: @user.reload.access_token.token }
       else
-        forbidden!
+        no_content!
       end
     else
       forbidden!
     end
+  end
+
+  protected
+
+  def verifed?(facebook_record)
+    Rails.env.production? ? @facebook_record['verifed'] : true
   end
 end

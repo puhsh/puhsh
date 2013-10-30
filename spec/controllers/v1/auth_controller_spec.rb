@@ -22,7 +22,6 @@ describe V1::AuthController do
 
           post :create, { facebook_id: user['id'] }, format: :json
           expect(assigns[:facebook_record]).to_not be_nil
-          expect(response).to be_success
           test_users.delete(user)
         end
       end
@@ -30,7 +29,7 @@ describe V1::AuthController do
       it 'finds an existing user' do
         VCR.use_cassette('/v1/auth/find_existing_user') do
           user = test_users.create(true)
-          user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
+          user.merge!({'email' => 'test@test.local', 'verified' => true })
           puhsh_user = FactoryGirl.create(:user, uid: user['id'])
 
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
@@ -41,12 +40,12 @@ describe V1::AuthController do
 
       it 'generates an access token for existing user' do
         VCR.use_cassette('/v1/auth/find_existing_user') do
-          user = test_users.create(true)
-          user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
+          user = test_users.create(true, {'verified' => true})
           puhsh_user = FactoryGirl.create(:user, uid: user['id'])
 
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
           post :create, { facebook_id: user['id'] }, format: :json
+          puts assigns[:facebook_record]
           expect(assigns[:user].access_token).to_not be_nil
         end
       end
@@ -65,11 +64,11 @@ describe V1::AuthController do
       it 'creates an access token for a new user' do
         VCR.use_cassette('/v1/auth/find_existing_user') do
           user = test_users.create(true)
-          user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
+          user.merge!({'first_name' => 'test', 'last_name' => 'testlast', 'name' => 'test testlast','email' => 'test@test.local', 'verified' => 'true' })
 
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
           post :create, { facebook_id: user['id'] }, format: :json
-          expect(assigns[:user].access_token).to_not be_nil
+          expect(assigns[:user].reload.access_token).to_not be_nil
         end
       end
     end

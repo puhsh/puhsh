@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :uid, :authentication_token, :home_city
+  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name
   devise :trackable, :omniauthable, :timeoutable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
@@ -23,12 +23,10 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :name, presence: true
-  validates :facebook_email, presence: true
 
   # Methods
   def self.find_for_facebook_oauth(auth)
     auth = HashWithIndifferentAccess.new(auth)
-    return unless auth[:verified]
 
     user = User.where(uid: auth[:id]).first
     if user.blank?

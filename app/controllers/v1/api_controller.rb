@@ -44,4 +44,8 @@ class V1::ApiController < ActionController::Metal
   def unauthorized!
     render json: { error: 'Access Token expired. Please renew it.' }, status: :unauthorized
   end
+
+  def no_content!
+    render json: { error: 'Request was processed but no data will be returned' }, status: :no_content
+  end
 end

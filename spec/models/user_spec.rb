@@ -74,10 +74,10 @@ describe User do
   describe '.facebook_email' do
     let(:user) { FactoryGirl.build(:user) }
 
-    it 'is required' do
+    it 'is not required' do
       user.facebook_email = nil
       user.save
-      expect(user).to_not be_valid
+      expect(user).to be_valid
     end
   end
 
