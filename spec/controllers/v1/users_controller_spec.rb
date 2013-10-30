@@ -14,6 +14,7 @@ describe V1::UsersController do
 
     context 'without authentication' do
       it 'is forbidden' do
+        sign_in user
         get :show, { id: user.id }, format: :json
         expect(assigns[:user]).to be_nil
       end
