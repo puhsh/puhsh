@@ -45,7 +45,6 @@ describe V1::AuthController do
 
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
           post :create, { facebook_id: user['id'] }, format: :json
-          puts assigns[:facebook_record]
           expect(assigns[:user].access_token).to_not be_nil
         end
       end

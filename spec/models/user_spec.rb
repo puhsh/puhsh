@@ -136,13 +136,6 @@ describe User do
       end
     end
 
-    context 'invalid user' do
-      it 'does not create a record for non verified users' do
-        user = User.find_for_facebook_oauth(@facebook_invalid)
-        expect(user).to be_nil
-      end
-    end
-
     context 'existing user' do
       let(:user) { FactoryGirl.create(:user, uid: '1234', avatar_url: 'http://test.local/image.png') }
 
