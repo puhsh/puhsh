@@ -11,7 +11,7 @@ class V1::AuthController < V1::ApiController
         no_content!
       end
     else
-      forbidden!
+      forbidden!('The requested facebook user could not be verified')
     end
   end
 
