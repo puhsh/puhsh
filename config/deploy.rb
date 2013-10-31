@@ -16,7 +16,7 @@ set :git_enable_submodules, 1
 set :use_sudo, false
 set :rvm_ruby_string, 'ruby-1.9.3-p448@puhsh'
 set :rake, "#{rake} --trace"
-set :user, 'ubuntu'
+set :user, 'root'
 set :use_sudo, false
 set :max_asset_age, 2 
 
