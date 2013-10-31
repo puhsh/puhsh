@@ -18,6 +18,6 @@ class V1::AuthController < V1::ApiController
   protected
 
   def verifed?(facebook_record)
-    Rails.env.production? ? @facebook_record['verifed'] : true
+    Rails.env.production? ? @facebook_record['verified'] : true
   end
 end
