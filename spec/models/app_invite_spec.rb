@@ -37,18 +37,36 @@ describe AppInvite do
     end
   end
 
-  describe '.devices_in_front_of_current_device' do
+  describe '.users_in_front_of_user' do
     let(:app_invite) { FactoryGirl.create(:app_invite) }
     let(:app_invite2) { FactoryGirl.create(:app_invite) }
 
-    it 'determines number of devices you are behind' do
-      expect(app_invite.devices_in_front_of_current_device).to eq(0)
-      expect(app_invite2.devices_in_front_of_current_device).to eq(1)
+    it 'determines number of users you are behind' do
+      expect(app_invite.users_in_front_of_user).to eq(0)
+      expect(app_invite2.users_in_front_of_user).to eq(1)
     end
 
-    it 'updates when a device in front of the current device activates' do
+    it 'updates when a user in front of the current user activates' do
       app_invite.activate!
-      expect(app_invite2.devices_in_front_of_current_device).to eq(0)
+      expect(app_invite2.users_in_front_of_user).to eq(0)
+    end
+  end
+
+  describe '.current_position' do
+    let(:app_invite) { FactoryGirl.create(:app_invite) }
+    let(:app_invite2) { FactoryGirl.create(:app_invite) }
+    let(:app_invite3) { FactoryGirl.create(:app_invite) }
+
+    it 'calculates the current position properly' do
+      expect(app_invite.current_position).to eql(1)
+      expect(app_invite2.current_position).to eql(2)
+      expect(app_invite3.current_position).to eql(3)
+    end
+
+    it 'updates the current position properly' do
+      app_invite.activate!
+      expect(app_invite2.current_position).to eql(1)
+      expect(app_invite3.current_position).to eql(2)
     end
   end
 

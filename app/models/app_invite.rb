@@ -24,8 +24,12 @@ class AppInvite < ActiveRecord::Base
     self.update_attributes(status: :active)
   end
 
-  def devices_in_front_of_current_device
+  def users_in_front_of_user
     (self.position - self.class.total_active) - 1
+  end
+
+  def current_position
+    self.position - self.class.total_active
   end
 
   protected
