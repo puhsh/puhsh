@@ -16,7 +16,8 @@ set :git_enable_submodules, 1
 set :use_sudo, false
 set :rvm_ruby_string, 'ruby-1.9.3-p448@puhsh'
 set :rake, "#{rake} --trace"
-set :user, 'root'
+# set :user, 'root'
+set :user, 'ubuntu'
 set :use_sudo, false
 set :max_asset_age, 2 
 
@@ -37,7 +38,8 @@ set :whenever_command, 'bundle exec whenever'
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/id_rsa"]
 ssh_options[:forward_agent] = true
 
-server '75.126.213.98', :web, :app, :db, primary: true
+# server '75.126.213.98', :web, :app, :db, primary: true
+server 'ec2-54-226-137-1.compute-1.amazonaws.com', :web, :app, :db, primary: true
 
 namespace :deploy do
 
