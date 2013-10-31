@@ -3,16 +3,6 @@ require 'spec_helper'
 describe AppInvite do
   let(:user) { FactoryGirl.create(:user) } 
 
-  describe '.device_id' do
-    let(:app_invite) { FactoryGirl.build(:app_invite) }
-
-    it 'is required' do
-      app_invite.device_id = nil
-      app_invite.save
-      expect(app_invite).to_not be_valid
-    end
-  end
-
   describe '.status' do
     let(:app_invite) { FactoryGirl.build(:app_invite) }
 

@@ -1,5 +1,5 @@
 class AppInvite < ActiveRecord::Base
-  attr_accessible :device_id, :status, :user
+  attr_accessible :status, :user
   acts_as_list
   symbolize :status, in: [:inactive, :active], scopes: true, methods: true, validate: false
 
@@ -10,7 +10,6 @@ class AppInvite < ActiveRecord::Base
   before_create :set_status
 
   # Validations
-  validates :device_id, presence: true
   validates :status, presence: true
 
   def self.total_active

@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :app_invite do
-    device_id SecureRandom.hex
     status :inactive
   end
 end

@@ -187,6 +187,15 @@ describe User do
     end
   end
 
+  describe '.add_app_invite' do
+    let(:user) { FactoryGirl.build(:user) }
+
+    it 'creates an app invite for a new user' do
+      expect(user).to receive(:add_app_invite)
+      user.save
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }

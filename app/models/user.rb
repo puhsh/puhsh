@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  INVITES_ENABLED = Rails.env.development? ? false : true
+
   attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name
   devise :trackable, :omniauthable, :timeoutable, omniauth_providers: [:facebook]
   rolify
@@ -15,7 +17,7 @@ class User < ActiveRecord::Base
   has_one :access_token
 
   # Callbacks
-  after_create :add_default_role, :set_home_city
+  after_create :add_default_role, :set_home_city, :add_app_invite
   after_validation :geocode
 
   # Validations
@@ -61,5 +63,10 @@ class User < ActiveRecord::Base
   def set_home_city
     self.update_attributes(home_city: City.near(self, 5).first)
   end
+
+  def add_app_invite
+    AppInvite.create!(user: self, status: :inactive) if INVITES_ENABLED
+  end
+
 end
 
