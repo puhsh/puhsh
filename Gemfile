@@ -54,7 +54,6 @@ end
 
 # Production Specific gems
 group :production do
-  gem 'newrelic_rpm', '3.5.8.72'
   gem 'sitemap_generator', '4.2.0'
 end
 
@@ -66,10 +65,11 @@ gem 'cancan', '1.6.10'
 gem 'carmen', '1.0.0'
 gem 'devise', '2.2.4'
 gem 'geocoder', '1.1.8'
+gem 'houston', '0.3.1'
 gem 'jquery-rails'
 gem 'koala', '1.6.0'
 gem 'money-rails', '0.8.1'
-gem 'houston', '0.3.1'
+gem 'newrelic_rpm', '3.5.8.72'
 gem 'rails_warden', '0.5.7'
 gem 'rolify', '3.2.0'
 gem 'sunspot_rails', '2.0.0'
