@@ -18,6 +18,9 @@ Puhsh::Application.routes.draw do
     # Authentication
     post 'auth', to: 'auth#create'
 
-    resources :users, except: [:new, :edit]
+    resources :users, except: [:new, :edit] do
+      resources :devices, only: [:create]
+    end
+    resources :devices, only: [:create]
   end
 end
