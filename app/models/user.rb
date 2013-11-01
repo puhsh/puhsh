@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :flagged_posts, dependent: :destroy
   has_one :app_invite
   has_one :access_token
+  has_many :devices
 
   # Callbacks
   after_create :add_default_role, :set_home_city, :add_app_invite
