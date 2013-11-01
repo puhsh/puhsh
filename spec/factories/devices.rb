@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :device do
-    sequence(:device_id)
+    sequence(:device_token)
   end
 end
