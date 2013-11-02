@@ -24,7 +24,7 @@ production:
   reconnect: false
   pool: 5
   database: puhsh_production
-  host: puhsh-production.c0hit0u0x5jp.us-east-1.rds.amazonaws.com
+  host: 50.23.243.58
   port: 3306
   username: puhsh
   password: d13tp3ps11
