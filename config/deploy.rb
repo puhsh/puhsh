@@ -20,6 +20,7 @@ set :rake, "#{rake} --trace"
 set :user, 'puhsh'
 set :use_sudo, true
 set :max_asset_age, 2 
+set :cold_deploy, false
 
 # HipChat settngs
 set :hipchat_token, 'cc96625c3ca88a6ac4d79958addc4c'
@@ -58,6 +59,12 @@ namespace :deploy do
     hipchat_client[hipchat_room_name].send('Capistrano', 'Nginx has been restarted in production')
   end
 
+  desc 'Performs a cold deploy and forces assets to compile'
+  task :cold_force do
+    set :cold_deploy, true
+    cold
+  end
+
   # Compliments of https://gist.github.com/mrpunkin/2784462
   namespace :assets do
     desc "Figure out modified assets."
@@ -67,7 +74,7 @@ namespace :deploy do
 
     desc "Remove callback for asset precompiling unless assets were updated in most recent git commit."
     task :conditionally_precompile, :roles => assets_role, :except => { :no_release => true } do
-      if(updated_assets.empty?)
+      if(updated_assets.empty? && !cold_deploy)
         callback = callbacks[:after].find{|c| c.source == "deploy:assets:precompile" }
         callbacks[:after].delete(callback)
         logger.info("Skipping asset precompiling, no updated assets.")
