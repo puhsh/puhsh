@@ -53,6 +53,10 @@ RSpec.configure do |config|
     '75033', []
   )
 
+  Geocoder::Lookup::Test.add_stub(
+    '75022', []
+  )
+
   @facebook = YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env]
 
   FACEBOOK_APP_ID = @facebook['id']

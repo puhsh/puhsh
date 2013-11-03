@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   INVITES_ENABLED = Rails.env.development? ? false : true
 
-  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name
+  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description
   devise :trackable, :omniauthable, :timeoutable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
