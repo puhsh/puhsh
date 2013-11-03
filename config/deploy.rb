@@ -56,7 +56,7 @@ namespace :deploy do
   desc 'Restart nginx'
   task :restart_nginx do
     run 'sudo service nginx restart'
-    hipchat_client[hipchat_room_name].send('Capistrano', 'Nginx has been restarted in production')
+    hipchat_client[hipchat_room_name].send('Capistrano', 'Nginx has been restarted on production')
   end
 
   desc 'Performs a cold deploy and forces assets to compile'
