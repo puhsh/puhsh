@@ -67,6 +67,12 @@ describe V1::UsersController do
         put :update, { id: user.id, access_token: access_token.token, user: { location_description: 'near el dorado' } }, format: :json
         expect(user.reload.location_description).to eql('near el dorado')
       end
+
+      it 'updates the contact email' do
+        sign_in user
+        put :update, { id: user.id, access_token: access_token.token, user: { contact_email: 'test@test.local' } }, format: :json
+        expect(user.reload.contact_email).to eql('test@test.local')
+      end
     end
   end
 
