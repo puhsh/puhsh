@@ -26,12 +26,12 @@ describe V1::DevicesController do
 
     it 'does not create a device if there is an existing device' do
       sign_in user
-      post :create, { user_id: user.id, device_token: device.device_token, access_token: access_token.token }, format: :json
+      post :create, { device_token: device.device_token, access_token: access_token.token }, format: :json
       expect(assigns[:existing_devices]).to include(device)
       expect(response.body).to eql(assigns[:existing_devices].to_json)
     end
 
-    it 'creates a device' do
+    it 'creates a device if one does not exist' do
       sign_in user
       post :create, { device_token: '12345', access_token: access_token.token }, format: :json
       expect(user.reload.devices).to include(assigns[:device])
