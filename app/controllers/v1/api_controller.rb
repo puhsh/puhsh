@@ -49,7 +49,7 @@ class V1::ApiController < ActionController::Metal
     render json: { error: 'Request was processed but no data will be returned' }, status: :no_content
   end
 
-  def not_accetable!
+  def not_acceptable!
     render json: { error: 'Request was not accepted.' }, status: :not_acceptable
   end
 end
