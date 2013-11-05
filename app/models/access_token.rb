@@ -8,7 +8,7 @@ class AccessToken < ActiveRecord::Base
   before_save :generate_token
 
   # Validations
-  # validates :token, presence: true
+  validates :token, presence: true
   
   def expired?
     DateTime.now > self.expires_at
