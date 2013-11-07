@@ -13,16 +13,22 @@ describe Device do
   end
 
   describe '.fire_notification!' do
-    let(:device) { FactoryGirl.create(:device, user: user) }
+    let(:device) { FactoryGirl.create(:device, device_token: "<faacd1a2 ca64c51c cddf2c3b cb9f52b3 40889c51 b6e641e1 fcb3a526 4d82e3e6>", user: user) }
+    before do
+      app = Rapns::Apns::App.new
+      app.name = "puhsh_development"
+      app.certificate = File.read("#{Rails.root}/config/certs/puhsh_development.pem")
+      app.environment = "development"
+      app.connections = 1
+      app.save!
+    end
 
     it 'does not send a notification if there is no message' do
-      expect(APN).to_not receive(:push)
-      device.fire_notification!(nil)
+      expect(device.fire_notification!(nil)).to eql(nil)
     end
 
     it 'sends a push notification' do
-      expect(APN).to receive(:push)
-      device.fire_notification!("Test notification")
+      expect(device.fire_notification!("Test notification")).to eql(true)
     end
   end
 end
