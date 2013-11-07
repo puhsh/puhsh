@@ -30,7 +30,6 @@ group :assets do
   gem 'compass-rails', '1.0.3'
 end
 
-# Development / Testing
 group :development, :test do
   gem 'factory_girl', '4.2.0'
   gem 'factory_girl_rails', '4.2.1'
@@ -52,7 +51,6 @@ group :test do
   gem 'ci_reporter', '1.9.0'
 end
 
-# Production Specific gems
 group :production do
   gem 'sitemap_generator', '4.2.0'
 end
@@ -72,6 +70,7 @@ gem 'koala', '1.6.0'
 gem 'money-rails', '0.8.1'
 gem 'newrelic_rpm', '3.5.8.72'
 gem 'rails_warden', '0.5.7'
+gem 'rapns', '3.4.1'
 gem 'rolify', '3.2.0'
 gem 'sunspot_rails', '2.0.0'
 gem 'symbolize', '4.4.1'
