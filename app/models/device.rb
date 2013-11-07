@@ -10,9 +10,6 @@ class Device < ActiveRecord::Base
 
   def fire_notification!(message)
     return unless message
-    notification = Houston::Notification.new(device: self.device_token)
-    notification.alert = message
-    APN.push(notification)
   end
 
 end

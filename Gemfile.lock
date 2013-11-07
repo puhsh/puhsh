@@ -68,8 +68,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    commander (4.1.5)
-      highline (~> 1.6.11)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -102,9 +100,6 @@ GEM
     hike (1.2.3)
     hipchat (0.12.0)
       httparty
-    houston (0.3.1)
-      commander (~> 4.1)
-      json
     httparty (0.12.0)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -297,7 +292,6 @@ DEPENDENCIES
   geocoder (= 1.1.8)
   haml
   hipchat (= 0.12.0)
-  houston (= 0.3.1)
   jquery-rails
   koala (= 1.6.0)
   money-rails (= 0.8.1)
