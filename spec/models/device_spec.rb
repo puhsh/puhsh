@@ -24,11 +24,15 @@ describe Device do
     end
 
     it 'does not send a notification if there is no message' do
-      expect(device.fire_notification!(nil)).to eql(nil)
+      expect(device.fire_notification!(nil, :test_event)).to eql(nil)
+    end
+
+    it 'does not send a notification if there is no event' do
+      expect(device.fire_notification!('Test Notification', nil)).to eql(nil)
     end
 
     it 'sends a push notification' do
-      expect(device.fire_notification!("Test notification")).to eql(true)
+      expect(device.fire_notification!("Test notification", :test_event)).to eql(true)
     end
   end
 end

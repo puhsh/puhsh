@@ -8,13 +8,13 @@ class Device < ActiveRecord::Base
   # Validations
   validates :device_token, presence: true
 
-  def fire_notification!(message)
-    return unless message
+  def fire_notification!(message, event)
+    return unless message && event
     n = Rapns::Apns::Notification.new
     n.app = Rapns::Apns::App.find_by_name(apn_app_name)
     n.device_token = self.device_token
     n.alert = message
-    n.attributes_for_device = { app_invite_activated: true }
+    n.attributes_for_device = { event => true }
     n.save!
   end
 
