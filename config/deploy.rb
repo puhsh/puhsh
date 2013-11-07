@@ -67,6 +67,11 @@ namespace :deploy do
     cold
   end
 
+  desc 'Start the Rapns daemon for Push Notifications'
+  task :start_rapns do
+    run 'bundle exec rapns production'
+  end
+
   # Compliments of https://gist.github.com/mrpunkin/2784462
   namespace :assets do
     desc "Figure out modified assets."
@@ -98,3 +103,4 @@ end
 # Before / After Tasks
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
 after "deploy:finalize_update", "deploy:assets:determine_modified_assets", "deploy:assets:conditionally_precompile"
+after 'deploy:restart', 'deploy:start_rapns'
