@@ -69,7 +69,8 @@ namespace :deploy do
 
   desc 'Start the Rapns daemon for Push Notifications'
   task :start_rapns do
-    run 'bundle exec rapns production'
+    run 'cd /web/puhsh/current && bundle exec rapns production'
+    hipchat_client[hipchat_room_name].send('Capistrano', 'Push Notification service has been started on production.')
   end
 
   # Compliments of https://gist.github.com/mrpunkin/2784462
@@ -103,4 +104,3 @@ end
 # Before / After Tasks
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
 after "deploy:finalize_update", "deploy:assets:determine_modified_assets", "deploy:assets:conditionally_precompile"
-after 'deploy:restart', 'deploy:start_rapns'
