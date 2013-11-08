@@ -31,9 +31,10 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 
 1. Install the necessary tools (Rails, RVM, Pow, etc)
 2. Clone the repo down
-3. ```
-    rake db:create / rake db:test:prepare / rake db:schema:load / rake db:seed
-   ```
+3. `rake db:create`
+4. `rake db:test:prepare`
+5. `rake db:schema:load`
+6. `rake db:seed`
 
 Great succes. You are now ready to start working.
 
