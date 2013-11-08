@@ -2,8 +2,7 @@
 
 We want puhsh to be fast. Extra fast. That requires a level of commitment from you, the contributor, to make sure puhsh stays fast. 
 
-This is a guideline to help you contribute to puhsh. The priority, maintained in Wunderlist, is the source of what we want to work on. Ask us for access to wunderlist.
-
+This is a guideline to help you contribute to puhsh. All open items that need to be worked on are managed through this repo's issue system. Milestones are used to group these work items together. Bugs and other tasks are also located within the issues.
 ## Rules for Contributing
 1. It is not shipped / finished until it is fast. Period.
 2. It is not shipped / finished until it is fast. We mean it.
@@ -16,7 +15,7 @@ This is a guideline to help you contribute to puhsh. The priority, maintained in
 Puhsh contributions follow the traditional open source process.
 
 1. Fork the repo (even if it is for small changes but exceptions can be made)
-2. Make the code changes / write your specs.
+2. Make the code changes / write your specs. Make sure you tie all your commits to the issue / task you are working on.
 3. Submit a pull request.
 4. Participate in the code review process / make changes / wait for someone else to merge your changes.
 
