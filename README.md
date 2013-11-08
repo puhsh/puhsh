@@ -22,9 +22,9 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 * MySQL 5.6.13
 
 #### Ops
-* Hosted on AWS
-* Ubuntu 13 boxes
-* Deployments managed through capistrano
+* Hosted on SoftLayer
+* Infrastructure managed with Chef. See [puhsh/puhsh-chef](https://github.com/puhsh/puhsh-chef)
+* Deployments trigger by Jenkins after successful tests.
 
 
 ### Enough of the boring crap! I want to start working!
