@@ -52,7 +52,11 @@ class User < ActiveRecord::Base
   end
 
   def generate_access_token!
-    self.access_token.nil? ? AccessToken.create!(user: self) : self.access_token.touch(:expires_at)
+    if self.access_token.nil?
+      AccessToken.create!(user: self)
+    else
+      self.access_token.save!
+    end
   end
 
   protected
