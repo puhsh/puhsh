@@ -46,6 +46,7 @@ describe V1::AuthController do
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
           post :create, { facebook_id: user['id'] }, format: :json
           expect(assigns[:user].access_token).to_not be_nil
+          expect(assigns[:user].access_token.expired?).to be_false
         end
       end
 
@@ -68,6 +69,7 @@ describe V1::AuthController do
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
           post :create, { facebook_id: user['id'] }, format: :json
           expect(assigns[:user].reload.access_token).to_not be_nil
+          expect(assigns[:user].access_token.expired?).to be_false
         end
       end
     end
