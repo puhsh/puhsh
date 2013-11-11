@@ -14,6 +14,7 @@ class V1::ApiController < ActionController::Metal
   include Devise::Controllers::Helpers    
   include CanCan::ControllerAdditions
   include Rails.application.routes.url_helpers
+  include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
   respond_to :json
 
