@@ -39,4 +39,4 @@ Great succes. You are now ready to start working.
 
 ### Contributing
 
-Now that you have the app ready to go, you can head over to the [contributing](github.com/puhsh/puhsh/blob/master/CONTRIBUTING.MD) guide.
+Now that you have the app ready to go, you can head over to the [contributing](CONTRIBUTING.MD) guide.
