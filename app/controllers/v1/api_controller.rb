@@ -1,3 +1,7 @@
+require 'new_relic/agent/instrumentation/controller_instrumentation'
+require 'new_relic/agent/instrumentation/rails3/action_controller'
+require 'new_relic/agent/instrumentation/rails3/errors'
+
 class V1::ApiController < ActionController::Metal
   include ActionController::Rendering
   include ActionController::Renderers::All  
@@ -14,7 +18,9 @@ class V1::ApiController < ActionController::Metal
   include Devise::Controllers::Helpers    
   include CanCan::ControllerAdditions
   include Rails.application.routes.url_helpers
-  include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
+  include NewRelic::Agent::Instrumentation::ControllerInstrumentation
+  include NewRelic::Agent::Instrumentation::Rails3::ActionController
+  include NewRelic::Agent::Instrumentation::Rails3::Errors
 
   respond_to :json
 
