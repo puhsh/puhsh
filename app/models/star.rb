@@ -1,6 +1,6 @@
 class Star < ActiveRecord::Base
   attr_accessible :user, :amount, :reason
-  symbolize :reason, in: [:new_account], scopes: false, methods: false
+  symbolize :reason, in: [:new_account, :alpha_registration], scopes: false, methods: false
 
   # Relations
   belongs_to :user
