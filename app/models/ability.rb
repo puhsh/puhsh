@@ -8,6 +8,7 @@ class Ability
     else
       can :manage, User, id: user.id
       can :manage, Device
+      can :manage, Star, user_id: user.id
     end
   end
 end
