@@ -16,9 +16,10 @@ class User < ActiveRecord::Base
   has_one :app_invite
   has_one :access_token
   has_many :devices
+  has_many :stars
 
   # Callbacks
-  after_create :add_default_role, :set_home_city, :add_app_invite
+  after_create :add_default_role, :set_home_city, :add_app_invite, :reward_stars
   after_validation :geocode
 
   # Validations
@@ -73,5 +74,8 @@ class User < ActiveRecord::Base
     AppInvite.create!(user: self, status: :inactive) if INVITES_ENABLED
   end
 
+  def reward_stars
+    Star.create(user: self, amount: 10, reason: :new_account)
+  end
 end
 

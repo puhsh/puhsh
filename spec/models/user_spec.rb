@@ -196,6 +196,16 @@ describe User do
     end
   end
 
+  describe '.reward_stars' do
+    let(:user) { FactoryGirl.build(:user) }
+
+    it 'grants a user 10 stars after creating an account' do
+      expect(user).to receive(:reward_stars)
+      user.save
+      expect(user.reload.stars).to_not be_nil
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }
