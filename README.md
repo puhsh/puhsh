@@ -1,6 +1,5 @@
 puhsh
 =====
-
 puhsh is the official repo for the application at www.puhsh.com. Before we get started, here is a high level explanation of what makes puhsh.com run:
 
 #### Code
