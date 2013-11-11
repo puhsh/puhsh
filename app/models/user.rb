@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def number_of_stars
+    Star.sum(:amount, conditions: { user_id: self.id })
+  end
+
   protected
 
   def add_default_role
@@ -75,7 +79,7 @@ class User < ActiveRecord::Base
   end
 
   def reward_stars
-    Star.create(user: self, amount: 10, reason: :new_account)
+    Star.create(user: self, amount: 10, reason: :alpha_registration)
   end
 end
 
