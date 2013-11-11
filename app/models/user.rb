@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   belongs_to :home_city, class_name: 'City', foreign_key: 'city_id'
   has_many :offers, dependent: :destroy
   has_many :flagged_posts, dependent: :destroy
-  has_one :app_invite
-  has_one :access_token
-  has_many :devices
-  has_many :stars
+  has_one :app_invite, dependent: :destroy
+  has_one :access_token, dependent: :destroy
+  has_many :devices, dependent: :destroy
+  has_many :stars, dependent: :destroy
 
   # Callbacks
   after_create :add_default_role, :set_home_city, :add_app_invite, :reward_stars
