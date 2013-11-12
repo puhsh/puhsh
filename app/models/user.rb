@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_one :access_token, dependent: :destroy
   has_many :devices, dependent: :destroy
   has_many :stars, dependent: :destroy
+  has_many :user_badges, dependent: :destroy
+  has_many :badges, through: :user_badges, dependent: :destroy
 
   # Callbacks
   after_create :add_default_role, :set_home_city, :add_app_invite, :reward_stars
