@@ -43,8 +43,6 @@ describe Star do
     it 'updates the user\'s star count for negative values' do
       star = FactoryGirl.create(:star, amount: -5, event: :new_account, user: user)
       expect(user.reload.star_count).to eql(5)
-
     end
   end
-
 end
