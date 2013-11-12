@@ -208,7 +208,7 @@ describe User do
 
   describe '.number_of_stars' do
     let!(:user) { FactoryGirl.create(:user) }
-    let!(:star) { FactoryGirl.create(:star, user: user, amount: 10, reason: :alpha_registration) }
+    let!(:star) { FactoryGirl.create(:star, user: user, amount: 10, event: :alpha_registration) }
 
     it 'returns the count' do
       expect(user.reload.number_of_stars).to eql(20)

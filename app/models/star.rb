@@ -1,6 +1,6 @@
 class Star < ActiveRecord::Base
-  attr_accessible :user, :amount, :reason
-  symbolize :reason, in: [:new_account, :alpha_registration], scopes: false, methods: false
+  attr_accessible :user, :amount, :event
+  symbolize :event, in: [:new_account, :alpha_registration], scopes: false, methods: false
 
   # Relations
   belongs_to :user
@@ -9,5 +9,5 @@ class Star < ActiveRecord::Base
   
   # Validations
   validates :amount, presence: true
-  validates :reason, presence: true
+  validates :event, presence: true
 end

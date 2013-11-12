@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Star do
   let(:user) { FactoryGirl.create(:user) }
-  let(:star) { FactoryGirl.create(:star, amount: 10, reason: :new_account, user: user) }
+  let(:star) { FactoryGirl.create(:star, amount: 10, event: :new_account, user: user) }
 
-  describe '.reason' do
+  describe '.event' do
     it 'is required' do
-      star.reason = nil
+      star.event = nil
       star.save
       expect(star).to_not be_valid
     end

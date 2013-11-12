@@ -22,7 +22,7 @@ describe V1::StarsController do
 
     context 'with access token and authentication' do
       let(:access_token) { FactoryGirl.create(:access_token, user: user) }
-      let!(:star) { FactoryGirl.create(:star, user: user, amount: 10, reason: 'new_account') }
+      let!(:star) { FactoryGirl.create(:star, user: user, amount: 10, event: 'new_account') }
 
       it 'returns the stars' do
         sign_in user
