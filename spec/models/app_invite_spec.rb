@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe AppInvite do
+  it { should belong_to(:user) }
+
   let(:user) { FactoryGirl.create(:user) } 
 
   describe '.status' do

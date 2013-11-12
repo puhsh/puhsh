@@ -9,6 +9,9 @@ describe User do
   it { should have_many(:flagged_posts) }
   it { should belong_to(:home_city) }
   it { should have_one(:access_token) }
+  it { should have_one(:app_invite) }
+  it { should have_many(:devices) }
+  it { should have_many(:stars) }
 
   describe '.default_role' do
     let(:user) { FactoryGirl.build(:user) }

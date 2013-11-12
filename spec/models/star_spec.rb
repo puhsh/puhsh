@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Star do
+  it { should belong_to(:user) }
+
   let(:user) { FactoryGirl.create(:user) }
   let(:star) { FactoryGirl.create(:star, amount: 10, event: :new_account, user: user) }
 

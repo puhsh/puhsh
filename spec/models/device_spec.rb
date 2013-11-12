@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Device do
+  it { should belong_to(:user) }
+
   let(:user) { FactoryGirl.create(:user) }
 
   describe '.device_token' do

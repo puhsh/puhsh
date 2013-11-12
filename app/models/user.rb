@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   INVITES_ENABLED = Rails.env.development? ? false : true
+  ALPHA_ENABLED = Rails.env.development? ? false : true
 
   attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
@@ -79,7 +80,7 @@ class User < ActiveRecord::Base
   end
 
   def reward_stars
-    Star.create(user: self, amount: 10, reason: :new_account)
+    Star.create(user: self, amount: 10, event: :new_account)
   end
 end
 
