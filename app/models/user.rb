@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
 
-  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email
+  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email, :star_count
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
@@ -61,10 +61,6 @@ class User < ActiveRecord::Base
     else
       self.access_token.save!
     end
-  end
-
-  def number_of_stars
-    Star.sum(:amount, conditions: { user_id: self.id })
   end
 
   protected

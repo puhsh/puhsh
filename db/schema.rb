@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131112025437) do
+ActiveRecord::Schema.define(:version => 20131112130824) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -246,6 +246,7 @@ ActiveRecord::Schema.define(:version => 20131112025437) do
     t.string   "last_sign_in_ip"
     t.integer  "posts_count",          :default => 0
     t.integer  "posts_flagged_count",  :default => 0
+    t.integer  "star_count",           :default => 0
   end
 
   add_index "users", ["city_id"], :name => "index_users_on_city_id"

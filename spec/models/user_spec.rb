@@ -211,15 +211,6 @@ describe User do
     end
   end
 
-  describe '.number_of_stars' do
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:star) { FactoryGirl.create(:star, user: user, amount: 10, event: :alpha_registration) }
-
-    it 'returns the count' do
-      expect(user.reload.number_of_stars).to eql(20)
-    end
-  end
-
   describe '.award_badges' do
     let(:user) { FactoryGirl.build(:user) }
     let!(:badge) { FactoryGirl.create(:badge, name: 'Early Adopter') }
