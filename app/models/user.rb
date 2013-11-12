@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :badges, through: :user_badges, dependent: :destroy
 
   # Callbacks
-  after_create :add_default_role, :set_home_city, :add_app_invite, :reward_stars
+  after_create :add_default_role, :set_home_city, :add_app_invite, :reward_stars, :award_badges
   after_validation :geocode
 
   # Validations
@@ -84,5 +84,8 @@ class User < ActiveRecord::Base
   def reward_stars
     Star.create(user: self, amount: 10, event: :new_account)
   end
-end
 
+  def award_badges
+    Badge.award!('Early Adopter', self) if ALPHA_ENABLED
+  end
+end

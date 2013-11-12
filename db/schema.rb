@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131112024400) do
+ActiveRecord::Schema.define(:version => 20131112025437) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(:version => 20131112024400) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "badges", ["name"], :name => "index_badges_on_name"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
