@@ -42,6 +42,7 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
 server '75.126.213.98', :web, :app, :db, primary: true
+server '50.23.243.59', :web, :app, :db, primary: true
 
 namespace :deploy do
 
