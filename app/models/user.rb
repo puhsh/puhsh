@@ -79,9 +79,7 @@ class User < ActiveRecord::Base
   end
 
   def reward_stars
-    Star.create(user: self, amount: 10, event: :alpha_registration)
-    # TODO Determine if we want to give 20 points at the start
-    # Star.create(user: self, amount: 10, reason: :new_account)
+    Star.create(user: self, amount: 10, reason: :new_account)
   end
 end
 
