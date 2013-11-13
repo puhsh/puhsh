@@ -19,3 +19,7 @@ pickle-email-*.html
 config/initializers/secret_token.rb
 config/database.yml
 .DS_Store
+.gems/
+.rbenv-gemsets
+.ruby-version
+bin/
