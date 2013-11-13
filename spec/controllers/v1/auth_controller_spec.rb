@@ -18,10 +18,12 @@ describe V1::AuthController do
       it 'verifies the access token for a user' do
         VCR.use_cassette('/v1/auth/valid_access_token') do
           user = test_users.create(true)
+          user.merge!({'first_name' => 'test', 'last_name' => 'testlast', 'name' => 'test testlast','email' => 'test@test.local', 'verified' => 'true' })
+          FacebookTestUser.create(fbid: user['id'])
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
 
+          expect(Facebook).to receive(:verified_user).with(user['id'], request.env['HTTP_AUTHORIZATION']).and_return(user)
           post :create, { facebook_id: user['id'] }, format: :json
-          expect(assigns[:facebook_record]).to_not be_nil
           test_users.delete(user)
         end
       end
@@ -29,7 +31,8 @@ describe V1::AuthController do
       it 'finds an existing user' do
         VCR.use_cassette('/v1/auth/find_existing_user') do
           user = test_users.create(true)
-          user.merge!({'email' => 'test@test.local', 'verified' => true })
+          user.merge!({'first_name' => 'test', 'last_name' => 'testlast', 'name' => 'test testlast','email' => 'test@test.local', 'verified' => 'true' })
+          FacebookTestUser.create(fbid: user['id'])
           puhsh_user = FactoryGirl.create(:user, uid: user['id'])
 
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
@@ -42,6 +45,7 @@ describe V1::AuthController do
         VCR.use_cassette('/v1/auth/find_existing_user') do
           user = test_users.create(true, {'verified' => true})
           puhsh_user = FactoryGirl.create(:user, uid: user['id'])
+          FacebookTestUser.create(fbid: user['id'])
 
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
           post :create, { facebook_id: user['id'] }, format: :json
@@ -54,6 +58,7 @@ describe V1::AuthController do
         VCR.use_cassette('/v1/auth/find_existing_user') do
           user = test_users.create(true)
           user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
+          FacebookTestUser.create(fbid: user['id'])
 
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
           post :create, { facebook_id: user['id'] }, format: :json
@@ -65,6 +70,7 @@ describe V1::AuthController do
         VCR.use_cassette('/v1/auth/find_existing_user') do
           user = test_users.create(true)
           user.merge!({'first_name' => 'test', 'last_name' => 'testlast', 'name' => 'test testlast','email' => 'test@test.local', 'verified' => 'true' })
+          FacebookTestUser.create(fbid: user['id'])
 
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
           post :create, { facebook_id: user['id'] }, format: :json
