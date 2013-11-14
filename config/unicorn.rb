@@ -1,5 +1,5 @@
 # Workers
-worker_processes 5
+worker_processes 10
 
 # App Directory (via Capistrano)
 working_directory '/web/puhsh/current'
