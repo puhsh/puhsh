@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131114041410) do
+ActiveRecord::Schema.define(:version => 20131114052421) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20131114041410) do
   end
 
   add_index "app_invites", ["status"], :name => "index_waiting_lists_on_status"
+  add_index "app_invites", ["user_id"], :name => "index_app_invites_on_user_id"
 
   create_table "badges", :force => true do |t|
     t.string   "name"
