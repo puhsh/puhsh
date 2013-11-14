@@ -1,6 +1,6 @@
 class Star < ActiveRecord::Base
-  attr_accessible :user, :amount, :event
-  symbolize :event, in: [:new_account, :alpha_registration], scopes: false, methods: false
+  attr_accessible :user, :user_id, :amount, :event
+  symbolize :event, in: [:new_account, :alpha_registration, :friend_invite], scopes: false, methods: false
 
   # Relations
   belongs_to :user

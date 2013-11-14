@@ -23,6 +23,6 @@ Puhsh::Application.routes.draw do
       resources :stars, only: [:index]
     end
     resources :devices, only: [:create]
-    resources :stars, only: [:index]
+    resources :stars, only: [:index, :create]
   end
 end

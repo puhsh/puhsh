@@ -7,4 +7,13 @@ class V1::StarsController < V1::ApiController
     @stars = Star.where(user_id: current_user.id)
     render json: @stars
   end
+
+  def create
+    @star = Star.new(params[:star])
+    if @star.save
+      render json: @star
+    else
+      not_acceptable!
+    end
+  end
 end
