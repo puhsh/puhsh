@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   # Validations
-  validates :uid, presence: true
+  validates :uid, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :name, presence: true
