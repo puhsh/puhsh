@@ -21,6 +21,10 @@ class AppInvite < ActiveRecord::Base
     AppInvite.status(:inactive).count + OFFSET
   end
 
+  def self.total_waiting
+    AppInvite.last.position - self.total_active
+  end
+
   def activate!
     self.update_attributes(status: :active)
   end
