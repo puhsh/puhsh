@@ -1,4 +1,5 @@
 class AppInvite < ActiveRecord::Base
+  OFFSET = 216
   attr_accessible :status, :user
   acts_as_list
   symbolize :status, in: [:inactive, :active], scopes: true, methods: true, validate: false
@@ -17,7 +18,7 @@ class AppInvite < ActiveRecord::Base
   end
 
   def self.total_inactive
-    AppInvite.status(:inactive).count
+    AppInvite.status(:inactive).count + OFFSET
   end
 
   def activate!
