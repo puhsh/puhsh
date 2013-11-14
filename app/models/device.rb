@@ -13,6 +13,7 @@ class Device < ActiveRecord::Base
     n = Rapns::Apns::Notification.new
     n.app = Rapns::Apns::App.find_by_name(apn_app_name)
     n.device_token = self.device_token
+    n.badge = 1
     n.alert = message
     n.attributes_for_device = { event => true }
     n.save!
