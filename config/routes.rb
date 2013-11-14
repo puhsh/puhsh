@@ -20,7 +20,7 @@ Puhsh::Application.routes.draw do
 
     resources :users, except: [:new, :edit] do
       resources :devices, only: [:create]
-      resources :stars, only: [:index]
+      resources :stars, only: [:index, :create]
     end
     resources :devices, only: [:create]
     resources :stars, only: [:index, :create]
