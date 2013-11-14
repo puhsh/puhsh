@@ -27,7 +27,7 @@ class AppInvite < ActiveRecord::Base
 
   def activate!
     self.update_attributes(status: :active)
-    self.user.devices.each { |x| x.fire_notification!("Your invite to Puhsh has been accepted.", :app_invite_accepted) }
+    self.user.devices.each { |x| x.fire_notification!("Your invite to Puhsh has been accepted.", :app_invite_accepted) } if self.user
   end
 
   def users_in_front_of_user
