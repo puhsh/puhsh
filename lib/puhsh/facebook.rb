@@ -11,8 +11,7 @@ module Puhsh
     private
 
     def self.verified?(fb_record)
-      fb_record['verified'] ||
-        FacebookTestUser.find_by_fbid(fb_record['id']).present?
+      fb_record['verified'] || FacebookTestUser.find_by_fbid(fb_record['id']).present?
     end
   end
 end
