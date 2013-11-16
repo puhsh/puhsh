@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131114052421) do
+ActiveRecord::Schema.define(:version => 20131116000814) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20131114052421) do
     t.float  "longitude"
   end
 
+  add_index "cities", ["city"], :name => "index_cities_on_city"
   add_index "cities", ["latitude"], :name => "index_cities_on_latitude"
   add_index "cities", ["longitude"], :name => "index_cities_on_longitude"
   add_index "cities", ["zipcode"], :name => "index_cities_on_zipcode"
