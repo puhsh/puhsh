@@ -14,6 +14,7 @@ describe User do
   it { should have_many(:stars) }
   it { should have_many(:user_badges) }
   it { should have_many(:badges).through(:user_badges) }
+  it { should have_many(:invites) }
 
   describe '.default_role' do
     let(:user) { FactoryGirl.build(:user) }

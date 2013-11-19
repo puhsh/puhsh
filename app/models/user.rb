@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :stars, dependent: :destroy
   has_many :user_badges, dependent: :destroy
   has_many :badges, through: :user_badges, dependent: :destroy
+  has_many :invites, dependent: :destroy
 
   # Callbacks
   after_create :add_default_role, :set_home_city, :add_app_invite, :reward_stars, :award_badges
