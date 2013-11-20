@@ -14,6 +14,6 @@ class Invite < ActiveRecord::Base
   protected
 
   def reward_stars
-    Star.create(user: self.user, amount: 1, event: :friend_invite)
+    Star.create(user: self.user, amount: 3, event: :friend_invite)
   end
 end

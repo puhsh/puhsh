@@ -42,7 +42,7 @@ describe Invite do
     it 'updates the user\'s star count' do
       user = FactoryGirl.create(:user)
       FactoryGirl.create(:invite, user: user, uid_invited: '123456')
-      expect(user.star_count).to eql(11)
+      expect(user.star_count).to eql(13)
     end
   end
 end
