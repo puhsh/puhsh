@@ -4,7 +4,7 @@ class V1::InvitesController < V1::ApiController
   load_and_authorize_resource
 
   def create
-    @invites = current_user.invites.create(params[:invites])
+    @invites = Invite.create(params[:invites]).reject { |x| x.id.nil? }
     render json: @invites
   end
 end

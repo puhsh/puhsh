@@ -42,6 +42,7 @@ describe V1::InvitesController do
         sign_in user
         post :create, { invites: [{ user_id: user.id, uid_invited: '123456' }, {user_id: user.id, uid_invited: '654321'}], access_token: access_token.token }, format: :json
         expect(user.reload.invites.size).to eql(2)
+        expect(assigns[:invites].size).to eql(1)
       end
 
       it 'creates multiple invites and does not ignore duplicates when the user id is different' do
@@ -49,12 +50,6 @@ describe V1::InvitesController do
         sign_in user2
         post :create, { invites: [{ user_id: user2.id, uid_invited: '123456' }], access_token: access_token2.token }, format: :json
         expect(user2.reload.invites).to eql(assigns[:invites])
-      end
-
-      it 'uses the current user if no user id is provided' do
-        sign_in user
-        post :create, { invites: [{ uid_invited: '123456' }], access_token: access_token.token }, format: :json
-        expect(user.reload.invites).to include(assigns[:invites].first)
       end
     end
   end
