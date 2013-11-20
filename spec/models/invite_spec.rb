@@ -38,11 +38,27 @@ describe Invite do
     end
   end
 
+  describe '.create_multiple' do
+    let(:user) { FactoryGirl.create(:user) }
+    it 'creates multiple invites' do
+      invites = Invite.create_multiple([{user_id: user.id, uid_invited: '1234567'}, {user_id: user.id, uid_invited: '654321'}])
+      expect(user.reload.invites).to eql(invites)
+    end
+
+    it 'creates multiple invites but does not return records with a nil id' do
+      invites = Invite.create_multiple([{user_id: user.id, uid_invited: '1234567'}, {user_id: user.id, uid_invited: '7654321'}, {user_id: user.id, uid_invited: '1234567'}])
+      expect(user.reload.invites.size).to eql(2)
+      expect(invites.collect(&:id)).to_not include(nil)
+    end
+  end
+
   describe '.reward_stars' do
     it 'updates the user\'s star count' do
       user = FactoryGirl.create(:user)
       FactoryGirl.create(:invite, user: user, uid_invited: '123456')
-      expect(user.star_count).to eql(13)
+      FactoryGirl.create(:invite, user: user, uid_invited: '1234567')
+      FactoryGirl.create(:invite, user: user, uid_invited: '1234568')
+      expect(user.star_count).to eql(19)
     end
   end
 end

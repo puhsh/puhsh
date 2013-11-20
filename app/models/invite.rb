@@ -11,6 +11,10 @@ class Invite < ActiveRecord::Base
   validates :user_id, presence: true
   validates :uid_invited, presence: true, uniqueness: { scope: :user_id }
 
+  def self.create_multiple(invites)
+    create(invites).reject { |x| x.id.nil? }
+  end
+
   protected
 
   def reward_stars
