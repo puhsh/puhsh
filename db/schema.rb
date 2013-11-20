@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131119125800) do
+ActiveRecord::Schema.define(:version => 20131120013234) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(:version => 20131119125800) do
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "invites", ["uid_invited"], :name => "index_invites_on_uid_invited", :unique => true
+  add_index "invites", ["uid_invited"], :name => "index_invites_on_uid_invited"
   add_index "invites", ["user_id"], :name => "index_invites_on_user_id"
 
   create_table "items", :force => true do |t|

@@ -20,13 +20,21 @@ describe Invite do
       expect(invite).to_not be_valid
     end
 
-    it 'must be unique' do
+    it 'must be unique per user' do
+      user = FactoryGirl.create(:user)
+      invite = FactoryGirl.create(:invite, user: user, uid_invited: '123456')
+      invite2 = FactoryGirl.build(:invite, user: user, uid_invited: '123456')
+      invite2.save
+      expect(invite2).to_not be_valid
+    end
+
+    it 'can be a duplicate for a different user' do
       user = FactoryGirl.create(:user)
       user2 = FactoryGirl.create(:user)
       invite = FactoryGirl.create(:invite, user: user, uid_invited: '123456')
       invite2 = FactoryGirl.build(:invite, user: user2, uid_invited: '123456')
       invite2.save
-      expect(invite2).to_not be_valid
+      expect(invite2).to be_valid
     end
   end
 

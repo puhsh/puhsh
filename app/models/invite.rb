@@ -9,7 +9,7 @@ class Invite < ActiveRecord::Base
   
   # Validations
   validates :user_id, presence: true
-  validates :uid_invited, presence: true, uniqueness: true
+  validates :uid_invited, presence: true, uniqueness: { scope: :user_id }
 
   protected
 
