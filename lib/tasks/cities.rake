@@ -13,7 +13,7 @@ namespace :cities do
     ActiveRecord::Base.connection.execute('ALTER TABLE cities AUTO_INCREMENT = 1')
     Zipcode.group(:city_name, :state).order('city_name, state asc').find_in_batches(batch_size: 10000) do |zipcodes|
       zipcodes.each do |zipcode|
-        City.create(state: zipcode.state, city: zipcode.city_name)
+        City.create(state: zipcode.state, name: zipcode.city_name)
       end
     end
   end
