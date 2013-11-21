@@ -17,7 +17,7 @@ describe User do
   it { should have_many(:invites) }
 
   describe '.default_role' do
-    let(:user) { FactoryGirl.build(:user) }
+    let!(:user) { FactoryGirl.build(:user) }
 
     it 'sets the user role to member' do
       user.save
@@ -25,6 +25,7 @@ describe User do
     end
 
     it 'does not change the role on update' do
+      user = FactoryGirl.create(:user)
       user.add_role(:admin)
       user.save
       user.reload.touch

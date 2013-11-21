@@ -58,7 +58,7 @@ describe Invite do
       FactoryGirl.create(:invite, user: user, uid_invited: '123456')
       FactoryGirl.create(:invite, user: user, uid_invited: '1234567')
       FactoryGirl.create(:invite, user: user, uid_invited: '1234568')
-      expect(user.star_count).to eql(19)
+      expect(user.reload.star_count).to eql(19)
     end
   end
 end

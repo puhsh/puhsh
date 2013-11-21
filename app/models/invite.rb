@@ -1,11 +1,12 @@
 class Invite < ActiveRecord::Base
+  include StarRewardable
+
   attr_accessible :user, :user_id, :uid_invited
   
   # Relations
   belongs_to :user
 
   # Callbacks
-  after_create :reward_stars
   
   # Validations
   validates :user_id, presence: true
@@ -13,11 +14,5 @@ class Invite < ActiveRecord::Base
 
   def self.create_multiple(invites)
     create(invites).reject { |x| x.id.nil? }
-  end
-
-  protected
-
-  def reward_stars
-    Star.create(user: self.user, amount: 3, event: :friend_invite)
   end
 end

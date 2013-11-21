@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include StarRewardable
+
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
 
@@ -23,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :invites, dependent: :destroy
 
   # Callbacks
-  after_create :add_default_role, :set_home_city, :add_app_invite, :reward_stars, :award_badges
+  after_create :add_default_role, :set_home_city, :add_app_invite, :award_badges
   after_validation :geocode
 
   # Validations
@@ -76,10 +78,6 @@ class User < ActiveRecord::Base
 
   def add_app_invite
     AppInvite.create!(user: self, status: :inactive) if INVITES_ENABLED
-  end
-
-  def reward_stars
-    Star.create(user: self, amount: 10, event: :new_account)
   end
 
   def award_badges
