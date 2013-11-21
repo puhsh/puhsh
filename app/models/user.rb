@@ -73,7 +73,10 @@ class User < ActiveRecord::Base
   end
 
   def set_home_city
-    self.update_attributes(home_city: City.near(self, 5).first)
+    zipcode = Zipcode.near(self, 5).first
+    if zipcode
+      self.update_attributes(home_city: zipcode.city)
+    end
   end
 
   def add_app_invite

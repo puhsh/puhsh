@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131120013234) do
+ActiveRecord::Schema.define(:version => 20131121232134) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -51,17 +51,11 @@ ActiveRecord::Schema.define(:version => 20131120013234) do
   end
 
   create_table "cities", :force => true do |t|
-    t.string "zipcode"
     t.string "state"
-    t.string "city"
-    t.float  "latitude"
-    t.float  "longitude"
+    t.string "name"
   end
 
-  add_index "cities", ["city"], :name => "index_cities_on_city"
-  add_index "cities", ["latitude"], :name => "index_cities_on_latitude"
-  add_index "cities", ["longitude"], :name => "index_cities_on_longitude"
-  add_index "cities", ["zipcode"], :name => "index_cities_on_zipcode"
+  add_index "cities", ["name"], :name => "index_cities_on_city"
 
   create_table "devices", :force => true do |t|
     t.integer  "user_id"
@@ -282,5 +276,19 @@ ActiveRecord::Schema.define(:version => 20131120013234) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "zipcodes", :force => true do |t|
+    t.integer  "city_id"
+    t.string   "code"
+    t.string   "city_name"
+    t.string   "state"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "zipcodes", ["city_id"], :name => "index_zipcodes_on_city_id"
+  add_index "zipcodes", ["city_name"], :name => "index_zipcodes_on_city_name"
 
 end

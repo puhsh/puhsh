@@ -1,7 +1,7 @@
 # Populate City Data 
-# Customized from http://simplemaps.com/cities-data
 if Rails.env.development? && City.count == 0
-  ActiveRecord::Base.connection.execute(IO.read('db/city_data/texas-cities.sql'))
+  City.create(name: 'Frisco', state: 'TX')
+  Zipcode.create(city: City.first, code: '75034', city_name: 'Frisco', state: 'TX', latitude: 33.1499, longitude: -96.8241)
 end
 
 # Categories

@@ -4,7 +4,9 @@ describe FlaggedPost do
   it { should belong_to(:post) } 
   it { should belong_to(:user) } 
 
+
   let(:city) { FactoryGirl.create(:city) }
+  let(:zipcode) { FactoryGirl.create(:zipcode, city: city, code: '75033') }
   let(:user) { FactoryGirl.create(:user) }
   let(:post) { FactoryGirl.create(:post, user: user, city: city)  }
 
