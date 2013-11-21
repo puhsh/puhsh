@@ -1,5 +1,5 @@
 class AppInvite < ActiveRecord::Base
-  OFFSET = 216
+  OFFSET = 1216
   attr_accessible :status, :user
   acts_as_list
   symbolize :status, in: [:inactive, :active], scopes: true, methods: true, validate: false
