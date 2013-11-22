@@ -6,6 +6,9 @@ gem 'rails', '3.2.15'
 # MySQL
 gem 'mysql2'
 
+# Redis
+gem 'redis', '3.0.6'
+
 # View Engine
 gem 'haml'
 
