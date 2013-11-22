@@ -17,7 +17,7 @@ gem 'omniauth', '1.1.4'
 gem 'omniauth-facebook', '1.4.1'
 
 # Web Server
-gem 'unicorn', '4.6.3'
+gem 'unicorn', '4.7.0'
 
 # Peek
 gem 'peek', '0.1.6'
