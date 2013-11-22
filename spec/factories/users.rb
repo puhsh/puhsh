@@ -7,6 +7,8 @@ FactoryGirl.define do
     sequence(:last_name) { |n| "#{n}" }
     name "Tester #{:last_name}"
     sequence(:facebook_email) { |n| "#{n}@facebook-test.local" }
-    zipcode '75033'
+    zipcode '75034'
+    latitude 33.1747
+    longitude -96.8148
   end
 end

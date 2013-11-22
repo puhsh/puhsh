@@ -49,13 +49,39 @@ RSpec.configure do |config|
   OmniAuth.config.add_mock(:facebook_invalid, omniauth_hash_invalid)
   Geocoder.configure(:lookup => :test)
   Warden.test_mode!
-  Geocoder::Lookup::Test.add_stub(
-    '75033', []
-  )
 
   Geocoder::Lookup::Test.add_stub(
     '75022', []
   )
+
+  Geocoder::Lookup::Test.add_stub(
+    '75034', [
+      {
+        'latitude' => 33.1499,
+        'longitude' => -96.8241,
+        'address' => 'Frisco, TX, USA',
+        'state' => 'Texas',
+        'state_code' => 'NY',
+        'country' => 'United States',
+        'country_code' => 'US'
+      }
+    ]
+  )
+
+  Geocoder::Lookup::Test.add_stub(
+    "New York, NY", [
+      {
+        'latitude'     => 40.7143528,
+        'longitude'    => -74.0059731,
+        'address'      => 'New York, NY, USA',
+        'state'        => 'New York',
+        'state_code'   => 'NY',
+        'country'      => 'United States',
+        'country_code' => 'US'
+      }
+    ]
+  )
+
 
   @facebook = YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env]
 

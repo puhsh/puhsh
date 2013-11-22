@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
       self.access_token.save!
     end
   end
+  
+  def nearby_cities(radius = 20)
+    Zipcode.includes(:city).near(self, radius).map(&:city)
+  end
 
   protected
 

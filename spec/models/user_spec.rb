@@ -184,13 +184,13 @@ describe User do
   end
 
   describe '.set_home_city' do
-    let(:user) { FactoryGirl.build(:user) }
-    let(:city) { FactoryGirl.create(:city) }
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:zipcode) { FactoryGirl.create(:zipcode, city_id: city.id) }
 
     it 'sets the correct city on create' do
-      user.zipcode = '75033'
-      expect(user).to receive(:set_home_city)
+      user = FactoryGirl.create(:user)
       user.save
+      expect(user.reload.home_city).to eql(city)
     end
   end
 
@@ -233,6 +233,26 @@ describe User do
           user.save
         end
       end
+    end
+  end
+
+  describe '.nearby_cities' do
+    let(:user) { FactoryGirl.create(:user, zipcode: '75034') }
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:new_york) { FactoryGirl.create(:city, name: 'New York City', state: 'NY') }
+    let!(:zipcode) { FactoryGirl.create(:zipcode, city_id: city.id) }
+    let!(:ny_zipcode) { FactoryGirl.create(:nyc_zipcode, city_id: new_york.id) }
+
+    it 'returns nearby cities' do
+      expect(user.reload.nearby_cities).to include(city)
+    end
+
+    it 'does not return cities far away' do
+      expect(user.nearby_cities).to_not include(new_york)
+    end
+
+    it 'can use a farther radius' do
+      expect(user.nearby_cities(10000)).to include(new_york)
     end
   end
 
