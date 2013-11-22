@@ -19,6 +19,7 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 
 #### Database and other data stores
 * MySQL 5.6.13
+* Redis 2.8.0
 
 #### Ops
 * Hosted on SoftLayer
