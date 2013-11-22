@@ -1,12 +1,13 @@
 Puhsh::Application.routes.draw do
-  # Dev Tools
-  mount Peek::Railtie => '/peek'
-
   ###############
   # BEGIN ROUTES
   ###############
   
   root to: 'home#index'
+  
+  # Dev Tools
+  mount Peek::Railtie => '/peek'
+  ActiveAdmin.routes(self)
 
   # Devise
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }

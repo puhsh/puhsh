@@ -70,6 +70,10 @@ class User < ActiveRecord::Base
     Zipcode.includes(:city).near(self, radius).map(&:city).uniq
   end
 
+  def admin?
+    self.has_role?(:admin)
+  end
+
   protected
 
   def add_default_role
