@@ -40,6 +40,12 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
+  # DB Connection
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.establish_connection
+
+  # Redis Connection
+  config =  YAML.load_file("#{Rails.root}/config/redis.yml")[Rails.env]
+  $redis.client.disconnect
+  $redis = Redis.new(config.symbolize_keys!)
 end
