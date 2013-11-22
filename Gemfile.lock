@@ -6,6 +6,12 @@ GIT
     bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
 
+GIT
+  remote: git@github.com:softlayer/softlayer-object-storage-ruby.git
+  revision: f1595ddb8dc9f1e9dda04399e4e79c248442ebfb
+  specs:
+    softlayer-object-storage (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -356,6 +362,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda (= 3.5.0)
   sitemap_generator (= 4.2.0)
+  softlayer-object-storage!
   spork (= 1.0.0rc4)
   sunspot_rails (= 2.0.0)
   symbolize (= 4.4.1)
