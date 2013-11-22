@@ -83,4 +83,34 @@ describe V1::UsersController do
       expect(response).to_not be_success
     end
   end
+
+  describe '#nearby_cities' do
+    let(:user) { FactoryGirl.create(:user, zipcode: '75034') }
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:zipcode) { FactoryGirl.create(:zipcode, city_id: city.id) }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        get :nearby_cities, { id: user.id }, format: :json
+        expect(assigns[:user]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        get :nearby_cities, { id: user.id }, format: :json
+        expect(assigns[:user]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'returns cities' do
+        get :nearby_cities, { id: user.id, access_token: access_token.token }, format: :json
+        expect(assigns[:user].nearby_cities).to include(city)
+      end
+    end
+  end
 end

@@ -251,6 +251,13 @@ describe User do
       expect(user.nearby_cities).to_not include(new_york)
     end
 
+    it 'does not return duplicates' do
+     duplicate = FactoryGirl.create(:zipcode, city_id: city.id)
+     expect(user.nearby_cities.size).to eql(1)
+     expect(user.reload.nearby_cities).to include(city)
+     expect(user.reload.nearby_cities).to_not include(duplicate)
+    end
+
     it 'can use a farther radius' do
       expect(user.nearby_cities(10000)).to include(new_york)
     end

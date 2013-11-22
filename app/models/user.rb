@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
   
   def nearby_cities(radius = 20)
-    Zipcode.includes(:city).near(self, radius).map(&:city)
+    Zipcode.includes(:city).near(self, radius).map(&:city).uniq
   end
 
   protected
