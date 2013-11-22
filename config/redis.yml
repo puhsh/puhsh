@@ -1,0 +1,17 @@
+development:
+  host: 127.0.0.1
+  port: 6379
+  db: 0  
+  thread_safe: true
+
+test:
+  host: 127.0.0.1
+  port: 6379  
+  db: 1
+  thread_safe: true
+
+production:
+  host: 127.0.0.1
+  port: 6379
+  db: 0  
+  thread_safe: true
