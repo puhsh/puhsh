@@ -8,9 +8,10 @@ class Ability
     else
       can :manage, User, id: user.id
       can :manage, Device
-      can :manage, Star, user_id: user.id
+      can :read, Star, user_id: user.id
       can :manage, Invite, user_id: user.id
       can :read, Category
+      can :read, Subcategory
     end
   end
 end
