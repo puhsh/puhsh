@@ -10,6 +10,7 @@ class Ability
       can :manage, Device
       can :manage, Star, user_id: user.id
       can :manage, Invite, user_id: user.id
+      can :read, Category
     end
   end
 end

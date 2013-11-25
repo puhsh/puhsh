@@ -19,6 +19,7 @@ Puhsh::Application.routes.draw do
     # Authentication
     post 'auth', to: 'auth#create'
 
+    # User and Related Resources
     resources :users, except: [:new, :edit] do
       resources :devices, only: [:create]
       resources :stars, only: [:index]
@@ -30,5 +31,8 @@ Puhsh::Application.routes.draw do
     resources :devices, only: [:create]
     resources :stars, only: [:index]
     resources :invites, only: [:create]
+
+    # Categories and Subcategories
+    resources :categories, only: [:index, :show]
   end
 end
