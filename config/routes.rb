@@ -3,6 +3,7 @@ Puhsh::Application.routes.draw do
   # BEGIN ROUTES
   ###############
   
+  # Root URL
   root to: 'home#index'
   
   # Dev Tools
@@ -33,6 +34,12 @@ Puhsh::Application.routes.draw do
     resources :invites, only: [:create]
 
     # Categories and Subcategories
-    resources :categories, only: [:index, :show]
+    resources :categories, only: [:index, :show] do
+      resources :subcategories, only: [:index, :show]
+    end
   end
+  
+  ###############
+  # WEB ROUTES
+  ###############
 end
