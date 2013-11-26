@@ -105,7 +105,3 @@ end
 # Before / After Tasks
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
 after "deploy:finalize_update", "deploy:assets:determine_modified_assets", "deploy:assets:conditionally_precompile"
-after "deploy", "newrelic:notice_deployment"
-after "deploy:update", "newrelic:notice_deployment"
-after "deploy:migrations", "newrelic:notice_deployment"
-after "deploy:cold", "newrelic:notice_deployment"
