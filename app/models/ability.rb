@@ -12,6 +12,8 @@ class Ability
       can :manage, Invite, user_id: user.id
       can :read, Category
       can :read, Subcategory
+      can :manage, Post, user_id: user.id
+      can :manage, PostImage
     end
   end
 end

@@ -13,6 +13,7 @@ class Post < ActiveRecord::Base
   has_many :flagged_posts, dependent: :destroy
   belongs_to :category
   belongs_to :subcategory
+  has_many :post_images, dependent: :destroy
 
   # Callbacks
   after_create :add_category

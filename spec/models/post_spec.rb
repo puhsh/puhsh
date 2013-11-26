@@ -7,6 +7,7 @@ describe Post do
   it { should have_many(:flagged_posts) }
   it { should belong_to(:category) }
   it { should belong_to(:subcategory) }
+  it { should have_many(:post_images) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }
