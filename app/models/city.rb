@@ -9,4 +9,9 @@ class City < ActiveRecord::Base
   has_many :zipcodes
 
   # Callbacks
+
+  # Methods
+  def follow!(user)
+    FollowedCity.create({user: user, city: self})
+  end
 end

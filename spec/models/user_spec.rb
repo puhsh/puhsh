@@ -192,6 +192,12 @@ describe User do
       user.save
       expect(user.reload.home_city).to eql(city)
     end
+
+    it 'follows the home city automatically' do
+      user = FactoryGirl.create(:user)
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to include(city)
+    end
   end
 
   describe '.add_app_invite' do

@@ -88,6 +88,7 @@ class User < ActiveRecord::Base
     zipcode = Zipcode.near(self, 5).first
     if zipcode
       self.update_attributes(home_city: zipcode.city)
+      self.reload.home_city.follow!(self)
     end
   end
 
