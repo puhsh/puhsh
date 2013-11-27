@@ -12,6 +12,7 @@ class FollowedCity < ActiveRecord::Base
   validates :user_id, presence: true
 
   def self.create_multiple(followed_cities, user)
+    return [] unless user
     followed_cities.each { |x| x.merge!({user_id: user.id}) }
     create(followed_cities).reject { |x| x.id.nil? }
   end
