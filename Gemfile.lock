@@ -197,7 +197,7 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
-    omniauth-facebook (1.4.1)
+    omniauth-facebook (1.5.1)
       omniauth-oauth2 (~> 1.1.0)
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
@@ -353,7 +353,7 @@ DEPENDENCIES
   mysql2 (= 0.3.14)
   newrelic_rpm (= 3.5.8.72)
   omniauth (= 1.1.4)
-  omniauth-facebook (= 1.4.1)
+  omniauth-facebook (= 1.5.1)
   peek (= 0.1.6)
   peek-git (= 1.0.2)
   peek-mysql2 (= 1.1.0)

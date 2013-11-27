@@ -14,7 +14,7 @@ gem 'haml', '4.0.3'
 
 # Omniauth
 gem 'omniauth', '1.1.4'
-gem 'omniauth-facebook', '1.4.1'
+gem 'omniauth-facebook', '1.5.1'
 
 # Web Server
 gem 'unicorn', '4.7.0'
