@@ -15,6 +15,7 @@ class Ability
       can :manage, Post, user_id: user.id
       can :manage, PostImage
       can :manage, FollowedCity
+      can :read, City
     end
   end
 end

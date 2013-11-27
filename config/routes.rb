@@ -26,6 +26,7 @@ Puhsh::Application.routes.draw do
       resources :stars, only: [:index]
       resources :invites, only: [:create]
       resources :followed_cities, only: [:create, :index]
+      resources :cities, only: [:index]
       member do
         get :nearby_cities
       end
