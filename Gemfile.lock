@@ -350,7 +350,7 @@ DEPENDENCIES
   jquery-ui-rails
   koala (= 1.6.0)
   money-rails (= 0.8.1)
-  mysql2
+  mysql2 (= 0.3.13)
   newrelic_rpm (= 3.5.8.72)
   omniauth (= 1.1.4)
   omniauth-facebook (= 1.4.1)
