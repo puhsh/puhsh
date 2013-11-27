@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include StarRewardable
+  include Redis::Objects
 
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
@@ -33,6 +34,9 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :name, presence: true
+
+  # Redis Attributes
+  set :followed_city_ids
 
   # Methods
   def self.find_for_facebook_oauth(auth)

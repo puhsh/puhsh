@@ -4,6 +4,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'shoulda'
 require 'cancan/matchers'
+require 'fakeredis'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -18,6 +19,11 @@ RSpec.configure do |config|
   config.order = "random"
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+
+  config.before(:each) do
+    # We don't need redis running in the test environment
+    $redis = Redis.new
   end
 
   OmniAuth.config.test_mode = true

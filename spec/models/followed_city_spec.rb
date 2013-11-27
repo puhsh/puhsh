@@ -60,4 +60,29 @@ describe FollowedCity do
        expect(cities.size).to eql(1)
      end
   end
+
+  describe '.store_city_id_for_user' do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:city) { FactoryGirl.create(:city) }
+
+    it 'stores the followed city\'s city id in redis' do
+      fc = FollowedCity.create(user: user, city: city)
+      fc.run_callbacks(:commit)
+      expect(user.reload.followed_city_ids.members).to include(city.id.to_s)
+    end
+  end
+
+  describe '.remove_city_id_from_user' do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:city) { FactoryGirl.create(:city) }
+   
+    it 'removes the record from the redis set after it is deleted' do
+      fc = FollowedCity.create(user: user, city: city)
+      fc.run_callbacks(:commit)
+      expect(user.reload.followed_city_ids.members).to include(city.id.to_s)
+      fc.destroy
+      fc.run_callbacks(:destroy)
+      expect(user.followed_city_ids.members).to_not include(city.id.to_s)
+    end
+  end
 end
