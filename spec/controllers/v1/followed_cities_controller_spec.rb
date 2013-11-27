@@ -4,7 +4,7 @@ describe V1::FollowedCitiesController do
   let!(:city) { FactoryGirl.create(:city) }
   let!(:city2) { FactoryGirl.create(:city) }
 
-  describe '#create' do
+  describe '#index' do
     let(:user) { FactoryGirl.create(:user) }
     context 'without access token' do
       it 'is forbidden' do
