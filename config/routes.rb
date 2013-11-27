@@ -33,7 +33,7 @@ Puhsh::Application.routes.draw do
     resources :devices, only: [:create]
     resources :stars, only: [:index]
     resources :invites, only: [:create]
-    resources :followed_cities, only: [:create]
+    resources :followed_cities, only: [:index, :create]
 
     # Categories and Subcategories
     resources :categories, only: [:index, :show] do
