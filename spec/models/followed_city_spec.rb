@@ -4,6 +4,35 @@ describe FollowedCity do
   it { should belong_to(:user) }
   it { should belong_to(:city) }
 
+  describe '.city_id' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:city) { FactoryGirl.create(:city) }
+    let(:followed_city) { FactoryGirl.build(:followed_city, user: user) }
+    
+    it 'is required' do
+      followed_city.save
+      expect(followed_city).to_not be_valid
+    end
+
+    it 'must be unique per user' do
+      followed_city.city = city
+      followed_city.save
+      followed_city2 = FactoryGirl.build(:followed_city, user: user, city: city)
+      followed_city2.save
+      expect(followed_city2).to_not be_valid
+    end
+  end
+
+  describe '.user_id' do
+    let(:city) { FactoryGirl.create(:city) }
+    let(:followed_city) { FactoryGirl.build(:followed_city, city: city) }
+
+    it 'is required' do
+      followed_city.save
+      expect(followed_city).to_not be_valid
+    end
+  end
+
   describe '.create_multiple' do
     let(:user) { FactoryGirl.create(:user) }
     let!(:city) { FactoryGirl.create(:city) }
