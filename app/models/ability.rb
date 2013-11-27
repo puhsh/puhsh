@@ -14,6 +14,7 @@ class Ability
       can :read, Subcategory
       can :manage, Post, user_id: user.id
       can :manage, PostImage
+      can :manage, FollowedCity
     end
   end
 end

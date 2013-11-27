@@ -25,6 +25,7 @@ Puhsh::Application.routes.draw do
       resources :devices, only: [:create]
       resources :stars, only: [:index]
       resources :invites, only: [:create]
+      resources :followed_cities, only: [:create, :index]
       member do
         get :nearby_cities
       end
@@ -32,6 +33,7 @@ Puhsh::Application.routes.draw do
     resources :devices, only: [:create]
     resources :stars, only: [:index]
     resources :invites, only: [:create]
+    resources :followed_cities, only: [:create]
 
     # Categories and Subcategories
     resources :categories, only: [:index, :show] do
