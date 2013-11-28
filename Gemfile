@@ -20,7 +20,8 @@ gem 'omniauth-facebook', '1.5.1'
 gem 'unicorn', '4.7.0'
 
 # Storage
-gem 'softlayer-object-storage', git: 'git@github.com:softlayer/softlayer-object-storage-ruby.git'
+gem 'aws-sdk', '1.29.0'
+gem 'paperclip', '3.5.2'
 
 # Peek
 gem 'peek', '0.1.6'

@@ -6,12 +6,6 @@ GIT
     bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
 
-GIT
-  remote: git@github.com:softlayer/softlayer-object-storage-ruby.git
-  revision: f1595ddb8dc9f1e9dda04399e4e79c248442ebfb
-  specs:
-    softlayer-object-storage (0.0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -66,6 +60,10 @@ GEM
       activesupport (>= 3.0.0)
     arel (3.0.3)
     atomic (1.1.14)
+    aws-sdk (1.29.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
@@ -84,6 +82,10 @@ GEM
     chunky_png (1.2.8)
     ci_reporter (1.9.0)
       builder (>= 2.1.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -221,6 +223,11 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     peek (0.1.6)
       atomic (>= 1.0.0)
       rails (>= 3.0.0)
@@ -344,6 +351,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
     vcr (2.6.0)
     warden (1.2.3)
       rack (>= 1.0)
@@ -362,6 +370,7 @@ DEPENDENCIES
   activeadmin
   acts_as_list (= 0.3.0)
   airbrake
+  aws-sdk (= 1.29.0)
   bootstrap-sass!
   cancan (= 1.6.10)
   capistrano (= 2.15.5)
@@ -385,6 +394,7 @@ DEPENDENCIES
   newrelic_rpm (= 3.5.8.72)
   omniauth (= 1.1.4)
   omniauth-facebook (= 1.5.1)
+  paperclip (= 3.5.2)
   peek (= 0.1.6)
   peek-git (= 1.0.2)
   peek-mysql2 (= 1.1.0)
@@ -400,7 +410,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda (= 3.5.0)
   sitemap_generator (= 4.2.0)
-  softlayer-object-storage!
   spork (= 1.0.0rc4)
   sunspot_rails (= 2.0.0)
   symbolize (= 4.4.1)
