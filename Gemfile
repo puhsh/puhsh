@@ -50,8 +50,10 @@ end
 
 group :development do
   gem 'capistrano', '2.15.5'
-  gem 'rvm-capistrano', '1.5.1', require: false
+  gem 'guard', '2.2.4'
+  gem 'guard-rspec', '4.0.4'
   gem 'hipchat', '0.12.0'
+  gem 'rvm-capistrano', '1.5.1', require: false
 end
 
 group :test do
