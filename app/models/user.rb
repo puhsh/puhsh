@@ -54,10 +54,8 @@ class User < ActiveRecord::Base
         user.facebook_email = auth[:email]
       end
     else
-      if user.avatar_url != "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
-        user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
-        user.save
-      end
+      user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
+      user.save
       user
     end
   end
