@@ -56,7 +56,6 @@ end
 
 group :test do
   gem 'ci_reporter', '1.9.0'
-  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :production do

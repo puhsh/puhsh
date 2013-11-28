@@ -84,8 +84,6 @@ GEM
     chunky_png (1.2.8)
     ci_reporter (1.9.0)
       builder (>= 2.1.2)
-    codeclimate-test-reporter (0.2.0)
-      simplecov (>= 0.7.1, < 1.0.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -107,7 +105,6 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.2.4)
-    docile (1.1.1)
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.2.0)
@@ -285,11 +282,6 @@ GEM
     shoulda-context (1.1.5)
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
-    simplecov (0.8.2)
-      docile (~> 1.1.0)
-      multi_json
-      simplecov-html (~> 0.8.0)
-    simplecov-html (0.8.0)
     sitemap_generator (4.2.0)
       builder
     spork (1.0.0rc4)
@@ -345,7 +337,6 @@ DEPENDENCIES
   capistrano (= 2.15.5)
   carmen (= 1.0.0)
   ci_reporter (= 1.9.0)
-  codeclimate-test-reporter
   coffee-rails (~> 3.2.1)
   compass-rails (= 1.0.3)
   devise (= 2.2.4)
