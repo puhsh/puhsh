@@ -1,0 +1,13 @@
+s3_defaults: &default_settings
+  access_key_id: AKIAJMVUD7HXOH6O3UWA
+  secret_access_key: vqz/jS0jeNA7ZwUh3m+upR6JZmIynvi3haltj6
+  bucket: <%= "puhsh_#{Rails.env}" %>
+
+development:
+  <<: *default_settings
+
+test:
+  <<: *default_settings
+
+production:
+  <<: *default_settings
