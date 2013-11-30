@@ -96,4 +96,26 @@ describe Post do
       expect(post.reload.subcategory).to eql(subcategory)
     end
   end
+
+  describe '.city' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'defaults to the posting user\'s home city' do
+      expect(new_post.reload.city).to eql(user.home_city)
+    end
+  end
+
+  describe '.reward_stars' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'grants a user 1 star after creating a post' do
+      expect(user.reload.star_count).to eql(11)
+    end
+  end
 end

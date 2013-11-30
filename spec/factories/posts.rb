@@ -7,6 +7,7 @@ FactoryGirl.define do
     pick_up_location :porch
     payment_type :both
     category { FactoryGirl.create(:category) }
+    user { FactoryGirl.create(:user) }
   end
 
   factory :post_insta_payment do

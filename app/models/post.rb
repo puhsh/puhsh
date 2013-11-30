@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :subcategory
+  include StarRewardable
+  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :subcategory, :city
   symbolize :pick_up_location, in: [porch: 'Porch Pick Up', public_location: 'Meet at Public Location', house: 'Pickup at House', other: 'Other'],
             methods: true, scope: false, i18n: false, validate: false
 
@@ -16,7 +17,7 @@ class Post < ActiveRecord::Base
   has_many :post_images, dependent: :destroy
 
   # Callbacks
-  after_create :add_category
+  before_create :add_category, :set_city
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
@@ -30,6 +31,10 @@ class Post < ActiveRecord::Base
   # Default to Kids Stuff category since that is the only
   # product line we support for now
   def add_category
-    self.update_attributes(category: Category.first)
+    self.category = Category.first
+  end
+
+  def set_city
+    self.city = self.user.home_city
   end
 end

@@ -40,6 +40,9 @@ Puhsh::Application.routes.draw do
     resources :categories, only: [:index, :show] do
       resources :subcategories, only: [:index, :show]
     end
+
+    # Posts
+    resources :posts
   end
   
   ###############

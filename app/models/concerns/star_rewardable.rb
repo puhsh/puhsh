@@ -3,6 +3,7 @@ module StarRewardable
 
   included do
     after_create :reward_stars
+    after_destroy :remove_stars
   end
 
   protected
@@ -13,6 +14,17 @@ module StarRewardable
       Star.create(user: self, amount: 10, event: :new_account)
     when Invite
       Star.create(user: self.user, amount: 3, event: :friend_invite)
+    when Post
+      Star.create(user: self.user, amount: 1, event: :new_post)
+    else
+      nil
+    end
+  end
+
+  def remove_stars
+    case self
+    when Post
+      nil
     else
       nil
     end
