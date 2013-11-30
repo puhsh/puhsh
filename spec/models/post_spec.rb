@@ -118,4 +118,24 @@ describe Post do
       expect(user.reload.star_count).to eql(11)
     end
   end
+
+  describe '.award_badges' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
+    let!(:badge) { FactoryGirl.create(:badge, name: 'Newbie Poster') }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    
+    it 'awards the user a badge if it is their first post' do
+      expect(user.reload.badges).to include(badge)
+    end
+
+    it 'does not award the user a badge if it is not their first post' do
+      user2.posts_count = 10
+      user2.save
+      FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory)
+      expect(user2.reload.badges).to_not include(badge)
+    end
+  end
 end
