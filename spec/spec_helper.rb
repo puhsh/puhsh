@@ -4,6 +4,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'shoulda'
 require 'cancan/matchers'
+require "paperclip/matchers"
 require 'fakeredis'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -16,6 +17,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.include Devise::TestHelpers, :type => :controller
   config.include Warden::Test::Helpers
+  config.include Paperclip::Shoulda::Matchers
   config.order = "random"
   config.expect_with :rspec do |c|
     c.syntax = :expect
