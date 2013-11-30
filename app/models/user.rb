@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include StarRewardable
+  include BadgeRewardable
   include Redis::Objects
 
   INVITES_ENABLED = Rails.env.development? ? false : true
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :invites, dependent: :destroy
 
   # Callbacks
-  after_create :add_default_role, :set_home_city, :add_app_invite, :award_badges
+  after_create :add_default_role, :set_home_city, :add_app_invite
   after_validation :geocode
 
   # Validations
@@ -92,9 +93,5 @@ class User < ActiveRecord::Base
 
   def add_app_invite
     AppInvite.create!(user: self, status: :inactive) if INVITES_ENABLED
-  end
-
-  def award_badges
-    Badge.award!('Early Adopter', self) if ALPHA_ENABLED
   end
 end

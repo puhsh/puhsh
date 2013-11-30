@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
   include StarRewardable
+  include BadgeRewardable
+
   attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :subcategory, :city
   symbolize :pick_up_location, in: [porch: 'Porch Pick Up', public_location: 'Meet at Public Location', house: 'Pickup at House', other: 'Other'],
             methods: true, scope: false, i18n: false, validate: false
@@ -18,7 +20,6 @@ class Post < ActiveRecord::Base
 
   # Callbacks
   before_create :add_category, :set_city
-  after_create :award_badges
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
@@ -37,9 +38,5 @@ class Post < ActiveRecord::Base
 
   def set_city
     self.city = self.user.home_city
-  end
-
-  def award_badges
-    Badge.award!('Newbie Poster', self.user) if self.user.posts_count_was == 0
   end
 end
