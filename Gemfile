@@ -20,7 +20,7 @@ gem 'omniauth-facebook', '1.5.1'
 gem 'unicorn', '4.7.0'
 
 # Storage
-gem 'aws-sdk', '1.29.0'
+gem 'aws-sdk', '1.5.7'
 gem 'paperclip', '3.5.2'
 
 # Peek

@@ -1,13 +1,15 @@
 s3_defaults: &default_settings
-  access_key_id: AKIAJMVUD7HXOH6O3UWA
-  secret_access_key: vqz/jS0jeNA7ZwUh3m+upR6JZmIynvi3haltj6
-  bucket: <%= "puhsh_#{Rails.env}" %>
+  access_key_id: 'AKIAJ7FV5OHECYWPCNDA'
+  secret_access_key: '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'
 
 development:
   <<: *default_settings
+  bucket: puhsh_development
 
 test:
   <<: *default_settings
+  bucket: puhsh_test
 
 production:
   <<: *default_settings
+  bucket: puhsh
