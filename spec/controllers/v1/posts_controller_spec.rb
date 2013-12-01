@@ -61,8 +61,14 @@ describe V1::PostsController do
       
       it 'creates a post' do
         sign_in user
-        post :create, { post: { user_id: user.id, title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id }, access_token: access_token.token }, format: :json
+        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id }, access_token: access_token.token }, format: :json
         expect(user.reload.posts).to include(assigns[:post])
+      end
+
+      it 'defaults to the current user' do
+        sign_in user
+        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id }, access_token: access_token.token }, format: :json
+        expect(assigns[:post].user).to eql(user)
       end
     end
   end

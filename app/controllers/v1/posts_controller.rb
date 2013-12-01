@@ -14,6 +14,8 @@ class V1::PostsController < V1::ApiController
 
   def create
     @post = Post.new(params[:post])
+    @post.user = current_user 
+
     if @post.save
       render json: @post
     else
