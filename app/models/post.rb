@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   include StarRewardable
   include BadgeRewardable
 
-  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :subcategory, :city
+  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :category_id, :subcategory, :subcategory_id, :city, :user_id
   symbolize :pick_up_location, in: [porch: 'Porch Pick Up', public_location: 'Meet at Public Location', house: 'Pickup at House', other: 'Other'],
             methods: true, scope: false, i18n: false, validate: false
 
@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
   has_many :post_images, dependent: :destroy
 
   # Callbacks
-  before_create :add_category, :set_city
+  before_save :add_category, :set_city
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
