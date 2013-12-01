@@ -70,6 +70,18 @@ describe V1::PostsController do
         post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id }, access_token: access_token.token }, format: :json
         expect(assigns[:post].user).to eql(user)
       end
+
+      it 'creates a free item associated with the post' do
+        sign_in user
+        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id, items_attributes: [{ price_cents: 0.00}] }, access_token: access_token.token }, format: :json
+        expect(assigns[:post].reload.items).to_not be_empty
+      end
+
+      it 'creates a paid item associated with the post' do
+        sign_in user
+        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id, items_attributes: [{ price_cents: 10.00}] }, access_token: access_token.token }, format: :json
+        expect(assigns[:post].reload.items).to_not be_empty
+      end
     end
   end
 end

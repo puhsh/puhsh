@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  attr_accessible :price_cents
   monetize :price_cents
 
   # Relations

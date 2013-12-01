@@ -13,7 +13,8 @@ class Ability
       can :read, Category
       can :read, Subcategory
       can :manage, Post, user_id: user.id
-      can :manage, PostImage
+      can :manage, Item, post: { user_id: user.id }
+      can :manage, PostImage, post: { user_id: user.id }
       can :manage, FollowedCity, user_id: user.id
       can :read, City
     end

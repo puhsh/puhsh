@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   include StarRewardable
   include BadgeRewardable
 
-  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :category_id, :subcategory, :subcategory_id, :city, :user_id
+  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :category_id, :subcategory, :subcategory_id, :city, :user_id, :items_attributes
   symbolize :pick_up_location, in: [porch: 'Porch Pick Up', public_location: 'Meet at Public Location', house: 'Pickup at House', other: 'Other'],
             methods: true, scope: false, i18n: false, validate: false
 
@@ -27,6 +27,9 @@ class Post < ActiveRecord::Base
   validates :pick_up_location, presence: true
   validates :payment_type, presence: true
   validates :category, presence: true
+
+  # Nested Attributes
+  accepts_nested_attributes_for :items
 
   protected
 
