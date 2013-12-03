@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
 
   # Redis Attributes
   set :followed_city_ids
+  set :post_ids_with_offers
 
   # Methods
   def self.find_for_facebook_oauth(auth)

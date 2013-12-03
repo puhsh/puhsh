@@ -1,5 +1,6 @@
 class Offer < ActiveRecord::Base
-  symbolize :status, in: [:pending, :accepted, :rejected, :awarded], methods: true, scopes: false, validates: true, default: :pending
+  attr_accessible :user, :item
+  symbolize :status, in: [:pending, :accepted, :rejected, :awarded, :cancelled], methods: true, scopes: false, validates: true, default: :pending
   monetize :amount_cents
 
   # Relations
@@ -7,11 +8,18 @@ class Offer < ActiveRecord::Base
   belongs_to :item
 
   # Callbacks
+  after_commit :store_post_id_for_user, on: :create
 
   # Validations
   
   # Methods
   def free?
     self.amount_cents == 0
+  end
+
+  protected
+
+  def store_post_id_for_user
+    self.user.post_ids_with_offers << self.item.post_id
   end
 end

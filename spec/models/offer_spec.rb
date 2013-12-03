@@ -67,4 +67,16 @@ describe Offer do
       expect(offer.reload.question).to_not be_nil
     end
   end
+
+  describe '.store_post_id_for_user' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:post) { FactoryGirl.create(:post, user: user) }
+    let(:item) { FactoryGirl.create(:item, post: post) }
+
+    it 'stores the followed city\'s city id in redis' do
+      offer = Offer.create(user: user, item: item)
+      offer.run_callbacks(:commit)
+      expect(user.reload.post_ids_with_offers.members).to include(post.id.to_s)
+    end
+  end
 end
