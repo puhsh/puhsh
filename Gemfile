@@ -83,7 +83,7 @@ gem 'rails_warden', '0.5.7'
 gem 'rapns', '3.4.1'
 gem 'redis-objects', '0.8.0'
 gem 'rolify', '3.2.0'
-gem 'statsd-instrument', '1.5.0'
+gem 'statsd-ruby', '1.2.1'
 gem 'sunspot_rails', '2.0.0'
 gem 'symbolize', '4.4.1'
 gem 'whenever', '0.8.4', require: false
