@@ -24,5 +24,5 @@ ActiveSupport::Notifications.subscribe /process_action.action_controller/ do |*a
 end
 
 ActiveSupport::Notifications.subscribe /performance/ do |name, start, finish, id, payload|
-  Puhsh::Statsd.send_event_to_statsd(name, payload)
+  Puhsh::StatsdReporting.send_event_to_statsd(name, payload) if Rails.env.production?
 end
