@@ -1,9 +1,7 @@
 - content_for :nav do
   = render 'shared/nav'
   .container
-    .row
-      .col-mid-12 
-        = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary'
-    .row
-      .col-md-12
-        %h1 Puhsh.com is a safe, mommy swap meet platform for mothers of small children to connect, sell and buy used and new goods for their children. Mothers can buy/sell: babywearing, bedding, clothes, diapers, furniture, gear, lots & multiple items, maternity&nursing, misc & other, shoes, strollers&carseats, and toy & games.
+    - if !user_signed_in?
+      .row
+        .col-mid-12 
+          = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary'
