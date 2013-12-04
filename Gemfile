@@ -54,6 +54,7 @@ group :development do
   gem 'guard', '2.2.4'
   gem 'guard-rspec', '4.0.4'
   gem 'hipchat', '0.12.0'
+  gem 'ruby_gntp'
   gem 'rvm-capistrano', '1.5.1', require: false
 end
 
