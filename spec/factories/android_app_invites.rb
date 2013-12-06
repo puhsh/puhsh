@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :android_app_invite do
+    status :inactive
   end
 end
