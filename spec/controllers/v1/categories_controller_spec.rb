@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe V1::CategoriesController do
   let!(:category) { FactoryGirl.create(:category) }
+  let!(:category_inactive) { FactoryGirl.create(:category, status: :inactive) }
 
   describe '#index' do
     let(:user) { FactoryGirl.create(:user) }
@@ -26,6 +27,12 @@ describe V1::CategoriesController do
         sign_in user
         get :index, { id: category.id, access_token: access_token.token }, format: :json
         expect(assigns[:categories]).to include(category)
+      end
+
+      it 'does not return inactive categories' do
+        sign_in user
+        get :index, { id: category.id, access_token: access_token.token }, format: :json
+        expect(assigns[:categories]).to_not include(category_inactive)
       end
     end
   end

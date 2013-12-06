@@ -10,4 +10,7 @@ class Category < ActiveRecord::Base
 
   # Validations
   validates :name, presence: true
+  
+  # Scopes
+  default_scope where(status: :active)
 end

@@ -11,4 +11,7 @@ class Subcategory < ActiveRecord::Base
   # Validations
   validates :category, presence: true
   validates :name, presence: true
+  
+  # Scopes
+  default_scope where(status: :active)
 end
