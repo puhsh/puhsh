@@ -4,7 +4,7 @@ class V1::CategoriesController < V1::ApiController
   load_and_authorize_resource
 
   def index
-    @categories = Category.limit(20)
+    @categories = Category.includes(:subcategories).limit(20)
     render json: @categories
   end
 
