@@ -1,0 +1,134 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://graph.facebook.com/oauth/access_token
+    body:
+      encoding: US-ASCII
+      string: client_id=190163724500680&client_secret=a68155b041911fd97471c4a178d20376&type=client_cred
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '1035235'
+      X-Fb-Debug:
+      - 04v3RmWGDek/xxOKsXEQ+wIChemAJHAst9bWBp6ySRU=
+      Date:
+      - Fri, 06 Dec 2013 14:59:55 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '56'
+    body:
+      encoding: US-ASCII
+      string: access_token=190163724500680|LaUu0hIY6ZnPfyTpWaaOArBWxec
+    http_version: 
+  recorded_at: Fri, 06 Dec 2013 14:59:55 GMT
+- request:
+    method: post
+    uri: https://graph.facebook.com/190163724500680/accounts/test-users
+    body:
+      encoding: US-ASCII
+      string: installed=true&permissions&access_token=190163724500680%7CLaUu0hIY6ZnPfyTpWaaOArBWxec
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '1035235'
+      X-Fb-Debug:
+      - UiLyNNCsNcLee5pFYgIf28qe7vkroZr7XmQQFpzle+c=
+      Date:
+      - Fri, 06 Dec 2013 15:00:01 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '468'
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"100007178348612","access_token":"CAACs8ZCEZCfsgBAB7JSNRpOGZBQ8ozRl7j9xa8YYKqGmsCZAcXC9GySifekvBSzZBUfvrcg78JanaVX7AAWb3b3DnIFZAMlJUoa2fZBVofZCHb2rXROSBHz4kKwSWNHNa7DZAYDlgsh4SPHvNSXBBQEWnZBO1sqvH7BzfXGjtfnijkpyooZArJKyao31ce7wtA795IZD","login_url":"https:\/\/www.facebook.com\/platform\/test_account_login.php?user_id=100007178348612&n=nTKYiVz5lKb4GTy","email":"lpftsdu_valtchanovskysenmansteinsonescubergwitz_1386341995\u0040tfbnw.net","password":"2004759107"}'
+    http_version: 
+  recorded_at: Fri, 06 Dec 2013 15:00:02 GMT
+- request:
+    method: get
+    uri: https://graph.facebook.com/me?access_token=CAACs8ZCEZCfsgBAB7JSNRpOGZBQ8ozRl7j9xa8YYKqGmsCZAcXC9GySifekvBSzZBUfvrcg78JanaVX7AAWb3b3DnIFZAMlJUoa2fZBVofZCHb2rXROSBHz4kKwSWNHNa7DZAYDlgsh4SPHvNSXBBQEWnZBO1sqvH7BzfXGjtfnijkpyooZArJKyao31ce7wtA795IZD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json; charset=UTF-8
+      Etag:
+      - ! '"3550f2197e5c688e6acc802e6a3551709d153b6c"'
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      X-Fb-Rev:
+      - '1035235'
+      X-Fb-Debug:
+      - GjTTbAe2csPdNfPml1ImFhSNxxdKEFpwEEzqK7qOMLQ=
+      Date:
+      - Fri, 06 Dec 2013 15:00:02 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '310'
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"100007178348612","name":"James Amgaghcdhfab Valtchanovskysenmansteinsonescubergwitz","first_name":"James","middle_name":"Amgaghcdhfab","last_name":"Valtchanovskysenmansteinsonescubergwitz","link":"https:\/\/www.facebook.com\/profile.php?id=100007178348612","gender":"male","timezone":0,"locale":"en_US"}'
+    http_version: 
+  recorded_at: Fri, 06 Dec 2013 15:00:02 GMT
+recorded_with: VCR 2.6.0

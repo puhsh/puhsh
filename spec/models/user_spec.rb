@@ -141,6 +141,16 @@ describe User do
         user = User.find_for_facebook_oauth(@facebook_valid)
         expect(user.reload.gender).to eq(@facebook_valid[:gender])
       end
+
+      it 'stores an iOS mobile device type if specified' do
+        user = User.find_for_facebook_oauth(@facebook_valid, 'ios')
+        expect(user.reload.mobile_device_type.value).to eql('ios')
+      end
+
+      it 'stores an Android mobile device type if specified' do
+        user = User.find_for_facebook_oauth(@facebook_valid, 'android')
+        expect(user.reload.mobile_device_type.value).to eql('android')
+      end
     end
 
     context 'existing user' do
@@ -200,12 +210,22 @@ describe User do
     end
   end
 
-  describe '.add_app_invite' do
-    let(:user) { FactoryGirl.build(:user) }
+  describe '.add_app_invite!' do
+    before { @facebook_valid = OmniAuth.config.mock_auth[:facebook] }
 
-    it 'creates an app invite for a new user' do
-      expect(user).to receive(:add_app_invite)
-      user.save
+    it 'does not create an app invite for a new user if the device is not specified' do
+      user = User.find_for_facebook_oauth(@facebook_valid)
+      expect(user.reload.app_invite).to be_nil
+    end
+
+    it 'creates an app invite for a new user if they have an iOS device' do
+      user = User.find_for_facebook_oauth(@facebook_valid, 'ios')
+      expect(user.reload.app_invite).to_not be_nil
+    end
+
+    it 'does not create an app invite for a new user if they have an android' do
+      user = User.find_for_facebook_oauth(@facebook_valid, 'android')
+      expect(user.reload.app_invite).to be_nil
     end
   end
 

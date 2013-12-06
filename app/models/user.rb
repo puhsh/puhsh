@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :invites, dependent: :destroy
 
   # Callbacks
-  after_create :add_default_role, :set_home_city, :add_app_invite
+  after_create :add_default_role, :set_home_city
   after_validation :geocode
 
   # Validations
@@ -39,14 +39,15 @@ class User < ActiveRecord::Base
   # Redis Attributes
   set :followed_city_ids
   set :post_ids_with_offers
+  value :mobile_device_type
 
   # Methods
-  def self.find_for_facebook_oauth(auth)
+  def self.find_for_facebook_oauth(auth, device_type = nil)
     auth = HashWithIndifferentAccess.new(auth)
 
     user = User.where(uid: auth[:id]).first
     if user.blank?
-      self.create! do |user|
+      user = self.create! do |user|
         user.uid = auth[:id]
         user.name = auth[:name]
         user.first_name = auth[:first_name]
@@ -55,6 +56,15 @@ class User < ActiveRecord::Base
         user.gender = auth[:gender]
         user.facebook_email = auth[:email]
       end
+      
+      # Store the mobile device type in redis so we know what queue to add them to
+      if user && device_type
+        user.mobile_device_type.value = device_type
+      end
+
+      # Add the app invite
+      user.add_app_invite!
+      user
     else
       user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
       user.save
@@ -78,6 +88,17 @@ class User < ActiveRecord::Base
     self.has_role?(:admin)
   end
 
+  def add_app_invite!
+    case self.mobile_device_type.value
+    when 'ios'
+      AppInvite.create!(user: self, status: :inactive)
+    when 'android'
+      nil
+    else
+      nil
+    end
+  end
+
   protected
 
   def add_default_role
@@ -90,9 +111,5 @@ class User < ActiveRecord::Base
       self.update_attributes(home_city: zipcode.city)
       self.reload.home_city.follow!(self)
     end
-  end
-
-  def add_app_invite
-    AppInvite.create!(user: self, status: :inactive) if INVITES_ENABLED
   end
 end

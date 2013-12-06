@@ -60,6 +60,7 @@ end
 
 group :test do
   gem 'ci_reporter', '1.9.0'
+  gem 'test_after_commit', '0.2.2'
 end
 
 group :production do
