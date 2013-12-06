@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :offers, dependent: :destroy
   has_many :flagged_posts, dependent: :destroy
   has_one :app_invite, dependent: :destroy
+  has_one :android_app_invite, dependent: :destroy
   has_one :access_token, dependent: :destroy
   has_many :devices, dependent: :destroy
   has_many :stars, dependent: :destroy
@@ -93,7 +94,7 @@ class User < ActiveRecord::Base
     when 'ios'
       AppInvite.create!(user: self, status: :inactive)
     when 'android'
-      nil
+      AndroidAppInvite.create!(user: self, status: :inactive)
     else
       nil
     end

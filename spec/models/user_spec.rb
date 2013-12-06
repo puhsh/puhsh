@@ -216,16 +216,19 @@ describe User do
     it 'does not create an app invite for a new user if the device is not specified' do
       user = User.find_for_facebook_oauth(@facebook_valid)
       expect(user.reload.app_invite).to be_nil
+      expect(user.android_app_invite).to be_nil
     end
 
     it 'creates an app invite for a new user if they have an iOS device' do
       user = User.find_for_facebook_oauth(@facebook_valid, 'ios')
       expect(user.reload.app_invite).to_not be_nil
+      expect(user.android_app_invite).to be_nil
     end
 
-    it 'does not create an app invite for a new user if they have an android' do
+    it 'creates an app invite for a new user if they have an android' do
       user = User.find_for_facebook_oauth(@facebook_valid, 'android')
       expect(user.reload.app_invite).to be_nil
+      expect(user.android_app_invite).to_not be_nil
     end
   end
 
