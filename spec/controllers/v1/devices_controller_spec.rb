@@ -36,5 +36,17 @@ describe V1::DevicesController do
       post :create, { device_token: '12345', access_token: access_token.token }, format: :json
       expect(user.reload.devices).to include(assigns[:device])
     end
+
+    it 'sets the device to iOS if no device type is specified' do
+      sign_in user
+      post :create, { device_token: '12345', access_token: access_token.token }, format: :json
+      expect(assigns[:device].reload.device_type).to eql(:ios)
+    end
+
+    it 'sets the device type if it is specified' do
+      sign_in user
+      post :create, { device_token: '12345', access_token: access_token.token, type: 'android'}, format: :json
+      expect(assigns[:device].reload.device_type).to eql(:android)
+    end
   end
 end
