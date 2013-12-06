@@ -36,10 +36,8 @@ Puhsh::Application.routes.draw do
     resources :invites, only: [:create]
     resources :followed_cities, only: [:index, :create]
 
-    # Categories and Subcategories
-    resources :categories, only: [:index, :show] do
-      resources :subcategories, only: [:index, :show]
-    end
+    # Categories
+    resources :categories, only: [:index, :show]
 
     # Posts
     resources :posts
