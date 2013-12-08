@@ -138,4 +138,16 @@ describe Post do
       expect(user2.reload.badges).to_not include(badge)
     end
   end
+
+  describe '.store_subcategory_name' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.build(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'stores the subcategory name in redis' do
+      new_post.save
+      expect(new_post.reload.subcategory_name.value).to eql(subcategory.name)
+    end
+  end
 end

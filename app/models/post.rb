@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   include StarRewardable
   include BadgeRewardable
+  include Redis::Objects
 
   attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :category_id, :subcategory, :subcategory_id, :city, :user_id, :items_attributes
   symbolize :pick_up_location, in: [porch: 'Porch Pick Up', public_location: 'Meet at Public Location', house: 'Pickup at House', other: 'Other'],
@@ -20,6 +21,7 @@ class Post < ActiveRecord::Base
 
   # Callbacks
   before_save :add_category, :set_city
+  after_commit :store_subcategory_name, on: :create
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
@@ -31,6 +33,9 @@ class Post < ActiveRecord::Base
   # Nested Attributes
   accepts_nested_attributes_for :items
 
+  # Redis Attributes
+  value :subcategory_name
+
   protected
 
   # Default to Kids Stuff category since that is the only
@@ -41,5 +46,9 @@ class Post < ActiveRecord::Base
 
   def set_city
     self.city = self.user.home_city
+  end
+
+  def store_subcategory_name
+    self.subcategory_name.value = self.subcategory.name
   end
 end
