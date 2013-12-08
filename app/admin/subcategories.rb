@@ -1,4 +1,6 @@
 ActiveAdmin.register Subcategory do
+  scope :all, default: true
+
   form do |f|
     f.inputs '' do
       f.input :category, as: :select, include_blank: false

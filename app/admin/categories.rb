@@ -1,4 +1,6 @@
 ActiveAdmin.register Category do
+  scope :all, :default => true
+
   form do |f|
     f.inputs '' do
       f.input :name
