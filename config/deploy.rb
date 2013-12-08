@@ -37,6 +37,7 @@ set :hipchat_client, HipChat::Client.new(hipchat_token)
 
 # CRON
 set :whenever_command, 'bundle exec whenever'
+set :whenever_roles, :app
 
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/id_rsa"]
 ssh_options[:forward_agent] = true
