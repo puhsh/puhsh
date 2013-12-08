@@ -139,6 +139,18 @@ describe Post do
     end
   end
 
+  describe '.store_category_name' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.build(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'stores the category name in redis' do
+      new_post.save
+      expect(new_post.reload.category_name.value).to eql(category.name)
+    end
+  end
+
   describe '.store_subcategory_name' do
     let!(:city) { FactoryGirl.create(:city) }
     let!(:user) { FactoryGirl.create(:user, home_city: city) }

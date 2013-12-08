@@ -21,6 +21,7 @@ class Post < ActiveRecord::Base
 
   # Callbacks
   before_save :add_category, :set_city
+  after_commit :store_category_name, on: :create
   after_commit :store_subcategory_name, on: :create
 
   # Validations
@@ -34,6 +35,7 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :items
 
   # Redis Attributes
+  value :category_name
   value :subcategory_name
 
   protected
@@ -46,6 +48,10 @@ class Post < ActiveRecord::Base
 
   def set_city
     self.city = self.user.home_city
+  end
+
+  def store_category_name
+    self.category_name.value = self.category.name
   end
 
   def store_subcategory_name
