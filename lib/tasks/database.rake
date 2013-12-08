@@ -28,8 +28,10 @@ namespace :db do
       begin
         backup = s3.buckets[bucket].objects.create("database-backups/#{filename_gzip}", filename_gzip)
         backup.write(open(filename_gzip_with_path))
+        HipChat::Client.new('cc96625c3ca88a6ac4d79958addc4c')['Fun Town'].send('Capistrano', 'Production DB Backup complete. Uploaded to S3.', color: 'green')
       rescue 
         Rails.logger.debug("Couldn't move db backup to S3")
+        HipChat::Client.new('cc96625c3ca88a6ac4d79958addc4c')['Fun Town'].send('Capistrano', 'Production DB Backup failed', color: 'red')
       end
 
       [filename_gzip_with_path].each { |x| File.delete(x) }
