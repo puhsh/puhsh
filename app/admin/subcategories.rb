@@ -1,5 +1,7 @@
 ActiveAdmin.register Subcategory do
   scope :all, default: true
+  scope :active
+  scope :inactive
 
   form do |f|
     f.inputs '' do

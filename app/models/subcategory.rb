@@ -1,6 +1,6 @@
 class Subcategory < ActiveRecord::Base
   attr_accessible :name, :category, :category_id, :status
-  symbolize :status, in: [:active, :inactive], methods: true, scopes: true
+  symbolize :status, in: [:active, :inactive], methods: true, scopes: :shallow
 
   # Relations
   belongs_to :category
