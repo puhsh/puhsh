@@ -150,7 +150,7 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
-    i18n (0.6.5)
+    i18n (0.6.9)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
@@ -164,7 +164,7 @@ GEM
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
-    kaminari (0.14.1)
+    kaminari (0.15.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
@@ -392,6 +392,7 @@ DEPENDENCIES
   hipchat (= 0.12.0)
   jquery-rails
   jquery-ui-rails
+  kaminari (= 0.15.0)
   koala (= 1.6.0)
   money-rails (= 0.8.1)
   mysql2 (= 0.3.14)
