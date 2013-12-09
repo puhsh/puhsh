@@ -35,6 +35,7 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :items
 
   # Redis Attributes
+  set   :offer_ids
   value :category_name
   value :subcategory_name
 
