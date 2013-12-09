@@ -8,13 +8,26 @@ class Ability
     else
       can :manage, User, id: user.id
       can :manage, Device, user_id: user.id
-      can :read, Star, user_id: user.id
       can :manage, Invite, user_id: user.id
+      can :manage, AppInvite, user_id: user.id
+      can :manage, AndroidAppInvite, user_id: user.id
+
       can :read, Category
       can :read, Subcategory
+
+      can :read, Star, user_id: user.id
+      can :read, UserBadge, user_id: user.id
+      can :read, Badge
+
       can :manage, Post, user_id: user.id
-      can :manage, Item, post: { user_id: user.id }
+      can :read, Post
       can :manage, PostImage, post: { user_id: user.id }
+      can :manage, Item, post: { user_id: user.id }
+      can :read, Item
+      can :manage, Offer, user_id: user.id
+      can :manage, Offer, item: { post: { user_id: user.id }}
+      can :read, Offer
+
       can :manage, FollowedCity, user_id: user.id
       can :read, City
     end

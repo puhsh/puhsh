@@ -302,6 +302,7 @@ describe User do
 
       it { should be_able_to(:manage, User.new) }
       it { should be_able_to(:manage, Post.new) }
+      it { should be_able_to(:manage, PostImage.new) }
       it { should be_able_to(:manage, Item.new) }
       it { should be_able_to(:manage, Offer.new) }
       it { should be_able_to(:manage, FlaggedPost.new) }
@@ -311,9 +312,56 @@ describe User do
 
     context 'member' do
       let(:user) { FactoryGirl.create(:user) } 
+      let(:user2) { FactoryGirl.create(:user) } 
 
       it { should be_able_to(:manage, user) }
       it { should_not be_able_to(:manage, User.new) }
+
+      it { should be_able_to(:manage, Device.new(user: user)) }
+      it { should_not be_able_to(:manage, Device.new(user: user2)) }
+
+      it { should be_able_to(:manage, Invite.new(user: user)) }
+      it { should_not be_able_to(:manage, Invite.new(user: user2)) }
+
+      it { should be_able_to(:manage, AppInvite.new(user: user)) }
+      it { should_not be_able_to(:manage, AppInvite.new(user: user2)) }
+
+      it { should be_able_to(:manage, AndroidAppInvite.new(user: user)) }
+      it { should_not be_able_to(:manage, AndroidAppInvite.new(user: user2)) }
+
+      it { should_not be_able_to(:manage, Category.new) }
+      it { should_not be_able_to(:manage, Subcategory.new) }
+
+      it { should be_able_to(:read, Category.new) }
+      it { should be_able_to(:read, Subcategory.new) }
+
+      it { should_not be_able_to(:manage, Star.new(user: user)) }
+      it { should be_able_to(:read, Star.new(user: user)) }
+
+      it { should_not be_able_to(:manage, UserBadge.new(user: user)) }
+      it { should be_able_to(:read, UserBadge.new(user: user)) }
+
+      it { should_not be_able_to(:manage, Badge.new) }
+      it { should be_able_to(:read, Badge.new) }
+
+      it { should be_able_to(:manage, FollowedCity.new(user: user)) }
+      it { should_not be_able_to(:manage, FollowedCity.new(user: user2)) }
+
+      it { should_not be_able_to(:manage, City.new) }
+      it { should be_able_to(:read, City.new) }
+
+      it { should be_able_to(:manage, Post.new(user: user)) }
+      it { should_not be_able_to(:manage, Post.new(user: user2)) }
+      it { should be_able_to(:read, Post.new(user: user2)) }
+
+      it { should be_able_to(:manage, Item.new(post: Post.new(user: user))) }
+      it { should_not be_able_to(:manage, Item.new(post: Post.new(user: user2))) }
+      it { should be_able_to(:read, Item.new(post: Post.new(user: user2))) }
+
+      it { should be_able_to(:manage, Offer.new(user: user)) }
+      it { should be_able_to(:manage, Offer.new(user: user2, item: Item.new(post: Post.new(user: user)))) }
+      it { should_not be_able_to(:manage, Offer.new(user: user2)) }
+      it { should be_able_to(:read, Offer.new(user: user2)) }
     end
   end
 end
