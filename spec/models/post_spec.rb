@@ -162,4 +162,17 @@ describe Post do
       expect(new_post.reload.subcategory_name.value).to eql(subcategory.name)
     end
   end
+
+  describe '.offers' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:item) { FactoryGirl.create(:item, post: new_post, price_cents: 1000) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item) }
+
+    it 'returns the offers based on the ids in the redis set' do
+      expect(new_post.reload.offers).to include(offer)
+    end
+  end
 end

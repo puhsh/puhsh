@@ -39,6 +39,10 @@ class Post < ActiveRecord::Base
   value :category_name
   value :subcategory_name
 
+  def offers
+    Offer.where(id: offer_ids.members)
+  end
+
   protected
 
   # Default to Kids Stuff category since that is the only
