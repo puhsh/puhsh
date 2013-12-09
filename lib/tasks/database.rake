@@ -2,6 +2,7 @@ namespace :db do
   desc 'Performs a backup of the database' 
   task :backup, [:env] => :environment do |t, args|
     require 'aws/s3'
+    require 'hipchat'
 
     args.with_defaults(env: Rails.env)
 
