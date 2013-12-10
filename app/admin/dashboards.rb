@@ -1,6 +1,6 @@
 ActiveAdmin::Dashboards.build do  
-  section "Recent Users" do
-    table_for User.order('created_at desc').limit(5) do
+  section "Recent Users (15)" do
+    table_for User.order('created_at desc').limit(15) do
       column :id do |user|
         link_to user.id, admin_user_path(user)
       end
@@ -18,7 +18,7 @@ ActiveAdmin::Dashboards.build do
     end
   end
 
-  section "Recent Invites" do
+  section "Recent Invites (15)" do
     table_for Invite.order('created_at desc').limit(15) do
       column :user_id do |user|
         link_to user.id, admin_user_path(user)
@@ -28,7 +28,7 @@ ActiveAdmin::Dashboards.build do
     end
   end
 
-  section "Recent Stars" do
+  section "Recent Stars (15)" do
     table_for Star.order('created_at desc').limit(15) do
       column :user_id do |user|
         link_to user.id, admin_user_path(user)
