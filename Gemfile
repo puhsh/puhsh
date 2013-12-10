@@ -53,7 +53,6 @@ group :development do
   gem 'capistrano', '2.15.5'
   gem 'guard', '2.2.4'
   gem 'guard-rspec', '4.0.4'
-  gem 'hipchat', '0.12.0'
   gem 'ruby_gntp'
   gem 'rvm-capistrano', '1.5.1', require: false
 end
@@ -76,6 +75,7 @@ gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.g
 gem 'cancan', '1.6.10'
 gem 'devise', '2.2.4'
 gem 'geocoder', '1.1.8'
+gem 'hipchat', '0.12.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari', '0.15.0'
