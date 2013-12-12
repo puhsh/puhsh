@@ -38,6 +38,12 @@ class V1::ApiController < ActionController::Metal
     end
   end
 
+  def render_paginated(resource)
+    page = params[:page] || 1
+    per_page = params[:per_age] || 25
+    render json: resource.page(page).per(per_page)
+  end
+
   protected
 
   def forbidden!(extra_info = nil)
