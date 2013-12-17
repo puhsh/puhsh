@@ -30,7 +30,7 @@ class V1::UsersController < V1::ApiController
   end
 
   def activity
-    @posts = Post.includes(:items, :user).where(city_id: current_user.cities_following).recent
+    @posts = Post.includes(:items, :user).for_cities(current_user.cities_following).exclude_user(current_user).recent
     render_paginated @posts
   end
 end

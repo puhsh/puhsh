@@ -120,7 +120,7 @@ describe V1::UsersController do
     let!(:user2) { FactoryGirl.create(:user, home_city: city) }
     let!(:category) { FactoryGirl.create(:category) }
     let!(:subcategory) { FactoryGirl.create(:subcategory, category: Category.first) }
-    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
+    let!(:post) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
 
     context 'without access token' do
       it 'is forbidden' do
@@ -145,6 +145,13 @@ describe V1::UsersController do
         sign_in user
         get :activity, { id: user.id, access_token: access_token.token }, format: :json
         expect(assigns[:posts]).to be_empty
+      end
+
+      it 'does not return any posts belonging to the current user' do
+        post2 = FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
+        sign_in user
+        get :activity, { id: user.id, access_token: access_token.token }, format: :json
+        expect(assigns[:posts]).to_not include(post2)
       end
 
       it 'does return posts for cities the user is following' do
