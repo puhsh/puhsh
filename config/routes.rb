@@ -42,6 +42,11 @@ Puhsh::Application.routes.draw do
       resources :posts
     end
 
+    # Subcategories
+    resources :subcategories do
+      resources :posts
+    end
+
     # Posts
     resources :posts
   end
