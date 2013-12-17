@@ -30,6 +30,7 @@ Puhsh::Application.routes.draw do
       resources :posts
       member do
         get :nearby_cities
+        get :activity
       end
     end
     resources :devices, only: [:create]

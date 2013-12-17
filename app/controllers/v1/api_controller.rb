@@ -40,7 +40,7 @@ class V1::ApiController < ActionController::Metal
 
   def render_paginated(resource)
     page = params[:page] || 1
-    per_page = params[:per_age] || 25
+    per_page = params[:per_page] || 25
     render json: resource.page(page).per(per_page)
   end
 

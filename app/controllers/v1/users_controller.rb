@@ -28,4 +28,9 @@ class V1::UsersController < V1::ApiController
     @user = User.find(params[:id])
     render json: @user.nearby_cities
   end
+
+  def activity
+    @posts = Post.includes(:items, :user).where(city_id: current_user.cities_following).recent
+    render_paginated @posts
+  end
 end

@@ -113,4 +113,57 @@ describe V1::UsersController do
       end
     end
   end
+
+  describe '#activity' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
+    let!(:category) { FactoryGirl.create(:category) }
+    let!(:subcategory) { FactoryGirl.create(:subcategory, category: Category.first) }
+    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        get :activity, { id: user.id }, format: :json
+        expect(assigns[:posts]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        get :activity, { id: user.id }, format: :json
+        expect(assigns[:posts]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+      let!(:access_token2) { FactoryGirl.create(:access_token, user: user2) }
+
+      it 'does not return any posts for cities the user is not following' do
+        sign_in user
+        get :activity, { id: user.id, access_token: access_token.token }, format: :json
+        expect(assigns[:posts]).to be_empty
+      end
+
+      it 'does return posts for cities the user is following' do
+        FactoryGirl.create(:followed_city, city: city, user: user)
+        sign_in user
+        get :activity, { id: user.id, access_token: access_token.token }, format: :json
+        expect(assigns[:posts]).to include(post)
+      end
+
+      it 'returns the posts from newest to oldest' do
+        FactoryGirl.create(:followed_city, city: city, user: user)
+        Timecop.travel(Date.today + 1.day) do
+          post2 = FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
+          sign_in user
+          get :activity, { id: user.id, access_token: access_token.token }, format: :json
+          expect(assigns[:posts].first).to eql(post2)
+          expect(assigns[:posts].last).to eql(post)
+        end
+      end
+    end
+  end
 end

@@ -31,6 +31,9 @@ class Post < ActiveRecord::Base
   validates :payment_type, presence: true
   validates :category, presence: true
 
+  # Scopes
+  scope :recent, order('created_at DESC')
+
   # Nested Attributes
   accepts_nested_attributes_for :items
 

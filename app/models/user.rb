@@ -89,6 +89,10 @@ class User < ActiveRecord::Base
     self.has_role?(:admin)
   end
 
+  def cities_following
+    followed_city_ids.members
+  end
+
   def add_app_invite!
     case self.mobile_device_type.value
     when 'ios'
