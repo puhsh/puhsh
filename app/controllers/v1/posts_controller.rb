@@ -1,8 +1,8 @@
 class V1::PostsController < V1::ApiController
   before_filter :authenticate_user!
   before_filter :verify_access_token
-  before_filter :find_resource_for_posts, only: [:index]
   load_and_authorize_resource
+  before_filter :find_resource_for_posts, only: [:index]
 
   def index
     @posts = @resource.posts
