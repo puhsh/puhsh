@@ -46,6 +46,16 @@ class V1::ApiController < ActionController::Metal
 
   protected
 
+  def find_resource_for_posts
+    if params[:category_id]
+      @resource = Category.includes(:posts).find(params[:category_id])
+    elsif params[:subcategory_id]
+      @resource = Subcategory.includes(:posts).find(params[:subcategory_id])
+    else
+      @resource = User.includes(:posts).find_by_id(params[:user_id]) || current_user
+    end
+  end
+
   def forbidden!(extra_info = nil)
     render json: { error: 'Forbidden.', meta: extra_info }, status: :forbidden
   end

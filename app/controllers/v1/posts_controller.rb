@@ -1,11 +1,11 @@
 class V1::PostsController < V1::ApiController
   before_filter :authenticate_user!
   before_filter :verify_access_token
+  before_filter :find_resource_for_posts, only: [:index]
   load_and_authorize_resource
 
   def index
-    @user = User.includes(:posts).find_by_id(params[:user_id]) || current_user
-    @posts = @user.posts
+    @posts = @resource.posts
     render_paginated @posts
   end
 
