@@ -167,8 +167,7 @@ describe V1::UsersController do
           post2 = FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
           sign_in user
           get :activity, { id: user.id, access_token: access_token.token }, format: :json
-          expect(assigns[:posts].first).to eql(post2)
-          expect(assigns[:posts].last).to eql(post)
+          expect(assigns[:posts].map(&:id)).to eql([post2.id, post.id])
         end
       end
     end
