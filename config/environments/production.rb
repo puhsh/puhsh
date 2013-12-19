@@ -49,8 +49,19 @@ Puhsh::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
 
+  # Action Mailer
+  config.action_mailer.default_url_options = { 
+    address: 'smtp.mandrillapp.com',
+    port: 587,
+    enable_starttls_auto: true,
+    user_name: 'info@puhsh.com',
+    password: 'lZJlZOpAZEeY_NDSEL05qA',
+    authentication: 'login',
+    domain: 'puhsh.com'
+  }
+  
   # Enable threaded mode
   # config.threadsafe!
 
