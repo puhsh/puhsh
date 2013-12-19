@@ -23,6 +23,10 @@ gem 'unicorn', '4.7.0'
 gem 'aws-sdk', '1.5.7'
 gem 'paperclip', '3.5.2'
 
+# Email
+gem 'gibbon', '1.0.4'
+gem 'mandrill-api', '~> 1.0.49'
+
 # Peek
 gem 'peek', '0.1.6'
 gem 'peek-git', '1.0.2'
