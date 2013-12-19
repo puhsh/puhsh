@@ -163,7 +163,7 @@ describe V1::UsersController do
 
       it 'returns the posts from newest to oldest' do
         FactoryGirl.create(:followed_city, city: city, user: user)
-        Timecop.travel(Date.today + 1.day) do
+        Timecop.travel(Date.today + 10.day) do
           post2 = FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
           sign_in user
           get :activity, { id: user.id, access_token: access_token.token }, format: :json
