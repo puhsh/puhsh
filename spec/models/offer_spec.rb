@@ -55,19 +55,6 @@ describe Offer do
     end
   end
 
-  context '.question' do
-    it 'is not required' do
-      offer.save
-      expect(offer.reload).to be_valid
-    end
-
-    it 'can be provided' do
-      offer.question = 'Is this item a test?'
-      offer.save
-      expect(offer.reload.question).to_not be_nil
-    end
-  end
-
   describe '.store_post_id_for_user' do
     let(:user) { FactoryGirl.create(:user) }
     let(:post) { FactoryGirl.create(:post, user: user) }
