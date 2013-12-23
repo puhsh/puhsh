@@ -27,6 +27,8 @@ class Ability
       can :manage, Offer, user_id: user.id
       can :manage, Offer, item: { post: { user_id: user.id }}
       can :read, Offer
+      can :manage, Question, user_id: user.id
+      can :read, Question
 
       can :manage, FollowedCity, user_id: user.id
       can :read, City

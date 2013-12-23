@@ -4,7 +4,8 @@ class Item < ActiveRecord::Base
 
   # Relations
   belongs_to :post
-  has_many :offers
+  has_many :offers, dependent: :destroy
+  has_many :questions, dependent: :destroy
 
   # Callbacks
   

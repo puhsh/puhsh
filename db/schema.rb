@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131221222957) do
+ActiveRecord::Schema.define(:version => 20131223210434) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -168,6 +168,17 @@ ActiveRecord::Schema.define(:version => 20131221222957) do
   add_index "posts", ["city_id"], :name => "index_posts_on_city_id"
   add_index "posts", ["subcategory_id"], :name => "index_posts_on_subcategory_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "questions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "questions", ["item_id"], :name => "index_questions_on_item_id"
+  add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
 
   create_table "rapns_apps", :force => true do |t|
     t.string   "name",                       :null => false

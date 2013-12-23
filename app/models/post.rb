@@ -42,6 +42,7 @@ class Post < ActiveRecord::Base
 
   # Redis Attributes
   set   :offer_ids
+  set   :question_ids
   value :category_name
   value :subcategory_name
 

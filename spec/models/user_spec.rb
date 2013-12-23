@@ -15,6 +15,7 @@ describe User do
   it { should have_many(:user_badges) }
   it { should have_many(:badges).through(:user_badges) }
   it { should have_many(:invites) }
+  it { should have_many(:questions) }
 
   describe '.default_role' do
     let!(:user) { FactoryGirl.build(:user) }
@@ -362,6 +363,10 @@ describe User do
       it { should be_able_to(:manage, Offer.new(user: user2, item: Item.new(post: Post.new(user: user)))) }
       it { should_not be_able_to(:manage, Offer.new(user: user2)) }
       it { should be_able_to(:read, Offer.new(user: user2)) }
+
+      it { should be_able_to(:manage, Question.new(user: user)) }
+      it { should_not be_able_to(:manage, Question.new(user: user2)) }
+      it { should be_able_to(:read, Question.new(user: user2)) }
     end
   end
 end
