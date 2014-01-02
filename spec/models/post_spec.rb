@@ -188,4 +188,20 @@ describe Post do
       expect(new_post.reload.questions).to include(question)
     end
   end
+
+  describe '.activity' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:item) { FactoryGirl.create(:item, post: new_post, price_cents: 1000) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item) }
+
+    it 'returns the offers and questions for a post in descending order' do
+      Timecop.travel(Date.today + 3.weeks) do
+        question = FactoryGirl.create(:question, item: item, content: 'Test question')
+        expect(new_post.reload.activity).to eql([offer, question])
+      end
+    end
+  end
 end
