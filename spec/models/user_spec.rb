@@ -207,6 +207,7 @@ describe User do
     it 'sets the correct city on update' do
       user = FactoryGirl.create(:user, zipcode: nil)
       user.save
+      expect(user.reload.home_city).to be_nil
       user.reload.zipcode = '75034'
       user.save
       expect(user.reload.home_city).to eql(city)
