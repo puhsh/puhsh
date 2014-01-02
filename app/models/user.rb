@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   has_many :questions, dependent: :destroy
 
   # Callbacks
-  after_create :add_default_role, :set_home_city
+  after_commit :set_home_city
+  after_create :add_default_role
   after_validation :geocode
 
   # Validations
@@ -112,10 +113,12 @@ class User < ActiveRecord::Base
   end
 
   def set_home_city
-    zipcode = Zipcode.near(self, 5).first
-    if zipcode
-      self.update_attributes(home_city: zipcode.city)
-      self.reload.home_city.follow!(self)
+    if self.zipcode && (self.home_city.blank? || self.zipcode_changed?)
+      zip = Zipcode.near(self, 5).first
+      if zip
+        self.update_attributes(home_city: zip.city)
+        self.reload.home_city.follow!(self)
+      end
     end
   end
 end
