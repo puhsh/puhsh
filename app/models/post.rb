@@ -50,6 +50,14 @@ class Post < ActiveRecord::Base
     Offer.where(id: offer_ids.members)
   end
 
+  def questions 
+    Question.where(id: question_ids.members)
+  end
+
+  def activity
+
+  end
+
   protected
 
   # Default to Kids Stuff category since that is the only
