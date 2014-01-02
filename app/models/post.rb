@@ -58,6 +58,8 @@ class Post < ActiveRecord::Base
     Question.where(id: question_ids.members)
   end
 
+  # TODO This will probably need to be refactored once we support
+  # multiple items
   def activity
     (offers + questions).sort_by(&:created_at)
   end
