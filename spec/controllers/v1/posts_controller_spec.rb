@@ -147,4 +147,39 @@ describe V1::PostsController do
       end
     end
   end
+
+  describe '#activity' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let!(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item) }
+    let!(:question) { FactoryGirl.create(:question, item: item, content: 'Test question') }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        get :activity, { id: post.id }, format: :json
+        expect(assigns[:post]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        get :activity, { id: post.id }, format: :json
+        expect(assigns[:post]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'returns the activity for a post' do
+        sign_in user
+        get :activity, { id: post.id, access_token: access_token.token }, format: :json
+        expect(assigns[:post].activity).to eql([offer, question])
+      end
+    end
+  end
 end

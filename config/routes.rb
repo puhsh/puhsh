@@ -49,7 +49,11 @@ Puhsh::Application.routes.draw do
     end
 
     # Posts
-    resources :posts
+    resources :posts do
+      member do
+        get :activity
+      end
+    end
   end
   
   ###############

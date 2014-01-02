@@ -28,4 +28,9 @@ class V1::PostsController < V1::ApiController
       not_acceptable!
     end
   end
+
+  def activity
+    @post = Post.find(params[:id])
+    render json: @post.activity
+  end
 end
