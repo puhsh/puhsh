@@ -48,7 +48,7 @@ group :development, :test do
   gem 'rspec-rails', '2.14.1'
   gem 'shoulda', '3.5.0'
   gem 'spork', '1.0.0rc4'
-  gem 'timecop', '0.6.3'
+  gem 'timecop', '0.7.1'
   gem 'vcr', '2.6.0'
   gem 'webmock', '1.13.0', require: false
 end
