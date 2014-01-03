@@ -55,8 +55,8 @@ end
 
 group :development do
   gem 'capistrano', '2.15.5'
-  gem 'guard', '2.2.4'
-  gem 'guard-rspec', '4.0.4'
+  gem 'guard', '2.2.5'
+  gem 'guard-rspec', '4.2.3'
   gem 'ruby_gntp'
   gem 'rvm-capistrano', '1.5.1', require: false
 end
