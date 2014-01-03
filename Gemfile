@@ -50,7 +50,7 @@ group :development, :test do
   gem 'spork', '1.0.0rc4'
   gem 'timecop', '0.7.1'
   gem 'vcr', '2.8.0'
-  gem 'webmock', '1.13.0', require: false
+  gem 'webmock', '1.16.1', require: false
 end
 
 group :development do
