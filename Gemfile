@@ -93,4 +93,4 @@ gem 'rolify', '3.2.0'
 gem 'statsd-ruby', '1.2.1'
 gem 'sunspot_rails', '2.1.0'
 gem 'symbolize', '4.4.1'
-gem 'whenever', '0.8.4', require: false
+gem 'whenever', '0.9.0', require: false
