@@ -10,7 +10,7 @@ gem 'mysql2', '0.3.14'
 gem 'redis', '3.0.6'
 
 # View Engine
-gem 'haml', '4.0.3'
+gem 'haml', '4.0.4'
 
 # Omniauth
 gem 'omniauth', '1.1.4'
