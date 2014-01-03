@@ -44,7 +44,7 @@ end
 group :development, :test do
   gem 'factory_girl', '4.3.0'
   gem 'factory_girl_rails', '4.3.0'
-  gem 'fakeredis', '0.4.2'
+  gem 'fakeredis', '0.4.3'
   gem 'rspec-rails', '2.14.0'
   gem 'shoulda', '3.5.0'
   gem 'spork', '1.0.0rc4'
