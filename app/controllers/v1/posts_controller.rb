@@ -21,6 +21,7 @@ class V1::PostsController < V1::ApiController
   def create
     @post = Post.new(params[:post])
     @post.user = current_user 
+    @post.category = @post.subcategory.category unless @post.category
 
     if @post.save
       render json: @post

@@ -26,7 +26,8 @@ class V1::UsersController < V1::ApiController
 
   def nearby_cities
     @user = User.find(params[:id])
-    render json: @user.nearby_cities
+    radius = params[:radius] || 10
+    render json: @user.nearby_cities(radius)
   end
 
   def activity

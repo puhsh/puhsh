@@ -128,6 +128,12 @@ describe V1::PostsController do
         expect(user.reload.posts).to include(assigns[:post])
       end
 
+      it 'creates a post and automatically assigns the category if one is not defined' do
+        sign_in user
+        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', subcategory_id: subcategory.id }, access_token: access_token.token }, format: :json
+        expect(assigns[:post].category).to eql(subcategory.category)
+      end
+
       it 'defaults to the current user' do
         sign_in user
         post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id }, access_token: access_token.token }, format: :json
