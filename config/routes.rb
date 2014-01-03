@@ -57,6 +57,9 @@ Puhsh::Application.routes.draw do
 
     # Offers
     resources :offers, only: [:create]
+
+    # Questions
+    resources :questions, only: [:create]
   end
   
   ###############

@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :user, :item, :content
+  attr_accessible :user, :item, :content, :item_id
 
   # Relations
   belongs_to :user
