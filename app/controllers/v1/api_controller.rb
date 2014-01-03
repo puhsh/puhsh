@@ -32,7 +32,9 @@ class V1::ApiController < ActionController::Metal
 
   def verify_access_token
     if current_user.access_token.token == params[:access_token]
-      unauthorized! if current_user.access_token.expired?
+      if current_user.access_token.expired?
+        unauthorized!
+      end
     else
       forbidden!('Invalid Access token') 
     end
