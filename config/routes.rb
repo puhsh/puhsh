@@ -54,6 +54,9 @@ Puhsh::Application.routes.draw do
         get :activity
       end
     end
+
+    # Offers
+    resources :offers, only: [:create]
   end
   
   ###############
