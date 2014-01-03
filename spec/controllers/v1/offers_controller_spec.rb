@@ -38,6 +38,12 @@ describe V1::OffersController do
         post :create, { offer: { item_id: item.id, amount_cents: 0 }, access_token: access_token.token }, format: :json
         expect(user.reload.offers).to include(assigns[:offer])
       end
+
+      it 'sets the offer to pending' do
+        sign_in user
+        post :create, { offer: { item_id: item.id, amount_cents: 0 }, access_token: access_token.token }, format: :json
+        expect(assigns[:offer].status).to eql(:pending)
+      end
     end
   end
 end
