@@ -16,6 +16,10 @@ module StarRewardable
       Star.create(user: self.user, amount: 3, event: :friend_invite)
     when Post
       Star.create(user: self.user, amount: 1, event: :new_post)
+    when WallPost
+      if self.alpha_share?
+        Star.create(user: self.user, amount: 50, event: :shared_wall_post)
+      end
     else
       nil
     end

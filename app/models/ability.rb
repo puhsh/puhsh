@@ -32,6 +32,9 @@ class Ability
 
       can :manage, FollowedCity, user_id: user.id
       can :read, City
+
+      can :manage, WallPost, user_id: user.id
+      cannot :read, WallPost
     end
   end
 end

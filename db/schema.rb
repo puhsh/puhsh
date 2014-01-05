@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131223210434) do
+ActiveRecord::Schema.define(:version => 20140105144820) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -309,6 +309,16 @@ ActiveRecord::Schema.define(:version => 20131223210434) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "wall_posts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "post_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "wall_posts", ["post_type"], :name => "index_wall_posts_on_type"
+  add_index "wall_posts", ["user_id"], :name => "index_wall_posts_on_user_id"
 
   create_table "zipcodes", :force => true do |t|
     t.integer  "city_id"
