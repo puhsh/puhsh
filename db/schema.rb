@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140105144820) do
+ActiveRecord::Schema.define(:version => 20140107231102) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -104,6 +104,16 @@ ActiveRecord::Schema.define(:version => 20140105144820) do
 
   add_index "followed_cities", ["city_id"], :name => "index_followed_cities_on_city_id"
   add_index "followed_cities", ["user_id"], :name => "index_followed_cities_on_user_id"
+
+  create_table "follows", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "followed_user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "follows", ["followed_user_id"], :name => "index_follows_on_followed_user_id"
+  add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
 
   create_table "invites", :force => true do |t|
     t.integer  "user_id"

@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   has_many :invites, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :wall_posts, dependent: :destroy
+  has_many :follows, dependent: :destroy
+  has_many :followers, class_name: 'Follow', foreign_key: 'followed_user_id'
 
   # Callbacks
   after_commit :set_home_city
