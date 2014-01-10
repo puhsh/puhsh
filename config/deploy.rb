@@ -17,7 +17,7 @@ set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
 set :git_enable_submodules, 1
 set :use_sudo, false
-set :rvm_ruby_string, 'ruby-1.9.3-p448@puhsh'
+set :rvm_ruby_string, 'ruby-2.0.0-p247@puhsh'
 set :rvm_type, :system
 set :rake, "#{rake} --trace"
 set :user, 'puhsh'
