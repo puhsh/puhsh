@@ -127,6 +127,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def friends?(user)
+    following?(user) && followed_by?(user)
+  end
+
   protected
 
   def add_default_role

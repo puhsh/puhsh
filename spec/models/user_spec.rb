@@ -335,6 +335,31 @@ describe User do
     end
   end
 
+  describe '.friends?' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user) }
+    let(:user3) { FactoryGirl.create(:user) }
+
+    it 'returns true if the user is following and followed by the user' do
+      Follow.create(user: user, followed_user: user2)
+      Follow.create(user: user2, followed_user: user)
+      expect(user.reload.friends?(user2)).to be_true
+      expect(user2.reload.friends?(user)).to be_true
+    end
+
+    it 'returns false if the user is following but not followed by the user' do
+      Follow.create(user: user, followed_user: user3)
+      expect(user.reload.friends?(user3)).to be_false
+      expect(user3.reload.friends?(user)).to be_false
+    end
+
+    it 'returns false if the user is not following but followed by the user' do
+      Follow.create(user: user2, followed_user: user)
+      expect(user.reload.friends?(user2)).to be_false
+      expect(user2.reload.friends?(user)).to be_false
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }
