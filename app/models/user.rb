@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
   # Redis Attributes
   set :followed_city_ids
   set :post_ids_with_offers
+  set :user_ids_followed
+  set :user_ids_following_self
   value :mobile_device_type
 
   # Methods
@@ -106,6 +108,14 @@ class User < ActiveRecord::Base
       AndroidAppInvite.create!(user: self, status: :inactive)
     else
       nil
+    end
+  end
+
+  def following?(user)
+    if user
+      self.user_ids_followed.members.include?(user.id.to_s)
+    else
+      false
     end
   end
 
