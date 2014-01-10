@@ -320,6 +320,21 @@ describe User do
     end
   end
 
+  describe '.followed_by?' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user) }
+    let(:user3) { FactoryGirl.create(:user) }
+
+    it 'returns true if the user is following the user' do
+      Follow.create(user: user2, followed_user: user)
+      expect(user.reload.followed_by?(user2)).to be_true
+    end
+
+    it 'returns false if the user is not following the user' do
+      expect(user.reload.followed_by?(user3)).to be_false
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }

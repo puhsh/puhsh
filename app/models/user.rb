@@ -119,6 +119,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def followed_by?(user)
+    if user
+      self.user_ids_following_self.include?(user.id.to_s)
+    else
+      false
+    end
+  end
+
   protected
 
   def add_default_role
