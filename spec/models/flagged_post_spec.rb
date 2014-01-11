@@ -22,5 +22,11 @@ describe FlaggedPost do
       flagged_post.save
       expect(user.reload.posts_flagged_count).to eq(1)
     end
+
+    it 'cannot be duplicated' do
+      flagged_post.save
+      flagged_post2 = FlaggedPost.create(user: user, post: post)
+      expect(flagged_post2).to_not be_valid
+    end
   end
 end

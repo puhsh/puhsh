@@ -29,6 +29,7 @@ class Ability
       can :read, Offer
       can :manage, Question, user_id: user.id
       can :read, Question
+      can :manage, FlaggedPost, user_id: user.id
 
       can :manage, FollowedCity, user_id: user.id
       can :read, City

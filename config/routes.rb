@@ -58,6 +58,9 @@ Puhsh::Application.routes.draw do
       end
     end
 
+    # Flagged Posts
+    resources :flagged_posts, only: [:create]
+
     # Offers
     resources :offers, only: [:create]
 

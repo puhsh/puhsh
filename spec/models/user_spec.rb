@@ -461,6 +461,9 @@ describe User do
       it { should_not be_able_to(:manage, Question.new(user: user2)) }
       it { should be_able_to(:read, Question.new(user: user2)) }
 
+      it { should be_able_to(:manage, FlaggedPost.new(user: user)) }
+      it { should_not be_able_to(:manage, FlaggedPost.new(user: user2)) }
+
       it { should be_able_to(:manage, WallPost.new(user: user)) }
       it { should_not be_able_to(:manage, WallPost.new(user: user2)) }
 
