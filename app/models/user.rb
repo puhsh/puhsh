@@ -113,7 +113,7 @@ class User < ActiveRecord::Base
 
   def following?(user)
     if user
-      self.user_ids_followed.members.include?(user.id.to_s)
+      self.user_ids_followed.member?(user.id)
     else
       false
     end
@@ -121,7 +121,7 @@ class User < ActiveRecord::Base
 
   def followed_by?(user)
     if user
-      self.user_ids_following_self.include?(user.id.to_s)
+      self.user_ids_following_self.member?(user.id)
     else
       false
     end
