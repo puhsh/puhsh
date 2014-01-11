@@ -43,7 +43,19 @@ class V1::ApiController < ActionController::Metal
   def render_paginated(resource)
     page = params[:page] || 1
     per_page = params[:per_page] || 25
-    render json: resource.page(page).per(per_page)
+    items = resource.page(page).per(per_page)
+    current_page = items.current_page
+    total_pages = items.total_pages
+
+    pagination_hash = { 
+      prev_page_url: prev_page_url(current_page),
+      next_page_url: next_page_url(total_pages, current_page),
+      current_page_url: current_page_url(current_page),
+      last_page_url: last_page_url(total_pages, current_page),
+      first_page_url: first_page_url
+    }
+
+    render json: { items: items }.merge(pagination_hash)
   end
 
   protected
@@ -80,5 +92,25 @@ class V1::ApiController < ActionController::Metal
 
   def bad_request!
     render json: { error: 'Bad request' }, status: :bad_request
+  end
+
+  def prev_page_url(current_page)
+    current_page <= 1 ? nil : url_for(page: page - 1)
+  end
+
+  def next_page_url(total_pages, current_page)
+    current_page >= total_pages ? nil : url_for(page: page + 1)
+  end
+
+  def current_page_url(current_page)
+    url_for(page: current_page)
+  end
+  
+  def last_page_url(total_pages, current_page)
+    total_pages <= 0 ? url_for(page: current_page) : url_for(page: total_pages)
+  end
+
+  def first_page_url
+    url_for(page: 1)
   end
 end
