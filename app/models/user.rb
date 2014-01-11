@@ -131,6 +131,10 @@ class User < ActiveRecord::Base
     following?(user) && followed_by?(user)
   end
 
+  def users_followed
+    User.where(id: self.user_ids_followed.members)
+  end
+
   protected
 
   def add_default_role
