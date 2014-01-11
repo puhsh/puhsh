@@ -7,6 +7,7 @@ class Follow < ActiveRecord::Base
   
   # Callbacks
   after_commit :store_user_ids_for_users, on: :create
+  after_commit :remove_user_ids_for_users, on: :destroy
 
 
   # Validations
@@ -18,5 +19,10 @@ class Follow < ActiveRecord::Base
   def store_user_ids_for_users
     self.user.user_ids_followed << self.followed_user_id
     self.followed_user.user_ids_following_self << self.user_id
+  end
+
+  def remove_user_ids_for_users
+    self.user.user_ids_followed.delete(self.followed_user_id)
+    self.followed_user.user_ids_following_self.delete(self.user_id)
   end
 end

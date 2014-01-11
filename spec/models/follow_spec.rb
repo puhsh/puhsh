@@ -15,4 +15,15 @@ describe Follow do
     end
   end
 
+  describe '.remove_user_ids_for_users' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let!(:follow) { FactoryGirl.create(:follow, user: user, followed_user: user2) }
+
+    it 'removes the user ids for the respective user' do
+      follow.destroy
+      expect(user.reload.user_ids_followed.members).to_not include(user2.id.to_s)
+      expect(user2.reload.user_ids_following_self.members).to_not include(user.id.to_s)
+    end
+  end
 end
