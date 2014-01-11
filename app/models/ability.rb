@@ -35,6 +35,9 @@ class Ability
 
       can :manage, WallPost, user_id: user.id
       cannot :read, WallPost
+      
+      can :manage, Follow, user_id: user.id
+      can :read, Follow
     end
   end
 end

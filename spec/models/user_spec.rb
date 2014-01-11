@@ -437,6 +437,10 @@ describe User do
 
       it { should be_able_to(:manage, WallPost.new(user: user)) }
       it { should_not be_able_to(:manage, WallPost.new(user: user2)) }
+
+      it { should be_able_to(:manage, Follow.new(user: user)) }
+      it { should_not be_able_to(:manage, Follow.new(user: user2)) }
+      it { should be_able_to(:read, Follow.new(user: user2)) }
     end
   end
 end

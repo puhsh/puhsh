@@ -9,8 +9,8 @@ class Follow < ActiveRecord::Base
   after_commit :store_user_ids_for_users, on: :create
   after_commit :remove_user_ids_for_users, on: :destroy
 
-
   # Validations
+  validates :followed_user_id, uniqueness: { scope: :user_id }
   
   # Methods
   

@@ -77,4 +77,8 @@ class V1::ApiController < ActionController::Metal
   def not_acceptable!
     render json: { error: 'Request was not accepted.' }, status: :not_acceptable
   end
+
+  def bad_request!
+    render json: { error: 'Bad request' }, status: :bad_request
+  end
 end

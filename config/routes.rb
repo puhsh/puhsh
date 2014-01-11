@@ -31,6 +31,8 @@ Puhsh::Application.routes.draw do
       member do
         get :nearby_cities
         get :activity
+        get :follows
+        get :followers
       end
     end
     resources :devices, only: [:create]
@@ -61,6 +63,9 @@ Puhsh::Application.routes.draw do
 
     # Questions
     resources :questions, only: [:create]
+
+    # Follows
+    resources :follows, only: [:create]
   end
   
   ###############
