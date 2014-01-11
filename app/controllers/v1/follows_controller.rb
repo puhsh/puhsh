@@ -5,7 +5,7 @@ class V1::FollowsController < V1::ApiController
 
   def index
     @user = User.find_by_id(params[:user_id]) || current_user
-    @follows = @user.users_followed
+    @follows = @user.users_following
     render_paginated @follows
   end
 

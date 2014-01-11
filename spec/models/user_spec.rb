@@ -335,7 +335,7 @@ describe User do
     end
   end
 
-  describe '.users_followed' do
+  describe '.users_following' do
     let(:user) { FactoryGirl.create(:user) }
     let(:user2) { FactoryGirl.create(:user) }
     let(:user3) { FactoryGirl.create(:user) }
@@ -343,8 +343,8 @@ describe User do
     it 'returns the users the user is following' do
       Follow.create(user: user, followed_user: user2)
       Follow.create(user: user, followed_user: user3)
-      expect(user.users_followed).to include(user2)
-      expect(user.users_followed).to include(user3)
+      expect(user.users_following).to include(user2)
+      expect(user.users_following).to include(user3)
     end
   end
 

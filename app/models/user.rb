@@ -131,7 +131,7 @@ class User < ActiveRecord::Base
     following?(user) && followed_by?(user)
   end
 
-  def users_followed
+  def users_following
     User.where(id: self.user_ids_followed.members)
   end
 
