@@ -135,6 +135,10 @@ class User < ActiveRecord::Base
     User.where(id: self.user_ids_followed.members)
   end
 
+  def users_followers
+    User.where(id: self.user_ids_following_self.members)
+  end
+
   protected
 
   def add_default_role

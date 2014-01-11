@@ -28,11 +28,11 @@ Puhsh::Application.routes.draw do
       resources :followed_cities, only: [:create, :index]
       resources :cities, only: [:index]
       resources :posts
+      resources :follows
       member do
         get :nearby_cities
         get :activity
-        get :follows, to: 'follows#index'
-        get :followers
+        get :followers, to: 'followers#index'
       end
     end
     resources :devices, only: [:create]
@@ -64,8 +64,9 @@ Puhsh::Application.routes.draw do
     # Questions
     resources :questions, only: [:create]
 
-    # Follows
+    # Follows and Followers
     resources :follows, only: [:index, :create]
+    get 'followers', to: 'followers#index'
   end
   
   ###############
