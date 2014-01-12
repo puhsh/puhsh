@@ -338,7 +338,6 @@ GEM
       nokogiri
       rails (>= 3)
       sunspot (= 2.1.0)
-    sunspot_solr (2.1.0)
     symbolize (4.4.1)
       activemodel (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -424,7 +423,6 @@ DEPENDENCIES
   spork (= 1.0.0rc4)
   statsd-ruby (= 1.2.1)
   sunspot_rails (= 2.1.0)
-  sunspot_solr (= 2.1.0)
   symbolize (= 4.4.1)
   test_after_commit (= 0.2.2)
   timecop (= 0.7.1)
