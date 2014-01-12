@@ -100,6 +100,10 @@ class User < ActiveRecord::Base
     followed_city_ids.members
   end
 
+  def users_following
+    user_ids_followed.members
+  end
+
   def add_app_invite!
     case self.mobile_device_type.value
     when 'ios'

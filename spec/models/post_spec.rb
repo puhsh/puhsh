@@ -204,4 +204,19 @@ describe Post do
       end
     end
   end
+
+  describe '.for_users_or_cities' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:new_post2) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'returns posts for users or cities' do
+      results = Post.for_users_or_cities(user2.id, city.id)
+      expect(results).to include(new_post)
+      expect(results).to include(new_post2)
+    end
+  end
 end

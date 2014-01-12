@@ -118,6 +118,7 @@ describe V1::UsersController do
     let!(:city) { FactoryGirl.create(:city) }
     let!(:user) { FactoryGirl.create(:user, home_city: city) }
     let!(:user2) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user3) { FactoryGirl.create(:user, home_city: city) }
     let!(:category) { FactoryGirl.create(:category) }
     let!(:subcategory) { FactoryGirl.create(:subcategory, category: Category.first) }
     let!(:post) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
@@ -144,7 +145,7 @@ describe V1::UsersController do
       it 'does not return any posts for cities the user is not following' do
         sign_in user
         get :activity, { id: user.id, access_token: access_token.token }, format: :json
-        expect(assigns[:posts]).to be_empty
+        expect(assigns[:posts]).to_not include(post)
       end
 
       it 'does not return any posts belonging to the current user' do
@@ -161,13 +162,21 @@ describe V1::UsersController do
         expect(assigns[:posts]).to include(post)
       end
 
+      it 'returns posts from the users that the user is following' do
+        FactoryGirl.create(:follow, user: user, followed_user: user3)
+        post2 = FactoryGirl.create(:post, user: user3, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
+        sign_in user
+        get :activity, { id: user.id, access_token: access_token.token }, format: :json
+        expect(assigns[:posts]).to include(post2)
+      end
+
       it 'returns the posts from newest to oldest' do
         FactoryGirl.create(:followed_city, city: city, user: user)
         Timecop.travel(Date.today + 10.day) do
-          post2 = FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
+          post3 = FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
           sign_in user
           get :activity, { id: user.id, access_token: access_token.token }, format: :json
-          expect(assigns[:posts].map(&:id)).to eql([post2.id, post.id])
+          expect(assigns[:posts].map(&:id)).to eql([post3.id, post.id])
         end
       end
     end

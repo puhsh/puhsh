@@ -35,6 +35,7 @@ class Post < ActiveRecord::Base
   scope :recent, order('created_at DESC')
   scope :for_cities, ->(city_ids) { where(city_id: city_ids) }
   scope :for_users, ->(user_ids) { where(user_id: user_ids) }
+  scope :for_users_or_cities, ->(user_ids, city_ids) { where('user_id in (?) OR city_id in (?)', user_ids, city_ids) }
   scope :exclude_user, ->(user) { where('user_id != ?', user) }
 
   # Nested Attributes
