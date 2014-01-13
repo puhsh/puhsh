@@ -155,6 +155,18 @@ describe User do
         user = User.find_for_facebook_oauth(@facebook_valid, 'android')
         expect(user.reload.mobile_device_type.value).to eql('android')
       end
+
+      it 'creates an app invite if the user is iOS' do
+        user = User.find_for_facebook_oauth(@facebook_valid, 'ios')
+        expect(user.reload.app_invite).to_not be_nil
+        expect(user.app_invite.device_type).to eql(:ios)
+      end
+
+      it 'creates an app invite if the user is Android' do
+        user = User.find_for_facebook_oauth(@facebook_valid, 'android')
+        expect(user.reload.app_invite).to_not be_nil
+        expect(user.app_invite.device_type).to eql(:android)
+      end
     end
 
     context 'existing user' do
