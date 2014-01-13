@@ -5,7 +5,6 @@ class UserSerializer < ActiveModel::Serializer
 
   has_one :home_city
   has_one :app_invite
-  has_one :android_app_invite
 
   def is_following
     current_user.following?(object)

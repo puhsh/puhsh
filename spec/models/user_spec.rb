@@ -229,19 +229,18 @@ describe User do
     it 'does not create an app invite for a new user if the device is not specified' do
       user = User.find_for_facebook_oauth(@facebook_valid)
       expect(user.reload.app_invite).to be_nil
-      expect(user.android_app_invite).to be_nil
     end
 
     it 'creates an app invite for a new user if they have an iOS device' do
       user = User.find_for_facebook_oauth(@facebook_valid, 'ios')
       expect(user.reload.app_invite).to_not be_nil
-      expect(user.android_app_invite).to be_nil
+      expect(user.app_invite.device_type).to eql(:ios)
     end
 
     it 'creates an app invite for a new user if they have an android' do
       user = User.find_for_facebook_oauth(@facebook_valid, 'android')
-      expect(user.reload.app_invite).to be_nil
-      expect(user.android_app_invite).to_not be_nil
+      expect(user.reload.app_invite).to_not be_nil
+      expect(user.app_invite.device_type).to eql(:android)
     end
   end
 
@@ -419,9 +418,6 @@ describe User do
 
       it { should be_able_to(:manage, AppInvite.new(user: user)) }
       it { should_not be_able_to(:manage, AppInvite.new(user: user2)) }
-
-      it { should be_able_to(:manage, AndroidAppInvite.new(user: user)) }
-      it { should_not be_able_to(:manage, AndroidAppInvite.new(user: user2)) }
 
       it { should_not be_able_to(:manage, Category.new) }
       it { should_not be_able_to(:manage, Subcategory.new) }

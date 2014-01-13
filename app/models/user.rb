@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   has_many :offers, dependent: :destroy
   has_many :flagged_posts, dependent: :destroy
   has_one :app_invite, dependent: :destroy
-  has_one :android_app_invite, dependent: :destroy
   has_one :access_token, dependent: :destroy
   has_many :devices, dependent: :destroy
   has_many :stars, dependent: :destroy
@@ -65,7 +64,7 @@ class User < ActiveRecord::Base
         user.facebook_email = auth[:email]
       end
       
-      # Store the mobile device type in redis so we know what queue to add them to
+      # Store the mobile device type in redis
       if user && device_type
         user.mobile_device_type.value = device_type
       end
@@ -106,10 +105,8 @@ class User < ActiveRecord::Base
 
   def add_app_invite!
     case self.mobile_device_type.value
-    when 'ios'
-      AppInvite.create!(user: self, status: :inactive)
-    when 'android'
-      AndroidAppInvite.create!(user: self, status: :inactive)
+    when 'ios', 'android'
+      AppInvite.create!(user: self, status: :inactive, device_type: self.mobile_device_type.value)
     else
       nil
     end

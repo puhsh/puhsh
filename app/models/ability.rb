@@ -10,7 +10,6 @@ class Ability
       can :manage, Device, user_id: user.id
       can :manage, Invite, user_id: user.id
       can :manage, AppInvite, user_id: user.id
-      can :manage, AndroidAppInvite, user_id: user.id
 
       can :read, Category
       can :read, Subcategory

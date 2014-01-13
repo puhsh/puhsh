@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140107231102) do
+ActiveRecord::Schema.define(:version => 20140113195945) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -24,24 +24,16 @@ ActiveRecord::Schema.define(:version => 20140107231102) do
   add_index "access_tokens", ["token"], :name => "index_access_tokens_on_token"
   add_index "access_tokens", ["user_id"], :name => "index_access_tokens_on_user_id"
 
-  create_table "android_app_invites", :force => true do |t|
-    t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-    t.integer  "position"
-  end
-
-  add_index "android_app_invites", ["user_id"], :name => "index_android_app_invites_on_user_id"
-
   create_table "app_invites", :force => true do |t|
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "device_type"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "position"
     t.integer  "user_id"
   end
 
+  add_index "app_invites", ["status"], :name => "index_app_invites_on_status"
   add_index "app_invites", ["status"], :name => "index_waiting_lists_on_status"
   add_index "app_invites", ["user_id"], :name => "index_app_invites_on_user_id"
 
