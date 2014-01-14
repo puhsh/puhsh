@@ -3,6 +3,5 @@
 FactoryGirl.define do
   factory :app_invite do
     status :inactive
-    device_type :ios
   end
 end

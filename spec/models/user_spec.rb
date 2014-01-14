@@ -146,26 +146,9 @@ describe User do
         expect(user.reload.gender).to eq(@facebook_valid[:gender])
       end
 
-      it 'stores an iOS mobile device type if specified' do
-        user = User.find_for_facebook_oauth(@facebook_valid, 'ios')
-        expect(user.reload.mobile_device_type.value).to eql('ios')
-      end
-
-      it 'stores an Android mobile device type if specified' do
-        user = User.find_for_facebook_oauth(@facebook_valid, 'android')
-        expect(user.reload.mobile_device_type.value).to eql('android')
-      end
-
-      it 'creates an app invite if the user is iOS' do
-        user = User.find_for_facebook_oauth(@facebook_valid, 'ios')
+      it 'creates an app invite' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
         expect(user.reload.app_invite).to_not be_nil
-        expect(user.app_invite.device_type).to eql(:ios)
-      end
-
-      it 'creates an app invite if the user is Android' do
-        user = User.find_for_facebook_oauth(@facebook_valid, 'android')
-        expect(user.reload.app_invite).to_not be_nil
-        expect(user.app_invite.device_type).to eql(:android)
       end
     end
 
@@ -238,21 +221,9 @@ describe User do
   describe '.add_app_invite!' do
     before { @facebook_valid = OmniAuth.config.mock_auth[:facebook] }
 
-    it 'does not create an app invite for a new user if the device is not specified' do
+    it 'creates an app invite for a new user' do
       user = User.find_for_facebook_oauth(@facebook_valid)
-      expect(user.reload.app_invite).to be_nil
-    end
-
-    it 'creates an app invite for a new user if they have an iOS device' do
-      user = User.find_for_facebook_oauth(@facebook_valid, 'ios')
       expect(user.reload.app_invite).to_not be_nil
-      expect(user.app_invite.device_type).to eql(:ios)
-    end
-
-    it 'creates an app invite for a new user if they have an android' do
-      user = User.find_for_facebook_oauth(@facebook_valid, 'android')
-      expect(user.reload.app_invite).to_not be_nil
-      expect(user.app_invite.device_type).to eql(:android)
     end
   end
 

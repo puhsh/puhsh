@@ -46,10 +46,9 @@ class User < ActiveRecord::Base
   set :post_ids_with_offers
   set :user_ids_followed
   set :user_ids_following_self
-  value :mobile_device_type
 
   # Methods
-  def self.find_for_facebook_oauth(auth, device_type = nil)
+  def self.find_for_facebook_oauth(auth)
     auth = HashWithIndifferentAccess.new(auth)
 
     user = User.where(uid: auth[:id]).first
@@ -64,12 +63,6 @@ class User < ActiveRecord::Base
         user.facebook_email = auth[:email]
       end
       
-      # Store the mobile device type in redis
-      if user && device_type
-        user.mobile_device_type.value = device_type
-      end
-
-      # Add the app invite
       user.add_app_invite!
       user
     else
@@ -104,12 +97,7 @@ class User < ActiveRecord::Base
   end
 
   def add_app_invite!
-    case self.mobile_device_type.value
-    when 'ios', 'android'
-      AppInvite.create!(user: self, status: :inactive, device_type: self.mobile_device_type.value)
-    else
-      nil
-    end
+    AppInvite.create!(user: self, status: :inactive)
   end
 
   def following?(user)

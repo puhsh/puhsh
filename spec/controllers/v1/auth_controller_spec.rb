@@ -78,18 +78,6 @@ describe V1::AuthController do
           expect(assigns[:user].access_token.expired?).to be_false
         end
       end
-
-      it 'sets the mobile device for a user if one if specified' do
-        VCR.use_cassette('/v1/auth/new_user_mobile_device') do
-          user = test_users.create(true)
-          user.merge!({'first_name' => 'test', 'last_name' => 'testlast', 'name' => 'test testlast','email' => 'test@test.local', 'verified' => 'true' })
-          FacebookTestUser.create(fbid: user['id'])
-
-          request.env['HTTP_AUTHORIZATION'] = user['access_token']
-          post :create, { facebook_id: user['id'], device_type: 'ios' }, format: :json
-          expect(assigns[:user].reload.mobile_device_type.value).to eql('ios')
-        end
-      end
     end
 
     context 'with invalid FB access token' do
