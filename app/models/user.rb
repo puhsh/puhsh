@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   has_many :followers, class_name: 'Follow', foreign_key: 'followed_user_id'
 
   # Callbacks
-  after_commit :set_home_city
-  after_create :add_default_role
+  after_commit :set_home_city, on: :create
+  after_commit :add_default_role, on: :create
   after_validation :geocode
 
   # Validations
