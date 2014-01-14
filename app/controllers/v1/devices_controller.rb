@@ -8,7 +8,7 @@ class V1::DevicesController < V1::ApiController
     
     if @existing_devices.blank?
       @device = Device.new(user: current_user, device_token: params[:device_token])
-      @device.device_type = params[:type] || :ios
+      @device.device_type = params[:device_type] || 'ios'
       if @device.save
         render json: @device
       else

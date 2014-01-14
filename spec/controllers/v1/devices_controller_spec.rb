@@ -45,7 +45,7 @@ describe V1::DevicesController do
 
     it 'sets the device type if it is specified' do
       sign_in user
-      post :create, { device_token: '12345', access_token: access_token.token, type: 'android'}, format: :json
+      post :create, { device_token: '12345', access_token: access_token.token, device_type: 'android'}, format: :json
       expect(assigns[:device].reload.device_type).to eql(:android)
     end
   end
