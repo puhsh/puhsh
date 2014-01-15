@@ -14,7 +14,7 @@ class Device < ActiveRecord::Base
     return unless message && event && device_valid?
 
     if self.android?
-      self.send_android_notification(message, event)
+      self.send_gcm_notification(message, event)
     else
       self.send_apn_notification(message, event)
     end
@@ -53,6 +53,11 @@ class Device < ActiveRecord::Base
     n.save!
   end
 
-  def send_android_notification(message, event)
+  def send_gcm_notification(message, event)
+    n = Rapns::Gcm::Notification.new
+    n.app = Rapns::Gcm::App.find_by_name(apn_app_name)
+    n.registration_ids = [self.device_token]
+    n.data = { message: message }
+    n.save!
   end
 end
