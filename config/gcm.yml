@@ -1,5 +1,5 @@
 common: &default_settings
-  key: 'AIzaSyA9v3oPipmFuXyfvpGouvALSICfksiT5wo'
+  key: 'AIzaSyCWKWIqzZwOGBmrhecvZkP0ugel3HqB6us'
 
 development:
   <<: *default_settings
