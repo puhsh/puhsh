@@ -11,12 +11,12 @@ class Device < ActiveRecord::Base
   validates :device_token, presence: true
 
   def fire_notification!(message, event)
-    return unless message && event && device_valid?
-
-    if self.android?
+    if self.android? && message
       self.send_gcm_notification(message)
-    else
+    elsif self.ios? && message && event
       self.send_apn_notification(message, event)
+    else
+      nil
     end
   end
 
@@ -30,16 +30,6 @@ class Device < ActiveRecord::Base
       Rails.env.production? ? 'puhsh_android' : "puhsh_android_development"
     else
       nil
-    end
-  end
-
-  def device_valid?
-    failed_device = Rapns::Apns::Feedback.find_by_device_token(self.device_token)
-    if failed_device.present?
-      self.destroy
-      false
-    else
-      true
     end
   end
 
