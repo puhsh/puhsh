@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
   symbolize :payment_type, in: [both: 'Insta-Payment & Cash', cash: 'Cash Only', insta_payment: 'Insta-Payment Only', free: 'Item is Free'],
             methods: true, scope: false, i18n: false, validate: false
 
+  # TODO Add Status triggered by the offer state
+  # status = [:for_sale, :offer_accepted, :withdrawn_by_seller]
+
   # Relations
   has_many :items, dependent: :destroy
   belongs_to :user, counter_cache: :posts_count
