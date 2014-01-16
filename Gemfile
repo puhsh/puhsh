@@ -30,6 +30,9 @@ gem 'paperclip', '3.5.2'
 gem 'gibbon', '1.0.4'
 gem 'mandrill-api', '~> 1.0.49'
 
+# APN / GCM
+gem 'rapns', '3.4.1'
+
 # Peek
 gem 'peek', '0.1.6'
 gem 'peek-git', '1.0.2'
@@ -90,7 +93,6 @@ gem 'koala', '1.6.0'
 gem 'money-rails', '0.9.0'
 gem 'newrelic_rpm', '3.5.8.72'
 gem 'rails_warden', '0.5.7'
-gem 'rapns', '3.4.1'
 gem 'redis-objects', '0.8.0'
 gem 'rolify', '3.2.0'
 gem 'statsd-ruby', '1.2.1'
