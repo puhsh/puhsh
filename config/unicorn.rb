@@ -2,7 +2,7 @@
 worker_processes 4
 
 # Rails ENV
-rails_env = ENV['RAILS_ENV']
+rails_env = Rails.env
 
 # App Directory (via Capistrano)
 working_directory rails_env == 'production' ? '/web/puhsh/current' : "/web/#{rails_env}.puhsh/current"
