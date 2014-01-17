@@ -10,6 +10,10 @@ test:
   <<: *default_settings
   bucket: puhsh_test
 
+sandbox:
+  <<: *default_settings
+  bucket: puhsh_sandbox
+
 production:
   <<: *default_settings
   bucket: puhsh

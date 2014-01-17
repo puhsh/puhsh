@@ -11,7 +11,6 @@ set :keep_releases, 10
 set :repository, 'git@github.com:puhsh/puhsh.git'
 set :scm, :git
 set :branch, 'master'
-set :deploy_to, '/web/puhsh'
 set :bundle_without, [:development,:test]
 set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
@@ -43,7 +42,20 @@ ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/id_rsa"]
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
-server '75.126.213.98', :web, :app, :db, primary: true
+desc "Deploy to sandbox (usage: cap sandbox deploy)"
+task :sandbox do
+  set :default_shell, '/bin/bash -l'
+  set :rails_env, 'sandbox'
+  set :deploy_to, "/web/#{rails_env}.#{application}"
+  server '50.23.243.59', :web, :app, :db, primary: true
+end
+
+desc "Deploy to production (usage: cap prod deploy)"
+task :prod do
+  set :rails_env, 'production'
+  set :deploy_to, "/web/#{application}"
+  server '75.126.213.98', :web, :app, :db, primary: true
+end
 
 namespace :deploy do
 
