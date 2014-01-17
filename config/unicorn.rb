@@ -2,7 +2,7 @@
 worker_processes 4
 
 # App Directory (via Capistrano)
-working_directory '/web/puhsh/current'
+working_directory Rails.env.production? ? '/web/puhsh/current' : "/web/#{Rails.env}.puhsh/current"
 
 # Load app in master process
 preload_app true
