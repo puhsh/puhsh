@@ -87,7 +87,7 @@ namespace :deploy do
   end
 
   task :start_rapns do
-    run 'cd /web/puhsh/current && bundle exec rapns production'
+    run "cd #{latest_relase} && bundle exec rapns #{Rails.env}"
   end
 
   # Compliments of https://gist.github.com/mrpunkin/2784462
