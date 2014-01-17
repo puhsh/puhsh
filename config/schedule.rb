@@ -11,5 +11,5 @@
 ##################
 
 every :day, at: '1:30 am', roles: [:app]  do
-  rake 'db:backup'
+  rake 'db:backup', environment: 'production'
 end
