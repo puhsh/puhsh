@@ -87,7 +87,7 @@ namespace :deploy do
   end
 
   task :start_rapns do
-    run "cd #{latest_release} && bundle exec rapns #{Rails.env}"
+    run "cd #{current_path} && bundle exec rapns #{rails_env}"
   end
 
   # Compliments of https://gist.github.com/mrpunkin/2784462
