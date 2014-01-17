@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   protected 
 
   def check_if_production
-    redirect_to 'www.puhsh.com' unless Rails.env.production?
+    redirect_to 'http://www.puhsh.com' unless Rails.env.production?
   end
 end
