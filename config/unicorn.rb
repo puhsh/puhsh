@@ -2,7 +2,7 @@
 worker_processes 4
 
 # Rails ENV
-rails_env = Rails.env
+rails_env = ENV['RAILS_ENV']
 
 # App Directory (via Capistrano)
 working_directory rails_env == 'production' ? '/web/puhsh/current' : "/web/#{rails_env}.puhsh/current"
@@ -13,7 +13,7 @@ preload_app true
 # Timeout in seconds to nuke workers
 timeout 30
 
-# Logging locations
+# Logging locations 
 if rails_env == 'production'
   stderr_path "/web/puhsh/shared/log/unicorn.stderr.log"
   stdout_path "/web/puhsh/shared/log/unicorn.stdout.log"
@@ -21,19 +21,6 @@ else
   stderr_path "/web/#{rails_env}.puhsh/shared/log/unicorn.stderr.log"
   stdout_path "/web/#{rails_env}.puhsh/shared/log/unicorn.stdout.log"
 end
-
-# App Directory (via Capistrano)
-working_directory ENV['PWD']
-
-# Load app in master process
-preload_app true
-
-# Timeout in seconds to nuke workers
-timeout 30
-
-# Logging locations 
-stderr_path '/web/puhsh/shared/log/unicorn.stderr.log'
-stdout_path '/web/puhsh/shared/log/unicorn.stdout.log'
 
 # Listener on unix domain socket / TCP port
 listen "/tmp/unicorn.puhsh.sock", :backlog => 64
