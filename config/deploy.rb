@@ -2,7 +2,6 @@ require './config/boot'
 require 'rvm/capistrano' 
 require 'bundler/capistrano'
 require 'hipchat/capistrano'
-require 'whenever/capistrano'
 require 'airbrake/capistrano'
 require 'new_relic/recipes'
 
@@ -24,6 +23,16 @@ set :use_sudo, true
 set :max_asset_age, 2 
 set :cold_deploy, false
 
+# HipChat settngs
+set :hipchat_token, 'cc96625c3ca88a6ac4d79958addc4c'
+set :hipchat_room_name, 'Fun Town'
+set :hipchat_announce, false
+set :hipchat_color, 'yellow'
+set :hipchat_success_color, 'green'
+set :hipchat_failed_color, 'red'
+set :hipchat_message_format, 'text'
+set :hipchat_client, HipChat::Client.new(hipchat_token)
+
 ssh_options[:keys] = ["#{ENV["HOME"]}/.ssh/id_rsa"]
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
@@ -38,19 +47,10 @@ end
 
 desc "Deploy to production (usage: cap prod deploy)"
 task :prod do
+  require 'whenever/capistrano'
   set :rails_env, 'production'
   set :deploy_to, "/web/#{application}"
   server '75.126.213.98', :web, :app, :db, primary: true
-
-  # HipChat settngs
-  set :hipchat_token, 'cc96625c3ca88a6ac4d79958addc4c'
-  set :hipchat_room_name, 'Fun Town'
-  set :hipchat_announce, false
-  set :hipchat_color, 'yellow'
-  set :hipchat_success_color, 'green'
-  set :hipchat_failed_color, 'red'
-  set :hipchat_message_format, 'text'
-  set :hipchat_client, HipChat::Client.new(hipchat_token)
 
   # CRON
   set :whenever_command, 'bundle exec whenever'
