@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   include BadgeRewardable
   include Redis::Objects
 
-  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :category_id, :subcategory, :subcategory_id, :city, :user_id, :items_attributes, :user, :post_images_attributes
+  attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :category_id, :subcategory, :subcategory_id, :city, :user_id, :item_attributes, :user, :post_images_attributes
   symbolize :pick_up_location, in: [porch: 'Porch Pick Up', public_location: 'Meet at Public Location', house: 'Pickup at House', other: 'Other'],
             methods: true, scope: false, i18n: false, validate: false
 

@@ -142,14 +142,14 @@ describe V1::PostsController do
 
       it 'creates a free item associated with the post' do
         sign_in user
-        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id, items_attributes: [{ price_cents: 0.00}] }, access_token: access_token.token }, format: :json
-        expect(assigns[:post].reload.items).to_not be_empty
+        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id, item_attributes: { price_cents: 0.00} }, access_token: access_token.token }, format: :json
+        expect(assigns[:post].reload.item).to_not be_nil
       end
 
       it 'creates a paid item associated with the post' do
         sign_in user
-        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id, items_attributes: [{ price_cents: 10.00}] }, access_token: access_token.token }, format: :json
-        expect(assigns[:post].reload.items).to_not be_empty
+        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id, item_attributes: { price_cents: 10.00} }, access_token: access_token.token }, format: :json
+        expect(assigns[:post].reload.item).to_not be_nil
       end
     end
   end

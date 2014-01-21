@@ -31,7 +31,7 @@ class V1::UsersController < V1::ApiController
   end
 
   def activity
-    @posts = Post.includes(:items, :user).for_users_or_cities(current_user.users_following, current_user.cities_following).exclude_user(current_user).recent
+    @posts = Post.includes(:item, :user).for_users_or_cities(current_user.users_following, current_user.cities_following).exclude_user(current_user).recent
     render_paginated @posts
   end
 end

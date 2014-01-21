@@ -1,7 +1,7 @@
 class PostSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :pick_up_location, :payment_type, :flags_count, :created_at, :user, :category_name, :subcategory_name
 
-  has_many :items
+  has_one :item
   has_many :post_images
 
   def user
