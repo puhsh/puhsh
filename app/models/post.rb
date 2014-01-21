@@ -43,6 +43,7 @@ class Post < ActiveRecord::Base
 
   # Nested Attributes
   accepts_nested_attributes_for :items
+  accepts_nested_attributes_for :post_images
 
   # Redis Attributes
   set   :offer_ids
