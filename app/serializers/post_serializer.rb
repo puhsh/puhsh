@@ -15,4 +15,8 @@ class PostSerializer < ActiveModel::Serializer
   def subcategory_name
     object.subcategory_name.value
   end
+
+  def post_images
+    object.post_images.map { |x| x.image.try(&:url) }
+  end
 end

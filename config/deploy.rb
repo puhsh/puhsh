@@ -121,5 +121,3 @@ end
 # Before / After Tasks
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
 after "deploy:finalize_update", "deploy:assets:determine_modified_assets", "deploy:assets:conditionally_precompile"
-after 'deploy:restart', 'deploy:stop_rapns'
-after 'deploy:stop_rapns', 'deploy:start_rapns'
