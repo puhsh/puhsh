@@ -29,6 +29,7 @@ class V1::ApiController < ActionController::Metal
   end
 
   rescue_from Koala::Facebook::APIError, with: :forbidden!
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found!
 
   def verify_access_token
     if current_user.access_token.token == params[:access_token]
