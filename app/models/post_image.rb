@@ -4,7 +4,7 @@ class PostImage < ActiveRecord::Base
   # Paperclip Attributes
   has_attached_file :image,
                     styles: {},
-                    path: "/post_images/:id.png"
+                    path: "posts/:post_id/post_images/:id.png"
 
   # Relations
   belongs_to :post
