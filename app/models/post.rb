@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   # status = [:for_sale, :offer_accepted, :withdrawn_by_seller]
 
   # Relations
-  has_many :items, dependent: :destroy
+  has_one :item, dependent: :destroy
   belongs_to :user, counter_cache: :posts_count
   belongs_to :city
   has_many :flagged_posts, dependent: :destroy
@@ -42,7 +42,7 @@ class Post < ActiveRecord::Base
   scope :exclude_user, ->(user) { where('user_id != ?', user) }
 
   # Nested Attributes
-  accepts_nested_attributes_for :items
+  accepts_nested_attributes_for :item
   accepts_nested_attributes_for :post_images
 
   # Redis Attributes
@@ -67,6 +67,10 @@ class Post < ActiveRecord::Base
   # multiple items
   def activity
     (offers + questions).sort_by(&:created_at)
+  end
+
+  def image_urls
+    self.post_images.map { |x| x.image.urls }
   end
 
   protected

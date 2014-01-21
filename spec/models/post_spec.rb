@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Post do
   it { should belong_to(:user) }
-  it { should have_many(:items) }
+  it { should have_one(:item) }
   it { should belong_to(:city) }
   it { should have_many(:flagged_posts) }
   it { should belong_to(:category) }
