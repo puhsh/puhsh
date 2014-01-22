@@ -1,13 +1,10 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :pick_up_location, :payment_type, :flags_count, :created_at, :user, :category_name, :subcategory_name
+  attributes :id, :title, :description, :pick_up_location, :payment_type, :flags_count, :created_at, :category_name, :subcategory_name
 
   has_one :item
   has_one :city
   has_many :post_images
-
-  def user
-    object.user
-  end
+  has_one :user, serializer: PostUserSerializer
 
   def category_name
     object.category_name.value
