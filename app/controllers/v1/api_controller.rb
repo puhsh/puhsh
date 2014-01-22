@@ -56,7 +56,7 @@ class V1::ApiController < ActionController::Metal
       first_page_url: first_page_url
     }
 
-    respond_with items, root: 'items', meta: pagination_hash
+    render json: items, root: 'items', meta: pagination_hash
   end
 
   protected
