@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   has_many :followers, class_name: 'Follow', foreign_key: 'followed_user_id'
 
   # Callbacks
-  after_commit :set_home_city, on: :create
+  before_save :set_home_city
   after_commit :add_default_role, on: :create
   after_validation :geocode
 
@@ -138,8 +138,8 @@ class User < ActiveRecord::Base
     if self.zipcode && (self.home_city.blank? || self.zipcode_changed?)
       zip = Zipcode.near(self, 5).first
       if zip
-        self.update_attributes(home_city: zip.city)
-        self.reload.home_city.follow!(self)
+        self.home_city = zip.city
+        self.home_city.follow!(self)
       end
     end
   end
