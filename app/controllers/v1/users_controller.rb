@@ -17,7 +17,7 @@ class V1::UsersController < V1::ApiController
     if @user.update_attributes(params[:user])
       render json: @user.reload
     else
-      not_acceptable!
+      bad_request!(@user.errors.messages)
     end
   end
 
