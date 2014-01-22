@@ -69,10 +69,6 @@ class Post < ActiveRecord::Base
     (offers + questions).sort_by(&:created_at)
   end
 
-  def image_urls
-    self.post_images.map { |x| x.image.urls }
-  end
-
   protected
 
   # Default to Kids Stuff category since that is the only

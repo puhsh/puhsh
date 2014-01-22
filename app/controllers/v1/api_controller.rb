@@ -56,7 +56,7 @@ class V1::ApiController < ActionController::Metal
       first_page_url: first_page_url
     }
 
-    render json: { items: items }.merge(pagination_hash)
+    respond_with items, root: 'items', meta: pagination_hash
   end
 
   protected
