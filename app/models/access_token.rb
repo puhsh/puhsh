@@ -17,7 +17,7 @@ class AccessToken < ActiveRecord::Base
 
   def generate_token
     if self.token.blank? || self.expired?
-      self.update_attributes(token: SecureRandom.hex, expires_at: DateTime.now.in(2.weeks))
+      self.update_attributes(token: SecureRandom.hex, expires_at: DateTime.now.in(60.days))
     end
   end
 end

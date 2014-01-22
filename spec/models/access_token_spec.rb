@@ -25,7 +25,7 @@ describe AccessToken do
     let!(:existing_access_token) { FactoryGirl.create(:access_token, user: user) }
 
     it 'if it has been two weeks' do
-      Timecop.travel(Date.today + 3.weeks) do
+      Timecop.travel(Date.today + 10.weeks) do
         expect(existing_access_token).to be_expired
       end
     end
