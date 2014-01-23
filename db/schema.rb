@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140114184756) do
+ActiveRecord::Schema.define(:version => 20140123024039) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20140114184756) do
     t.string   "description"
     t.string   "pick_up_location"
     t.string   "payment_type"
+    t.string   "status"
     t.integer  "flags_count",      :default => 0
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
