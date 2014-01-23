@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
   symbolize :payment_type, in: [both: 'Insta-Payment & Cash', cash: 'Cash Only', insta_payment: 'Insta-Payment Only', free: 'Item is Free'],
             methods: true, scope: false, i18n: false, validate: false
 
-  symbolize :status, in: [:for_sale, :offer_accepted, :withdrawn_by_seller], methods: true, scope: false, validate: false, default: :for_sale
+  symbolize :status, in: [:for_sale, :offer_accepted, :withdrawn_by_seller, :sold], methods: true, scope: false, validate: false, default: :for_sale
 
   # Relations
   has_one :item, dependent: :destroy
@@ -60,6 +60,11 @@ class Post < ActiveRecord::Base
 
   def activity
     (offers + questions).sort_by(&:created_at)
+  end
+
+  def update_status!(status)
+    return self unless status
+    self.update_attributes(status: status)
   end
 
   protected
