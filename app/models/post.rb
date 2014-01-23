@@ -51,20 +51,14 @@ class Post < ActiveRecord::Base
   value :category_name
   value :subcategory_name
 
-  # TODO Once we support multiple items in a post, this
-  # method might not be needed or might need to be refactored
   def offers
     Offer.where(id: offer_ids.members)
   end
   
-  # TODO Once we support multiple items in a post, this
-  # method might not be needed or might need to be refactored
   def questions 
     Question.where(id: question_ids.members)
   end
 
-  # TODO This will probably need to be refactored once we support
-  # multiple items
   def activity
     (offers + questions).sort_by(&:created_at)
   end
