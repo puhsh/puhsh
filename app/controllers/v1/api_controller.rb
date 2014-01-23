@@ -100,7 +100,7 @@ class V1::ApiController < ActionController::Metal
   end
 
   def next_page_url(total_pages, current_page)
-    current_page >= total_pages ? nil : url_for(page: page + 1)
+    current_page >= total_pages ? nil : url_for(page: current_page + 1)
   end
 
   def current_page_url(current_page)

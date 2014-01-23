@@ -80,8 +80,8 @@ class User < ActiveRecord::Base
     end
   end
   
-  def nearby_cities(radius = 20)
-    Zipcode.includes(:city).near(self, radius).map(&:city).uniq
+  def nearby_cities(radius = 10)
+    City.where(id: Zipcode.includes(:city).near(self, radius).map(&:city_id).uniq)
   end
 
   def admin?
