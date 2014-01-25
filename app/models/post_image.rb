@@ -4,6 +4,7 @@ class PostImage < ActiveRecord::Base
   # Paperclip Attributes
   has_attached_file :image,
                     styles: {},
+                    s3_permissions: :public_read,
                     path: "posts/:post_id/post_images/:id.png"
 
   # Relations
