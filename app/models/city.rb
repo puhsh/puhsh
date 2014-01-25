@@ -21,12 +21,12 @@ class City < ActiveRecord::Base
   end
   
   # Solr
-  searchable auto_index: true, auto_remove: true do 
-    text :state, :city_name
-    text :zipcode do
-      self.zipcodes
-    end
-  end
+  # searchable auto_index: true, auto_remove: true do 
+  #   text :state, :city_name
+  #   text :zipcode do
+  #     self.zipcodes
+  #   end
+  # end
 
   # Methods
   def follow!(user)
