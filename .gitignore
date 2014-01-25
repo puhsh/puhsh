@@ -24,3 +24,4 @@ config/database.yml
 .ruby-version
 bin/
 Guardfile
+solr/
