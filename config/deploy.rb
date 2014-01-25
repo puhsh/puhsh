@@ -90,6 +90,10 @@ namespace :deploy do
     run "cd #{current_path} && bundle exec rapns #{rails_env}"
   end
 
+  task :setup_solr_data_dir do
+    run "mkdir -p #{shared_path}/solr/data"
+  end
+
   # Compliments of https://gist.github.com/mrpunkin/2784462
   namespace :assets do
     desc "Figure out modified assets."
@@ -116,8 +120,21 @@ namespace :deploy do
       hipchat_client[hipchat_room_name].send('Capistrano', 'Refreshing the sitemap in production.')
     end
   end
+
+  namespace :solr do
+    desc 'start solr'
+    task :start, :roles => :app, :except => { :no_release => true } do
+      run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+    end
+
+    desc 'stop solr'
+    task :stop, :roles => :app, :except => { :no_release => true } do
+      run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+    end
+  end
 end
 
-# Before / After Tasks
+#s Before / After Tasks
+after 'deploy:setup', 'deploy:setup_solr_data_dir'
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
 after "deploy:finalize_update", "deploy:assets:determine_modified_assets", "deploy:assets:conditionally_precompile"
