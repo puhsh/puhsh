@@ -14,9 +14,11 @@ sandbox:
     port: 8982
     log_level: WARNING
     path: '/web/sandbox.puhsh/shared/solr/data'
+    pid_dir: '/tmp/'
 production:
   solr:
     hostname: localhost
     port: 8983
     log_level: WARNING
     path: '/web/puhsh/shared/solr/data'
+    pid_dir: '/tmp/'
