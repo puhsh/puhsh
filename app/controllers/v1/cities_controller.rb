@@ -7,4 +7,9 @@ class V1::CitiesController < V1::ApiController
     @cities = City.where(id: current_user.followed_city_ids.members)
     render_paginated @cities
   end
+
+  def search
+    @cities = City.search(params[:query])
+    render_paginated @cities
+  end
 end

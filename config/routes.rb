@@ -41,6 +41,13 @@ Puhsh::Application.routes.draw do
     resources :followed_cities, only: [:index, :create]
     resources :wall_posts, only: [:create]
 
+    # Cities
+    resources :cities, only: [:search] do
+      collection do
+        get :search
+      end
+    end
+
     # Categories
     resources :categories, only: [:index, :show] do 
       resources :posts
