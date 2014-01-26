@@ -15,18 +15,20 @@ class City < ActiveRecord::Base
   # Scopes
   scope :search, ->(query) do 
     s = Sunspot.search City do
-      fields(:city_name, :state, :zipcode)
+      fulltext query do
+        fields(:city_name, :state, :zipcode)
+      end
     end
     s.results
   end
   
   # Solr
-  # searchable auto_index: true, auto_remove: true do 
-  #   text :state, :city_name
-  #   text :zipcode do
-  #     self.zipcodes
-  #   end
-  # end
+  searchable do 
+    text :state, :city_name
+    text :zipcode do
+      self.zipcodes
+    end
+  end
 
   # Methods
   def follow!(user)
