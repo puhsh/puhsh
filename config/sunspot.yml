@@ -11,7 +11,7 @@ test:
 sandbox:
   solr:
     hostname: localhost
-    port: 8982
+    port: 8983
     log_level: WARNING
     path: '/web/sandbox.puhsh/shared/solr/data'
     pid_dir: '/tmp/'
