@@ -15,6 +15,7 @@ sandbox:
     log_level: WARNING
     path: '/web/sandbox.puhsh/shared/solr/data'
     pid_dir: '/tmp/'
+    solr_home: solr
 production:
   solr:
     hostname: localhost
@@ -22,3 +23,4 @@ production:
     log_level: WARNING
     path: '/web/puhsh/shared/solr/data'
     pid_dir: '/tmp/'
+    solr_home: solr
