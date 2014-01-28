@@ -26,7 +26,7 @@ class City < ActiveRecord::Base
   searchable do 
     text :state, :name
     text :zipcode do
-      self.zipcodes
+      self.zipcodes.collect(&:code)
     end
   end
 
