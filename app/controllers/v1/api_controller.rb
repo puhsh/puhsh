@@ -31,16 +31,6 @@ class V1::ApiController < ActionController::Metal
   rescue_from Koala::Facebook::APIError, with: :forbidden!
   rescue_from ActiveRecord::RecordNotFound, with: :not_found!
 
-  def verify_access_token
-    if current_user.access_token.token == params[:access_token]
-      if current_user.access_token.expired?
-        unauthorized!
-      end
-    else
-      forbidden!('Invalid Access token') 
-    end
-  end
-
   def render_paginated(resource, opts = {})
     defaults = { already_paginated: false }
     opts = defaults.merge(opts)
@@ -70,15 +60,13 @@ class V1::ApiController < ActionController::Metal
 
   protected
 
-  def find_resource_for_posts
-    if params[:category_id]
-      @resource = Category.includes(:posts).find(params[:category_id])
-    elsif params[:subcategory_id]
-      @resource = Subcategory.includes(:posts).find(params[:subcategory_id])
-    elsif params[:user_id]
-      @resource = User.find_by_id(params[:user_id])
+  def verify_access_token
+    if current_user.access_token.token == params[:access_token]
+      if current_user.access_token.expired?
+        unauthorized!
+      end
     else
-      @resource = current_user
+      forbidden!('Invalid Access token') 
     end
   end
 

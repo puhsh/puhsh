@@ -34,4 +34,19 @@ class V1::PostsController < V1::ApiController
     @post = Post.find(params[:id])
     render json: @post.activity
   end
+
+  protected 
+
+  def find_resource_for_posts
+    if params[:category_id]
+      @resource = Category.includes(:posts).find(params[:category_id])
+    elsif params[:subcategory_id]
+      @resource = Subcategory.includes(:posts).find(params[:subcategory_id])
+    elsif params[:user_id]
+      @resource = User.find_by_id(params[:user_id])
+    else
+      @resource = current_user
+    end
+  end
+
 end
