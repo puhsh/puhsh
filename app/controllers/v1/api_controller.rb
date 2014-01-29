@@ -85,7 +85,7 @@ class V1::ApiController < ActionController::Metal
   end
 
   def forbidden!(extra_info = nil)
-    render json: { error: 'Forbidden.', meta: extra_info }, status: :forbidden
+    render json: { error: 'Forbidden.', meta: { message: extra_info } }, status: :forbidden
   end
 
   def not_found!
