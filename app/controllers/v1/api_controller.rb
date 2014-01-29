@@ -41,12 +41,21 @@ class V1::ApiController < ActionController::Metal
     end
   end
 
-  def render_paginated(resource)
-    page = params[:page] || 1
-    per_page = params[:per_page] || 25
-    items = resource.page(page).per(per_page)
-    current_page = items.current_page
-    total_pages = items.total_pages
+  def render_paginated(resource, opts = {})
+    defaults = { already_paginated: false }
+    opts = defaults.merge(opts)
+
+    if opts[:already_paginated]
+      items = resource
+      total_pages = items.total_pages
+      current_page = params[:page].to_i || 1
+    else
+      page = params[:page] || 1
+      per_page = params[:per_page] || 25
+      items = resource.page(page).per(per_page)
+      current_page = items.current_page
+      total_pages = items.total_pages
+    end
 
     pagination_hash = { 
       prev_page_url: prev_page_url(current_page),
@@ -100,7 +109,7 @@ class V1::ApiController < ActionController::Metal
   end
 
   def prev_page_url(current_page)
-    current_page <= 1 ? nil : url_for(page: page - 1)
+    current_page <= 1 ? nil : url_for(page: current_page - 1)
   end
 
   def next_page_url(total_pages, current_page)

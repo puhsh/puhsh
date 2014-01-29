@@ -11,7 +11,7 @@ class V1::CitiesController < V1::ApiController
   def search
     if params[:query]
       @cities = City.search(params[:query], params[:page], params[:per_page])
-      render json: @cities
+      render_paginated @cities, already_paginated: true
     else
       bad_request!('Query param is required.')
     end

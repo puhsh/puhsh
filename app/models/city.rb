@@ -12,15 +12,6 @@ class City < ActiveRecord::Base
   
   # Validations
   
-  # Scopes
-  scope :search, ->(query) do 
-    Sunspot.search City do
-      fulltext query do
-        fields(:name, :state)
-      end
-    end
-  end
-  
   # Solr
   searchable do 
     text :state, :name
@@ -30,6 +21,15 @@ class City < ActiveRecord::Base
   end
 
   # Methods
+  def self.search(query, page = 1, per_page = 25)
+    Sunspot.search City do
+      fulltext query do
+        fields(:name, :state)
+      end
+      paginate page: page, per_page: per_page
+    end.results
+  end
+
   def follow!(user)
     FollowedCity.create({user: user, city: self})
   end
