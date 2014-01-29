@@ -5,7 +5,7 @@ class V1::PostsController < V1::ApiController
   before_filter :find_resource_for_posts, only: [:index]
 
   def index
-    @posts = @resource.posts.recent
+    @posts = @resource.posts.includes(:item, :post_images).recent
     render_paginated @posts
   end
 
