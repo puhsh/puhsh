@@ -109,22 +109,22 @@ class V1::ApiController < ActionController::Metal
   end
 
   def prev_page_url(current_page)
-    current_page <= 1 ? nil : url_for(page: current_page - 1)
+    current_page <= 1 ? nil : url_for(page: current_page - 1, format: :json)
   end
 
   def next_page_url(total_pages, current_page)
-    current_page >= total_pages ? nil : url_for(page: current_page + 1)
+    current_page >= total_pages ? nil : url_for(page: current_page + 1, format: :json)
   end
 
   def current_page_url(current_page)
-    url_for(page: current_page)
+    url_for(page: current_page, format: :json)
   end
   
   def last_page_url(total_pages, current_page)
-    total_pages <= 0 ? url_for(page: current_page) : url_for(page: total_pages)
+    total_pages <= 0 ? url_for(page: current_page, format: :json) : url_for(page: total_pages, format: :json)
   end
 
   def first_page_url
-    url_for(page: 1)
+    url_for(page: 1, format: :json)
   end
 end
