@@ -92,7 +92,7 @@ class V1::ApiController < ActionController::Metal
   end
 
   def bad_request!(extra_info = nil)
-    render json: { error: 'Bad request', meta: extra_info }, status: :bad_request
+    render json: { error: 'Bad request', meta: { message: extra_info } }, status: :bad_request
   end
 
   def prev_page_url(current_page)

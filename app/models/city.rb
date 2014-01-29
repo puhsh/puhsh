@@ -14,12 +14,11 @@ class City < ActiveRecord::Base
   
   # Scopes
   scope :search, ->(query) do 
-    s = Sunspot.search City do
+    Sunspot.search City do
       fulltext query do
-        fields(:name, :state, :zipcode)
+        fields(:name, :state)
       end
     end
-    s.results
   end
   
   # Solr
