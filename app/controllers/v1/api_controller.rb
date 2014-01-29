@@ -75,12 +75,10 @@ class V1::ApiController < ActionController::Metal
       @resource = Category.includes(:posts).find(params[:category_id])
     elsif params[:subcategory_id]
       @resource = Subcategory.includes(:posts).find(params[:subcategory_id])
+    elsif params[:user_id]
+      @resource = User.find_by_id(params[:user_id])
     else
-      if params[:user_id]
-        @resource = User.find_by_id(params[:user_id])
-      else
-        @resource = current_user
-      end
+      @resource = current_user
     end
   end
 
