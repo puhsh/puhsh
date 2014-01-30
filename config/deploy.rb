@@ -148,5 +148,3 @@ end
 after 'deploy:setup', 'deploy:setup_solr_data_dir'
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
 after "deploy:finalize_update", "deploy:assets:determine_modified_assets", "deploy:assets:conditionally_precompile"
-after 'deploy:restart', 'deploy:stop_resque_pool'
-after 'deploy:stop_resque_pool', 'deploy:start_resque_pool'
