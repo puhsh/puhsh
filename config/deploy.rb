@@ -100,13 +100,8 @@ namespace :deploy do
 
   task :stop_resque_pool do
     pid = "#{previous_release}/tmp/pids/resque-pool.pid"
-
-    if remote_file_exists?(pid)
-      sudo "kill -2 `cat #{pid}`; true"
-      puts "Stopping resque-pool"
-    else
-      puts "Resque-pool not running"
-    end
+    sudo "kill -2 `cat #{pid}`; true"
+    puts "Stopping resque-pool"
   end
 
   # Compliments of https://gist.github.com/mrpunkin/2784462
