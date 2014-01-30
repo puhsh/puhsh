@@ -103,6 +103,7 @@ class V1::ApiController < ActionController::Metal
   end
 
   def current_page_url(current_page)
+    current_page = current_page < 1 ? 1 : current_page
     url_for(page: current_page, format: :json)
   end
   

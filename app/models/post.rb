@@ -49,6 +49,24 @@ class Post < ActiveRecord::Base
   set   :question_ids
   value :category_name
   value :subcategory_name
+  
+  # Solr
+  searchable do 
+    text :title, boost: 5.0
+    text :description
+    time :created_at
+  end
+
+  # Methods
+  def self.search(query, page = 1, per_page = 25)
+    Sunspot.search Post do
+      fulltext query do
+        fields(:title, :description)
+      end
+      order_by :created_at, :desc
+      paginate page: page, per_page: per_page
+    end.results
+  end
 
   def offers
     Offer.where(id: offer_ids.members)

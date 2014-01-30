@@ -60,6 +60,9 @@ Puhsh::Application.routes.draw do
 
     # Posts
     resources :posts do
+      collection do
+        get :search
+      end
       member do
         get :activity
       end
