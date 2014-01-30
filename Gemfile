@@ -10,7 +10,8 @@ gem 'mysql2', '0.3.14'
 gem 'redis', '3.0.6'
 
 # Resque
-gem 'resque', '~> 2.0.0.pre.1', github: 'resque/resque'
+gem 'resque', '1.25.1'
+gem 'resque-pool', '0.3.0'
 
 # View Engine
 gem 'haml', '4.0.4'

@@ -94,6 +94,21 @@ namespace :deploy do
     run "mkdir -p #{shared_path}/solr/data"
   end
 
+  task :start_resque_pool do
+    run "cd #{current_path};bundle exec resque-pool --daemon --environment #{rails_env}"
+  end
+
+  task :stop_resque_pool do
+    pid = "#{previous_release}/tmp/pids/resque-pool.pid"
+
+    if remote_file_exists?(pid)
+      sudo "kill -2 `cat #{pid}`; true"
+      puts "Stopping resque-pool"
+    else
+      puts "Resque-pool not running"
+    end
+  end
+
   # Compliments of https://gist.github.com/mrpunkin/2784462
   namespace :assets do
     desc "Figure out modified assets."
@@ -138,3 +153,5 @@ end
 after 'deploy:setup', 'deploy:setup_solr_data_dir'
 after 'deploy:finalize_update', 'deploy:symlink_database_config'
 after "deploy:finalize_update", "deploy:assets:determine_modified_assets", "deploy:assets:conditionally_precompile"
+after 'deploy:restart', 'deploy:stop_resque_pool'
+after 'deploy:stop_resque_pool', 'deploy:start_resque_pool'
