@@ -61,11 +61,13 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano', '2.15.5'
+  gem 'capistrano', '3.1'
+  gem 'capistrano-rvm', '0.1.1'
+  gem 'capistrano-bundler', '1.1.1'
+  gem 'capistrano-rails', '~> 1.1'
   gem 'guard', '2.2.5'
   gem 'guard-rspec', '4.2.3'
   gem 'ruby_gntp'
-  gem 'rvm-capistrano', '1.5.1', require: false
 end
 
 group :test do

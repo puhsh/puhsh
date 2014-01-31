@@ -1,4 +1,13 @@
-load 'deploy'
-load 'deploy/assets'
-Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
-load 'config/deploy'
+# Load DSL and Setup Up Stages
+require 'capistrano/setup'
+
+# Includes default deployment tasks
+require 'capistrano/deploy'
+
+require 'capistrano/rvm'
+require 'capistrano/rails'
+require 'capistrano/bundler'
+require 'whenever/capistrano'
+
+# Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
+Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
