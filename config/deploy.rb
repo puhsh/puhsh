@@ -16,7 +16,7 @@ set :use_sudo, true
 set :bundle_without, [:development,:test]
 set :git_shallow_clone, 1
 set :git_enable_submodules, 1
-set :rvm_ruby_version, 'ruby-2.0.0-p247@puhsh'
+set :rvm_ruby_version, '2.0.0-p247@puhsh'
 set :max_asset_age, 2 
 
 set :ssh_options, {
