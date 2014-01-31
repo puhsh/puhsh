@@ -55,14 +55,14 @@ namespace :deploy do
   desc 'Stop Solr'
   task :stop_solr do
     on roles(:web), wait: 5 do
-      execute "cd #{release_path} && bundle exec sunspot-solr stop --port=8983 --pid-dir=tmp/pids"
+      execute "bundle exec sunspot-solr stop --port=8983 --pid-dir=tmp/pids"
     end
   end
 
   desc 'Start Solr'
   task :start_solr do
     on roles(:web), wait: 5 do
-      execute "cd #{release_path} && bundle exec sunspot-solr start --port=8983 --pid-dir=tmp/pids"
+      execute "cd #{release_path}; RAILS_ENV=production bundle exec sunspot-solr start --port=8983 --pid-dir=tmp/pids --data-directory=solr/data"
     end
   end
 
