@@ -13,12 +13,10 @@ sandbox:
     hostname: localhost
     port: 8983
     log_level: WARNING
-    pid_dir: '/web/sandbox.puhsh/shared/pids/'
     solr_home: solr
 production:
   solr:
     hostname: localhost
     port: 8983
     log_level: WARNING
-    pid_dir: '/web/puhsh/shared/pids/'
     solr_home: solr
