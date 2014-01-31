@@ -9,7 +9,7 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :debug
 set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system solr}
 set :scm, :git
 set :use_sudo, true
 
