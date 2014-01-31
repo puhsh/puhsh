@@ -33,7 +33,7 @@ namespace :deploy do
     end
   end
 
-  desc 'Restart nginx' do
+  desc 'Restart nginx'
   task :restart_nginx do
     on roles(:app), wait: 5 do
       execute 'sudo service nginx restart'
