@@ -101,5 +101,5 @@ namespace :deploy do
 
   after :finished, :restart
   after :restart, :restart_rapns
-  # after :restart_rapns, :restart_resque_pool
+  after :restart_rapns, :restart_resque_pool
 end
