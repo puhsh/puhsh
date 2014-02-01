@@ -30,7 +30,7 @@ before_fork do |server, worker|
     ActiveRecord::Base.connection.disconnect!
 
   # Rolling restarts
-  old_pid = '/tmp/unicorn.puhsh.pid.oldbin'
+  old_pid = "#{rails_root}/tmp/pids/unicorn.puhsh.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       server.logger.info("sending QUIT to #{old_pid}")
