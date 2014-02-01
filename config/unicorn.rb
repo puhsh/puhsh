@@ -2,7 +2,7 @@
 worker_processes 4
 
 # App Directory (via Capistrano)
-rails_root = Rails.root.to_s
+rails_root = `pwd`.gsub("\n", "")
 working_directory rails_root
 
 # Load app in master process
