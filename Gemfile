@@ -54,6 +54,7 @@ group :development, :test do
   gem 'factory_girl_rails', '4.3.0'
   gem 'fakeredis', '0.4.3'
   gem 'rspec-rails', '2.14.1'
+  gem 'resque_spec', '0.14.4'
   gem 'shoulda', '3.5.0'
   gem 'spork', '1.0.0rc4'
   gem 'timecop', '0.7.1'

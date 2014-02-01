@@ -306,6 +306,11 @@ GEM
       rake
       resque (~> 1.20)
       trollop (~> 1.16)
+    resque_spec (0.14.4)
+      resque (>= 1.19.0)
+      rspec-core (>= 2.5.0)
+      rspec-expectations (>= 2.5.0)
+      rspec-mocks (>= 2.5.0)
     rolify (3.2.0)
     rsolr (1.0.9)
       builder (>= 2.1.2)
@@ -454,6 +459,7 @@ DEPENDENCIES
   redis-objects (= 0.8.0)
   resque (= 1.25.1)
   resque-pool (= 0.3.0)
+  resque_spec (= 0.14.4)
   rolify (= 3.2.0)
   rspec-rails (= 2.14.1)
   ruby_gntp
