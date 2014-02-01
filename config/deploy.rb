@@ -91,10 +91,10 @@ namespace :deploy do
 
   desc 'Stop Solr'
   task :stop_solr do
-    on roles(:solr), in: :sequence, wait: 5 do
+    on roles(:web, :solr), in: :sequence, wait: 5 do
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute "bundle exec sunspot-solr stop --port=8983 --pid-dir=tmp/pids"
+          execute :bundle, :exec, "sunspot-solr stop --port=8983 --pid-dir=tmp/pids"
         end
       end
     end
@@ -102,10 +102,10 @@ namespace :deploy do
 
   desc 'Start Solr'
   task :start_solr do
-    on roles(:solr), wait: 5 do
+    on roles(:web, :solr), wait: 5 do
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute "bundle exec sunspot-solr start --port=8983 --pid-dir=tmp/pids --data-directory=solr/data"
+          execute :bundle, :exec, "sunspot-solr start --port=8983 --pid-dir=tmp/pids --data-directory=#{current_path}/solr/data"
         end
       end
     end
