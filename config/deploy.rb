@@ -29,6 +29,13 @@ namespace :deploy do
     end
   end
 
+  desc 'Reload Unicorn'
+  task :reload_unicorn do
+    on roles(:web, :app), wait: 5 do
+      execute "kill -s HUP `cat #{release_path}/tmp/pids/unicorn.puhsh.pid`"
+    end
+  end
+
   desc 'Restart nginx'
   task :restart_nginx do
     on roles(:web, :app), wait: 5 do
