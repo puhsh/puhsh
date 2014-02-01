@@ -12,5 +12,5 @@ class Category < ActiveRecord::Base
   validates :name, presence: true
   
   # Scopes
-  default_scope where(status: :active)
+  scope :active, -> { where(status: :active) }
 end
