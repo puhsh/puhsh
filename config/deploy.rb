@@ -51,7 +51,7 @@ namespace :deploy do
   end
 
   desc 'Stop the resque pool'
-  task :start_resque_pool do
+  task :stop_resque_pool do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
         execute "kill -s QUIT `cat #{release_path}/tmp/pids/resque-pool.pid`"
