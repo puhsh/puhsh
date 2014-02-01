@@ -23,7 +23,7 @@ namespace :deploy do
   desc 'Restart Unicorn'
   task :restart do
     on roles(:web, :app), wait: 5 do
-      execute 'kill -s USR2 `cat /tmp/unicorn.puhsh.pid`'
+      execute "kill -s USR2 `cat #{release_path}/tmp/pids/unicorn.puhsh.pid`"
     end
   end
 
@@ -36,12 +36,8 @@ namespace :deploy do
 
   desc 'Restart the Rapns daemon for Push Notifications'
   task :restart_rapns do
-    on roles(:app), in: :sequence, wait: 5 do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute 'kill -s HUP `cat /tmp/rapns.puhsh.pid`'
-        end
-      end
+    on roles(:web), in: :sequence, wait: 5 do
+      execute "kill -s HUP `cat #{release_path}/tmp/pids/rapns.puhsh.pid`"
     end
   end
 

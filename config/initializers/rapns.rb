@@ -21,7 +21,7 @@ Rapns.configure do |config|
   config.batch_storage_updates = true
 
   # Path to write PID file. Relative to Rails root unless absolute.
-  config.pid_file = '/tmp/pids/rapns.puhsh.pid'
+  config.pid_file = "#{Rails.root.to_s}/tmp/pids/rapns.puhsh.pid"
 
   # Define a custom logger.
   # config.logger = MyLogger.new
