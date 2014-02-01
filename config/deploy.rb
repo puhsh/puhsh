@@ -41,12 +41,6 @@ namespace :deploy do
     end
   end
 
-  desc 'Start the Rapns daemon for Push Notifications'
-  task :start_rapns do
-    on roles(:app), in: :sequence, wait: 5 do
-    end
-  end
-
   desc 'Stop Solr'
   task :stop_solr do
     on roles(:solr), in: :sequence, wait: 5 do
