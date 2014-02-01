@@ -23,17 +23,28 @@ set :keep_releases, 10
 
 namespace :deploy do
 
+  desc 'Start Unicorn'
+  task :start_unicorn do
+    on roles(:web, :app), wait: 5 do
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, :exec, "unicorn -c config/unicorn.rb -D -E #{fetch(:rails_env)}"
+        end
+      end
+    end
+  end
+
   desc 'Restart Unicorn'
   task :restart do
     on roles(:web, :app), wait: 5 do
-      execute "kill -s USR2 `cat #{release_path}/tmp/pids/unicorn.puhsh.pid`"
+      execute "kill -s USR2 `cat #{current_path}/tmp/pids/unicorn.puhsh.pid`"
     end
   end
 
   desc 'Reload Unicorn'
   task :reload_unicorn do
     on roles(:web, :app), wait: 5 do
-      execute "kill -s HUP `cat #{release_path}/tmp/pids/unicorn.puhsh.pid`"
+      execute "kill -s HUP `cat #{current_path}/tmp/pids/unicorn.puhsh.pid`"
     end
   end
 
@@ -47,15 +58,15 @@ namespace :deploy do
   desc 'Restart the Rapns daemon for Push Notifications'
   task :restart_rapns do
     on roles(:web), in: :sequence, wait: 5 do
-      execute "kill -s HUP `cat #{release_path}/tmp/pids/rapns.puhsh.pid`"
+      execute "kill -s HUP `cat #{current_path}/tmp/pids/rapns.puhsh.pid`"
     end
   end
 
   desc 'Stop the resque pool'
   task :stop_resque_pool do
     on roles(:app), in: :sequence, wait: 5 do
-      within release_path do
-        execute "kill -s QUIT `cat #{release_path}/tmp/pids/resque-pool.pid`"
+      within current_path do
+        execute "kill -s QUIT `cat #{current_path}/tmp/pids/resque-pool.pid`"
       end
     end
   end
@@ -63,7 +74,7 @@ namespace :deploy do
   desc 'Start the resque pool'
   task :start_resque_pool do
     on roles(:app), in: :sequence, wait: 5 do
-      within release_path do
+      within current_path do
         execute :bundle, :exec, "resque-pool --daemon --environment #{fetch(:rails_env)}"
       end
     end
@@ -72,8 +83,8 @@ namespace :deploy do
   desc 'Restart the resque pool'
   task :restart_resque_pool do
     on roles(:app), in: :sequence, wait: 5 do
-      within release_path do
-        execute "kill -s HUP `cat #{release_path}/tmp/pids/resque-pool.pid`"
+      within current_path do
+        execute "kill -s HUP `cat #{current_path}/tmp/pids/resque-pool.pid`"
       end
     end
   end
@@ -81,7 +92,7 @@ namespace :deploy do
   desc 'Stop Solr'
   task :stop_solr do
     on roles(:solr), in: :sequence, wait: 5 do
-      within release_path do
+      within current_path do
         with rails_env: fetch(:rails_env) do
           execute "bundle exec sunspot-solr stop --port=8983 --pid-dir=tmp/pids"
         end
@@ -92,7 +103,7 @@ namespace :deploy do
   desc 'Start Solr'
   task :start_solr do
     on roles(:solr), wait: 5 do
-      within release_path do
+      within current_path do
         with rails_env: fetch(:rails_env) do
           execute "bundle exec sunspot-solr start --port=8983 --pid-dir=tmp/pids --data-directory=solr/data"
         end
