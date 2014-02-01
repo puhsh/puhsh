@@ -34,9 +34,14 @@ namespace :deploy do
     end
   end
 
-  desc 'Stop the Rapns daemon for Push Notifications'
-  task :stop_rapns do
+  desc 'Restart the Rapns daemon for Push Notifications'
+  task :restart_rapns do
     on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute 'kill -s HUP `cat /tmp/rapns.puhsh.pid`'
+        end
+      end
     end
   end
 
@@ -69,5 +74,6 @@ namespace :deploy do
   end
 
   after :finished, :restart
+  after :restart, :restart_rapns
 
 end
