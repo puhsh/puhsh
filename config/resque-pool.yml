@@ -1,4 +1,8 @@
 development:
+  notifications: 1
 test:
+  notifications: 1
 sandbox:
+  notifications: 1
 production:
+  notifications: 1

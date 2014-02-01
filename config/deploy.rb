@@ -50,6 +50,33 @@ namespace :deploy do
     end
   end
 
+  desc 'Stop the resque pool'
+  task :start_resque_pool do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        execute "kill -s QUIT `cat #{release_path}/tmp/pids/resque-pool.pid`"
+      end
+    end
+  end
+
+  desc 'Start the resque pool'
+  task :start_resque_pool do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        execute :bundle, :exec, "resque-pool --daemon --environment #{fetch(:rails_env)}"
+      end
+    end
+  end
+
+  desc 'Restart the resque pool'
+  task :restart_resque_pool do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        execute "kill -s HUP `cat #{release_path}/tmp/pids/resque-pool.pid`"
+      end
+    end
+  end
+
   desc 'Stop Solr'
   task :stop_solr do
     on roles(:solr), in: :sequence, wait: 5 do
@@ -74,5 +101,5 @@ namespace :deploy do
 
   after :finished, :restart
   after :restart, :restart_rapns
-
+  # after :restart_rapns, :restart_resque_pool
 end
