@@ -2,9 +2,9 @@ ActiveAdmin.register_page 'Dashboard' do
   content title: 'Overview' do
     div do
       span do
-        "Recent Users (15)"
+        "Recent Users (25)"
       end
-      table_for User.order('created_at desc').limit(15) do
+      table_for User.order('created_at desc').limit(25) do
         column :id do |user|
           link_to user.id, admin_user_path(user)
         end
