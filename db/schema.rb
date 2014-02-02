@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140123024039) do
+ActiveRecord::Schema.define(:version => 20140202204435) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -125,6 +125,19 @@ ActiveRecord::Schema.define(:version => 20140123024039) do
   end
 
   add_index "items", ["post_id"], :name => "index_items_on_post_id"
+
+  create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.string   "content"
+    t.boolean  "read",         :default => false
+    t.date     "read_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "messages", ["recipient_id"], :name => "index_messages_on_recipient_id"
+  add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
 
   create_table "offers", :force => true do |t|
     t.integer  "user_id"
