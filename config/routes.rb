@@ -33,6 +33,7 @@ Puhsh::Application.routes.draw do
         get :nearby_cities
         get :activity
         get :followers, to: 'followers#index'
+        get :watched_posts
       end
     end
     resources :devices, only: [:create]

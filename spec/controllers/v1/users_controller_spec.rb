@@ -181,4 +181,43 @@ describe V1::UsersController do
       end
     end
   end
+
+  describe '#watched_posts' do
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
+    let!(:category) { FactoryGirl.create(:category) }
+    let!(:subcategory) { FactoryGirl.create(:subcategory, category: Category.first) }
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:post) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
+    let!(:post2) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
+    let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
+    let!(:item2) { FactoryGirl.create(:item, post: post2, price_cents: 1000) }
+    let!(:question) { FactoryGirl.create(:question, item: item, user: user, content: 'Is this item free?') }
+    let!(:offer) { FactoryGirl.create(:offer, item: item2, user: user, amount_cents: 4000) }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        get :watched_posts, { id: user.id }, format: :json
+        expect(assigns[:posts]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        get :watched_posts, { id: user.id }, format: :json
+        expect(assigns[:posts]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'returns all posts the user has made an offer on or has asked a question on' do
+        get :watched_posts, { id: user.id, access_token: access_token.token }, format: :json
+        expect(assigns[:posts]).to include(post)
+        expect(assigns[:posts]).to include(post2)
+      end
+    end
+  end
 end
