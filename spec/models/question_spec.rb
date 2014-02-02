@@ -23,4 +23,16 @@ describe Question do
       expect(post.reload.question_ids.members).to include(question.id.to_s)
     end
   end
+
+  describe '.store_post_id_for_user' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:post) { FactoryGirl.create(:post, user: user) }
+    let(:item) { FactoryGirl.create(:item, post: post) }
+
+    it 'stores the post id in redis for the question' do
+      Question.create(user: user, item: item, content: 'Is this a good item?')
+      expect(user.reload.post_ids_with_questions.members).to include(post.id.to_s)
+    end
+
+  end
 end

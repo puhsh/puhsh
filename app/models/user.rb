@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   # Redis Attributes
   set :followed_city_ids
   set :post_ids_with_offers
+  set :post_ids_with_questions
   set :user_ids_followed
   set :user_ids_following_self
 
