@@ -2,7 +2,7 @@
 worker_processes 4
 
 # App Directory (via Capistrano)
-rails_root = '/web/puhsh/current'
+rails_root = ENV['RACK_ENV'] == 'sandbox' ? '/web/sandbox.puhsh/current' : '/web/puhsh/current'
 working_directory rails_root
 
 # Load app in master process
@@ -30,7 +30,7 @@ before_fork do |server, worker|
     ActiveRecord::Base.connection.disconnect!
 
   # Rolling restarts
-  old_pid = "/web/puhsh/current/tmp/pids/unicorn.puhsh.pid.oldbin"
+  old_pid = "#{rails_root}/tmp/pids/unicorn.puhsh.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       server.logger.info("sending QUIT to #{old_pid}")
