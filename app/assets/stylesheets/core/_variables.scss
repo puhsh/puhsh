@@ -1,17 +1,23 @@
+@import 'core/functions';
+
 //-----------------------------
 // Core Colors
 //-----------------------------
-$lightPink: #f9abd9;
 $pink: #ec008c;
+$lightPink: #f9abd9;
 $tiffany: #60dfe5;
+$green: #00cc33;
 $gold: #ffd700;
-$red: red;
+$orange: #ff9933;
+$red: #cc3333;
+$cyan: #00aeef;
+$lightCyan: #a8e3fa;
 
-$black: #000000;
-$dark: rgba($black, 0.75);
-$mid: rgba($black, 0.50);
-$light: rgba($black, 0.25);
-$white: #ffffff;
+$black: #000;
+$black75: color-opacity($black, 75);
+$black50: color-opacity($black, 50);
+$black25: color-opacity($black, 25);
+$white: #fff;
 
 //-----------------------------
 // Bootstap Custom Variables
