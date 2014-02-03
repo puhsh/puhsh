@@ -44,4 +44,66 @@ describe V1::MessagesController do
     end
 
   end
+
+  describe '#create' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:recipient) { FactoryGirl.create(:user) }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        post :create, { message: { sender_id: user.id, recipient_id: recipient.id, content: 'Test' }}, format: :json
+        expect(assigns[:message]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        post :create, { message: { sender_id: user.id, recipient_id: recipient.id, content: 'Test' }}, format: :json
+        expect(assigns[:message]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'creates a message' do
+        sign_in user
+        post :create, { message: { sender_id: user.id, recipient_id: recipient.id, content: 'Test' }, access_token: access_token.token }, format: :json
+        expect(user.sent_messages).to include(assigns[:message])
+        expect(recipient.received_messages).to include(assigns[:message])
+      end
+    end
+  end
+
+  describe '#update' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:recipient) { FactoryGirl.create(:user) }
+    let!(:message_sent1) { FactoryGirl.create(:message, sender: user, recipient: recipient, content: 'Test') }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        put :update, { id: message_sent1.id }
+        expect(assigns[:message]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        put :update, { id: message_sent1.id }
+        expect(assigns[:message]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'creates a message' do
+        sign_in user
+        put :update, { id: message_sent1.id, access_token: access_token.token }
+        expect(message_sent1.reload).to be_read
+      end
+    end
+  end
 end

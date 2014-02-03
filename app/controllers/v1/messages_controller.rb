@@ -15,4 +15,19 @@ class V1::MessagesController < V1::ApiController
 
     render_paginated @messages
   end
+
+  def create
+    @message = Message.new(params[:message])
+    if @message.save
+      render json: @message
+    else
+      bad_request!
+    end
+  end
+
+  def update
+    @message = Message.find(params[:id])
+    @message.mark_as_read!
+    render json: @message.reload
+  end
 end

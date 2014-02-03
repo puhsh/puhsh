@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  attr_accessible :sender, :sender_id, :recipient, :recipient_id
+  attr_accessible :sender, :sender_id, :recipient, :recipient_id, :content
 
   # Relations
   belongs_to :sender, class_name: 'User', foreign_key: 'sender_id'
