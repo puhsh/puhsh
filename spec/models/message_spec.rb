@@ -43,4 +43,16 @@ describe Message do
       expect(Message.between_sender_and_recipient(sender, recipient)).to include(message2)
     end
   end
+
+  describe '.mark_as_read!' do
+    let!(:sender) { FactoryGirl.create(:user) }
+    let!(:recipient) { FactoryGirl.create(:user) }
+    let!(:message) { FactoryGirl.create(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
+
+    it 'marks a message a read' do
+      message.mark_as_read!
+      expect(message.reload).to be_read
+      expect(message.reload.read_at).to_not be_nil
+    end
+  end
 end

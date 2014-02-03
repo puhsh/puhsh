@@ -17,4 +17,13 @@ class Message < ActiveRecord::Base
   scope :grouped_by_recipient, group(:recipient_id)
   scope :between_sender_and_recipient, ->(sender, recipient) { where('(sender_id = ? and recipient_id = ?) or (sender_id = ? and recipient_id = ?)', sender, recipient, recipient, sender) } 
   scope :recent, order('created_at desc')
+
+  # Methods
+  def mark_as_read!
+    if !self.read?
+      self.read = true
+      self.read_at = DateTime.now
+      self.save
+    end
+  end
 end
