@@ -81,6 +81,9 @@ Puhsh::Application.routes.draw do
     # Follows and Followers
     resources :follows, only: [:index, :create]
     get 'followers', to: 'followers#index'
+
+    # Messages
+    resources :messages, only: [:index, :create, :update]
   end
   
   ###############

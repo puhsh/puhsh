@@ -4,7 +4,7 @@ class PostSerializer < ActiveModel::Serializer
   has_one :item
   has_one :city
   has_many :post_images
-  has_one :user, serializer: PostUserSerializer
+  has_one :user, serializer: SimpleUserSerializer
 
   def category_name
     object.category_name.value

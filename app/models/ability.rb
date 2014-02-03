@@ -38,6 +38,9 @@ class Ability
       
       can :manage, Follow, user_id: user.id
       can :read, Follow
+
+      can :manage, Message, sender_id: user.id
+      can :read, Message, recipient_id: user.id
     end
   end
 end
