@@ -55,4 +55,21 @@ describe Message do
       expect(message.reload.read_at).to_not be_nil
     end
   end
+
+  describe '.mark_all_as_read!' do
+    let!(:sender) { FactoryGirl.create(:user) }
+    let!(:recipient) { FactoryGirl.create(:user) }
+    let!(:message) { FactoryGirl.create(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
+    let!(:message2) { FactoryGirl.create(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
+    let!(:message3) { FactoryGirl.create(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
+    let!(:message4) { FactoryGirl.create(:message, sender: recipient, recipient: sender, content: 'Test message' ) }
+
+    it 'marks all received messages as read' do
+      Message.mark_all_as_read!(recipient)
+      expect(message.reload).to be_read
+      expect(message2.reload).to be_read
+      expect(message3.reload).to be_read
+      expect(message4.reload).to_not be_read
+    end
+  end
 end
