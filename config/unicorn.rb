@@ -37,6 +37,7 @@ before_fork do |server, worker|
       Process.kill("QUIT", File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
       # pid already gone
+      server.logger.info("#{old_pid} already removed")
     end
   end
 end
