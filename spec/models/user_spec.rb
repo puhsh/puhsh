@@ -21,6 +21,7 @@ describe User do
   it { should have_many(:followers) }
   it { should have_many(:sent_messages) }
   it { should have_many(:received_messages) }
+  it { should have_many(:notifications) }
 
   describe '.default_role' do
     let!(:user) { FactoryGirl.build(:user) }

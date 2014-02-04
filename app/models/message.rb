@@ -1,4 +1,5 @@
 class Message < ActiveRecord::Base
+  include Readable
   attr_accessible :sender, :sender_id, :recipient, :recipient_id, :content
 
   # Relations
@@ -17,19 +18,6 @@ class Message < ActiveRecord::Base
   scope :grouped_by_recipient, group(:recipient_id)
   scope :between_sender_and_recipient, ->(sender, recipient) { where('(sender_id = ? and recipient_id = ?) or (sender_id = ? and recipient_id = ?)', sender, recipient, recipient, sender) } 
   scope :recent, order('created_at desc')
-  scope :unread, where(read: false)
-  scope :read, where(read: true)
 
   # Methods
-  def self.mark_all_as_read!(user)
-    Message.unread.by_recipient(user).update_all(read: true, read_at: DateTime.now)
-  end
-
-  def mark_as_read!
-    if !self.read?
-      self.read = true
-      self.read_at = DateTime.now
-      self.save
-    end
-  end
 end

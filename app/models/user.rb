@@ -28,9 +28,10 @@ class User < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   has_many :wall_posts, dependent: :destroy
   has_many :follows, dependent: :destroy
-  has_many :followers, class_name: 'Follow', foreign_key: 'followed_user_id'
-  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
-  has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id'
+  has_many :followers, class_name: 'Follow', foreign_key: 'followed_user_id', dependent: :destroy
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
+  has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id', dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   # Callbacks
   before_save :set_home_city

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140202204435) do
+ActiveRecord::Schema.define(:version => 20140204125734) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -138,6 +138,24 @@ ActiveRecord::Schema.define(:version => 20140202204435) do
 
   add_index "messages", ["recipient_id"], :name => "index_messages_on_recipient_id"
   add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "actor_id"
+    t.string   "actor_type"
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.boolean  "read",         :default => false
+    t.date     "read_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "notifications", ["actor_id"], :name => "index_notifications_on_actor_id"
+  add_index "notifications", ["actor_type"], :name => "index_notifications_on_actor_type"
+  add_index "notifications", ["content_id"], :name => "index_notifications_on_content_id"
+  add_index "notifications", ["content_type"], :name => "index_notifications_on_content_type"
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "offers", :force => true do |t|
     t.integer  "user_id"

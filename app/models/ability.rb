@@ -41,6 +41,10 @@ class Ability
 
       can :manage, Message, sender_id: user.id
       can :read, Message, recipient_id: user.id
+
+      can :manage, Notification, user_id: user.id
+      can :manage, Notification, actor_id: user.id
+      can :read, Notification
     end
   end
 end
