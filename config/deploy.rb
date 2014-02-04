@@ -22,7 +22,6 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :keep_releases, 10
 
 namespace :deploy do
-
   desc 'Start Unicorn'
   task :start_unicorn do
     on roles(:web, :app), wait: 5 do
