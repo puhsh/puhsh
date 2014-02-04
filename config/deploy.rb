@@ -37,7 +37,7 @@ namespace :deploy do
   desc 'Restart Unicorn'
   task :restart do
     on roles(:web, :app), wait: 5 do
-      execute "kill -s USR2 `cat #{current_path}/tmp/pids/unicorn.puhsh.pid`"
+      execute "kill -s USR2 `cat #{release_path}/tmp/pids/unicorn.puhsh.pid`"
     end
   end
 
