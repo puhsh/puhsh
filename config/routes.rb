@@ -29,6 +29,7 @@ Puhsh::Application.routes.draw do
       resources :cities, only: [:index]
       resources :posts
       resources :follows
+      resources :notifications, only: [:index, :update]
       member do
         get :nearby_cities
         get :activity
@@ -84,6 +85,9 @@ Puhsh::Application.routes.draw do
 
     # Messages
     resources :messages, only: [:index, :create, :update]
+
+    # Notifications
+    resources :notifications, only: [:index, :update]
   end
   
   ###############

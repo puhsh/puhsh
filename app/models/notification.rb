@@ -13,4 +13,5 @@ class Notification < ActiveRecord::Base
 
   # Scopes
   scope :by_recipient, ->(recipient) { where(user_id: recipient.id) }
+  scope :recent, order('created_at desc')
 end
