@@ -452,6 +452,15 @@ describe User do
       it { should be_able_to(:manage, Follow.new(user: user)) }
       it { should_not be_able_to(:manage, Follow.new(user: user2)) }
       it { should be_able_to(:read, Follow.new(user: user2)) }
+
+      it { should be_able_to(:manage, Message.new(sender: user)) }
+      it { should_not be_able_to(:manage, Message.new(sender: user2)) }
+      it { should be_able_to(:read, Message.new(recipient: user)) }
+
+      it { should be_able_to(:manage, Notification.new(user: user)) }
+      it { should be_able_to(:manage, Notification.new(actor: user)) }
+      it { should_not be_able_to(:manage, Notification.new(user: user2)) }
+      it { should be_able_to(:read, Notification.new(user: user2)) }
     end
   end
 end
