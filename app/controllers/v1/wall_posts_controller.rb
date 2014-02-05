@@ -3,11 +3,6 @@ class V1::WallPostsController < V1::ApiController
   before_filter :verify_access_token
   load_and_authorize_resource
 
-  def index
-    @wall_posts = WallPost.limit(10)
-    render json: @wall_posts
-  end
-
   def create
     @wall_post = WallPost.new(params[:wall_post])
     @wall_post.user = current_user
