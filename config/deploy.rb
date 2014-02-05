@@ -111,4 +111,6 @@ namespace :deploy do
   end
 
   after :published, :restart
+  after :restart, :stop_resque_pool
+  after :stop_resque_pool, :start_resque_pool
 end
