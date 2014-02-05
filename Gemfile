@@ -30,6 +30,7 @@ gem 'paperclip', '3.5.2'
 # Email
 gem 'gibbon', '1.0.4'
 gem 'mandrill-api', '~> 1.0.49'
+gem 'mandrill_mailer', '0.4.3'
 
 # APN / GCM
 gem 'rapns', '3.4.1'

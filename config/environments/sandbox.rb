@@ -52,7 +52,15 @@ Puhsh::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Action Mailer URL
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { 
+    address: 'smtp.mandrillapp.com',
+    port: 587,
+    enable_starttls_auto: true,
+    user_name: 'info@puhsh.com',
+    password: '_3e2bCMgFGlZBg21hjVy1w',
+    authentication: 'login',
+    domain: 'puhsh.com'
+  }
 
   # Enable threaded mode
   # config.threadsafe!

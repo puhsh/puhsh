@@ -7,6 +7,7 @@ require 'cancan/matchers'
 require "paperclip/matchers"
 require 'fakeredis'
 require 'sunspot/rails/spec_helper'
+require 'mandrill_mailer/offline'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
