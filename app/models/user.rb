@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
 
   # Callbacks
-  before_save :set_home_city
+  before_save :set_home_city, :send_welcome_email
   after_commit :add_default_role, on: :create
   after_validation :geocode
 
@@ -132,6 +132,10 @@ class User < ActiveRecord::Base
     User.where(id: self.user_ids_following_self.members)
   end
 
+  def recently_registered?
+    self.contact_email && self.contact_email_changed? && self.contact_email_was.nil?
+  end
+
   protected
 
   def add_default_role
@@ -145,6 +149,12 @@ class User < ActiveRecord::Base
         self.home_city = zip.city
         self.home_city.follow!(self)
       end
+    end
+  end
+
+  def send_welcome_email
+    if self.recently_registered?
+      Puhsh::Jobs::EmailJob.send_welcome_email({user_id: self.id})
     end
   end
 end

@@ -371,6 +371,55 @@ describe User do
     end
   end
 
+  describe '.recently_registered?' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user_existing) { FactoryGirl.create(:user, contact_email: 'test@test.local') }
+
+    it 'is true when the user adds the contact email' do
+      user.contact_email = 'test@test2.local'
+      expect(user.recently_registered?).to be_true
+    end
+
+    it 'is false when the user updates their contact email' do
+      user_existing.contact_email = 'updated@test.local'
+      expect(user_existing.recently_registered?).to be_false
+    end
+
+    it 'is false when ther user has no contact email' do
+      expect(user.recently_registered?).to be_false
+    end
+  end
+
+  describe '.send_welcome_email' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:new_user) { FactoryGirl.build(:user) }
+    let!(:user_existing) { FactoryGirl.create(:user, contact_email: 'test@test.local') }
+    before { ResqueSpec.reset! }
+
+    it 'sends the welcome email' do
+      user.contact_email = 'new.user@test.local'
+      user.save
+      expect(Puhsh::Jobs::EmailJob).to have_queued(:send_welcome_email, {user_id: user.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to receive(:send_welcome_email).with({'user_id' => user.id})
+      ResqueSpec.perform_all(:email)
+    end
+
+    it 'does not send a welcome email to a brand new user' do
+      new_user.save
+      expect(Puhsh::Jobs::EmailJob).to_not have_queued(:send_welcome_email, {user_id: new_user.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to_not receive(:send_welcome_email).with({'user_id' => new_user.id})
+      ResqueSpec.perform_all(:email)
+    end
+
+    it 'does not send a welcoem email to an existing user that updates their contact email' do
+      user_existing.contact_email = 'updated@test.local'
+      user_existing.save
+      expect(Puhsh::Jobs::EmailJob).to_not have_queued(:send_welcome_email, {user_id: user_existing.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to_not receive(:send_welcome_email).with({'user_id' => user_existing.id})
+      ResqueSpec.perform_all(:email)
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }
