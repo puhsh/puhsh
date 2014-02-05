@@ -39,6 +39,7 @@ gem 'peek', '0.1.6'
 gem 'peek-git', '1.0.2'
 gem 'peek-performance_bar', '1.1.3'
 gem 'peek-mysql2', '1.1.0'
+gem 'peek-resque', '2.0.1'
 
 # Assets
 group :assets do

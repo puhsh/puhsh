@@ -245,6 +245,9 @@ GEM
       peek
     peek-performance_bar (1.1.3)
       peek (>= 0.1.0)
+    peek-resque (2.0.1)
+      peek (>= 0.1.0)
+      resque
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -452,6 +455,7 @@ DEPENDENCIES
   peek-git (= 1.0.2)
   peek-mysql2 (= 1.1.0)
   peek-performance_bar (= 1.1.3)
+  peek-resque (= 2.0.1)
   rails (= 3.2.16)
   rails_warden (= 0.5.7)
   rapns (= 3.4.1)
