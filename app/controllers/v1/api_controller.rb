@@ -30,6 +30,7 @@ class V1::ApiController < ActionController::Metal
 
   rescue_from Koala::Facebook::APIError, with: :forbidden!
   rescue_from ActiveRecord::RecordNotFound, with: :not_found!
+  rescue_from ActionController::RoutingError, with: :not_found!
 
   def render_paginated(resource, opts = {})
     defaults = { already_paginated: false }
