@@ -29,5 +29,10 @@ The work flow is as follows
 3a. If the tests all pass, Jenkins deploys to production shortly after.
  b. If the tests fail, no further builds will be deployed to production till all the specs are green again.
 
+## Development Best Practices
+Here are some recommendations to effectively develop against the Rails App
 
-That sums up the contribution guide. We are all adults here, so use your best judgement if exceptions to this process occurs. Otherwise, stick to the workflow.
+* When generating a API controller, use `rails g controller_name --no-helper --no-assets`. These end points do not need assets or helpers.
+* [Guard](https://github.com/guard/guard) is highly recommended. When you pull down the repo, init your guard file and make sure it is running. This will save you headaches when you make changes and deploys fail
+* Sandbox can be used to create test data. Creating test data in Production is highly discouraged.
+* When adding a gem to the Gemfile, be sure to include the version. This makes monthly audits easier.
