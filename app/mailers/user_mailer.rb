@@ -3,7 +3,7 @@ class UserMailer < MandrillMailer::TemplateMailer
   
   def welcome_email(user)
     @user = user
-    mandrill_mail template: 'Welcome Email',
+    mandrill_mail template: 'Welcome',
                     to: user.contact_email
   end
 
