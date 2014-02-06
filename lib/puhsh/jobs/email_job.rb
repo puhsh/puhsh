@@ -15,6 +15,10 @@ module Puhsh
         Resque.enqueue(self, :send_new_post_email, opts)
       end
 
+      def self.send_new_message_email(opts)
+        Resque.enqueue(self, :send_new_message_email, opts)
+      end
+
       def send_welcome_email(opts)
         opts = HashWithIndifferentAccess.new(opts)
         user = User.find_by_id(opts[:user_id])
@@ -28,6 +32,14 @@ module Puhsh
         post = Post.find_by_id(opts[:post_id])
         if post
           # send new post email
+        end
+      end
+
+      def send_new_message_email(opts)
+        opts = HashWithIndifferentAccess.new(opts)
+        message = Message.find_by_id(opts[:message_id])
+        if message
+          # send new message email
         end
       end
     end

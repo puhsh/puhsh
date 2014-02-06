@@ -72,4 +72,19 @@ describe Message do
       expect(message4.reload).to_not be_read
     end
   end
+
+  describe '.send_new_message_email' do
+    let!(:sender) { FactoryGirl.create(:user) }
+    let!(:recipient) { FactoryGirl.create(:user) }
+    let!(:message) { FactoryGirl.build(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
+
+    before { ResqueSpec.reset! }
+
+    it 'sends the new message email' do
+      message.save
+      expect(Puhsh::Jobs::EmailJob).to have_queued(:send_new_message_email, {message_id: message.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to receive(:send_new_message_email).with({'message_id' => message.id})
+      ResqueSpec.perform_all(:email)
+    end
+  end
 end

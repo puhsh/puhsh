@@ -7,6 +7,7 @@ class Message < ActiveRecord::Base
   belongs_to :recipient, class_name: 'User', foreign_key: 'recipient_id'
 
   # Callbacks
+  after_commit :send_new_message_email, on: :create
   
   # Validations
   validates :content, presence: true, length: { maximum: 160 }
@@ -20,4 +21,10 @@ class Message < ActiveRecord::Base
   scope :recent, order('created_at desc')
 
   # Methods
+
+  protected
+
+  def send_new_message_email
+    Puhsh::Jobs::EmailJob.send_new_message_email({message_id: self.id})
+  end
 end
