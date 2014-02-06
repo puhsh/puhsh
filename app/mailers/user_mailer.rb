@@ -4,7 +4,11 @@ class UserMailer < MandrillMailer::TemplateMailer
   def welcome_email(user)
     @user = user
     mandrill_mail template: 'Welcome',
-                    to: user.contact_email
+                    to: user.contact_email,
+                    vars: { 
+                      'Firstname' => user.first_name,
+                      'Email' => user.contact_email
+                    }
   end
 
   def new_post_email(post)
