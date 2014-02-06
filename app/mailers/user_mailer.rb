@@ -9,7 +9,8 @@ class UserMailer < MandrillMailer::TemplateMailer
                       'USER_FIRST_NAME' => user.first_name,
                       'USER_EMAIL' => user.contact_email,
                       'CURRENT_YEAR' => Date.today.year
-                    }
+                    },
+                    inline_css: true
   end
 
   def new_post_email(post)
