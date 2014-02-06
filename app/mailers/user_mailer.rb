@@ -6,8 +6,9 @@ class UserMailer < MandrillMailer::TemplateMailer
     mandrill_mail template: 'Welcome',
                     to: user.contact_email,
                     vars: { 
-                      'Firstname' => user.first_name,
-                      'Email' => user.contact_email
+                      'USER_FIRST_NAME' => user.first_name,
+                      'USER_EMAIL' => user.contact_email,
+                      'CURRENT_YEAR' => Date.today.year
                     }
   end
 
