@@ -6,4 +6,9 @@ class UserMailer < MandrillMailer::TemplateMailer
     mandrill_mail template: 'Welcome Email',
                     to: user.contact_email
   end
+
+  def new_post_email(post)
+    @post = post
+    @user = post.user
+  end
 end

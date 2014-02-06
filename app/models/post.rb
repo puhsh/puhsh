@@ -25,6 +25,7 @@ class Post < ActiveRecord::Base
   before_save :add_category, :set_city
   after_commit :store_category_name, on: :create
   after_commit :store_subcategory_name, on: :create
+  after_commit :send_new_post_email, on: :create
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
@@ -103,5 +104,9 @@ class Post < ActiveRecord::Base
 
   def store_subcategory_name
     self.subcategory_name.value = self.subcategory.name
+  end
+
+  def send_new_post_email
+    Puhsh::Jobs::EmailJob.send_new_post_email({post_id: self.id})
   end
 end

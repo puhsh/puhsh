@@ -219,4 +219,20 @@ describe Post do
       expect(results).to include(new_post2)
     end
   end
+
+  describe '.send_new_post_email' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.build(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    before { ResqueSpec.reset! }
+
+    it 'sends an email to the user that created the post' do
+      new_post.save
+      expect(Puhsh::Jobs::EmailJob).to have_queued(:send_new_post_email, {post_id: new_post.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to receive(:send_new_post_email).with({'post_id' => new_post.id})
+      ResqueSpec.perform_all(:email)
+    end
+  end
 end
