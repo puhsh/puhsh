@@ -8,6 +8,7 @@ class Question < ActiveRecord::Base
   # Callbacks
   after_commit :store_post_id_for_user, on: :create
   after_commit :store_question_id_for_post, on: :create
+  after_commit :send_new_question_email, on: :create
 
   # Validations
   validates :content, presence: true
@@ -22,5 +23,9 @@ class Question < ActiveRecord::Base
 
   def store_question_id_for_post
     self.item.post.question_ids << self.id
+  end
+
+  def send_new_question_email
+    Puhsh::Jobs::EmailJob.send_new_question_email({question_id: self.id})
   end
 end

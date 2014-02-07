@@ -33,6 +33,21 @@ describe Question do
       Question.create(user: user, item: item, content: 'Is this a good item?')
       expect(user.reload.post_ids_with_questions.members).to include(post.id.to_s)
     end
+  end
 
+  describe '.send_new_question_email' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:post) { FactoryGirl.create(:post, user: user) }
+    let!(:item) { FactoryGirl.create(:item, post: post) }
+    let!(:question) { FactoryGirl.build(:question, item: item, user: user, content: 'Is this a good item?') }
+
+    before { ResqueSpec.reset! }
+
+    it 'sends the new question email' do
+      question.save
+      expect(Puhsh::Jobs::EmailJob).to have_queued(:send_new_question_email, {question_id: question.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to receive(:send_new_question_email).with({'question_id' => question.id})
+      ResqueSpec.perform_all(:email)
+    end
   end
 end
