@@ -27,7 +27,7 @@ module Puhsh
         opts = HashWithIndifferentAccess.new(opts)
         user = User.find_by_id(opts[:user_id])
         if user
-          # send welcome email
+          UserMailer.welcome_email(user).deliver
         end
       end
 
