@@ -1,0 +1,3 @@
+[submodule "vendor/assets/javascripts/moment"]
+	path = vendor/assets/javascripts/moment
+	url = git@github.com:moment/moment.git

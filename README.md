@@ -33,14 +33,13 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 1. Install the necessary tools (Rails, RVM, Pow, etc)
 2. Clone the repo down
 3. `bundle install`
-4. `rake bower:install`
-5. `rake db:create`
-6. `rake db:test:prepare`
-7. `rake db:schema:load`
-8. `rake db:seed`
-9. `guard init rspec`
+4. `rake db:create`
+5. `rake db:test:prepare`
+6. `rake db:schema:load`
+7. `rake db:seed`
+8. `guard init rspec`
 
-Great succes. You are now ready to start working.
+Great succes. You are now ready to start working. Be sure to fetch all the git submodules as well.
 
 ### Contributing
 
