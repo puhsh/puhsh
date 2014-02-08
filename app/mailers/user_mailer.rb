@@ -32,14 +32,13 @@ class UserMailer < MandrillMailer::TemplateMailer
     @message = message
     @sender = @message.sender
     @recipient = @message.recipient
-    @content = @message.content
     mandrill_mail template: 'message-received',
                   vars: {
                     'RECIPIENT_FIRST_NAME' => @recipient.first_name,
                     'SENDER_FIRST_NAME' => @sender.first_name,
                     'SENDER_LAST_NAME' => @sender.last_name,
                     'SENDER_AVATAR_URL' => @sender.avatar_url,
-                    'MESSAGE_CONTENT' => @content,
+                    'MESSAGE_CONTENT' => @message.content,
                     'CURRENT_YEAR' => Date.today.year
                   },
                   inline_css: true
