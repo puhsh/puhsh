@@ -1,4 +1,3 @@
-//= require_tree ./plugins
 //= require jquery
 //= require foundation
 //= require peek.js
