@@ -1,13 +1,6 @@
-%nav.default-nav(role="navigation")
-  - if current_user
-    - if current_user.admin?
-      #nav-visible-content
-        %button#toggle(type="button" data-toggle="collapse" data-target=".collapseable-menu")
-          %span.sr-only
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-      #nav-menu.collapseable-menu.collapse
-        %ul.navbar-right#menu-items
-          %li
-            %a(href=admin_root_url) Admin
+%nav.top-bar(data-topbar)
+  %section.top-bar-section
+    %ul.right
+      - if current_user && current_user.admin?
+        %li
+          %a(href=admin_root_url) Admin
