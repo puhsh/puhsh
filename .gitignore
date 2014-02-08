@@ -6,6 +6,7 @@ capybara-*.html
 .rvmrc
 /.bundle
 /vendor/bundle
+/vendor/assets/javascripts/bower_components
 /log/*
 /tmp/*
 /db/*.sqlite3
