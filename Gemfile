@@ -108,3 +108,6 @@ gem 'sunspot_rails', '2.1.0'
 gem 'sunspot_solr', '2.1.0'
 gem 'symbolize', '4.4.1'
 gem 'whenever', '0.9.0', require: false
+
+# Asset Gems
+gem 'momentjs-rails', '2.5.1'

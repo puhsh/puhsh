@@ -1,7 +1,7 @@
-//= require jquery
 //= require foundation
+//= require jquery
+//= require moment
 //= require peek.js
 //= require peek/views/performance_bar
-//= require moment/moment
 
 $(function(){ $(document).foundation(); });
