@@ -23,12 +23,14 @@ set :keep_releases, 10
 
 namespace :deploy do
 
-  desc 'Get Bower packages'
-  task :install_bower_packages do
-    on roles(:web, :app) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :bundle, :exec, 'rake bower:install'
+  namespace :bower do
+    desc 'Get Bower packages'
+    task :install do
+      on roles(:web, :app) do
+        within release_path do
+          with rails_env: fetch(:rails_env) do
+            execute :bundle, :exec, 'rake bower:install'
+          end
         end
       end
     end
