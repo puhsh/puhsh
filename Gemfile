@@ -48,7 +48,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails', '1.0.3'
-  # gem 'turbo-sprockets-rails3', '0.3.11'
+  gem 'turbo-sprockets-rails3', '0.3.11'
 end
 
 group :development, :test do

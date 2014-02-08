@@ -110,7 +110,7 @@ namespace :deploy do
     end
   end
 
-  after :published, :restart
+  after :finished, :restart
   after :restart, :stop_resque_pool
   after :stop_resque_pool, :start_resque_pool
 end
