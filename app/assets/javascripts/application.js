@@ -1,9 +1,8 @@
 //= require jquery
 //
-// - Third Party -
 //
 //= require foundation
-//= require moment
+//= require moment/moment.js
 //= require peek.js
 //= require peek/views/performance_bar
 
