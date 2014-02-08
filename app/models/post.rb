@@ -96,8 +96,6 @@ class Post < ActiveRecord::Base
 
   protected
 
-  # Default to Kids Stuff category since that is the only
-  # product line we support for now
   def add_category
     self.category = Category.first unless self.category
   end
