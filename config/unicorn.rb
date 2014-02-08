@@ -20,7 +20,7 @@ stdout_path "#{rails_root}/log/unicorn.stdout.log"
 listen "#{rails_root}/tmp/sockets/unicorn.puhsh.sock", :backlog => 64
 
 # PID name
-pid "#{rails_root}/tmp/pids/unicorn.puhsh.pid"
+pid '/tmp/pids/unicorn.puhsh.pid'
 
 # Prevent calling the application for connections that dieded
 check_client_connection false
@@ -32,7 +32,7 @@ before_fork do |server, worker|
     ActiveRecord::Base.connection.disconnect!
 
   # Rolling restarts
-  old_pid = "#{rails_root}/tmp/pids/unicorn.puhsh.pid.oldbin"
+  old_pid = "/tmp/pids/unicorn.puhsh.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       server.logger.info("sending QUIT to #{old_pid}")
