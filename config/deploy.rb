@@ -22,6 +22,18 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :keep_releases, 10
 
 namespace :deploy do
+
+  desc 'Get Bower packages'
+  task :install_bower_packages do
+    on roles(:web, :app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'bower:install'
+        end
+      end
+    end
+  end
+
   desc 'Start Unicorn'
   task :start_unicorn do
     on roles(:web, :app), wait: 5 do
@@ -113,4 +125,5 @@ namespace :deploy do
   after :published, :restart
   after :restart, :stop_resque_pool
   after :stop_resque_pool, :start_resque_pool
+  before 'deploy:updated', 'bower:install'
 end
