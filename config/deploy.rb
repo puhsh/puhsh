@@ -28,7 +28,7 @@ namespace :deploy do
     on roles(:web, :app) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, 'bower:install'
+          execute :bundle, :exec, 'rake bower:install'
         end
       end
     end
