@@ -235,4 +235,23 @@ describe Post do
       ResqueSpec.perform_all(:email)
     end
   end
+
+  describe '.flagged_by?' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:zipcode) { FactoryGirl.create(:zipcode, city: city, code: '75033') }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:post) { FactoryGirl.build(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:flagged_post) { FactoryGirl.build(:flagged_post, user: user, post: post) }
+
+    it 'returns false if the user did not flag the post' do
+      expect(post).to_not be_flagged_by(user)
+    end
+
+    it 'returns true if the user flagged the post' do
+      flagged_post.save
+      expect(post.reload).to be_flagged_by(user.reload)
+    end
+  end
 end

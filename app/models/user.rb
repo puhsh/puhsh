@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
   set :post_ids_with_questions
   set :user_ids_followed
   set :user_ids_following_self
+  set :flagged_post_ids
 
   # Methods
   def self.find_for_facebook_oauth(auth)

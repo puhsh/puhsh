@@ -29,4 +29,13 @@ describe FlaggedPost do
       expect(flagged_post2).to_not be_valid
     end
   end
+
+  context '.store_flagged_post_id_for_user' do
+    let(:flagged_post) { FactoryGirl.build(:flagged_post, user: user, post: post) }
+
+    it 'stores the post id in redis for the user' do
+      flagged_post.save
+      expect(user.reload.flagged_post_ids.members).to include(flagged_post.post_id.to_s)
+    end
+  end
 end

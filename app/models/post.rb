@@ -86,6 +86,14 @@ class Post < ActiveRecord::Base
     self.update_attributes(status: status)
   end
 
+  def flagged_by?(user)
+    if user
+      user.flagged_post_ids.member?(self.id)
+    else
+      false
+    end
+  end
+
   protected
 
   # Default to Kids Stuff category since that is the only
