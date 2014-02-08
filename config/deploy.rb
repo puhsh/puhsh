@@ -13,7 +13,7 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :info
 set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle vendor/assets public/system solr}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system solr}
 set :git_enable_submodules, 1
 set :rvm_ruby_version, 'ruby-2.0.0-p247@puhsh'
 set :max_asset_age, 2 
@@ -22,19 +22,6 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :keep_releases, 10
 
 namespace :deploy do
-
-  namespace :bower do
-    desc 'Get Bower packages'
-    task :install do
-      on roles(:web, :app) do
-        within release_path do
-          with rails_env: fetch(:rails_env) do
-            execute :bundle, :exec, 'rake bower:install'
-          end
-        end
-      end
-    end
-  end
 
   desc 'Start Unicorn'
   task :start_unicorn do
@@ -127,5 +114,4 @@ namespace :deploy do
   after :published, :restart
   after :restart, :stop_resque_pool
   after :stop_resque_pool, :start_resque_pool
-  before 'deploy:updated', 'deploy:bower:install'
 end
