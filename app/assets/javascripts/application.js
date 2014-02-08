@@ -1,6 +1,5 @@
 //= require jquery
 //
-// - Third Party -
 //
 //= require foundation
 //= require moment
