@@ -1,6 +1,7 @@
 /*
+ *= require_tree ./sections
  *= require peek
  *= require peek/views/performance_bar
  */
 
-@import "foundation_and_overrides";
+@import 'globals/settings'
