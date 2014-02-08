@@ -13,7 +13,7 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :info
 set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system solr}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle vendor/assets public/system solr}
 set :git_enable_submodules, 1
 set :rvm_ruby_version, 'ruby-2.0.0-p247@puhsh'
 set :max_asset_age, 2 
