@@ -21,8 +21,8 @@ class UserMailer < MandrillMailer::TemplateMailer
                   to: @user.contact_email,
                   vars: {
                     'USER_FIRST_NAME' => @user.first_name,
+                    'USER_EMAIL' => @user.contact_email,
                     'POST_TITLE' => @post.title,
-                    'POST_URL' => @post_url,
                     'CURRENT_YEAR' => Date.today.year
                   },
                   inline_css: true
@@ -35,9 +35,9 @@ class UserMailer < MandrillMailer::TemplateMailer
     mandrill_mail template: 'message-received',
                   vars: {
                     'RECIPIENT_FIRST_NAME' => @recipient.first_name,
+                    'RECIPIENT_EMAIL' => @recipient.contact_email,
                     'SENDER_FIRST_NAME' => @sender.first_name,
                     'SENDER_LAST_NAME' => @sender.last_name,
-                    'SENDER_AVATAR_URL' => @sender.avatar_url,
                     'MESSAGE_CONTENT' => @message.content,
                     'CURRENT_YEAR' => Date.today.year
                   },
@@ -53,9 +53,9 @@ class UserMailer < MandrillMailer::TemplateMailer
     mandrill_mail template: 'comment-posted',
                   vars: {
                     'POST_USER_FIRST_NAME' => @post_user.first_name,
+                    'POST_USER_EMAIL' => @post_user.contact_email,
                     'QUESTION_USER_FIRST_NAME' => @question_user.first_name,
                     'QUESTION_USER_LAST_NAME' => @question_user.last_name,
-                    'QUESTION_USER_AVATAR_URL' => @question_user.avatar_url,
                     'QUESTION_CONTENT' => @question.content,
                     'CURRENT_YEAR' => Date.today.year
                   },
