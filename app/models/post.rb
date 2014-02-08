@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   include StarRewardable
   include BadgeRewardable
+  include Sortable
   include Redis::Objects
 
   attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :category_id, :subcategory, :subcategory_id, :city, :user_id, :item_attributes, :user, :post_images_attributes, :status
@@ -35,7 +36,6 @@ class Post < ActiveRecord::Base
   validates :category, presence: true
 
   # Scopes
-  scope :recent, order('created_at DESC')
   scope :for_cities, ->(city_ids) { where(city_id: city_ids) }
   scope :for_users, ->(user_ids) { where(user_id: user_ids) }
   scope :for_users_or_cities, ->(user_ids, city_ids) { where('user_id in (?) OR city_id in (?)', user_ids, city_ids) }
