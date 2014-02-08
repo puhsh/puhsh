@@ -34,6 +34,7 @@ before_fork do |server, worker|
   old_pid = "#{rails_root}/tmp/pids/unicorn.puhsh.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
+      server.logger.info("Current Directory: #{Rails.root.to_s}")
       server.logger.info("sending QUIT to #{old_pid}")
       Process.kill("QUIT", File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
