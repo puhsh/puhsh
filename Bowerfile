@@ -1,3 +1,5 @@
+assets_path 'assets/javascripts'
+
 group :vendor do
   asset 'moment', '2.5.1'
   asset 'angular', '1.2.12'
