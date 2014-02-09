@@ -31,8 +31,8 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 
 #### Bower
 [Bower](http://bower.io/) is a front end package manager. It is built on node.js. To install:
-1. Download and install the latest version of node.js
-2. `npm install -g bower`
+1. Download and install the latest version of node.js 
+2. `npm install -g bower` 
 
 Boom. Bower is now installed.
 
