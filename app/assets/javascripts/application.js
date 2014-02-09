@@ -6,3 +6,5 @@
 //= require peek/views/performance_bar
 
 $(function(){ $(document).foundation(); });
+
+$(function() { console.log('Hello world.'); });
