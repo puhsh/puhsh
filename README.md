@@ -30,7 +30,8 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 * Deployments trigger by Jenkins after successful tests.
 
 #### Bower
-[Bower](http://bower.io/) is a front end package manager. It is built on node.js. To install:
+[Bower](http://bower.io/) is a front end package manager. It is built on node.js. You will need to use it in order to work on the front end of puhsh. To install:
+
 1. Download and install the latest version of node.js 
 2. `npm install -g bower` 
 
