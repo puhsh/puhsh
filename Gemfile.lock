@@ -60,6 +60,7 @@ GEM
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
+    bower-rails (0.7.0)
     builder (3.0.4)
     cancan (1.6.10)
     capistrano (3.1.0)
@@ -425,6 +426,7 @@ DEPENDENCIES
   acts_as_list (= 0.3.0)
   airbrake
   aws-sdk (= 1.31.3)
+  bower-rails (~> 0.7.0)
   cancan (= 1.6.10)
   capistrano (= 3.1)
   capistrano-bundler (= 1.1.1)
