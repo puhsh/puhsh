@@ -3,7 +3,7 @@ worker_processes 4
 
 # App Directory (via Capistrano)
 rails_env = ENV['RAILS_ENV'] || 'production'
-rails_env = Rails.root.to_s
+rails_root = rails_env == 'production' ? '/web/puhsh/current' : "/web/#{rails_env}.puhsh/current"
 working_directory rails_root
 
 # Load app in master process
