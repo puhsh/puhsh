@@ -11,6 +11,8 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 * Sass, .scss syntax
 * Compass
 * JavaScript
+* Bower managed dependencies
+* Foundation
 
 #### Web Server
 * pow (for development)
@@ -27,6 +29,12 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 * Infrastructure managed with Chef. See [puhsh/puhsh-chef](https://github.com/puhsh/puhsh-chef)
 * Deployments trigger by Jenkins after successful tests.
 
+#### Bower
+[Bower](http://bower.io/) is a front end package manager. It is built on node.js. To install:
+1. Download and install the latest version of node.js
+2. `npm install -g bower`
+
+Boom. Bower is now installed.
 
 ### Enough of the boring crap! I want to start working!
 
