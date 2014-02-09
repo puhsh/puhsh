@@ -10,4 +10,7 @@
 //= require sly/src/sly.js
 //= require spin.js/spin.js
 
-$(function(){ $(document).foundation(); });
+$(function() { 
+  $(document).foundation(); 
+  console.log('Foundation loaded');
+});
