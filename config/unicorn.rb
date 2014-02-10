@@ -27,8 +27,8 @@ check_client_connection false
 
 before_fork do |server, worker| 
   server.logger.info("RAILS_ENV is #{rails_env}")
-  server.logger.info("worker=#{worker.nr} spawning in #{Dir.pwd}")
-  # We don't need the master process hanging on to a DB connection
+  server.logger.info("worker=#{worker.nr} spawning in #{rails_root}")
+
   defined?(ActiveRecord::Base) and 
     ActiveRecord::Base.connection.disconnect!
 
