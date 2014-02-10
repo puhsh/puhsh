@@ -44,8 +44,6 @@ before_fork do |server, worker|
       # pid already gone
       server.logger.info("#{old_pid} already removed")
     end
-  else 
-    server.logger.info("Old master already killed")
   end
 
   sleep 1
