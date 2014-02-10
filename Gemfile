@@ -7,7 +7,7 @@ gem 'rails', '3.2.16'
 gem 'mysql2', '0.3.15'
 
 # Redis
-gem 'redis', '3.0.6'
+gem 'redis', '3.0.7'
 
 # Resque
 gem 'resque', '1.25.1', require: 'resque/server'
