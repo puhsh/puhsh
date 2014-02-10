@@ -25,7 +25,7 @@ gem 'unicorn', '4.8.2'
 
 # Storage
 gem 'aws-sdk', '1.31.3'
-gem 'paperclip', '3.5.2'
+gem 'paperclip', '4.1.0'
 
 # Email
 gem 'gibbon', '1.0.4'
