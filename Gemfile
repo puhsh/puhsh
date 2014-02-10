@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.16'
 
 # MySQL
-gem 'mysql2', '0.3.14'
+gem 'mysql2', '0.3.15'
 
 # Redis
 gem 'redis', '3.0.6'
