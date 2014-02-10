@@ -25,6 +25,9 @@ pid "#{rails_root}/tmp/pids/unicorn.puhsh.pid"
 # Prevent calling the application for connections that dieded
 check_client_connection false
 
+# Make sure we are using the right unicorn in the right directory
+Unicorn::HttpServer::START_CTX[0] = "#{rails_root}/bin/unicorn"
+
 before_fork do |server, worker| 
   server.logger.info("RAILS_ENV is #{rails_env}")
   server.logger.info("worker=#{worker.nr} spawning in #{rails_root}")
