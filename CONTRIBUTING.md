@@ -36,3 +36,4 @@ Here are some recommendations to effectively develop against the Rails App
 * [Guard](https://github.com/guard/guard) is highly recommended. When you pull down the repo, init your guard file and make sure it is running. This will save you headaches when you make changes and deploys fail
 * Sandbox can be used to create test data. Creating test data in Production is highly discouraged.
 * When adding a gem to the Gemfile, be sure to include the version. This makes monthly audits easier.
+* All third party front-end plugins should be managed through Bower and our Bowerfile. Do not put any plugins in the `app/assets` directory.
