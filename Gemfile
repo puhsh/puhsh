@@ -21,7 +21,7 @@ gem 'omniauth', '1.1.4'
 gem 'omniauth-facebook', '1.5.1'
 
 # Web Server
-gem 'unicorn', '4.7.0'
+gem 'unicorn', '4.8.2'
 
 # Storage
 gem 'aws-sdk', '1.31.3'
