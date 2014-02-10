@@ -26,6 +26,7 @@ pid "#{rails_root}/tmp/pids/unicorn.puhsh.pid"
 check_client_connection false
 
 before_fork do |server, worker| 
+  server.logger.info("RAILS_ENV is #{rails_env}")
   server.logger.info("worker=#{worker.nr} spawning in #{Dir.pwd}")
   # We don't need the master process hanging on to a DB connection
   defined?(ActiveRecord::Base) and 
@@ -44,6 +45,8 @@ before_fork do |server, worker|
   else 
     server.logger.info("Old master already killed")
   end
+
+  sleep 1
 end
 
 after_fork do |server, worker|
