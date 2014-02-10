@@ -14,7 +14,7 @@ gem 'resque', '1.25.1', require: 'resque/server'
 gem 'resque-pool', '0.3.0'
 
 # View Engine
-gem 'haml', '4.0.4'
+gem 'haml', '4.0.5'
 
 # Omniauth
 gem 'omniauth', '1.1.4'
