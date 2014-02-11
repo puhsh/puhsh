@@ -1,4 +1,10 @@
 .logo {
   height: auto;
-  width: 15em;
+  width: 185px;
+}
+
+@media only screen and (max-width: 40em) { 
+  .logo {
+    margin-bottom: 10px;
+  }
 }

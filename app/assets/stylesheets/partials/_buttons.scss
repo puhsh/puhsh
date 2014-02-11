@@ -19,3 +19,16 @@
 .pinterest {
   @include button(rem-calc(4), $pinterestRed, 5px);
 }
+
+@media only screen { 
+  .facebook {
+    &.with-share {
+      span {
+        vertical-align: top;
+        position: relative;
+        top: 4px;
+        font-size: 18px;
+      }
+    }
+  }
+}
