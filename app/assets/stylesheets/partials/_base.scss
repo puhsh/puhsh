@@ -2,3 +2,11 @@
 @import 'modules/mixins';
 @import 'modules/variables';
 @import 'modules/settings';
+
+html {
+  body {
+    section#main {
+      padding: 40px;
+    }
+  }
+}
