@@ -3,6 +3,12 @@
 .facebook {
   @include button(rem-calc(4), $facebookBlue, 5px);
   &.with-share {
+    span {
+      vertical-align: top;
+      position: relative;
+      top: 2px;
+      font-size: 24px;
+    }
   }
 }
 

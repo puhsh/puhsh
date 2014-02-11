@@ -1,3 +1,6 @@
+- content_for :nav do
+  = render 'shared/nav'
+
 .row
   .small-12.large-12.columns
     - if !user_signed_in?
