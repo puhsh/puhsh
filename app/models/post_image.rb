@@ -13,5 +13,6 @@ class PostImage < ActiveRecord::Base
   # Callbacks
 
   # Validations
+  validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png)
 
 end
