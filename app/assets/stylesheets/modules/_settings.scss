@@ -19,7 +19,7 @@
 // $base-font-size: 100%;
 
 // The $base-line-height is 100% while $base-font-size is 150%
-// $base-line-height: 150%;
+$base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
 // $include-html-classes: true;
@@ -117,9 +117,9 @@ $font-smoothing: antialiased;
 // $header-font-weight: 300;
 // $header-font-style: normal;
 // $header-font-color: #222;
-// $header-line-height: 1.4;
+$header-line-height: 1.0;
 // $header-top-margin: .2rem;
-// $header-bottom-margin: .5rem;
+// $header-bottom-margin: rem-calc(2);
 $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
@@ -131,11 +131,10 @@ $h3-font-size: rem-calc(20);
 // $h6-font-size: 1rem;
 
 // These control how subheaders are styled.
-// $subheader-line-height: 1.4;
-// $subheader-font-color: scale-color($header-font-color, $lightness: 35%);
-// $subheader-font-weight: 300;
-// $subheader-top-margin: .2rem;
-// $subheader-bottom-margin: .5rem;
+$subheader-font-color: #222;
+$subheader-font-weight: 200;
+$subheader-top-margin: -0.3rem;
+$subheader-bottom-margin: rem-calc(7);
 
 // A general <small> styling
 // $small-font-size: 60%;
