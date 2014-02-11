@@ -49,6 +49,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails', '1.0.3'
   gem 'turbo-sprockets-rails3', '0.3.11'
+  gem 'foundation-rails', '5.1.1.0'
 end
 
 group :development, :test do
@@ -91,7 +92,6 @@ gem 'airbrake'
 gem 'bower-rails', '~> 0.7.0'
 gem 'cancan', '1.6.10'
 gem 'devise', '3.2.2'
-gem 'foundation-rails', '5.1.1.0'
 gem 'friendly_id', '~> 4.0.10.1'
 gem 'geocoder', '1.1.9'
 gem 'hipchat', '0.12.0'

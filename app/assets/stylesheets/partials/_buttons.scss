@@ -1,0 +1,15 @@
+@import 'partials/base';
+
+.facebook {
+  @include button(rem-calc(4), $facebookBlue, 5px);
+  &.with-share {
+  }
+}
+
+.twitter {
+  @include button(rem-calc(4), $twitterBlue, 5px);
+}
+
+.pinterest {
+  @include button(rem-calc(4), $pinterestRed, 5px);
+}
