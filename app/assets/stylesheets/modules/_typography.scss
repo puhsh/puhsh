@@ -1,0 +1,11 @@
+h1, p {
+  @include lighter-text-weight;
+}
+
+h2 {
+  @include bolder-text-weight;
+}
+
+.gold {
+  color: $gold;
+}
