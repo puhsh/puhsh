@@ -6,6 +6,11 @@
 
 html {
   body {
-    padding: $body-padding;
+    #peek-bar {
+      margin-bottom: 10px;
+    }
+    #main {
+      padding: $body-padding;
+    }
   }
 }

@@ -4,7 +4,7 @@
 .row#post-images
 
 .row#post
-  .small-12.columns.small-text-center
+  .small-12.columns.small-text-center#heading
     %h1= @post.title
 
 .row#user
@@ -12,9 +12,10 @@
     #avatar.left
       = image_tag facebook_avatar_url(@user, :normal)
     #personal-details.left
-      %h2 Posted By:
-      %h2= @user.name
-  -#       #star-count
-  -#         %h2.gold
-  -#           %i.fa.fa-star
-  -#           %strong= @user.star_count
+      %h4 Posted By:
+      %h3
+        %strong= @user.name
+      %h3
+        %strong.gold
+          %i.fa.fa-star
+          %strong= @user.star_count
