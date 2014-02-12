@@ -70,11 +70,11 @@ class Post < ActiveRecord::Base
   end
 
   def offers
-    Offer.where(id: offer_ids.members)
+    Offer.includes(:user).where(id: offer_ids.members)
   end
   
   def questions 
-    Question.where(id: question_ids.members)
+    Question.includes(:user).where(id: question_ids.members)
   end
 
   def activity
