@@ -1,11 +1,3 @@
-h1,h3 {
-  @include lighter-text-weight;
-}
-
-h2 {
-  @include bolder-text-weight;
-}
-
 .gold {
   color: $gold;
 }

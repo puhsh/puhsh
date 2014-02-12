@@ -113,37 +113,37 @@ $font-smoothing: antialiased;
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// $header-font-family: $body-font-family;
-// $header-font-weight: 300;
-// $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-family: $body-font-family;
+$header-font-weight: 200;
+$header-font-style: normal;
+$header-font-color: #222;
 $header-line-height: 1.0;
-// $header-top-margin: .2rem;
-// $header-bottom-margin: rem-calc(2);
+$header-top-margin: .2rem;
+$header-bottom-margin: rem-calc(2);
 $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
 $h1-font-size: rem-calc(40);
-$h2-font-size: rem-calc(26);
-$h3-font-size: rem-calc(20);
-// $h4-font-size: rem-calc(23);
-// $h5-font-size: rem-calc(18);
-// $h6-font-size: 1rem;
+$h2-font-size: rem-calc(34);
+$h3-font-size: rem-calc(28);
+$h4-font-size: rem-calc(20);
+$h5-font-size: rem-calc(18);
+$h6-font-size: 1rem;
 
 // These control how subheaders are styled.
-$subheader-font-color: #222;
-$subheader-font-weight: 200;
-$subheader-top-margin: -0.3rem;
-$subheader-bottom-margin: rem-calc(7);
+// $subheader-font-color: #222;
+// $subheader-font-weight: 200;
+// $subheader-top-margin: -0.3rem;
+// $subheader-bottom-margin: rem-calc(7);
 
 // A general <small> styling
-// $small-font-size: 60%;
-// $small-font-color: scale-color($header-font-color, $lightness: 35%);
+$small-font-size: 60%;
+$small-font-color: scale-color($header-font-color, $lightness: 35%);
 
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
-$paragraph-font-size: rem-calc(20);
+$paragraph-font-size: rem-calc(14);
 // $paragraph-line-height: 1.6;
 // $paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
