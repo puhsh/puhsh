@@ -15,7 +15,8 @@
       %p.large.light Posted By:
       #name-star-count
         %h3
-          %strong= @user.name
-        %h3.gold.with-star
-          %strong
-            = @user.star_count
+          %span
+            %strong= @user.name
+        %h3
+          %span.gold.with-star
+            %strong= @user.star_count

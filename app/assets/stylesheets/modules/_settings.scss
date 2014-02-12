@@ -127,7 +127,7 @@ $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
 $h1-font-size: rem-calc(40);
-$h2-font-size: rem-calc(34);
+$h2-font-size: rem-calc(36);
 $h3-font-size: rem-calc(26);
 $h4-font-size: rem-calc(20);
 $h5-font-size: rem-calc(18);
@@ -141,10 +141,10 @@ $h6-font-size: 1rem;
 
 // A general <small> styling
 $small-font-size: 60%;
-$small-font-color: scale-color($header-font-color, $lightness: 35%);
+$small-font-color: #222;
 
 // We use these to style paragraphs
-// $paragraph-font-family: inherit;
+$paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
 $paragraph-font-size: rem-calc(16);
 $paragraph-line-height: 1.0;
@@ -152,7 +152,7 @@ $paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
 // $paragraph-aside-line-height: 1.35;
 // $paragraph-aside-font-style: italic;
-// $paragraph-text-rendering: optimizeLegibility;
+$paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style <code> tags
 // $code-color: scale-color($alert-color, $lightness: -27%);
