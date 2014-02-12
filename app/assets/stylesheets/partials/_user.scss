@@ -3,5 +3,15 @@
 #user {
   #personal-details  {
     padding-left: $user-avatar-margin;
+    p {
+      line-height: 0.7;
+    }
+   
+    #name-star-count {
+      h3 {
+        line-height: 0.5;
+        margin-bottom: rem-calc(20);
+      }
+    }
   }
 }

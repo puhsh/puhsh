@@ -1,5 +1,5 @@
 @mixin lighter-text-weight { 
-  font-weight: 200;
+  font-weight: $header-font-weight;
 }
 
 @mixin bolder-text-weight {

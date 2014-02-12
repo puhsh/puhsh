@@ -122,7 +122,7 @@ $header-font-style: normal;
 $header-font-color: #222;
 $header-line-height: 1.0;
 $header-top-margin: .2rem;
-$header-bottom-margin: rem-calc(2);
+$header-bottom-margin: rem-calc(40);
 $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
@@ -146,9 +146,9 @@ $small-font-color: scale-color($header-font-color, $lightness: 35%);
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: normal;
-$paragraph-font-size: rem-calc(14);
-// $paragraph-line-height: 1.6;
-// $paragraph-margin-bottom: rem-calc(20);
+$paragraph-font-size: rem-calc(16);
+$paragraph-line-height: 1.0;
+$paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
 // $paragraph-aside-line-height: 1.35;
 // $paragraph-aside-font-style: italic;

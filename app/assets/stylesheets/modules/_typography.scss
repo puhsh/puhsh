@@ -1,3 +1,21 @@
 .gold {
   color: $gold;
+  &.with-star:before {
+    content: "\f005";
+    font-family: FontAwesome;
+  }
+}
+
+p {
+  &.light {
+    @include lighter-text-weight;
+  }
+
+  &.large {
+    font-size: rem-calc(20);
+  }
+
+  &.x-large { 
+    font-size: rem-calc(26);
+  }
 }

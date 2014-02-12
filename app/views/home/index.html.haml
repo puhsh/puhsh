@@ -8,14 +8,14 @@
     %h1= @post.title
 
 .row#user
-  .small-5.small-centered.columns
+  .small-12.medium-6.large-5.medium-centered.large-centered.columns.clearfix
     #avatar.left
       = image_tag facebook_avatar_url(@user, :normal)
     #personal-details.left
-      %h4 Posted By:
-      %h3
-        %strong= @user.name
-      %h3
-        %strong.gold
-          %i.fa.fa-star
-          %strong= @user.star_count
+      %p.large.light Posted By:
+      #name-star-count
+        %h3
+          %strong= @user.name
+        %h3.gold.with-star
+          %strong
+            = @user.star_count
