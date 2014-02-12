@@ -4,16 +4,16 @@
 .row#post-images
 
 .row#post
-  .small-12.medium-12.large-12.columns.small-text-center#post-title
+  .small-12.medium-12.large-12.columns.small-text-center
     %h1= @post.title
-  .row#user
-    .small-10.medium-6.large-4.small-centered.medium-centered.columns.cleafix
-      #avatar.left
-        = image_tag facebook_avatar_url(@user, :normal)
-      #personal-details.left
-        %h2 Posted By:
-        %h2= @user.name
-        #star-count
-          %h2.gold
-            %i.fa.fa-star
-            %strong= @user.star_count
+  -# .row#user
+  -#   .small-10.medium-6.large-4.small-centered.medium-centered.columns.cleafix
+  -#     #avatar.left
+  -#       = image_tag facebook_avatar_url(@user, :normal)
+  -#     #personal-details.left
+  -#       %h2 Posted By:
+  -#       %h2= @user.name
+  -#       #star-count
+  -#         %h2.gold
+  -#           %i.fa.fa-star
+  -#           %strong= @user.star_count

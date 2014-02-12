@@ -8,6 +8,9 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
+// Import Puhsh Specific Variables, mainly for colors
+@import 'modules/variables';
+
 // $experimental: true;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)

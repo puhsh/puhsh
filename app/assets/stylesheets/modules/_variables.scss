@@ -3,7 +3,6 @@
 // --
 // Colors
 // --
-
 $pink: #ec008c;
 $lightPink: #f9abd9;
 $tiffany: #60dfe5;
@@ -30,6 +29,7 @@ $logo-width: rem-calc(185);
 $image-bottom-margin: rem-calc(10);
 
 // --
-// Custom Margins
+// Puhsh Specific Variables
 // --
-$user-avatar-margin: 14px;
+$body-padding: rem-calc(20);
+$user-avatar-margin: rem-calc(14);
