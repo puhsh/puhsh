@@ -28,7 +28,7 @@ describe V1::FollowedCitiesController do
       it 'returns the user\'s followed cities' do
         sign_in user
         get :index, { user_id: user.id, access_token: access_token.token }, format: :json
-        expect(user.reload.followed_cities).to eql(assigns[:followed_cities])
+        expect(assigns[:followed_cities]).to include(followed_city)
       end
     end
   end
