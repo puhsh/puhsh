@@ -4,7 +4,7 @@ Puhsh::Application.routes.draw do
   ###############
   
   # Root URL
-  root to: 'home#index'
+  root to: 'posts#index'
   
   # Dev Tools
   mount Peek::Railtie => '/peek'
@@ -94,4 +94,5 @@ Puhsh::Application.routes.draw do
   ###############
   # WEB ROUTES
   ###############
+  resources :posts, only: [:index]
 end
