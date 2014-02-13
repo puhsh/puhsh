@@ -33,7 +33,7 @@ class V1::ApiController < ActionController::Metal
   rescue_from ActionController::RoutingError, with: :not_found!
 
   def render_paginated(resource, opts = {})
-    defaults = { already_paginated: false }
+    defaults = { already_paginated: false, serializer: nil }
     opts = defaults.merge(opts)
 
     if opts[:already_paginated]
