@@ -1,5 +1,12 @@
 @import 'partials/base';
 
-nav {
-  margin-top: rem-calc(10);
+header {
+  background-color: $white;
+  nav {
+    margin-top: rem-calc(10);
+    &.bordered {
+      border-bottom: 2px solid $black;
+    }
+  }
 }
+

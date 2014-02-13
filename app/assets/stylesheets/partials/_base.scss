@@ -11,6 +11,9 @@ html {
     }
     #main {
       padding: $body-padding;
+      &.dark {
+        background-color: $black50;
+      }
     }
   }
 }
