@@ -41,7 +41,7 @@ Puhsh::Application.routes.draw do
     resources :devices, only: [:create]
     resources :stars, only: [:index]
     resources :invites, only: [:create]
-    resources :followed_cities, only: [:index, :create]
+    resources :followed_cities, only: [:index, :create, :destroy]
     resources :wall_posts, only: [:create]
 
     # Cities

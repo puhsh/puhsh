@@ -4,7 +4,7 @@ class V1::FollowedCitiesController < V1::ApiController
   load_and_authorize_resource
 
   def index
-    @followed_cities = current_user.followed_cities
+    @followed_cities = FollowedCity.includes(:city).where(user_id: current_user.id).order('cities.name asc')
     render json: @followed_cities
   end
   
@@ -14,6 +14,15 @@ class V1::FollowedCitiesController < V1::ApiController
       render json: @followed_cities
     else
       not_acceptable!
+    end
+  end
+
+  def destroy
+    @followed_city = FollowedCity.find(params[:id])
+    if @followed_city.destroy
+      render json: @followed_city
+    else
+      bad_request!
     end
   end
 end

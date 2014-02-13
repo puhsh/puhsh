@@ -28,7 +28,7 @@ describe V1::FollowedCitiesController do
       it 'returns the user\'s followed cities' do
         sign_in user
         get :index, { user_id: user.id, access_token: access_token.token }, format: :json
-        expect(user.reload.followed_cities).to eql(assigns[:followed_cities])
+        expect(assigns[:followed_cities]).to include(followed_city)
       end
     end
   end
@@ -70,6 +70,38 @@ describe V1::FollowedCitiesController do
         post :create, { followed_cities: [{city_id: city.id}, {city_id: city.id}], access_token: access_token.token }, format: :json
         expect(user.reload.followed_cities.collect(&:city_id)).to include(city.id)
         expect(user.reload.followed_cities.size).to eql(1)
+      end
+    end
+  end
+
+  describe '#destroy' do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:city) { FactoryGirl.create(:city) }
+
+    let!(:followed_city) { FactoryGirl.create(:followed_city, city: city, user: user) }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        delete :destroy, { id: followed_city.id }
+        expect(assigns[:followed_city]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        delete :destroy, { id: followed_city.id }
+        expect(assigns[:followed_city]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'destroys the followed city' do
+        sign_in user
+        delete :destroy, { id: followed_city.id , access_token: access_token.token }
+        expect(user.reload.followed_cities).to_not include(followed_city)
       end
     end
   end
