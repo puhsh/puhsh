@@ -2,5 +2,6 @@
   = render 'shared/nav'
 
 .row
-  .small12.small-text-center
-    %h1.white Install the Puhsh App to Buy & Sell:
+  .small-12
+    #items(ng-repeat="post in items")
+      %h1 {{post.title}}
