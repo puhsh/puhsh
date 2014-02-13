@@ -73,4 +73,36 @@ describe V1::FollowedCitiesController do
       end
     end
   end
+
+  describe '#destroy' do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:city) { FactoryGirl.create(:city) }
+
+    let!(:followed_city) { FactoryGirl.create(:followed_city, city: city, user: user) }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        delete :destroy, { id: followed_city.id }
+        expect(assigns[:followed_city]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        delete :destroy, { id: followed_city.id }
+        expect(assigns[:followed_city]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'destroys the followed city' do
+        sign_in user
+        delete :destroy, { id: followed_city.id , access_token: access_token.token }
+        expect(user.reload.followed_cities).to_not include(followed_city)
+      end
+    end
+  end
 end

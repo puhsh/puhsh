@@ -16,4 +16,13 @@ class V1::FollowedCitiesController < V1::ApiController
       not_acceptable!
     end
   end
+
+  def destroy
+    @followed_city = FollowedCity.find(params[:id])
+    if @followed_city.destroy
+      render json: @followed_city
+    else
+      bad_request!
+    end
+  end
 end
