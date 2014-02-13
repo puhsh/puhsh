@@ -1,4 +1,2 @@
-.row
-  .small-12
-    #items(ng-repeat="post in items")
-      %h1 {{post.title}}
+- content_for :nav do
+  = render 'shared/nav'
