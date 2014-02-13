@@ -9,11 +9,13 @@ class V1::MessagesController < V1::ApiController
 
     if @recipient
       @messages = Message.includes(:sender, :recipient).between_sender_and_recipient(@sender, @recipient).recent
+      serializer = MessageSerializer
     else
       @messages = Message.includes(:sender, :recipient).by_sender(@sender).exclude_recipient(@sender).grouped_by_recipient.recent
+      serializer = MessageConversationSerializer
     end
 
-    render_paginated @messages
+    render_paginated @messages, { serializer: serializer }
   end
 
   def create
