@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def check_if_production
     redirect_to 'http://www.puhsh.com' if Rails.env.sandbox?
   end
+
+  def authorized_api_client
+    session[:authorized_api_client] = true
+  end
 end

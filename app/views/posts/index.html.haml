@@ -1,5 +1,4 @@
 .row
   .small-12
-    #items(ng-repeat="item in items")
-      %span {{item.title}}
-    %button(ng-click="remove($index)")
+    #items(ng-repeat="post in items")
+      %h1 {{post.title}}
