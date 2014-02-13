@@ -4,7 +4,7 @@ class V1::FollowedCitiesController < V1::ApiController
   load_and_authorize_resource
 
   def index
-    @followed_cities = FollowedCity.includes(:city).where(user_id: current_user.id)
+    @followed_cities = FollowedCity.includes(:city).where(user_id: current_user.id).order('cities.name asc')
     render json: @followed_cities
   end
   
