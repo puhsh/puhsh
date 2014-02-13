@@ -19,6 +19,7 @@ class Message < ActiveRecord::Base
   scope :exclude_recipient, ->(recipient) { where('recipient_id != ?', recipient.id) }
   scope :grouped_by_recipient, group(:recipient_id)
   scope :between_sender_and_recipient, ->(sender, recipient) { where('(sender_id = ? and recipient_id = ?) or (sender_id = ? and recipient_id = ?)', sender, recipient, recipient, sender) } 
+  scope :unread_count, ->(sender, recipient) { between_sender_and_recipient(sender, recipient).unread }
 
   # Methods
 

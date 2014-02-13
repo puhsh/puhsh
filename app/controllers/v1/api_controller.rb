@@ -35,7 +35,7 @@ class V1::ApiController < ActionController::Metal
   WHITELISTED_CONTROLLERS = %w( PostsController )
 
   def render_paginated(resource, opts = {})
-    defaults = { already_paginated: false }
+    defaults = { already_paginated: false, serializer: nil }
     opts = defaults.merge(opts)
 
     if opts[:already_paginated]
@@ -58,7 +58,11 @@ class V1::ApiController < ActionController::Metal
       first_page_url: first_page_url
     }
 
-    render json: items, root: 'items', meta: pagination_hash
+    if opts[:serializer]
+      render json: items, root: 'items', each_serializer: opts[:serializer], meta: pagination_hash
+    else
+      render json: items, root: 'items', meta: pagination_hash
+    end
   end
 
   protected
