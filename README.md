@@ -13,6 +13,7 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 * JavaScript
 * Bower managed dependencies
 * Foundation
+* AngularJS
 
 #### Web Server
 * pow (for development)
