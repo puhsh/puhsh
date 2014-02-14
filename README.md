@@ -51,7 +51,7 @@ Boom. Bower is now installed.
 
 Great succes. You are now ready to start working.
 
-## Angular JS
+### Angular JS
 Our front end is managed by AngularJS and it comes with its own set of specs and goodies.  Here is what you need to do to get started on the Angular side of things (get your node.js on):
 
 1. Install node.js via homebrew or macports. Any stable version works. This will come with node's package manager, npm.
