@@ -27,12 +27,12 @@ describe V1::MessagesController do
     context 'with access token and authentication' do
       let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
 
-      it 'returns all the messages, grouped by recipients' do
+      it 'returns all the messages, grouped by recipients, by latest activity' do
         sign_in user
         get :index, { access_token: access_token.token }
-        expect(assigns[:messages]).to include(message_sent1)
         expect(assigns[:messages]).to include(message_sent2)
-        expect(assigns[:messages]).to_not include(message_received1)
+        expect(assigns[:messages]).to include(message_received1)
+        expect(assigns[:messages]).to_not include(message_sent1)
       end
 
       it 'returns all the messages between two individuals' do

@@ -87,4 +87,24 @@ describe Message do
       ResqueSpec.perform_all(:email)
     end
   end
+
+  describe '.recent_conversations_for_user' do
+    let!(:sender) { FactoryGirl.create(:user) }
+    let!(:recipient) { FactoryGirl.create(:user) }
+    let!(:message) { FactoryGirl.create(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
+    
+    it 'returns the latest message updated at for a sender and their set of recipients' do
+      Timecop.travel(Date.today + 1.day) do
+        message2 = FactoryGirl.create(:message, sender: sender, recipient: recipient, content: 'Please answer')
+        expect(Message.recent_conversations_for_user(sender)).to include(message2)
+        expect(Message.recent_conversations_for_user(sender)).to_not include(message)
+        Timecop.travel(Date.today + 2.day) do
+          message3 = FactoryGirl.create(:message, sender: recipient, recipient: sender, content: 'Please answer this??')
+          expect(Message.recent_conversations_for_user(sender)).to include(message3)
+          expect(Message.recent_conversations_for_user(sender)).to_not include(message2)
+          expect(Message.recent_conversations_for_user(sender)).to_not include(message)
+        end
+      end
+    end
+  end
 end
