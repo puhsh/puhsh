@@ -28,3 +28,4 @@ bin/
 Guardfile
 solr/
 *.pid
+npm-debug.log

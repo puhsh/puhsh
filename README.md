@@ -37,7 +37,7 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 
 Boom. Bower is now installed.
 
-### Enough of the boring crap! I want to start working!
+### Ruby on Rails
 
 1. Install the necessary tools (Rails, RVM, Pow, etc)
 2. Clone the repo down
@@ -51,6 +51,16 @@ Boom. Bower is now installed.
 
 Great succes. You are now ready to start working.
 
-### Contributing
+## Angular JS
+Our front end is managed by AngularJS and it comes with its own set of specs and goodies.  Here is what you need to do to get started on the Angular side of things (get your node.js on):
 
+1. Install node.js via homebrew or macports. Any stable version works. This will come with node's package manager, npm.
+2. `npm install -g karma@canary phantomjs karma-phantomjs-launcher`
+3. `npm install -g karma`
+4. `karma run` and watch all the specs pass.
+5. `karma start` will automatically run specs as you make changes. This is optional.
+
+Just like rspec tests, Jasmine Specs will get run on every deploy as well.
+
+### Contributing
 Now that you have the app ready to go, you can head over to the [contributing](CONTRIBUTING.md) guide.
