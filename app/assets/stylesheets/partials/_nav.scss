@@ -3,9 +3,9 @@
 header {
   background-color: $white;
   nav {
-    margin-top: rem-calc(10);
+    padding-top: rem-calc(10);
     &.bordered {
-      border-bottom: 2px solid $black;
+      border-bottom: rem-calc(1) solid $black50;
     }
   }
 }

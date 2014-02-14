@@ -5,11 +5,13 @@ a.button {
 }
 
 a.button.facebook {
-  @include button(rem-calc(4), $facebookBlue, 5px);
+  @include button(rem-calc(4), $facebookBlue, rem-calc(4));
+  vertical-align: top;
   i {
-    line-height: .39;
+    vertical-align: middle;
+    line-height: 2rem;
     position: relative;
-    top: rem-calc(14);
+    top: rem-calc(12);
   }
   &.with-share-text {
     i {
@@ -17,10 +19,8 @@ a.button.facebook {
     }
     span {
       @include lighter-text-weight;
-      vertical-align: top;
-      position: relative;
-      top: 2px;
-      font-size: 20px;
+      vertical-align: middle;
+      font-size: rem-calc(20);
     }
   }
 }
@@ -34,14 +34,4 @@ a.button.pinterest {
 }
 
 @media only screen { 
-  .facebook {
-    &.with-share {
-      span {
-        vertical-align: top;
-        position: relative;
-        top: 4px;
-        font-size: 18px;
-      }
-    }
-  }
 }

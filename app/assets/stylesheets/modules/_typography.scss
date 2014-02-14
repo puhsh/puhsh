@@ -6,6 +6,10 @@
   }
 }
 
+.white {
+  color: $white;
+}
+
 p {
   &.light {
     @include lighter-text-weight;
