@@ -7,6 +7,10 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 * Ruby 2.0.0
 * RVM
 
+#### Testing Tools
+* rspec (Rails)
+* Jasmine (AngularJS)
+
 #### Front End
 * Sass, .scss syntax
 * Compass
