@@ -6,7 +6,6 @@ class Message < ActiveRecord::Base
   # Relations
   belongs_to :sender, class_name: 'User', foreign_key: 'sender_id'
   belongs_to :recipient, class_name: 'User', foreign_key: 'recipient_id'
-  belongs_to :thread, class_name: 'Message'
 
   # Callbacks
   after_commit :send_new_message_email, on: :create
@@ -26,7 +25,7 @@ class Message < ActiveRecord::Base
   # Methods
   def self.recent_conversations_for_user(user)
     query = Message.select('max(id)').group('greatest(sender_id, recipient_id)').group('least(sender_id, recipient_id)').to_sql
-    Message.where("id in (#{query})").where('sender_id = ? or recipient_id = ?', user, user).newest
+    Message.where("id in (#{query})").sent_or_received_by_user(user).newest
   end
 
   protected
