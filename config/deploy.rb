@@ -125,8 +125,8 @@ namespace :deploy do
     end
   end
 
-  after :finished, :restart
+  before :updated, 'bower:install'
+  after :publishing, :restart
   after :restart, :stop_resque_pool
   after :stop_resque_pool, :start_resque_pool
-  before 'deploy:updated', 'deploy:bower:install'
 end
