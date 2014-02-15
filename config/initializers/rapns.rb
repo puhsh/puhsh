@@ -6,7 +6,7 @@ Rapns.configure do |config|
   config.foreground = false
 
   # Frequency in seconds to check for new notifications.
-  config.push_poll = 10
+  config.push_poll = 30
 
   # Frequency in seconds to check for feedback
   config.feedback_poll = 60
