@@ -1,5 +1,5 @@
 class V1::PostsController < V1::ApiController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, unless: :internal_request?
   before_filter :verify_access_token
   authorize_resource
   skip_authorize_resource only: :search
