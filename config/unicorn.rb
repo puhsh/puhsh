@@ -33,7 +33,7 @@ before_fork do |server, worker|
   server.logger.info("RAILS_ENV:: #{rails_env}")
   server.logger.info("Current directory: #{Dir.pwd}")
   server.logger.info("Current Gemfile: #{File.expand_path('Gemfile')}")
-  server.logger.info("worker #{worker.nr} spawning")
+  server.logger.info("worker=#{worker.nr} spawning")
 
   defined?(ActiveRecord::Base) and 
     ActiveRecord::Base.connection.disconnect!
