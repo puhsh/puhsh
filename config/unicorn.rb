@@ -32,7 +32,8 @@ before_fork do |server, worker|
   ENV['BUNDLE_GEMFILE'] = "#{rails_root}/Gemfile"
   server.logger.info("RAILS_ENV:: #{rails_env}")
   server.logger.info("Current directory: #{Dir.pwd}")
-  server.logger.info("worker=#{worker.nr} spawning in #{rails_root}")
+  server.logger.info("Current Gemfile: #{File.expand_path('Gemfile')}")
+  server.logger.info("worker #{worker.nr} spawning")
 
   defined?(ActiveRecord::Base) and 
     ActiveRecord::Base.connection.disconnect!
