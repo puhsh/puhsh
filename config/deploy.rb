@@ -11,14 +11,14 @@ set :branch, 'master'
 set :user, 'puhsh'
 set :scm, :git
 set :format, :pretty
-set :log_level, :debug
+set :log_level, :info
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/assets vendor/bundle public/system solr}
 set :rvm_ruby_version, 'ruby-2.0.0-p247@puhsh'
 set :max_asset_age, 2 
 SSHKit.config.command_map[:whenever] = "bundle exec whenever"
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
-set :keep_releases, 1
+set :keep_releases, 10
 
 namespace :deploy do
 
