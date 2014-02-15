@@ -30,7 +30,8 @@ Unicorn::HttpServer::START_CTX[0] = "#{rails_root}/bin/unicorn"
 
 before_fork do |server, worker| 
   ENV['BUNDLE_GEMFILE'] = "#{rails_root}/Gemfile"
-  server.logger.info("RAILS_ENV is #{rails_env}")
+  server.logger.info("RAILS_ENV:: #{rails_env}")
+  server.logger.info("Current directory: #{Dir.pwd}")
   server.logger.info("worker=#{worker.nr} spawning in #{rails_root}")
 
   defined?(ActiveRecord::Base) and 
