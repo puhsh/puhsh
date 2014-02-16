@@ -6,8 +6,8 @@
   min-height: rem-calc(350);
   width: rem-calc(300);
   #header {
-    @include border-top-left-radius(rem-calc(5));
-    @include border-top-right-radius(rem-calc(5));
+    @include border-top-left-radius($post-border-radius);
+    @include border-top-right-radius($post-border-radius);
     background-color: $white;
     text-align: center;
     min-height: rem-calc(55);
@@ -18,8 +18,8 @@
   }
   #post-image {
     img {
-      @include border-bottom-left-radius(rem-calc(5));
-      @include border-bottom-right-radius(rem-calc(5));
+      @include border-bottom-left-radius($post-border-radius);
+      @include border-bottom-right-radius($post-border-radius);
     }
   }
 }
