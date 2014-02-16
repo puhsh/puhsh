@@ -7,6 +7,6 @@ class UserSerializer < ActiveModel::Serializer
   has_one :app_invite
 
   def is_following
-    current_user.following?(object)
+    current_user ? current_user.following?(object) : false
   end
 end

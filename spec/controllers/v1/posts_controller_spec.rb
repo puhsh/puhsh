@@ -30,10 +30,11 @@ describe V1::PostsController do
       let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
       let!(:access_token2) { FactoryGirl.create(:access_token, user: user2) }
 
-      it 'returns the current user\'s posts if no user is specified' do
+      it 'returns the latest posts if no user is specified' do
         sign_in user
         get :index, { access_token: access_token.token }, format: :json
         expect(assigns[:posts]).to include(post)
+        expect(assigns[:posts]).to include(post2)
       end
 
       it 'returns the specified users\'s posts' do
