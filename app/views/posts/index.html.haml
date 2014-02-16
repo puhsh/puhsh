@@ -2,5 +2,10 @@
   = render 'shared/nav'
 
 .row(ng-controller="#{controller.class}")
-  .small12(ng-repeat="post in posts")
-    %h2.white(ng-bind="post.title")
+
+  %div(ng-repeat="post in posts")
+    .small12.medium12.small-centered.columns#post.boxed
+      #header
+        %h2(ng-bind="post.title")
+      #post-image
+        %img(ng-src="{{image.url}}")

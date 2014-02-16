@@ -1,1 +1,25 @@
 @import 'partials/base';
+@import 'compass/css3';
+@import 'compass/utilities';
+
+#post.boxed {
+  min-height: rem-calc(350);
+  width: rem-calc(300);
+  #header {
+    @include border-top-left-radius(rem-calc(5));
+    @include border-top-right-radius(rem-calc(5));
+    background-color: $white;
+    text-align: center;
+    min-height: rem-calc(55);
+    h2 { 
+      line-height: rem-calc(55);
+      margin-bottom: 0;
+    }
+  }
+  #post-image {
+    img {
+      @include border-bottom-left-radius(rem-calc(5));
+      @include border-bottom-right-radius(rem-calc(5));
+    }
+  }
+}
