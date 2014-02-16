@@ -8,4 +8,15 @@ module ApplicationHelper
       user.avatar_url
     end
   end
+
+  def facebook_link_this_url
+  end
+
+  def twitter_tweet_this_url
+    'https://www.twitter.com/share'
+  end
+
+  def pinterest_pin_it_url 
+    "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}"
+  end
 end
