@@ -6,7 +6,11 @@ class V1::PostsController < V1::ApiController
   before_filter :find_resource_for_posts, only: [:index]
 
   def index
-    @posts = @resource.posts.includes(:item, :post_images, :city, :user).recent
+    if @resource
+      @posts = @resource.posts.includes(:item, :post_images, :city, :user).recent
+    else
+      @posts = Post.includes(:item, :post_images, :city, :user).recent
+    end
     render_paginated @posts
   end
 
@@ -55,7 +59,7 @@ class V1::PostsController < V1::ApiController
     elsif params[:user_id]
       @resource = User.find_by_id(params[:user_id])
     else
-      @resource = current_user
+      @resource = nil
     end
   end
 

@@ -4,6 +4,6 @@ class SimpleUserSerializer < ActiveModel::Serializer
              :star_count, :is_following
 
   def is_following
-    current_user.following?(object)
+    current_user ? current_user.following?(object) : false
   end
 end
