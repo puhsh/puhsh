@@ -17,7 +17,7 @@ module.exports = function(config) {
       'vendor/assets/bower_components/angular/angular.min.js',
       'app/assets/javascripts/angular/app.js',
       'app/assets/javascripts/angular/controllers/*.js',
-      'spec/angular/spec/*.js'
+      'spec/angular/*/*.js'
     ],
 
 
