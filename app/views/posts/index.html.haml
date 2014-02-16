@@ -1,16 +1,6 @@
 - content_for :nav do
   = render 'shared/nav'
 
-.row
-<<<<<<< HEAD
-  .small-12
-    #items(ng-repeat="post in items")
-      %h1 {{post.title}}
-=======
-  .small12.small-text-center
-    %h1.white Install the Puhsh App to Buy & Sell:
-
 .row(ng-controller="#{controller.class}")
   .small12(ng-repeat="post in posts")
     %h2.white(ng-bind="post.title")
->>>>>>> Trying to get a post to render
