@@ -94,5 +94,4 @@ Puhsh::Application.routes.draw do
   ###############
   # WEB ROUTES
   ###############
-  resources :posts, only: [:index]
 end
