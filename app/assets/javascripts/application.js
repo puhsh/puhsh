@@ -8,6 +8,7 @@
 //= require mousetrap/mousetrap.js
 //= require angular/angular.min.js
 //= require angular-route/angular-route.min.js
+//= require underscore/underscore.js
 //
 //= require_tree ./angular
 
