@@ -19,4 +19,11 @@ function postsRouteConfig($routeProvider) {
   });
 }
 
+function locationProviderConfig($locationProvider) {
+  $locationProvider
+    .html5Mode(false)
+    .hashPrefix('!');
+};
+
 puhsh.config(postsRouteConfig);
+puhsh.config(locationProviderConfig);
