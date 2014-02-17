@@ -3,6 +3,5 @@ puhsh.controller('PostsController', function($scope, $http) {
     success(function(data, status, headers, config) {
       $scope.posts = data.items;
       $scope.image = data.items[0].post_images[0];
-      console.log($scope.image);
     });
 });

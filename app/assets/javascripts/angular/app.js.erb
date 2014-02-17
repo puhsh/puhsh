@@ -1,0 +1,16 @@
+//= depend_on_asset 'posts.html'
+
+var puhsh = angular.module('puhshApp', ['ngRoute']);
+
+function postsRouteConfig($routeProvider) {
+  $routeProvider.
+  when('/', { 
+    controller: 'PostsController',
+    templateUrl: '<%= asset_path('posts.html') %>'
+  }).
+  otherwise({
+    redirectTo: '/'
+  });
+}
+
+puhsh.config(postsRouteConfig);

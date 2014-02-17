@@ -11,12 +11,11 @@
 
     = javascript_include_tag 'application'
     = javascript_include_tag 'vendor/modernizr'
-    = javascript_include_tag src='//assets.pinterest.com/js/pinit.js'
     = csrf_meta_tags
   %body.dark
     %header
       #peek-bar.show-for-large-up
         = render 'peek/bar'
       = yield :nav
-    %section#main
+    %section#main(ng-route)
       = yield

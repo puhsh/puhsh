@@ -1,20 +1,4 @@
 - content_for :nav do
   = render 'shared/nav'
 
-.row#post-images
-
-.row#post
-  .small-12.columns.small-text-center#heading
-    %h1= @post.title
-
-.row#user
-  .small-12.medium-6.large-5.medium-centered.large-centered.columns.clearfix
-    #avatar.left
-      = image_tag facebook_avatar_url(@user, :normal)
-    #personal-details.left
-      %p.large.light Posted By:
-      #name-star-count
-        %h3
-          %strong= @user.name
-        %h3.gold.with-star
-          %strong= @user.star_count
+%div(ng-view)
