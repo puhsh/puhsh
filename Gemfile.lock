@@ -496,7 +496,7 @@ DEPENDENCIES
   turbo-sprockets-rails3 (= 0.3.11)
   uglifier (>= 1.0.3)
   unicorn (= 4.8.2)
-  vacuum
+  vacuum (= 1.0.0)
   vcr (= 2.8.0)
   webmock (= 1.16.1)
   whenever (= 0.9.0)
