@@ -38,6 +38,7 @@ class UserMailer < MandrillMailer::TemplateMailer
                     'RECIPIENT_EMAIL' => @recipient.contact_email,
                     'SENDER_FIRST_NAME' => @sender.first_name,
                     'SENDER_LAST_NAME' => @sender.last_name,
+                    'SENDER_AVATAR_URL' => @sender.avatar_url,
                     'MESSAGE_CONTENT' => @message.content,
                     'CURRENT_YEAR' => Date.today.year
                   },
@@ -56,6 +57,7 @@ class UserMailer < MandrillMailer::TemplateMailer
                     'POST_USER_EMAIL' => @post_user.contact_email,
                     'QUESTION_USER_FIRST_NAME' => @question_user.first_name,
                     'QUESTION_USER_LAST_NAME' => @question_user.last_name,
+                    'QUESTION_USER_AVATAR_URL' => @question_user.avatar_url,
                     'QUESTION_CONTENT' => @question.content,
                     'CURRENT_YEAR' => Date.today.year
                   },
