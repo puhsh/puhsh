@@ -33,6 +33,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     @sender = @message.sender
     @recipient = @message.recipient
     mandrill_mail template: 'message-received',
+                  to: @recipient.contact_email,
                   vars: {
                     'RECIPIENT_FIRST_NAME' => @recipient.first_name,
                     'RECIPIENT_EMAIL' => @recipient.contact_email,
@@ -52,6 +53,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     @question_user = @question.user
     @post_user = @post.user
     mandrill_mail template: 'comment-posted',
+                  to: @post_user.contact_email,
                   vars: {
                     'POST_USER_FIRST_NAME' => @post_user.first_name,
                     'POST_USER_EMAIL' => @post_user.contact_email,
