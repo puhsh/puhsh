@@ -1,5 +1,5 @@
 class UserMailer < MandrillMailer::TemplateMailer
-  default from: "no-reply@puhsh.com"
+  default from: 'puhsher@puhsh.com'
   
   def welcome_email(user)
     @user = user
