@@ -45,8 +45,8 @@ describe Question do
 
     it 'sends the new question email' do
       question.save
-      expect(Puhsh::Jobs::EmailJob).to have_queued(:send_new_question_email, {question_id: question.id}).in(:email)
-      expect(Puhsh::Jobs::EmailJob).to receive(:send_new_question_email).with({'question_id' => question.id})
+      expect(Puhsh::Jobs::EmailJob).to have_queued(:new_question_email, {question_id: question.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to receive(:new_question_email).with({'question_id' => question.id})
       ResqueSpec.perform_all(:email)
     end
   end

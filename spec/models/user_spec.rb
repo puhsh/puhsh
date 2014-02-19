@@ -399,23 +399,23 @@ describe User do
     it 'sends the welcome email' do
       user.contact_email = 'new.user@test.local'
       user.save
-      expect(Puhsh::Jobs::EmailJob).to have_queued(:send_welcome_email, {user_id: user.id}).in(:email)
-      expect(Puhsh::Jobs::EmailJob).to receive(:send_welcome_email).with({'user_id' => user.id})
+      expect(Puhsh::Jobs::EmailJob).to have_queued(:welcome_email, {user_id: user.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to receive(:welcome_email).with({'user_id' => user.id})
       ResqueSpec.perform_all(:email)
     end
 
     it 'does not send a welcome email to a brand new user' do
       new_user.save
-      expect(Puhsh::Jobs::EmailJob).to_not have_queued(:send_welcome_email, {user_id: new_user.id}).in(:email)
-      expect(Puhsh::Jobs::EmailJob).to_not receive(:send_welcome_email).with({'user_id' => new_user.id})
+      expect(Puhsh::Jobs::EmailJob).to_not have_queued(:welcome_email, {user_id: new_user.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to_not receive(:welcome_email).with({'user_id' => new_user.id})
       ResqueSpec.perform_all(:email)
     end
 
     it 'does not send a welcoem email to an existing user that updates their contact email' do
       user_existing.contact_email = 'updated@test.local'
       user_existing.save
-      expect(Puhsh::Jobs::EmailJob).to_not have_queued(:send_welcome_email, {user_id: user_existing.id}).in(:email)
-      expect(Puhsh::Jobs::EmailJob).to_not receive(:send_welcome_email).with({'user_id' => user_existing.id})
+      expect(Puhsh::Jobs::EmailJob).to_not have_queued(:welcome_email, {user_id: user_existing.id}).in(:email)
+      expect(Puhsh::Jobs::EmailJob).to_not receive(:welcome_email).with({'user_id' => user_existing.id})
       ResqueSpec.perform_all(:email)
     end
   end
