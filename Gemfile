@@ -24,7 +24,6 @@ gem 'omniauth-facebook', '1.5.1'
 gem 'unicorn', '4.8.2'
 
 # Storage
-gem 'aws-sdk', '1.31.3'
 gem 'paperclip', '4.1.0'
 
 # Email
@@ -34,6 +33,10 @@ gem 'mandrill_mailer', '0.4.3'
 
 # APN / GCM
 gem 'rapns', '3.4.1'
+
+# Amazon Related
+gem 'aws-sdk', '1.31.3'
+gem 'vacuum', '1.0.0'
 
 # Peek
 gem 'peek', '0.1.6'

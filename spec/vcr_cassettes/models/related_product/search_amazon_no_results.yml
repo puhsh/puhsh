@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Keywords=1asafddsfasdf&Operation=ItemSearch&ResponseGroup=Small,Images,ItemAttributes&SearchIndex=Baby&Service=AWSECommerceService&Signature=2NSznEcArh4Y1UUqIoJMJTtDd2D7iUmxfbugG4eOpCU=&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-02-19T05:08:43Z&Version=2011-08-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Wed, 19 Feb 2014 05:08:43 GMT
+      Server:
+      - Server
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Vary:
+      - Accept-Encoding,User-Agent
+      Connection:
+      - close
+      Transfer-Encoding:
+      - ''
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" ?><ItemSearchResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><HTTPHeaders><Header
+        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>dcec0f03-190a-43e6-b99f-e8e1a6f02e82</RequestId><Arguments><Argument
+        Name="Service" Value="AWSECommerceService"></Argument><Argument Name="Keywords"
+        Value="1asafddsfasdf"></Argument><Argument Name="SignatureMethod" Value="HmacSHA256"></Argument><Argument
+        Name="Timestamp" Value="2014-02-19T05:08:43Z"></Argument><Argument Name="Operation"
+        Value="ItemSearch"></Argument><Argument Name="AssociateTag" Value="puhsh-20"></Argument><Argument
+        Name="Version" Value="2011-08-01"></Argument><Argument Name="Sort" Value="salesrank"></Argument><Argument
+        Name="SearchIndex" Value="Baby"></Argument><Argument Name="SignatureVersion"
+        Value="2"></Argument><Argument Name="Signature" Value="2NSznEcArh4Y1UUqIoJMJTtDd2D7iUmxfbugG4eOpCU="></Argument><Argument
+        Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument Name="ResponseGroup"
+        Value="Small,Images,ItemAttributes"></Argument></Arguments><RequestProcessingTime>0.0218620000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>1asafddsfasdf</Keywords><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><SearchIndex>Baby</SearchIndex><Sort>salesrank</Sort></ItemSearchRequest><Errors><Error><Code>AWS.ECommerceService.NoExactMatches</Code><Message>We
+        did not find any matches for your request.</Message></Error></Errors></Request><TotalResults>0</TotalResults><TotalPages>0</TotalPages><MoreSearchResultsUrl>http://www.amazon.com/gp/redirect.html?camp=2025&amp;creative=386001&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fsearch%3Fkeywords%3D1asafddsfasdf%26url%3Dsearch-alias%253Dbaby-products&amp;linkCode=xm2&amp;tag=puhsh-20&amp;SubscriptionId=AKIAIO4ZPZLNHU3QUX5A</MoreSearchResultsUrl></Items></ItemSearchResponse>
+    http_version: 
+  recorded_at: Wed, 19 Feb 2014 05:08:43 GMT
+recorded_with: VCR 2.8.0
