@@ -7,9 +7,9 @@ class RelatedProduct
     @api = Vacuum.new.configure(YAML.load_file("#{Rails.root}/config/amazon-ads.yml")[Rails.env].symbolize_keys)
   end
 
-  def find_related_products(search_terms = nil)
+  def find_related_products(search_terms = nil, post_category_name = nil)
     if search_terms
-      params = default_search_criteria.merge({'Keywords' => search_terms})
+      params = default_search_criteria.merge({'Keywords' => search_terms, 'SearchIndex' => search_index(post_category_name)})
       parsed_results(self.api.item_search(params))
     else
       {}
@@ -20,8 +20,8 @@ class RelatedProduct
     {'SearchIndex' => search_index, 'Sort' => default_sort, 'ResponseGroup' => response_group}
   end
 
-  def search_index
-    'Baby'
+  def search_index(post_category_name = nil)
+    amazon_category_mapping(post_category_name)
   end
 
   def default_sort
@@ -35,11 +35,22 @@ class RelatedProduct
   protected
 
   def parsed_results(response)
-    top_item = response.to_h['ItemSearchResponse']['Items']['Item'].try(&:sample)
-    if top_item
-      { title: top_item['ItemAttributes']['Title'], list_price: top_item['ItemAttributes']['ListPrice'], url: top_item['DetailPageURL'], image_url: top_item['LargeImage']['URL'] }
+    item = response.to_h['ItemSearchResponse']['Items']['Item'].try(&:sample)
+    if item
+      { title: item['ItemAttributes']['Title'], list_price: item['ItemAttributes']['ListPrice'], url: item['DetailPageURL'], image_url: item['LargeImage']['URL'] }
     else
       {}
+    end
+  end
+
+  def amazon_category_mapping(post_category_name)
+    case post_category_name
+    when "Kid's Stuff"
+      'Baby'
+    when "Womens"
+      'Apparel'
+    else
+      'Baby'
     end
   end
 end
