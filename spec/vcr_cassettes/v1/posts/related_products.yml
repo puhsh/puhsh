@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Keywords=Test&Operation=ItemSearch&ResponseGroup=Small,Images,ItemAttributes&SearchIndex=Baby&Service=AWSECommerceService&Signature=NZ3tG%2BCZb8Cgx%2BDUu5isLiw94sN%2BYTM2F7XrUeCyqQg=&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-02-19T05:16:14Z&Version=2011-08-01
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Keywords=Test&Operation=ItemSearch&ResponseGroup=Small%2CImages%2CItemAttributes&SearchIndex=Baby&Service=AWSECommerceService&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-02-19T05%3A28%3A53Z&Version=2011-08-01&Signature=YV6TbN3BlBHKYUIEemL7r15Azx2j%2B20BeGXjUy3AON0%3D
     body:
       encoding: US-ASCII
       string: ''
@@ -12,10 +12,10 @@ http_interactions:
   response:
     status:
       code: 200
-      message: ''
+      message: 
     headers:
       Date:
-      - Wed, 19 Feb 2014 05:16:14 GMT
+      - Wed, 19 Feb 2014 05:28:54 GMT
       Server:
       - Server
       Content-Type:
@@ -29,16 +29,15 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '<?xml version="1.0" ?><ItemSearchResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><HTTPHeaders><Header
-        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>29cc9407-341a-48f2-83d3-34f3cd60bdf2</RequestId><Arguments><Argument
-        Name="Service" Value="AWSECommerceService"></Argument><Argument Name="Keywords"
-        Value="Test"></Argument><Argument Name="SignatureMethod" Value="HmacSHA256"></Argument><Argument
-        Name="Timestamp" Value="2014-02-19T05:16:14Z"></Argument><Argument Name="Operation"
-        Value="ItemSearch"></Argument><Argument Name="AssociateTag" Value="puhsh-20"></Argument><Argument
-        Name="Version" Value="2011-08-01"></Argument><Argument Name="Sort" Value="salesrank"></Argument><Argument
-        Name="SearchIndex" Value="Baby"></Argument><Argument Name="SignatureVersion"
-        Value="2"></Argument><Argument Name="Signature" Value="NZ3tG+CZb8Cgx+DUu5isLiw94sN+YTM2F7XrUeCyqQg="></Argument><Argument
-        Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument Name="ResponseGroup"
-        Value="Small,Images,ItemAttributes"></Argument></Arguments><RequestProcessingTime>0.1126650000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>Test</Keywords><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><SearchIndex>Baby</SearchIndex><Sort>salesrank</Sort></ItemSearchRequest></Request><TotalResults>7064</TotalResults><TotalPages>707</TotalPages><MoreSearchResultsUrl>http://www.amazon.com/gp/redirect.html?camp=2025&amp;creative=386001&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fsearch%3Fkeywords%3DTest%26url%3Dsearch-alias%253Dbaby-products&amp;linkCode=xm2&amp;tag=puhsh-20&amp;SubscriptionId=AKIAIO4ZPZLNHU3QUX5A</MoreSearchResultsUrl><Item><ASIN>B0062V8PPI</ASIN><ParentASIN>B00DFJW3XK</ParentASIN><DetailPageURL>http://www.amazon.com/Pampers-Softcare-Fresh-Wipes-Count/dp/B0062V8PPI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0062V8PPI</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>c7d51719-6482-4410-a8b0-62a2859c7c30</RequestId><Arguments><Argument
+        Name="Operation" Value="ItemSearch"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
+        Name="AssociateTag" Value="puhsh-20"></Argument><Argument Name="Version" Value="2011-08-01"></Argument><Argument
+        Name="Keywords" Value="Test"></Argument><Argument Name="Sort" Value="salesrank"></Argument><Argument
+        Name="SignatureMethod" Value="HmacSHA256"></Argument><Argument Name="SearchIndex"
+        Value="Baby"></Argument><Argument Name="SignatureVersion" Value="2"></Argument><Argument
+        Name="Signature" Value="YV6TbN3BlBHKYUIEemL7r15Azx2j+20BeGXjUy3AON0="></Argument><Argument
+        Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument Name="Timestamp"
+        Value="2014-02-19T05:28:53Z"></Argument><Argument Name="ResponseGroup" Value="Small,Images,ItemAttributes"></Argument></Arguments><RequestProcessingTime>0.1273940000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>Test</Keywords><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><SearchIndex>Baby</SearchIndex><Sort>salesrank</Sort></ItemSearchRequest></Request><TotalResults>7064</TotalResults><TotalPages>707</TotalPages><MoreSearchResultsUrl>http://www.amazon.com/gp/redirect.html?camp=2025&amp;creative=386001&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fsearch%3Fkeywords%3DTest%26url%3Dsearch-alias%253Dbaby-products&amp;linkCode=xm2&amp;tag=puhsh-20&amp;SubscriptionId=AKIAIO4ZPZLNHU3QUX5A</MoreSearchResultsUrl><Item><ASIN>B0062V8PPI</ASIN><ParentASIN>B00DFJW3XK</ParentASIN><DetailPageURL>http://www.amazon.com/Pampers-Softcare-Fresh-Wipes-Count/dp/B0062V8PPI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0062V8PPI</DetailPageURL><ItemLinks><ItemLink><Description>Technical
         Details</Description><URL>http://www.amazon.com/Pampers-Softcare-Fresh-Wipes-Count/dp/tech-data/B0062V8PPI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>Add
         To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB0062V8PPI%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>Add
         To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB0062V8PPI%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>Add
@@ -619,5 +618,5 @@ http_interactions:
         and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2012-06-08</PublicationDate><Publisher>Huggies</Publisher><ReleaseDate>2012-06-18</ReleaseDate><Size>4</Size><SKU>HD-3215-B1</SKU><Studio>Huggies</Studio><Title>Huggies
         Little Movers Diapers Economy Plus, Size 4, 160 Count (packaging may vary)</Title><UPC>036000364088</UPC><UPCList><UPCListElement>036000364088</UPCListElement></UPCList></ItemAttributes></Item></Items></ItemSearchResponse>'
     http_version: 
-  recorded_at: Wed, 19 Feb 2014 05:16:15 GMT
+  recorded_at: Wed, 19 Feb 2014 05:28:54 GMT
 recorded_with: VCR 2.8.0

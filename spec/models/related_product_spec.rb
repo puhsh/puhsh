@@ -4,6 +4,14 @@ require 'vcr_helper'
 describe RelatedProduct do
   let(:related_product) { RelatedProduct.new }
 
+  let(:search_matcher) {
+    lambda do |new_request, saved_request|
+      new_keywords = new_request.uri[/Keywords=(.*)Operation=.*/, 1]
+      saved_keywords = saved_request.uri[/Keywords=(.*)Operation=.*/, 1]
+      new_keywords == saved_keywords
+    end
+  }
+
   describe '.api' do
     it 'should not be nil' do
       expect(related_product.api).to_not be_nil
@@ -40,13 +48,13 @@ describe RelatedProduct do
     end
 
     it 'returns nothing if no match is found' do
-      VCR.use_cassette('/models/related_product/search_amazon_no_results') do
+      VCR.use_cassette('/models/related_product/search_amazon_no_results', match_requests_on: [:method, search_matcher]) do
         expect(related_product.find_related_products('1asafddsfasdf')).to eql({})
       end
     end
 
     it 'returns data from Amazon\'s API' do
-      VCR.use_cassette('/models/related_product/search_amazon') do
+      VCR.use_cassette('/models/related_product/search_amazon', match_requests_on: [:method, search_matcher]) do
         expect(related_product.find_related_products('Binky')).to_not eql({})
       end
     end
