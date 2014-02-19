@@ -24,11 +24,13 @@ describe V1::RelatedProductsController do
   context 'with access token and authentication' do
     let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
 
-    it 'is forbidden' do
-      sign_in user
-      get :index, { post_id: new_post.id, access_token: access_token.token }
-      expect(assigns[:related_product]).to_not be_nil
-      expect(response).to be_success
+    it 'returns related products' do
+      VCR.use_cassette('/v1/posts/related_products') do
+        sign_in user
+        get :index, { post_id: new_post.id, access_token: access_token.token }
+        expect(assigns[:related_product]).to_not be_nil
+        expect(response).to be_success
+      end
     end
   end
 end
