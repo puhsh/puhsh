@@ -35,7 +35,7 @@ module Puhsh
         opts = HashWithIndifferentAccess.new(opts)
         post = Post.find_by_id(opts[:post_id])
         if post
-          # send new post email
+          UserMailer.new_post_email(post)
         end
       end
 
@@ -43,17 +43,15 @@ module Puhsh
         opts = HashWithIndifferentAccess.new(opts)
         message = Message.find_by_id(opts[:message_id])
         if message
-          # send new message email
+          UserMailer.new_message_email(message)
         end
       end
 
       def send_new_question_email(opts)
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.find_by_id(opts[:question_id])
-        post = question.item.post
-        user = post.user
-        if user && user.contact_email
-          # send new question email
+        if question
+          UserMailer.new_question_email(question)
         end
       end
     end
