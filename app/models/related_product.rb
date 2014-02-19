@@ -43,7 +43,12 @@ class RelatedProduct
     end
   end
 
-  def amazon_category_mapping(post_category_name)
+  # Protected: Maps a post's category name to a related category used in the Amazon Ad API
+  #
+  # post_category_name - The name of post's category. Defaults to nil
+  #
+  # Returns a string of Amazon specific categories
+  def amazon_category_mapping(post_category_name = nil)
     case post_category_name
     when "Kid's Stuff"
       'Baby'
