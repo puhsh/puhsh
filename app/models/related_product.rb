@@ -4,7 +4,7 @@ class RelatedProduct
   attr_reader :api
 
   def initialize
-    @api = Vacuum.new.configure(YAML.load_file("#{Rails.root}/config/amazon-ads.yml")[Rails.env].symbolize_keys)
+    @api = Vacuum.new.configure(AMAZON_ADS_API_CONFIG)
   end
 
   def find_related_products(search_terms = nil, post_category_name = nil)
