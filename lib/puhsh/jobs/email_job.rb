@@ -4,7 +4,7 @@ module Puhsh
       @queue = :email
 
       def self.perform(method, *args)
-        send(method, *args)
+        new.send(method, *args)
       end
 
       def self.send_welcome_email(opts)
