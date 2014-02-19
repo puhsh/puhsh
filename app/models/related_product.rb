@@ -35,7 +35,9 @@ class RelatedProduct
   protected
 
   def parsed_results(response)
-    item = response.to_h['ItemSearchResponse']['Items']['Item'].try(&:sample)
+    response_hash = response.to_h
+    item = response_hash['ItemSearchResponse']['Items']['Item'].try(&:sample) unless response_hash.empty?
+
     if item
       { title: item['ItemAttributes']['Title'], list_price: item['ItemAttributes']['ListPrice'], url: item['DetailPageURL'], image_url: item['LargeImage']['URL'] }
     else
