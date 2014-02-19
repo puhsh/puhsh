@@ -55,6 +55,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     mandrill_mail template: 'comment-posted',
                   to: @post_user.contact_email,
                   vars: {
+                    'POST_TITLE' => @post.title,
                     'POST_USER_FIRST_NAME' => @post_user.first_name,
                     'POST_USER_EMAIL' => @post_user.contact_email,
                     'QUESTION_USER_FIRST_NAME' => @question_user.first_name,
