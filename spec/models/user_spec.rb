@@ -510,6 +510,8 @@ describe User do
       it { should be_able_to(:manage, Notification.new(actor: user)) }
       it { should_not be_able_to(:manage, Notification.new(user: user2)) }
       it { should be_able_to(:read, Notification.new(user: user2)) }
+      
+      it { should be_able_to(:read, RelatedProduct.new) }
     end
   end
 end

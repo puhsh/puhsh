@@ -12,7 +12,7 @@ class RelatedProduct
       params = default_search_criteria.merge({'Keywords' => search_terms})
       parsed_results(self.api.item_search(params))
     else
-      []
+      {}
     end
   end
 
@@ -35,7 +35,11 @@ class RelatedProduct
   protected
 
   def parsed_results(response)
-    top_item = response.to_h['ItemSearchResponse']['Items']['Item'].first
-    { title: top_item['ItemAttributes']['Title'], list_price: top_item['ItemAttributes']['ListPrice'], url: top_item['DetailPageURL'], image_url: top_item['LargeImage']['URL'] }
+    top_item = response.to_h['ItemSearchResponse']['Items']['Item'].try(&:sample)
+    if top_item
+      { title: top_item['ItemAttributes']['Title'], list_price: top_item['ItemAttributes']['ListPrice'], url: top_item['DetailPageURL'], image_url: top_item['LargeImage']['URL'] }
+    else
+      {}
+    end
   end
 end

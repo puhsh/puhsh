@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Keywords=Binky&Operation=ItemSearch&ResponseGroup=Small,Images,ItemAttributes&SearchIndex=Baby&Service=AWSECommerceService&Signature=jpr2hs/mdNkWHAs/DbZjCpphz3QgqDEgX8n2s46to88=&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-02-19T04:35:13Z&Version=2011-08-01
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Keywords=Binky&Operation=ItemSearch&ResponseGroup=Small,Images,ItemAttributes&SearchIndex=Baby&Service=AWSECommerceService&Signature=g7h7EbDWuFxmJoLkgwQd2CMiWFfTsUc7wHu36EYroUY=&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-02-19T05:08:42Z&Version=2011-08-01
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Wed, 19 Feb 2014 04:35:13 GMT
+      - Wed, 19 Feb 2014 05:08:42 GMT
       Server:
       - Server
       Content-Type:
@@ -29,16 +29,15 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '<?xml version="1.0" ?><ItemSearchResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><HTTPHeaders><Header
-        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>d3b86123-c9a5-4dd5-ad25-5b111e9d8f98</RequestId><Arguments><Argument
-        Name="Service" Value="AWSECommerceService"></Argument><Argument Name="Keywords"
-        Value="Binky"></Argument><Argument Name="SignatureMethod" Value="HmacSHA256"></Argument><Argument
-        Name="Timestamp" Value="2014-02-19T04:35:13Z"></Argument><Argument Name="Operation"
-        Value="ItemSearch"></Argument><Argument Name="AssociateTag" Value="puhsh-20"></Argument><Argument
-        Name="Version" Value="2011-08-01"></Argument><Argument Name="Sort" Value="salesrank"></Argument><Argument
-        Name="SearchIndex" Value="Baby"></Argument><Argument Name="SignatureVersion"
-        Value="2"></Argument><Argument Name="Signature" Value="jpr2hs/mdNkWHAs/DbZjCpphz3QgqDEgX8n2s46to88="></Argument><Argument
-        Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument Name="ResponseGroup"
-        Value="Small,Images,ItemAttributes"></Argument></Arguments><RequestProcessingTime>0.0809560000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>Binky</Keywords><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><SearchIndex>Baby</SearchIndex><Sort>salesrank</Sort></ItemSearchRequest></Request><TotalResults>546</TotalResults><TotalPages>55</TotalPages><MoreSearchResultsUrl>http://www.amazon.com/gp/redirect.html?camp=2025&amp;creative=386001&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fsearch%3Fkeywords%3DBinky%26url%3Dsearch-alias%253Dbaby-products&amp;linkCode=xm2&amp;tag=puhsh-20&amp;SubscriptionId=AKIAIO4ZPZLNHU3QUX5A</MoreSearchResultsUrl><Item><ASIN>B0045I6IA4</ASIN><ParentASIN>B0046A8ZNO</ParentASIN><DetailPageURL>http://www.amazon.com/Philips-Soothie-Pacifier-Purple-Months/dp/B0045I6IA4%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0045I6IA4</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>749cb848-49d8-491c-b002-695d5954fd1c</RequestId><Arguments><Argument
+        Name="Operation" Value="ItemSearch"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
+        Name="AssociateTag" Value="puhsh-20"></Argument><Argument Name="Version" Value="2011-08-01"></Argument><Argument
+        Name="Keywords" Value="Binky"></Argument><Argument Name="Sort" Value="salesrank"></Argument><Argument
+        Name="SignatureMethod" Value="HmacSHA256"></Argument><Argument Name="SearchIndex"
+        Value="Baby"></Argument><Argument Name="SignatureVersion" Value="2"></Argument><Argument
+        Name="Signature" Value="g7h7EbDWuFxmJoLkgwQd2CMiWFfTsUc7wHu36EYroUY="></Argument><Argument
+        Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument Name="Timestamp"
+        Value="2014-02-19T05:08:42Z"></Argument><Argument Name="ResponseGroup" Value="Small,Images,ItemAttributes"></Argument></Arguments><RequestProcessingTime>0.0968660000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>Binky</Keywords><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><SearchIndex>Baby</SearchIndex><Sort>salesrank</Sort></ItemSearchRequest></Request><TotalResults>545</TotalResults><TotalPages>55</TotalPages><MoreSearchResultsUrl>http://www.amazon.com/gp/redirect.html?camp=2025&amp;creative=386001&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fsearch%3Fkeywords%3DBinky%26url%3Dsearch-alias%253Dbaby-products&amp;linkCode=xm2&amp;tag=puhsh-20&amp;SubscriptionId=AKIAIO4ZPZLNHU3QUX5A</MoreSearchResultsUrl><Item><ASIN>B0045I6IA4</ASIN><ParentASIN>B0046A8ZNO</ParentASIN><DetailPageURL>http://www.amazon.com/Philips-Soothie-Pacifier-Purple-Months/dp/B0045I6IA4%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0045I6IA4</DetailPageURL><ItemLinks><ItemLink><Description>Technical
         Details</Description><URL>http://www.amazon.com/Philips-Soothie-Pacifier-Purple-Months/dp/tech-data/B0045I6IA4%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0045I6IA4</URL></ItemLink><ItemLink><Description>Add
         To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB0045I6IA4%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0045I6IA4</URL></ItemLink><ItemLink><Description>Add
         To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB0045I6IA4%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0045I6IA4</URL></ItemLink><ItemLink><Description>Add
@@ -499,5 +498,5 @@ http_interactions:
         Product</ProductGroup><ProductTypeName>BABY_PRODUCT</ProductTypeName><Publisher>BooginHead</Publisher><ReleaseDate>2010-10-15</ReleaseDate><SKU>518_PG-DDG</SKU><Studio>BooginHead</Studio><Title>Booginhead
         PaciGrip Pacifier Holder, Delicate Dot Green</Title><UPC>899139001565</UPC><UPCList><UPCListElement>899139001565</UPCListElement></UPCList></ItemAttributes></Item></Items></ItemSearchResponse>'
     http_version: 
-  recorded_at: Wed, 19 Feb 2014 04:35:14 GMT
+  recorded_at: Wed, 19 Feb 2014 05:08:43 GMT
 recorded_with: VCR 2.8.0

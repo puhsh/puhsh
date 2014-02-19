@@ -69,6 +69,7 @@ Puhsh::Application.routes.draw do
       member do
         get :activity
       end
+      resources :related_products, only: [:index]
     end
 
     # Flagged Posts

@@ -36,12 +36,18 @@ describe RelatedProduct do
 
   describe '.find_related_products' do
     it 'returns nothing if no terms are provided' do
-      expect(related_product.find_related_products).to eql([])
+      expect(related_product.find_related_products).to eql({})
+    end
+
+    it 'returns nothing if no match is found' do
+      VCR.use_cassette('/models/related_product/search_amazon_no_results') do
+        expect(related_product.find_related_products('1asafddsfasdf')).to eql({})
+      end
     end
 
     it 'returns data from Amazon\'s API' do
       VCR.use_cassette('/models/related_product/search_amazon') do
-        expect(related_product.find_related_products('Binky')).to eql({:title=>"Philips 2 Pack AVENT Soothie Pacifier, Pink/Purple, 0-3 Months", :list_price=>{"Amount"=>"645", "CurrencyCode"=>"USD", "FormattedPrice"=>"$6.45"}, :url=>"http://www.amazon.com/Philips-Soothie-Pacifier-Purple-Months/dp/B0045I6IA4%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0045I6IA4", :image_url=>"http://ecx.images-amazon.com/images/I/41V5jgei17L.jpg"})
+        expect(related_product.find_related_products('Binky')).to_not eql({})
       end
     end
   end

@@ -45,6 +45,8 @@ class Ability
       can :manage, Notification, user_id: user.id
       can :manage, Notification, actor_id: user.id
       can :read, Notification
+
+      can :read, RelatedProduct
     end
   end
 end
