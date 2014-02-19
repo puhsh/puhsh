@@ -3,7 +3,8 @@
     - if !user_signed_in?
       = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary'
     - else
-      %a(href=admin_root_url) Admin
+      - if current_user.has_role?(:admin)
+        %a(href=admin_root_url) Admin
 .row
   .small-12
     = image_tag 'logo-2x.png', class: 'logo'
