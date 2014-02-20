@@ -83,7 +83,7 @@ describe Message do
     it 'sends the new message email' do
       message.save
       expect(Puhsh::Jobs::EmailJob).to have_queued(:send_new_message_email, {message_id: message.id}).in(:email)
-      expect(Puhsh::Jobs::EmailJob).to receive(:send_new_message_email).with({'message_id' => message.id})
+      expect_any_instance_of(Puhsh::Jobs::EmailJob).to receive(:send_new_message_email).with({'message_id' => message.id})
       ResqueSpec.perform_all(:email)
     end
   end
