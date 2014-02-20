@@ -7,11 +7,11 @@ module Puhsh
     end
 
     def facebook_avatar_url_with_size(original_url, size)
-      if size
+      if size && valid_avatar_size?(size)
         base_url = facebook_base_avatar_url(original_url)
         base_url + "?type=#{size.to_s}"
       else
-        original_url
+        nil
       end
     end
 
@@ -24,5 +24,10 @@ module Puhsh
     def facebook_base_avatar_url(url)
       url.split('?').first
     end
+
+    def valid_avatar_size?(size)
+      [:square, :small, :normal, :large].include?(size)
+    end
+
   end
 end

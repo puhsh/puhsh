@@ -432,7 +432,6 @@ describe User do
       user.save
       expect(user.reload.other_avatar_urls).to eql({})
     end
-
   end
 
   describe 'abilities' do
