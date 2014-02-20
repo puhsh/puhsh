@@ -35,7 +35,7 @@ module Puhsh
         opts = HashWithIndifferentAccess.new(opts)
         post = Post.find_by_id(opts[:post_id])
         if post
-          UserMailer.new_post_email(post)
+          UserMailer.new_post_email(post).deliver
         end
       end
 
@@ -43,7 +43,7 @@ module Puhsh
         opts = HashWithIndifferentAccess.new(opts)
         message = Message.find_by_id(opts[:message_id])
         if message
-          UserMailer.new_message_email(message)
+          UserMailer.new_message_email(message).deliver
         end
       end
 
@@ -51,7 +51,7 @@ module Puhsh
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.find_by_id(opts[:question_id])
         if question
-          UserMailer.new_question_email(question)
+          UserMailer.new_question_email(question).deliver
         end
       end
     end
