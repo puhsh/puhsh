@@ -26,6 +26,6 @@ class Question < ActiveRecord::Base
   end
 
   def send_new_question_email
-    Puhsh::Jobs::EmailJob.send_new_question_email({question_id: self.id})
+    Puhsh::Jobs::EmailJob.send_new_question_email({question_id: self.id}) unless self.item.post.user_id == self.user_id
   end
 end
