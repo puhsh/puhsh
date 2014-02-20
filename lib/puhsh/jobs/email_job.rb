@@ -8,22 +8,22 @@ module Puhsh
       end
 
       def self.send_welcome_email(opts)
-        Resque.enqueue(self, :welcome_email, opts)
+        Resque.enqueue(self, :send_welcome_email, opts)
       end
 
       def self.send_new_post_email(opts)
-        Resque.enqueue(self, :new_post_email, opts)
+        Resque.enqueue(self, :send_new_post_email, opts)
       end
 
       def self.send_new_message_email(opts)
-        Resque.enqueue(self, :new_message_email, opts)
+        Resque.enqueue(self, :send_new_message_email, opts)
       end
 
       def self.send_new_question_email(opts)
-        Resque.enqueue(self, :new_question_email, opts)
+        Resque.enqueue(self, :send_new_question_email, opts)
       end
 
-      def welcome_email(opts)
+      def send_welcome_email(opts)
         opts = HashWithIndifferentAccess.new(opts)
         user = User.find_by_id(opts[:user_id])
         if user
@@ -31,7 +31,7 @@ module Puhsh
         end
       end
 
-      def new_post_email(opts)
+      def send_new_post_email(opts)
         opts = HashWithIndifferentAccess.new(opts)
         post = Post.find_by_id(opts[:post_id])
         if post
@@ -39,7 +39,7 @@ module Puhsh
         end
       end
 
-      def new_message_email(opts)
+      def send_new_message_email(opts)
         opts = HashWithIndifferentAccess.new(opts)
         message = Message.find_by_id(opts[:message_id])
         if message
@@ -47,7 +47,7 @@ module Puhsh
         end
       end
 
-      def new_question_email(opts)
+      def send_new_question_email(opts)
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.find_by_id(opts[:question_id])
         if question
