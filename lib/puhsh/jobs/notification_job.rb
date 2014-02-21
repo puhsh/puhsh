@@ -42,13 +42,17 @@ module Puhsh
       def send_new_question_notification(opts)
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.includes({item: [post: :user]}).find_by_id(opts[:question_id])
+        user = question.item.post.user
         if question
           Notification.new.tap do |notification|
-            notification.user = question.item.post.user
+            notification.user = user
             notification.actor = question.user
             notification.content = question
             notification.read = false
           end.save
+          user.devices.ios.each do |device|
+            device.fire_notification!("#{question.user.first_name} just asked a question.", :new_question)
+          end
         end
       end
 
