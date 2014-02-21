@@ -1,6 +1,6 @@
 class Device < ActiveRecord::Base
   attr_accessible :user, :device_token, :device_type
-  symbolize :device_type, in: [:android, :ios], methods: true, scopes: false, validate: false
+  symbolize :device_type, in: [:android, :ios], methods: true, scopes: :shallow, validate: false
 
   # Relations
   belongs_to :user

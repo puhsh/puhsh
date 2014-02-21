@@ -22,13 +22,20 @@ module Puhsh
       def send_new_message_notification(opts)
         opts = HashWithIndifferentAccess.new(opts)
         message = Message.find_by_id(opts[:message_id])
-        if message
+        recipient = message.try(&:recipient)
+        sender = message.try(&:sender)
+
+        if message && recipient && sender
           Notification.new.tap do |notification|
-            notification.user = message.recipient
-            notification.actor = message.sender
+            notification.user = recipient
+            notification.actor = sender
             notification.content = message
             notification.read = false
           end.save
+
+          recipient.devices.ios.each do |device|
+            device.fire_notification!(message.notification_text, :new_message)
+          end
         end
       end
 

@@ -29,6 +29,10 @@ class Message < ActiveRecord::Base
     Message.where("id in (#{query})").sent_or_received_by_user(user).newest
   end
 
+  def notification_text
+    "#{self.sender.first_name} just sent you a new message."
+  end
+
   protected
 
   def send_new_message_email

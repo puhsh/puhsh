@@ -92,6 +92,8 @@ describe Message do
     let!(:sender) { FactoryGirl.create(:user) }
     let!(:recipient) { FactoryGirl.create(:user) }
     let!(:message) { FactoryGirl.build(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
+    let(:device) { FactoryGirl.create(:device, user: recipient, device_type: :ios) }
+    let(:android_device) { FactoryGirl.create(:device, user: recipient, device_type: :android) }
 
     before { ResqueSpec.reset! }
 
@@ -101,6 +103,12 @@ describe Message do
       ResqueSpec.perform_all(:notifications)
       expect(recipient.notifications).to_not be_empty
       expect(sender.notifications).to be_empty
+    end
+
+    it 'does not generate a GCM' do
+      message.save
+      expect(android_device).to_not receive(:fire_notification!)
+      ResqueSpec.perform_all(:notifications)
     end
   end
 
