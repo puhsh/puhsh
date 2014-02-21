@@ -60,4 +60,23 @@ describe Question do
 
     end
   end
+
+  describe '.send_new_question_notification' do
+
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let!(:post) { FactoryGirl.create(:post, user: user) }
+    let!(:item) { FactoryGirl.create(:item, post: post) }
+    let!(:question) { FactoryGirl.build(:question, item: item, user: user2, content: 'Is this a good item?') }
+    let!(:question_by_post_user) { FactoryGirl.build(:question, item: item, user: user, content: 'Yes this is a good item') }
+
+    before { ResqueSpec.reset! }
+
+    it 'generates a new notification' do
+      question.save
+      expect(Puhsh::Jobs::NotificationJob).to have_queued(:send_new_question_notification, {question_id: question.id})
+      ResqueSpec.perform_all(:notifications)
+      expect(user.notifications).to_not be_empty
+    end
+  end
 end

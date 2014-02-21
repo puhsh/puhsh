@@ -88,6 +88,22 @@ describe Message do
     end
   end
 
+  describe '.send_new_message_notification' do
+    let!(:sender) { FactoryGirl.create(:user) }
+    let!(:recipient) { FactoryGirl.create(:user) }
+    let!(:message) { FactoryGirl.build(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
+
+    before { ResqueSpec.reset! }
+
+    it 'generates a new notification' do
+      message.save
+      expect(Puhsh::Jobs::NotificationJob).to have_queued(:send_new_message_notification, {message_id: message.id}).in(:notifications)
+      ResqueSpec.perform_all(:notifications)
+      expect(recipient.notifications).to_not be_empty
+      expect(sender.notifications).to be_empty
+    end
+  end
+
   describe '.recent_conversations_for_user' do
     let!(:sender) { FactoryGirl.create(:user) }
     let!(:recipient) { FactoryGirl.create(:user) }
