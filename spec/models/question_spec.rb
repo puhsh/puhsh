@@ -78,5 +78,11 @@ describe Question do
       ResqueSpec.perform_all(:notifications)
       expect(user.notifications).to_not be_empty
     end
+
+    it 'does not generate a new notification if the question is asked by the post creator' do
+      question_by_post_user.save
+      expect(Puhsh::Jobs::NotificationJob).to_not have_queued(:send_new_question_notification, {question_id: question.id})
+      expect(user.notifications).to be_empty
+    end
   end
 end
