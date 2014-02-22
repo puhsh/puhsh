@@ -78,4 +78,7 @@ Puhsh::Application.configure do
 
   # Warden
   config.gem 'rails_warden'
+
+  # Paperclip
+  config.paperclip_defaults = { url: ':s3_domain_url' }
 end
