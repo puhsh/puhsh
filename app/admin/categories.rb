@@ -1,4 +1,5 @@
 ActiveAdmin.register Category do
+  menu priority: 8
   scope :all, :default => true
   scope :active
   scope :inactive

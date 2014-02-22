@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def authorized_api_client
     session[:authorized_api_client] = true
   end
+
+  def not_found(exception)
+    render file: 'public/404.html'
+  end
 end
