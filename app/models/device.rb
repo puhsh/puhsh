@@ -23,14 +23,7 @@ class Device < ActiveRecord::Base
   protected
 
   def apn_app_name
-    case self.device_type
-    when :ios
-      Rails.env.production? ? 'puhsh_ios' : "puhsh_ios_development"
-    when :android
-      Rails.env.production? ? 'puhsh_android' : "puhsh_android_development"
-    else
-      nil
-    end
+    "puhsh_#{self.device_type.to_s}_#{Rails.env}"
   end
 
   def send_apn_notification(message, event)

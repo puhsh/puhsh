@@ -51,7 +51,7 @@ module Puhsh
             notification.read = false
           end.save
           user.devices.ios.each do |device|
-            device.fire_notification!("#{question.user.first_name} just asked a question.", :new_question)
+            device.fire_notification!(question.notification_text, :new_question)
           end
         end
       end

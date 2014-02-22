@@ -20,6 +20,10 @@ class Question < ActiveRecord::Base
     self.item.post.user_id == self.user_id
   end
 
+  def notification_text
+    'Someone just asked a question on your post.'
+  end
+
   protected
 
   def store_post_id_for_user

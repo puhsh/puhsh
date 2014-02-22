@@ -92,10 +92,18 @@ describe Message do
     let!(:sender) { FactoryGirl.create(:user) }
     let!(:recipient) { FactoryGirl.create(:user) }
     let!(:message) { FactoryGirl.build(:message, sender: sender, recipient: recipient, content: 'Test message' ) }
-    let(:device) { FactoryGirl.create(:device, user: recipient, device_type: :ios) }
-    let(:android_device) { FactoryGirl.create(:device, user: recipient, device_type: :android) }
+    let!(:device) { FactoryGirl.create(:device, device_type: :ios, device_token: "<faacd1a2 ca64c51c cddf2c3b cb9f52b3 40889c51 b6e641e1 fcb3a526 4d82e3e6>", user: recipient) }
+    let!(:android_device) { FactoryGirl.create(:device, user: recipient, device_type: :android) }
 
     before { ResqueSpec.reset! }
+    before do
+      app = Rapns::Apns::App.new
+      app.name = "puhsh_ios_test"
+      app.certificate = File.read("#{Rails.root}/config/certs/puhsh_development.pem")
+      app.environment = "development"
+      app.connections = 1
+      app.save!
+    end
 
     it 'generates a new notification' do
       message.save
@@ -103,6 +111,13 @@ describe Message do
       ResqueSpec.perform_all(:notifications)
       expect(recipient.notifications).to_not be_empty
       expect(sender.notifications).to be_empty
+    end
+
+    it 'does generate a APN' do
+      message.save
+      expect(Puhsh::Jobs::NotificationJob).to have_queued(:send_new_message_notification, {message_id: message.id}).in(:notifications)
+      expect_any_instance_of(Device).to receive(:fire_notification!)
+      ResqueSpec.perform_all(:notifications)
     end
 
     it 'does not generate a GCM' do
