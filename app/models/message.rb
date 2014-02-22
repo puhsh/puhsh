@@ -9,6 +9,7 @@ class Message < ActiveRecord::Base
 
   # Callbacks
   after_commit :send_new_message_email, on: :create
+  after_commit :send_new_message_notification, on: :create
   
   # Validations
   validates :content, presence: true, length: { maximum: 160 }
@@ -28,9 +29,18 @@ class Message < ActiveRecord::Base
     Message.where("id in (#{query})").sent_or_received_by_user(user).newest
   end
 
+  def notification_text
+    "#{self.sender.first_name} just sent you a new message."
+  end
+
   protected
 
   def send_new_message_email
     Puhsh::Jobs::EmailJob.send_new_message_email({message_id: self.id})
   end
+
+  def send_new_message_notification
+    Puhsh::Jobs::NotificationJob.send_new_message_notification({message_id: self.id})
+  end
+
 end

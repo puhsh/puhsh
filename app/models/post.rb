@@ -27,6 +27,7 @@ class Post < ActiveRecord::Base
   after_commit :store_category_name, on: :create
   after_commit :store_subcategory_name, on: :create
   after_commit :send_new_post_email, on: :create
+  after_commit :send_new_post_notification, on: :create
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
@@ -114,5 +115,9 @@ class Post < ActiveRecord::Base
 
   def send_new_post_email
     Puhsh::Jobs::EmailJob.send_new_post_email({post_id: self.id})
+  end
+
+  def send_new_post_notification
+    Puhsh::Jobs::NotificationJob.send_new_post_notification({post_id: self.id})
   end
 end

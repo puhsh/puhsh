@@ -420,6 +420,20 @@ describe User do
     end
   end
 
+  describe '.other_avatar_urls' do
+    let(:user) { FactoryGirl.create(:user, avatar_url: 'http://graph.facebook.com/1/picture?type=square') }
+
+    it 'returns other sizes for the user\'s facebook avatar' do
+      expect(user.other_avatar_urls).to eql({small: 'http://graph.facebook.com/1/picture?type=small', normal: 'http://graph.facebook.com/1/picture?type=normal', large: 'http://graph.facebook.com/1/picture?type=large'})
+    end
+
+    it 'returns an empty hash if there is no avatar url' do
+      user.avatar_url = nil
+      user.save
+      expect(user.reload.other_avatar_urls).to eql({})
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }

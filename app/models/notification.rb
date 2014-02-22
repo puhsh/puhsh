@@ -1,7 +1,7 @@
 class Notification < ActiveRecord::Base
   include Readable
   include Sortable
-  attr_accessible :user, :user_id, :actor, :actor_id, :actor_type
+  attr_accessible :user, :user_id, :actor, :actor_id, :actor_type, :content, :content_id, :content_type
 
   # Relations
   belongs_to :user

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include StarRewardable
   include BadgeRewardable
   include Redis::Objects
+  include Puhsh::Facebook
 
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
@@ -135,6 +136,18 @@ class User < ActiveRecord::Base
 
   def recently_registered?
     self.contact_email && self.contact_email_changed? && self.contact_email_was.nil?
+  end
+
+  def other_avatar_urls
+    if self.avatar_url.present?
+      {
+        small: facebook_avatar_url_with_size(self.avatar_url, :small),
+        normal: facebook_avatar_url_with_size(self.avatar_url, :normal),
+        large: facebook_avatar_url_with_size(self.avatar_url, :large)
+      }
+    else 
+      {}
+    end
   end
 
   protected
