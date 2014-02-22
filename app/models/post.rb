@@ -95,6 +95,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def notification_text
+    'Your post is now available!'
+  end
+
   protected
 
   def add_category

@@ -67,6 +67,9 @@ module Puhsh
             notification.content = post
             notification.read = false
           end.save
+          user.devices.ios.each do |device|
+            device.fire_notification!(post.notification_text, :new_post)
+          end
         end
       end
     end
