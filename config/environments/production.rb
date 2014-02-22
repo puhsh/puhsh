@@ -80,5 +80,5 @@ Puhsh::Application.configure do
   config.gem 'rails_warden'
 
   # Paperclip
-  config.paperclip_defaults = { url: ':s3_alias_url', s3_alias_host: 'd1fakcx7ksmski.cloudfront.net' }
+  config.paperclip_defaults = { url: ':s3_alias_url', s3_host_alias: 'd1fakcx7ksmski.cloudfront.net' }
 end
