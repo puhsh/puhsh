@@ -5,8 +5,7 @@ class PostImage < ActiveRecord::Base
   has_attached_file :image,
                     styles: { original: '1280x1280#' },
                     s3_permissions: :public_read,
-                    path: "posts/:post_id/post_images/:id.:extension",
-                    s3_host_alias: 'd1fakcx7ksmski.cloudfront.net'
+                    path: "posts/:post_id/post_images/:id.:extension"
 
   # Relations
   belongs_to :post
