@@ -1,4 +1,6 @@
 class Subcategory < ActiveRecord::Base
+  include Sortable
+
   attr_accessible :name, :category, :category_id, :status
   symbolize :status, in: { active: 'Active', inactive: 'Inactive' }, methods: true, scopes: :shallow
 

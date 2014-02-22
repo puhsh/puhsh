@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
+  include Sortable
+
   attr_accessible :name
   symbolize :status, in: [:active, :inactive], methods: true, scopes: :shallow
 
@@ -13,4 +15,5 @@ class Category < ActiveRecord::Base
   
   # Scopes
   scope :active, -> { where(status: :active) }
+  scope :alpha_by_subcategory, -> { order('subcategories.name asc') }
 end
