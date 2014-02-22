@@ -5,20 +5,15 @@ s3_defaults: &default_settings
 development:
   <<: *default_settings
   bucket: puhsh_development
-  url: ':s3_domain_url'
 
 test:
   <<: *default_settings
   bucket: puhsh_test
-  url: ':s3_domain_url'
 
 sandbox:
   <<: *default_settings
   bucket: puhsh_sandbox
-  url: ':s3_domain_url'
 
 production:
   <<: *default_settings
   bucket: puhsh
-  url: ':s3_alias_url'
-  s3_host_alias: 'd1fakcx7ksmski.cloudfront.net'
