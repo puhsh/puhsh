@@ -236,45 +236,6 @@ describe Post do
     end
   end
 
-  describe '.send_new_post_notification' do
-    let!(:city) { FactoryGirl.create(:city) }
-    let!(:user) { FactoryGirl.create(:user, home_city: city) }
-    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
-    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
-    let!(:new_post) { FactoryGirl.build(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
-    let!(:device) { FactoryGirl.create(:device, device_type: :ios, device_token: "<faacd1a2 ca64c51c cddf2c3b cb9f52b3 40889c51 b6e641e1 fcb3a526 4d82e3e6>", user: user) }
-    let!(:android_device) { FactoryGirl.create(:device, user: user, device_type: :android) }
-
-    before { ResqueSpec.reset! }
-    before do
-      app = Rapns::Apns::App.new
-      app.name = "puhsh_ios_test"
-      app.certificate = File.read("#{Rails.root}/config/certs/puhsh_development.pem")
-      app.environment = "development"
-      app.connections = 1
-      app.save!
-    end
-
-    it 'sends a notification to the user that created the post' do
-      new_post.save
-      expect(Puhsh::Jobs::NotificationJob).to have_queued(:send_new_post_notification, {post_id: new_post.id}).in(:notifications)
-      ResqueSpec.perform_all(:notifications)
-      expect(user.notifications).to_not be_empty
-    end
-
-    it 'generates a APN' do
-      new_post.save
-      expect_any_instance_of(Device).to receive(:fire_notification!)
-      ResqueSpec.perform_all(:notifications)
-    end
-
-    it 'does not generate a GCM' do
-      new_post.save
-      expect(android_device).to_not receive(:fire_notification!)
-      ResqueSpec.perform_all(:notifications)
-    end
-  end
-
   describe '.flagged_by?' do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:user2) { FactoryGirl.create(:user) }
