@@ -5,7 +5,7 @@ class V1::NotificationsController < V1::ApiController
 
   def index
     @user = User.find_by_id(params[:user_id]) || current_user
-    @notifications = Notification.where(user_id: @user.id).recent
+    @notifications = Notification.includes(:user, :actor, :content).where(user_id: @user.id).recent
     render_paginated @notifications
   end
 
