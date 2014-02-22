@@ -1,3 +1,3 @@
 ActiveAdmin.register Invite do
-  menu priority: 2, label: 'User Invites'
+  menu priority: 6, label: 'Invitations'
 end

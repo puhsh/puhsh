@@ -1,4 +1,5 @@
 ActiveAdmin.register Subcategory do
+  menu priority: 9
   scope :all, default: true
   scope :active
   scope :inactive

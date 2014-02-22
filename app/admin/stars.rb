@@ -1,4 +1,4 @@
 ActiveAdmin.register Star do
-  menu priority: 4
+  menu priority: 3
   
 end
