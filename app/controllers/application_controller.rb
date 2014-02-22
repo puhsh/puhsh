@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def current_user_admin?
     current_user.admin? if current_user
   end
+
+  def not_found(exception)
+    render file: 'public/404.html'
+  end
 end

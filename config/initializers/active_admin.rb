@@ -68,6 +68,10 @@ ActiveAdmin.setup do |config|
   config.current_user_method = :current_user
 
 
+  # == Authentication
+  config.authorization_adapter = 'AdminAuthentication'
+  config.on_unauthorized_access = :not_found
+
   # == Logging Out
   #
   # Active Admin displays a logout link on each screen. These
