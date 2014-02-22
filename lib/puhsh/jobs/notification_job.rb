@@ -15,10 +15,6 @@ module Puhsh
         Resque.enqueue(self, :send_new_question_notification, opts)
       end
 
-      def self.send_new_post_notification(opts)
-        Resque.enqueue(self, :send_new_post_notification, opts)
-      end
-
       def send_new_message_notification(opts)
         opts = HashWithIndifferentAccess.new(opts)
         message = Message.find_by_id(opts[:message_id])
@@ -53,20 +49,6 @@ module Puhsh
           user.devices.ios.each do |device|
             device.fire_notification!(question.notification_text, :new_question)
           end
-        end
-      end
-
-      def send_new_post_notification(opts)
-        opts = HashWithIndifferentAccess.new(opts)
-        post = Post.find_by_id(opts[:post_id])
-        user = post.try(&:user)
-        if post && user
-          Notification.new.tap do |notification|
-            notification.user = user
-            notification.actor = user
-            notification.content = post
-            notification.read = false
-          end.save
         end
       end
     end

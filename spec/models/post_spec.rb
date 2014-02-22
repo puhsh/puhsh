@@ -236,23 +236,6 @@ describe Post do
     end
   end
 
-  describe '.send_new_post_notification' do
-    let!(:city) { FactoryGirl.create(:city) }
-    let!(:user) { FactoryGirl.create(:user, home_city: city) }
-    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
-    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
-    let!(:new_post) { FactoryGirl.build(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
-
-    before { ResqueSpec.reset! }
-
-    it 'sends a notification to the user that created the post' do
-      new_post.save
-      expect(Puhsh::Jobs::NotificationJob).to have_queued(:send_new_post_notification, {post_id: new_post.id}).in(:notifications)
-      ResqueSpec.perform_all(:notifications)
-      expect(user.notifications).to_not be_empty
-    end
-  end
-
   describe '.flagged_by?' do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:user2) { FactoryGirl.create(:user) }
