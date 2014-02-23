@@ -4,15 +4,15 @@ function postsRouteConfig($routeProvider) {
   $routeProvider.
   when('/', { 
     controller: 'PostsController',
-    templateUrl: '<%= asset_path('posts.html') %>'
+    templateUrl: 'assets/posts.html'
   }).
   when('/posts', { 
     controller: 'PostsController',
-    templateUrl: '<%= asset_path('posts.html') %>'
+    templateUrl: 'assets/posts.html'
   }).
   when('/posts/:id', {
     controller: 'PostController',
-    templateUrl: '<%= asset_path('post.html') %>'
+    templateUrl: 'assets/posts.html'
   }).
   otherwise({
     redirectTo: '/'
