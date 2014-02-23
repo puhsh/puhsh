@@ -56,6 +56,8 @@ class RelatedProduct
       'Baby'
     when "Womens"
       'Apparel'
+    when 'Sports'
+      'SportingGoods'
     else
       'Baby'
     end
