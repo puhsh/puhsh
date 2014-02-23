@@ -1,6 +1,8 @@
 module Puhsh
   module Jobs
     class NotificationJob
+      include TextHelpers
+
       @queue = :notifications
 
       def self.perform(method, *args)
@@ -30,7 +32,7 @@ module Puhsh
           end.save
 
           recipient.devices.ios.each do |device|
-            device.fire_notification!(message.notification_text, :new_message)
+            device.fire_notification!(notification_text(message), :new_message)
           end
         end
       end
@@ -47,7 +49,7 @@ module Puhsh
             notification.read = false
           end.save
           user.devices.ios.each do |device|
-            device.fire_notification!(question.notification_text, :new_question)
+            device.fire_notification!(notification_text(question), :new_question)
           end
         end
       end
