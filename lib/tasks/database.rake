@@ -14,7 +14,7 @@ namespace :db do
     filename_gzip = "#{filename}.gz"
     filename_gzip_with_path = "#{filename_with_path}.gz"
 
-    bucket = Rails.env.production? ? 'puhsh' : "puhsh_#{Rails.env}"
+    bucket = 'puhsh_backups'
 
     command = ['mysqldump']
     command << "-u#{config['username']}"
