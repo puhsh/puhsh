@@ -7,5 +7,6 @@ group :vendor do
   asset 'mousetrap', '1.4.6'
   asset 'angular', '1.2.12'
   asset 'angular-route', '1.2.12'
+  asset 'angular-resource', '1.2.12'
   asset 'underscore', '1.6.0'
 end
