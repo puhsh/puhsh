@@ -1,5 +1,6 @@
 class Invite < ActiveRecord::Base
   include StarRewardable
+  include Trackable
 
   attr_accessible :user, :user_id, :uid_invited
   
