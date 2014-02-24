@@ -1,7 +1,8 @@
 var puhsh = angular.module('puhsh');
 
 puhsh.controller('PostsController', ['$scope', 'Post', function($scope, Post) {
-  Post.get().$promise.then(function(results) {
-    $scope.posts = results.items;
+  Post.query().$promise.then(function(data) {
+    $scope.posts = data.items;
+    $scope.image = _.first(_.first($scope.posts).post_images);
   });
 }]);
