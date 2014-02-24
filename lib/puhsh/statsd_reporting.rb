@@ -12,7 +12,7 @@ module Puhsh
     end
 
     def self.send_increment_to_statsd(name, action)
-      key = "production.totals.#{name}.#{action}"
+      key = "production.Incrementals.#{name}.#{action}"
       $statsd.increment key
     end
   end
