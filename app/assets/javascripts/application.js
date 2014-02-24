@@ -10,8 +10,7 @@
 //= require angular-route/angular-route.min.js
 //= require underscore/underscore.js
 //= require masonry.min.js
-//
-//= require_tree ./angular
+//= require_tree ./puhsh
 
 
 $(function(){ $(document).foundation(); });
