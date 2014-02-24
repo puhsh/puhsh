@@ -9,7 +9,7 @@ module Trackable
 
   def increment_create
     if Rails.env.production?
-      Puhsh::StatsdReporting.increment_create(self.class, 'create')
+      Puhsh::StatsdReporting.send_increment_to_statsd(self.class, 'create')
     end
   end
 end
