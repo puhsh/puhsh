@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  include Trackable
   attr_accessible :user, :user_id, :item, :content, :item_id
 
   # Relations
