@@ -1,4 +1,7 @@
-var puhsh = angular.module('puhsh', ['puhsh.services','ngRoute']);
+var puhsh = angular.module('puhsh', 
+    ['puhsh.services', 
+     'puhsh.directives.spinner',
+     'ngRoute']);
 
 puhsh.config(['$routeProvider', function($routeProvider) {
   $routeProvider.

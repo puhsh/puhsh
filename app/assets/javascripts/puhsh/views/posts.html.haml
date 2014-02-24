@@ -1,6 +1,6 @@
 .row(ng-controller="PostsController")
   .small12.columns
-    %ul.inline-list.small-block-grid-2.medium-block-grid-3.large-block-grid-4.text-center
+    %ul#posts.inline-list.small-block-grid-2.medium-block-grid-3.large-block-grid-4.text-center(masonry)
       %li#post.boxed(ng-repeat="post in posts")
         #header
           %h2(ng-bind="post.title")
