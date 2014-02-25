@@ -8,7 +8,7 @@ class V1::MessagesController < V1::ApiController
     @recipient = User.find_by_id(params[:recipient_id]) if params[:recipient_id]
 
     if @recipient
-      @messages = Message.includes(:sender, :recipient).between_sender_and_recipient(@sender, @recipient).recent
+      @messages = Message.includes(:sender, :recipient).between_sender_and_recipient(@sender, @recipient).oldest
       serializer = MessageSerializer
     else
       @messages = Message.includes(:sender, :recipient).recent_conversations_for_user(@sender)
