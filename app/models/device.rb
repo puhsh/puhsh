@@ -1,4 +1,5 @@
 class Device < ActiveRecord::Base
+  include Trackable
   attr_accessible :user, :device_token, :device_type
   symbolize :device_type, in: [:android, :ios], methods: true, scopes: :shallow, validate: false
 

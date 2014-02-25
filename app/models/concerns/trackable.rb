@@ -13,6 +13,9 @@ module Trackable
     when User
       Puhsh::StatsdReporting.send_increment_to_statsd(self.class, 'create')
       Puhsh::StatsdReporting.send_increment_to_statsd(self.class, "create_#{self.gender}")
+    when Device
+      Puhsh::StatsdReporting.send_increment_to_statsd(self.class, 'create')
+      Puhsh::StatsdReporting.send_increment_to_statsd(self.class, "create_#{self.device_type}")
     else
       Puhsh::StatsdReporting.send_increment_to_statsd(self.class, 'create')
     end
