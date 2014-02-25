@@ -1,5 +1,7 @@
 class WallPost < ActiveRecord::Base
   include StarRewardable
+  include Trackable
+
   attr_accessible :user, :post_type
   symbolize :post_type, in: [:alpha_share] , methods: true, scopes: false, validates: true
 

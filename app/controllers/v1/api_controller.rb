@@ -127,4 +127,8 @@ class V1::ApiController < ActionController::Metal
   def internal_request?
     session[:authorized_api_client] == true
   end
+
+  def skip_trackable
+    request.env["devise.skip_trackable"] = true
+  end
 end

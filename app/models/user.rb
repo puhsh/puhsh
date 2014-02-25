@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   include BadgeRewardable
   include Redis::Objects
   include Puhsh::Facebook
+  include Trackable
 
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
@@ -148,6 +149,10 @@ class User < ActiveRecord::Base
     else 
       {}
     end
+  end
+
+  def contactable?
+    self.contact_email.present?
   end
 
   protected

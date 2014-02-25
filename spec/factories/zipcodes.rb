@@ -15,4 +15,12 @@ FactoryGirl.define do
     latitude 40.7143528
     longitude -74.0059731
   end
+
+  factory :nyc_zip, class: Zipcode do
+    code '10021'
+    city_name 'New York City'
+    state 'NY'
+    latitude 40.7143528
+    longitude -74.0059731
+  end
 end

@@ -5,4 +5,9 @@ FactoryGirl.define do
     state 'TX'
     name 'Frisco'
   end
+
+  factory :nyc do
+    state 'NY'
+    name 'New York City'
+  end
 end

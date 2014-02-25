@@ -1,8 +1,9 @@
 class V1::UsersController < V1::ApiController
+  before_filter :skip_trackable
   before_filter :authenticate_user!
   before_filter :verify_access_token
   before_filter :forbidden!, only: [:create, :destroy]
-  load_and_authorize_resource
+  authorize_resource
 
   def show
     @user = User.find(params[:id])
@@ -31,7 +32,7 @@ class V1::UsersController < V1::ApiController
   end
 
   def activity
-    @posts = Post.includes(:item, :user).for_users_or_cities(current_user.users_following, current_user.cities_following).exclude_user(current_user).recent
+    @posts = Post.includes(:item, :post_images, :city, :user).for_users_or_cities(current_user.users_following, current_user.cities_following).exclude_user(current_user).recent
     render_paginated @posts
   end
 

@@ -11,5 +11,9 @@ module Puhsh
       batch.flush
     end
 
+    def self.send_increment_to_statsd(name, action)
+      key = "production.Incrementals.#{name}.#{action}"
+      $statsd.increment key, 1
+    end
   end
 end

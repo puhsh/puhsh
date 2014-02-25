@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   include BadgeRewardable
   include Sortable
   include Redis::Objects
+  include Trackable
 
   attr_accessible :title, :description, :pick_up_location, :payment_type, :category, :category_id, :subcategory, :subcategory_id, :city, :user_id, :item_attributes, :user, :post_images_attributes, :status
   symbolize :pick_up_location, in: { porch: 'Porch Pick Up', public_location: 'Meet at Public Location', house: 'Pickup at House', other: 'Other' },
@@ -21,6 +22,7 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :subcategory
   has_many :post_images, dependent: :destroy
+  has_many :questions, dependent: :destroy
 
   # Callbacks
   before_save :add_category, :set_city
@@ -30,7 +32,7 @@ class Post < ActiveRecord::Base
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
-  validates :description, presence: true, length: { maximum: 500 }
+  validates :description, presence: true, length: { maximum: 1000 }
   validates :pick_up_location, presence: true
   validates :payment_type, presence: true
   validates :category, presence: true
@@ -72,13 +74,16 @@ class Post < ActiveRecord::Base
   def offers
     Offer.includes(:user).where(id: offer_ids.members)
   end
-  
-  def questions 
+
+  # TODO Remove this once the client starts sending post id
+  def questions_redis
     Question.includes(:user).where(id: question_ids.members)
   end
-
+  
+  # TODO Change this once client starts sending post id
   def activity
-    (offers + questions).sort_by(&:created_at)
+    (offers + questions_redis).sort_by(&:created_at)
+    # (offers + questions).sort_by(&:created_at)
   end
 
   def update_status!(status)

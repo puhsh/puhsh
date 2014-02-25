@@ -1,9 +1,11 @@
 class Question < ActiveRecord::Base
-  attr_accessible :user, :user_id, :item, :content, :item_id
+  include Trackable
+  attr_accessible :user, :user_id, :item, :content, :item_id, :post, :post_id
 
   # Relations
   belongs_to :user
   belongs_to :item
+  belongs_to :post
 
   # Callbacks
   after_commit :store_post_id_for_user, on: :create
@@ -30,6 +32,7 @@ class Question < ActiveRecord::Base
     self.user.post_ids_with_questions << self.item.post_id
   end
 
+  # TODO Remove this once client starts sending post id over
   def store_question_id_for_post
     self.item.post.question_ids << self.id
   end

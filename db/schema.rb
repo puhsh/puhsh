@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140204125734) do
+ActiveRecord::Schema.define(:version => 20140225140626) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -205,12 +205,14 @@ ActiveRecord::Schema.define(:version => 20140204125734) do
   create_table "questions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "item_id"
-    t.string   "content"
+    t.integer  "post_id"
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "questions", ["item_id"], :name => "index_questions_on_item_id"
+  add_index "questions", ["post_id"], :name => "index_questions_on_post_id"
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
 
   create_table "rapns_apps", :force => true do |t|

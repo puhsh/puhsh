@@ -162,7 +162,7 @@ describe V1::PostsController do
     let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
     let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
     let!(:offer) { FactoryGirl.create(:offer, item: item) }
-    let!(:question) { FactoryGirl.create(:question, item: item, content: 'Test question') }
+    let!(:question) { FactoryGirl.create(:question, item: item, post: post, content: 'Test question') }
 
     context 'without access token' do
       it 'is forbidden' do
