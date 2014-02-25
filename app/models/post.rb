@@ -22,6 +22,7 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :subcategory
   has_many :post_images, dependent: :destroy
+  has_many :questions, dependent: :destroy
 
   # Callbacks
   before_save :add_category, :set_city
@@ -73,13 +74,16 @@ class Post < ActiveRecord::Base
   def offers
     Offer.includes(:user).where(id: offer_ids.members)
   end
-  
-  def questions 
+
+  # TODO Remove this once the client starts sending post id
+  def questions_redis
     Question.includes(:user).where(id: question_ids.members)
   end
-
+  
+  # TODO Change this once client starts sending post id
   def activity
-    (offers + questions).sort_by(&:created_at)
+    (offers + questions_redis).sort_by(&:created_at)
+    # (offers + questions).sort_by(&:created_at)
   end
 
   def update_status!(status)

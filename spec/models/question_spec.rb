@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Question do
   it { should belong_to(:user) }
   it { should belong_to(:item) }
+  it { should belong_to(:post) }
 
   describe '.content' do
     let(:question) { FactoryGirl.build(:question, user: User.new) }

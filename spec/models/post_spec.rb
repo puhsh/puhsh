@@ -8,6 +8,7 @@ describe Post do
   it { should belong_to(:category) }
   it { should belong_to(:subcategory) }
   it { should have_many(:post_images) }
+  it { should have_many(:questions) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }
@@ -176,19 +177,6 @@ describe Post do
     end
   end
 
-  describe '.questions' do
-    let!(:city) { FactoryGirl.create(:city) }
-    let!(:user) { FactoryGirl.create(:user, home_city: city) }
-    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
-    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
-    let!(:item) { FactoryGirl.create(:item, post: new_post, price_cents: 1000) }
-    let!(:question) { FactoryGirl.create(:question, item: item, content: 'Test question') }
-
-    it 'returns the questions based on the ids in the redis set' do
-      expect(new_post.reload.questions).to include(question)
-    end
-  end
-
   describe '.activity' do
     let!(:city) { FactoryGirl.create(:city) }
     let!(:user) { FactoryGirl.create(:user, home_city: city) }
@@ -199,7 +187,7 @@ describe Post do
 
     it 'returns the offers and questions for a post in descending order' do
       Timecop.travel(Date.today + 3.weeks) do
-        question = FactoryGirl.create(:question, item: item, content: 'Test question')
+        question = FactoryGirl.create(:question, item: item, content: 'Test question', post: new_post)
         expect(new_post.reload.activity).to eql([offer, question])
       end
     end
