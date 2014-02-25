@@ -1,4 +1,5 @@
 class V1::UsersController < V1::ApiController
+  before_filter :skip_trackable
   before_filter :verify_access_token
   before_filter :forbidden!, only: [:create, :destroy]
   authorize_resource

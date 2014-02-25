@@ -119,4 +119,8 @@ class V1::ApiController < ActionController::Metal
   def first_page_url
     url_for(page: 1, format: :json)
   end
+
+  def skip_trackable
+    request.env["devise.skip_trackable"] = true
+  end
 end
