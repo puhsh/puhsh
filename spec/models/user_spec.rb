@@ -197,7 +197,9 @@ describe User do
 
   describe '.set_home_city' do
     let!(:city) { FactoryGirl.create(:city) }
+    let!(:city2) { FactoryGirl.create(:city, name: 'New York City', state: 'NY') }
     let!(:zipcode) { FactoryGirl.create(:zipcode, city_id: city.id) }
+    let!(:zipcode_nyc) { FactoryGirl.create(:nyc_zip, city_id: city2.id) }
 
     it 'sets the correct city on create' do
       user = FactoryGirl.create(:user)
@@ -214,10 +216,33 @@ describe User do
       expect(user.reload.home_city).to eql(city)
     end
 
+    it 'updates the home city when the zipcode changes' do
+      user = FactoryGirl.create(:user, zipcode: nil)
+      user.zipcode = '75034'
+      user.save
+      expect(user.reload.home_city).to eql(city)
+
+      user.zipcode = '10021'
+      user.save
+      expect(user.reload.home_city).to eql(city2)
+      expect(user.reload.home_city).to_not eql(city)
+    end
+
     it 'follows the home city automatically' do
       user = FactoryGirl.create(:user)
       user.save
       expect(user.reload.followed_cities.map(&:city)).to include(city)
+    end
+
+    it 'follows the city when the zipcode changes' do
+      user = FactoryGirl.create(:user, zipcode: nil)
+      user.zipcode = '75034'
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to include(city)
+
+      user.zipcode = '10021'
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to include(city2)
     end
   end
 
