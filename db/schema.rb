@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140204125734) do
+ActiveRecord::Schema.define(:version => 20140225130603) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(:version => 20140204125734) do
   create_table "questions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "item_id"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
