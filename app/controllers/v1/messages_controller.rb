@@ -1,4 +1,5 @@
 class V1::MessagesController < V1::ApiController
+  before_filter :skip_trackable
   before_filter :verify_access_token
   authorize_resource
 
