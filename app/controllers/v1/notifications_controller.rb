@@ -1,5 +1,4 @@
 class V1::NotificationsController < V1::ApiController
-  before_filter :authenticate_user!
   before_filter :verify_access_token
   authorize_resource
 
