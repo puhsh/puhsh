@@ -420,6 +420,21 @@ describe User do
     end
   end
 
+  describe '.contactable?' do
+    let!(:new_user) { FactoryGirl.build(:user) }
+
+    it 'is false if there is no contact email' do
+      new_user.save
+      expect(new_user.reload).to_not be_contactable
+    end
+
+    it 'is true if there is a contact email' do
+      new_user.contact_email = 'test@test.local'
+      new_user.save
+      expect(new_user.reload).to be_contactable
+    end
+  end
+
   describe '.other_avatar_urls' do
     let(:user) { FactoryGirl.create(:user, avatar_url: 'http://graph.facebook.com/1/picture?type=square') }
 

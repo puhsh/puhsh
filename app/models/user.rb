@@ -151,6 +151,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def contactable?
+    self.contact_email.present?
+  end
+
   protected
 
   def add_default_role
