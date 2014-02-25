@@ -5,7 +5,7 @@ class V1::AuthController < V1::ApiController
       @user = User.find_for_facebook_oauth(fb_record)
       if @user
         @user.generate_access_token!
-        sign_in @user, event: :token_authentication
+        sign_in :user, @user, event: :token_authentication, force: true
         render json: { user: @user, access_token: @user.reload.access_token.token }
       else
         no_content!
