@@ -31,7 +31,7 @@ class Post < ActiveRecord::Base
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
-  validates :description, presence: true, length: { maximum: 500 }
+  validates :description, presence: true, length: { maximum: 1000 }
   validates :pick_up_location, presence: true
   validates :payment_type, presence: true
   validates :category, presence: true

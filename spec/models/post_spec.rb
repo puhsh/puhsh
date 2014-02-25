@@ -46,8 +46,8 @@ describe Post do
       expect(post).to_not be_valid
     end
 
-    it 'cannot exceed 500 characters' do
-      post.description = "Post " * 101
+    it 'cannot exceed 1000 characters' do
+      post.description = "Post " * 1000
       expect(post).to_not be_valid
     end
   end
