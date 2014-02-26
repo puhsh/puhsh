@@ -53,7 +53,7 @@ class V1::PostsController < V1::ApiController
   def participants
     @post = Post.find(params[:id])
     @users = User.where(id: @post.activity.collect(&:user_id)).where('id != ?', @post.user_id)
-    render json: @users
+    render json: @users, each_serializer: SimpleUserSerializer
   end
 
   protected 
