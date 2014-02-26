@@ -30,7 +30,7 @@ class Message < ActiveRecord::Base
   end
 
   def notification_text(actor)
-    "#{actor.first_name} just sent you a new message."
+    "<b>#{actor.first_name} #{actor.last_name}</b> just sent you a new message."
   end
 
   protected

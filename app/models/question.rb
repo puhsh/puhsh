@@ -23,7 +23,7 @@ class Question < ActiveRecord::Base
   end
 
   def notification_text(actor)
-    "#{actor.first_name} #{actor.last_name} left a comment on #{post.title}"
+    "<b>#{actor.first_name} #{actor.last_name}</b> left a comment on <b>#{post.title}</b>"
   end
 
   protected
