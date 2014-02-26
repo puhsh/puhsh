@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140225140626) do
+ActiveRecord::Schema.define(:version => 20140226124803) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20140225140626) do
   create_table "offers", :force => true do |t|
     t.integer  "user_id"
     t.integer  "item_id"
+    t.integer  "post_id"
     t.string   "status",          :default => "pending"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

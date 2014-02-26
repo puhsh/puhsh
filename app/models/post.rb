@@ -23,6 +23,7 @@ class Post < ActiveRecord::Base
   belongs_to :subcategory
   has_many :post_images, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_many :offers, dependent: :destroy
 
   # Callbacks
   before_save :add_category, :set_city

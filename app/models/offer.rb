@@ -6,6 +6,7 @@ class Offer < ActiveRecord::Base
   # Relations
   belongs_to :user
   belongs_to :item
+  belongs_to :post
 
   # Callbacks
   after_commit :store_post_id_for_user, on: :create

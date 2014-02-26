@@ -9,6 +9,7 @@ describe Post do
   it { should belong_to(:subcategory) }
   it { should have_many(:post_images) }
   it { should have_many(:questions) }
+  it { should have_many(:offers) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }
