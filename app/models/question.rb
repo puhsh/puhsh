@@ -6,6 +6,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
   belongs_to :item
   belongs_to :post
+  has_many :notifications, as: :content, dependent: :destroy
 
   # Callbacks
   after_commit :store_post_id_for_user, on: :create

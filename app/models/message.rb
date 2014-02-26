@@ -8,6 +8,7 @@ class Message < ActiveRecord::Base
   # Relations
   belongs_to :sender, class_name: 'User', foreign_key: 'sender_id'
   belongs_to :recipient, class_name: 'User', foreign_key: 'recipient_id'
+  has_many :notifications, as: :content, dependent: :destroy
 
   # Callbacks
   after_commit :send_new_message_email, on: :create
