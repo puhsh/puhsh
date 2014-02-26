@@ -13,6 +13,7 @@ class Question < ActiveRecord::Base
   after_commit :store_question_id_for_post, on: :create
   after_commit :send_new_question_email, on: :create
   after_commit :send_new_question_notification, on: :create
+  before_create :assign_post
 
   # Validations
   validates :content, presence: true
@@ -38,6 +39,11 @@ class Question < ActiveRecord::Base
   # TODO Remove this once client starts sending post id over
   def store_question_id_for_post
     self.item.post.question_ids << self.id
+  end
+
+  # TODO Remove this callback once client sends post id over
+  def assign_post
+    self.post_id = self.item.post_id
   end
 
   def send_new_question_email
