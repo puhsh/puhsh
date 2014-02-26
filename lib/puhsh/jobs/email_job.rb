@@ -19,8 +19,8 @@ module Puhsh
         Resque.enqueue(self, :send_new_message_email, opts)
       end
 
-      def self.send_new_question_email(opts)
-        Resque.enqueue(self, :send_new_question_email, opts)
+      def self.send_new_question_email_to_post_creator(opts)
+        Resque.enqueue(self, :send_new_question_email_to_post_creator, opts)
       end
 
       def send_welcome_email(opts)
@@ -47,7 +47,7 @@ module Puhsh
         end
       end
 
-      def send_new_question_email(opts)
+      def send_new_question_email_to_post_creator(opts)
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.find_by_id(opts[:question_id])
         if question

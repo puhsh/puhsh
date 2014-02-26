@@ -11,8 +11,9 @@ class Question < ActiveRecord::Base
   # Callbacks
   after_commit :store_post_id_for_user, on: :create
   after_commit :store_question_id_for_post, on: :create
-  after_commit :send_new_question_email, on: :create
-  after_commit :send_new_question_notification, on: :create
+  after_commit :send_new_question_email_to_post_creator, on: :create
+  after_commit :send_new_question_notification_to_post_creator, on: :create
+  after_commit :send_new_question_notification_to_others, on: :create
   before_create :assign_post
 
   # Validations
@@ -46,11 +47,15 @@ class Question < ActiveRecord::Base
     self.post_id = self.item.post_id
   end
 
-  def send_new_question_email
-    Puhsh::Jobs::EmailJob.send_new_question_email({question_id: self.id}) unless asked_by_post_creator?
+  def send_new_question_email_to_post_creator
+    Puhsh::Jobs::EmailJob.send_new_question_email_to_post_creator({question_id: self.id}) unless asked_by_post_creator?
   end
 
-  def send_new_question_notification
-    Puhsh::Jobs::NotificationJob.send_new_question_notification({question_id: self.id}) unless asked_by_post_creator?
+  def send_new_question_notification_to_post_creator
+    Puhsh::Jobs::NotificationJob.send_new_question_notification_to_post_creator({question_id: self.id}) unless asked_by_post_creator?
+  end
+
+  def send_new_question_notification_to_others
+    Puhsh::Jobs::NotificationJob.send_new_question_notification_to_others({question_id: self.id})
   end
 end
