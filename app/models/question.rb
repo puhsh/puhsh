@@ -18,6 +18,7 @@ class Question < ActiveRecord::Base
   
   # Methods
 
+  # TODO Clean this up once client sends post id over
   def asked_by_post_creator?
     self.item.post.user_id == self.user_id
   end
@@ -28,6 +29,7 @@ class Question < ActiveRecord::Base
 
   protected
 
+  # TODO Clean this up once client sends post id over
   def store_post_id_for_user
     self.user.post_ids_with_questions << self.item.post_id
   end

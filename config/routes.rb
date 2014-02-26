@@ -68,6 +68,7 @@ Puhsh::Application.routes.draw do
       end
       member do
         get :activity
+        get :participants
       end
       resources :related_products, only: [:index]
     end

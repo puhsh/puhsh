@@ -50,6 +50,12 @@ class V1::PostsController < V1::ApiController
     end
   end
 
+  def participants
+    @post = Post.find(params[:id])
+    @users = User.where(id: @post.activity.collect(&:user_id)).where('id != ?', @post.user_id)
+    render json: @users
+  end
+
   protected 
 
   def find_resource_for_posts

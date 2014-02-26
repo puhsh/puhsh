@@ -20,7 +20,7 @@ describe Question do
     let(:item) { FactoryGirl.create(:item, post: post) }
 
     it 'stores the question id in redis for the post' do
-      question = Question.create(user: user, item: item, content: 'Is this a good item?')
+      question = Question.create(user: user, item: item, content: 'Is this a good item?', post: post)
       expect(post.reload.question_ids.members).to include(question.id.to_s)
     end
   end
@@ -31,7 +31,7 @@ describe Question do
     let(:item) { FactoryGirl.create(:item, post: post) }
 
     it 'stores the post id in redis for the question' do
-      Question.create(user: user, item: item, content: 'Is this a good item?')
+      Question.create(user: user, item: item, content: 'Is this a good item?', post: post)
       expect(user.reload.post_ids_with_questions.members).to include(post.id.to_s)
     end
   end
@@ -41,8 +41,8 @@ describe Question do
     let!(:user2) { FactoryGirl.create(:user) }
     let!(:post) { FactoryGirl.create(:post, user: user) }
     let!(:item) { FactoryGirl.create(:item, post: post) }
-    let!(:question) { FactoryGirl.build(:question, item: item, user: user2, content: 'Is this a good item?') }
-    let!(:question_by_post_user) { FactoryGirl.build(:question, item: item, user: user, content: 'Yes this is a good item') }
+    let!(:question) { FactoryGirl.build(:question, item: item, user: user2, content: 'Is this a good item?', post: post) }
+    let!(:question_by_post_user) { FactoryGirl.build(:question, item: item, user: user, content: 'Yes this is a good item', post: post) }
 
     before { ResqueSpec.reset! }
 
@@ -68,8 +68,8 @@ describe Question do
     let!(:user2) { FactoryGirl.create(:user) }
     let!(:post) { FactoryGirl.create(:post, user: user) }
     let!(:item) { FactoryGirl.create(:item, post: post) }
-    let!(:question) { FactoryGirl.build(:question, item: item, user: user2, content: 'Is this a good item?') }
-    let!(:question_by_post_user) { FactoryGirl.build(:question, item: item, user: user, content: 'Yes this is a good item') }
+    let!(:question) { FactoryGirl.build(:question, item: item, user: user2, content: 'Is this a good item?', post: post) }
+    let!(:question_by_post_user) { FactoryGirl.build(:question, item: item, user: user, content: 'Yes this is a good item', post: post) }
     let!(:device) { FactoryGirl.create(:device, device_type: :ios, device_token: "<faacd1a2 ca64c51c cddf2c3b cb9f52b3 40889c51 b6e641e1 fcb3a526 4d82e3e6>", user: user) }
     let!(:android_device) { FactoryGirl.create(:device, user: user, device_type: :android) }
 

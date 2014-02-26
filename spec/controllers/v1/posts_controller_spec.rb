@@ -189,4 +189,42 @@ describe V1::PostsController do
       end
     end
   end
+
+  describe '#participants' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let!(:user3) { FactoryGirl.create(:user) }
+    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash) }
+    let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item, post: post, user: user2) }
+    let!(:question) { FactoryGirl.create(:question, item: item, post: post, content: 'Test question', user: user3) }
+    let!(:question2) { FactoryGirl.create(:question, item: item, post: post, content: 'Test question 2', user: user) }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        get :participants, { id: post.id }, format: :json
+        expect(assigns[:users]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        get :participants, { id: post.id }, format: :json
+        expect(assigns[:users]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'returns the users who have asked a question or made an offer on the post minus the user who created the post' do
+        sign_in user
+        get :participants, { id: post.id, access_token: access_token.token }, format: :json
+        expect(assigns[:users]).to include(user2)
+        expect(assigns[:users]).to include(user3)
+        expect(assigns[:users]).to_not include(user)
+      end
+    end
+  end
 end
