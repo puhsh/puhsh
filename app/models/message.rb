@@ -1,6 +1,8 @@
 class Message < ActiveRecord::Base
   include Readable
   include Sortable
+  include Trackable
+
   attr_accessible :sender, :sender_id, :recipient, :recipient_id, :content
 
   # Relations
