@@ -1,6 +1,8 @@
 class Message < ActiveRecord::Base
   include Readable
   include Sortable
+  include Trackable
+
   attr_accessible :sender, :sender_id, :recipient, :recipient_id, :content
 
   # Relations
@@ -29,8 +31,8 @@ class Message < ActiveRecord::Base
     Message.where("id in (#{query})").sent_or_received_by_user(user).newest
   end
 
-  def notification_text
-    "#{self.sender.first_name} just sent you a new message."
+  def notification_text(actor)
+    "<b>#{actor.first_name} #{actor.last_name}</b> just sent you a new message."
   end
 
   protected

@@ -23,7 +23,7 @@ module Puhsh
 
       def new_message_text(message)
         user = message.sender
-        "#{user.first_name} #{user.last_name} sent you a message."
+        "#{user.first_name} #{user.last_name}: #{message.content}."
       end
     end
   end

@@ -17,7 +17,7 @@ describe Puhsh::Jobs::TextHelpers do
 
   describe '.notification_text' do
     it 'returns the notification text when a message is generated' do
-      expect(dummy_class.notification_text(message)).to eql("#{user.first_name} #{user.last_name} sent you a message.")
+      expect(dummy_class.notification_text(message)).to eql("#{user.first_name} #{user.last_name}: #{message.content}.")
     end
 
     it 'returns the notification text when a question is generated' do

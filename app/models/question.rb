@@ -22,8 +22,8 @@ class Question < ActiveRecord::Base
     self.item.post.user_id == self.user_id
   end
 
-  def notification_text
-    'Someone just asked a question on your post.'
+  def notification_text(actor)
+    "<b>#{actor.first_name} #{actor.last_name}</b> left a comment on <b>#{post.title}</b>"
   end
 
   protected
