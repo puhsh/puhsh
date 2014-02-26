@@ -83,8 +83,7 @@ class Post < ActiveRecord::Base
   
   # TODO Change this once client starts sending post id
   def activity
-    (offers + questions_redis).sort_by(&:created_at)
-    # (offers + questions).sort_by(&:created_at)
+    (offers + questions).sort_by(&:created_at)
   end
 
   def update_status!(status)
