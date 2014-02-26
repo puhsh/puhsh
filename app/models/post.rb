@@ -76,6 +76,10 @@ class Post < ActiveRecord::Base
   def questions_redis
     Question.includes(:user).where(id: question_ids.members)
   end
+
+  def questions
+    Question.includes(:user).where(id: question_ids.members)
+  end
   
   # TODO Change this once client starts sending post id
   def activity

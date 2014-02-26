@@ -39,7 +39,7 @@ class RelatedProduct
     item = response_hash['ItemSearchResponse']['Items']['Item'].try(&:sample) unless response_hash.empty?
 
     if item
-      { title: item['ItemAttributes'].try { |x| x['Title'] }, list_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, url: item['DetailPageURL'], image_url: item['LargeImage']['URL'] }
+      { title: item['ItemAttributes'].try { |x| x['Title'] }, list_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, url: item['DetailPageURL'], image_url: item['LargeImage'].try { |x| x['URL'] } }
     else
       {}
     end
