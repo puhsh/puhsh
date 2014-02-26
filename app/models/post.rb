@@ -72,10 +72,6 @@ class Post < ActiveRecord::Base
     end.results
   end
 
-  def offers
-    Offer.includes(:user).where(id: offer_ids.members)
-  end
-
   # TODO Remove this once the client starts sending post id
   def questions_redis
     Question.includes(:user).where(id: question_ids.members)

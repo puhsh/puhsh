@@ -12,14 +12,14 @@ describe V1::OffersController do
     context 'without access token' do
       it 'is forbidden' do
         sign_in user
-        post :create, { offer: { item_id: item.id, amount_cents: 600 } }, format: :json
+        post :create, { offer: { item_id: item.id, amount_cents: 600, user: user, post: new_post } }, format: :json
         expect(assigns[:offer]).to be_nil
       end
     end
 
     context 'without authentication' do
       it 'is forbidden' do
-        post :create, { offer: { item_id: item.id, amount_cents: 600 } }, format: :json
+        post :create, { offer: { item_id: item.id, amount_cents: 600, user: user, post: new_post } }, format: :json
         expect(assigns[:offer]).to be_nil
       end
     end
@@ -29,20 +29,26 @@ describe V1::OffersController do
 
       it 'creates an offer with a price' do
         sign_in user
-        post :create, { offer: { item_id: item.id, amount_cents: 600 }, access_token: access_token.token }, format: :json
+        post :create, { offer: { item_id: item.id, amount_cents: 600, post_id: new_post.id, user_id: user.id }, access_token: access_token.token }, format: :json
         expect(user.reload.offers).to include(assigns[:offer])
       end
 
       it 'creates an offer without a price' do
         sign_in user
-        post :create, { offer: { item_id: item.id, amount_cents: 0 }, access_token: access_token.token }, format: :json
+        post :create, { offer: { item_id: item.id, amount_cents: 0, post_id: new_post.id, user_id: user.id }, access_token: access_token.token }, format: :json
         expect(user.reload.offers).to include(assigns[:offer])
       end
 
       it 'sets the offer to pending' do
         sign_in user
-        post :create, { offer: { item_id: item.id, amount_cents: 0 }, access_token: access_token.token }, format: :json
+        post :create, { offer: { item_id: item.id, amount_cents: 0, post_id: new_post.id, user_id: user.id }, access_token: access_token.token }, format: :json
         expect(assigns[:offer].status).to eql(:pending)
+      end
+
+      it 'sets the offer to awarded' do
+        sign_in user
+        post :create, { offer: { item_id: item.id, amount_cents: 0, post_id: new_post.id, user_id: user.id, status: :awarded}, access_token: access_token.token }, format: :json
+        expect(assigns[:offer].status).to eql(:awarded)
       end
     end
   end

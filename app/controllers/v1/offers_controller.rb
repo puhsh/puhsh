@@ -6,7 +6,6 @@ class V1::OffersController < V1::ApiController
 
   def create
     @offer = Offer.new(params[:offer])
-    @offer.user = current_user
 
     if @offer.save
       render json: @offer
