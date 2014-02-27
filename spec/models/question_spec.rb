@@ -63,6 +63,26 @@ describe Question do
     end
   end
 
+  describe '.send_new_question_email_to_others' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let!(:user3) { FactoryGirl.create(:user) }
+    let!(:post) { FactoryGirl.create(:post, user: user) }
+    let!(:item) { FactoryGirl.create(:item, post: post) }
+    let!(:question) { FactoryGirl.create(:question, item: item, user: user2, content: 'Is this a good item?', post: post) }
+    let!(:question_by_post_user) { FactoryGirl.create(:question, item: item, user: user, content: 'Yes this is a good item', post: post) }
+    let!(:question_by_someone_else) { FactoryGirl.build(:question, item: item, user: user3, content: 'I should buy this item?', post: post) }
+
+    before { ResqueSpec.reset! }
+
+    it 'sends the new question email to everyone' do
+      question_by_someone_else.save
+      expect(Puhsh::Jobs::EmailJob).to have_queued(:send_new_question_email_to_others, {question_id: question_by_someone_else.id}).in(:email)
+      expect_any_instance_of(Puhsh::Jobs::EmailJob).to receive(:send_new_question_email_to_others).with({'question_id' => question_by_someone_else.id})
+      ResqueSpec.perform_all(:email)
+    end
+  end
+
   describe '.send_new_question_notification_to_post_creator' do
 
     let!(:user) { FactoryGirl.create(:user) }

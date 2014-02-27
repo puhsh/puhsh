@@ -12,6 +12,7 @@ class Question < ActiveRecord::Base
   after_commit :store_post_id_for_user, on: :create
   after_commit :store_question_id_for_post, on: :create
   after_commit :send_new_question_email_to_post_creator, on: :create
+  after_commit :send_new_question_email_to_others, on: :create
   after_commit :send_new_question_notification_to_post_creator, on: :create
   after_commit :send_new_question_notification_to_others, on: :create
   before_create :assign_post
@@ -51,6 +52,10 @@ class Question < ActiveRecord::Base
 
   def send_new_question_email_to_post_creator
     Puhsh::Jobs::EmailJob.send_new_question_email_to_post_creator({question_id: self.id}) unless asked_by_post_creator?
+  end
+
+  def send_new_question_email_to_others
+    Puhsh::Jobs::EmailJob.send_new_question_email_to_others({question_id: self.id})
   end
 
   def send_new_question_notification_to_post_creator
