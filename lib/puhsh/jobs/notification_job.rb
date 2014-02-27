@@ -46,7 +46,7 @@ module Puhsh
         question = Question.includes({item: [post: :user]}).find_by_id(opts[:question_id])
         user = question.item.post.user
         if question && user
-          send_notification_for_question_to_user(question, user)
+          Notification.fire!(user, question)
           send_push_notification_for_question_to_user_devices(question, user)
         end
       end
@@ -55,26 +55,15 @@ module Puhsh
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.includes({item: [post: :user]}).find_by_id(opts[:question_id])
         if question && question.post
-          questions = Question.includes(:user).where(post_id: question.post_id).where('user_id != ?', question.user).where('user_id != ?', question.post.user)
-          questions.find_each do |q|
-            send_notification_for_question_to_user(q, q.user)
-            send_push_notification_for_question_to_user_devices(q, q.user)
+          users = Question.includes(:user).where(post_id: question.post_id).where('user_id != ?', question.user).where('user_id != ?', question.post.user).collect(&:user)
+          users.each do |user|
+            Notification.fire!(user, question)
+            send_push_notification_for_question_to_user_devices(question, user)
           end
         end
       end
 
       protected 
-
-      # TODO These two methods are crap. Move them in to the respective model
-      
-      def send_notification_for_question_to_user(question, user)
-        Notification.new.tap do |notification|
-          notification.user = user
-          notification.actor = question.user
-          notification.content = question
-          notification.read = false
-        end.save
-      end
 
       def send_push_notification_for_question_to_user_devices(question, user)
         user.devices.ios.each do |device|

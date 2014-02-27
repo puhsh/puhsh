@@ -16,4 +16,16 @@ class Notification < ActiveRecord::Base
 
   # Scopes
   scope :by_recipient, ->(recipient) { where(user_id: recipient.id) }
+
+  # Methods
+  def self.fire!(user, content)
+    Notification.new.tap do |notification|
+      notification.user = user
+      notification.actor = content.user
+      notification.content = content
+      notification.read = false
+      notification.save
+    end
+  end
+
 end
