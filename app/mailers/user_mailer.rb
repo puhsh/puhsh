@@ -66,4 +66,24 @@ class UserMailer < MandrillMailer::TemplateMailer
                   },
                   inline_css: true
   end
+
+  def new_question_after_question_email(quesiton)
+    @question = question
+    @post = @question.item.post
+    @question_user = @question.user
+    @post_user = @post.user
+    mandrill_mail template: 'comment-on-comment',
+                  to: @post_user.contact_email,
+                  vars: {
+                    'POST_TITLE' => @post.title,
+                    'POST_USER_FIRST_NAME' => @post_user.first_name,
+                    'POST_USER_EMAIL' => @post_user.contact_email,
+                    'QUESTION_USER_FIRST_NAME' => @question_user.first_name,
+                    'QUESTION_USER_LAST_NAME' => @question_user.last_name,
+                    'QUESTION_USER_AVATAR_URL' => @question_user.avatar_url,
+                    'QUESTION_CONTENT' => @question.content,
+                    'CURRENT_YEAR' => Date.today.year
+                  },
+                  inline_css: true
+  end
 end
