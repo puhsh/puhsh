@@ -35,7 +35,7 @@ module Puhsh
           end.save
 
           recipient.devices.ios.each do |device|
-            device.fire_notification!(notification_text(message), :new_message)
+            device.fire_notification!(message.notification_text(sender), :new_message)
           end
         end
       end
