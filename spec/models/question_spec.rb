@@ -89,6 +89,7 @@ describe Question do
       expect(Puhsh::Jobs::NotificationJob).to have_queued(:send_new_question_notification_to_post_creator, {question_id: question.id})
       ResqueSpec.perform_all(:notifications)
       expect(user.notifications).to_not be_empty
+      expect(user.notifications.count).to eql(1)
     end
 
     it 'does not generate a new notification if the question is asked by the post creator' do
@@ -137,13 +138,10 @@ describe Question do
       question_by_someone_else.save
       expect(Puhsh::Jobs::NotificationJob).to have_queued(:send_new_question_notification_to_others, {question_id: question_by_someone_else.id})
       ResqueSpec.perform_all(:notifications)
-      expect(user2.notifications).to_not be_empty
-    end
-
-    it 'does not notifiy the post creator twice' do
-      question_by_someone_else.save
-      ResqueSpec.perform_all(:notifications)
+      expect(user.notifications.first.content).to eql(question_by_someone_else)
       expect(user.notifications.count).to eql(1)
+      expect(user2.notifications.first.content).to eql(question_by_someone_else)
+      expect(user2.notifications.count).to eql(1)
     end
 
     it 'does not notifiy the person who asked the question' do

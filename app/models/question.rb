@@ -18,6 +18,8 @@ class Question < ActiveRecord::Base
 
   # Validations
   validates :content, presence: true
+
+  # Redis attributes
   
   # Methods
 

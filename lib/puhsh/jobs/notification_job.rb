@@ -1,7 +1,6 @@
 module Puhsh
   module Jobs
     class NotificationJob
-      include TextHelpers
 
       @queue = :notifications
 
@@ -45,29 +44,27 @@ module Puhsh
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.includes({item: [post: :user]}).find_by_id(opts[:question_id])
         user = question.item.post.user
-        if question && user
+        actor = question.user
+        if question && user && actor
           Notification.fire!(user, question)
-          send_push_notification_for_question_to_user_devices(question, user)
+          user.devices.ios.each do |device|
+            device.fire_notification!(question.notification_text(actor), :new_question)
+          end
         end
       end
 
       def send_new_question_notification_to_others(opts)
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.includes({item: [post: :user]}).find_by_id(opts[:question_id])
-        if question && question.post
-          users = Question.includes(:user).where(post_id: question.post_id).where('user_id != ?', question.user).where('user_id != ?', question.post.user).collect(&:user)
-          users.each do |user|
+        actor = question.user
+        if question && question.post && actor
+          users_to_receive_notification = Question.includes(:user).where(post_id: question.post_id).where('user_id != ?', question.user).where('user_id != ?', question.post.user).collect(&:user)
+          users_to_receive_notification.each do |user|
             Notification.fire!(user, question)
-            send_push_notification_for_question_to_user_devices(question, user)
+            user.devices.ios.each do |device|
+              device.fire_notification!(question.notification_text(actor), :new_question)
+            end
           end
-        end
-      end
-
-      protected 
-
-      def send_push_notification_for_question_to_user_devices(question, user)
-        user.devices.ios.each do |device|
-          device.fire_notification!(notification_text(question), :new_question)
         end
       end
     end
