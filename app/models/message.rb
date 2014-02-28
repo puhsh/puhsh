@@ -32,8 +32,12 @@ class Message < ActiveRecord::Base
     Message.where("id in (#{query})").sent_or_received_by_user(user).newest
   end
 
-  def notification_text(actor)
-    "<b>#{actor.first_name} #{actor.last_name}</b> just sent you a new message."
+  def notification_text(actor, for_type = nil)
+    if for_type == :device
+      "#{actor.first_name} #{actor.last_name} just sent you a new message."
+    else
+      "<b>#{actor.first_name} #{actor.last_name}</b> just sent you a new message."
+    end
   end
 
   protected

@@ -29,8 +29,12 @@ class Question < ActiveRecord::Base
     self.item.post.user_id == self.user_id
   end
 
-  def notification_text(actor)
-    "<b>#{actor.first_name} #{actor.last_name}</b> left a comment on <b>#{post.title}</b>"
+  def notification_text(actor, for_type = nil)
+    if for_type == :device
+      "#{actor.first_name} #{actor.last_name} left a comment on #{post.title}"
+    else
+      "<b>#{actor.first_name} #{actor.last_name}</b> left a comment on <b>#{post.title}</b>"
+    end
   end
 
   protected

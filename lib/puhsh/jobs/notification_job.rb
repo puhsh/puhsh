@@ -35,7 +35,7 @@ module Puhsh
           end.save
 
           recipient.devices.ios.each do |device|
-            device.fire_notification!(message.notification_text(sender), :new_message)
+            device.fire_notification!(message.notification_text(sender, :device), :new_message)
           end
         end
       end
@@ -48,7 +48,7 @@ module Puhsh
         if question && user && actor
           Notification.fire!(user, question)
           user.devices.ios.each do |device|
-            device.fire_notification!(question.notification_text(actor), :new_question)
+            device.fire_notification!(question.notification_text(actor, :device), :new_question)
           end
         end
       end
@@ -62,7 +62,7 @@ module Puhsh
           users_to_receive_notification.each do |user|
             Notification.fire!(user, question)
             user.devices.ios.each do |device|
-              device.fire_notification!(question.notification_text(actor), :new_question)
+              device.fire_notification!(question.notification_text(actor, :device), :new_question)
             end
           end
         end
