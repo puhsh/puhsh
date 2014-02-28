@@ -31,6 +31,14 @@ describe V1::DevicesController do
       expect(response.body).to eql(assigns[:existing_devices].to_json)
     end
 
+    it 'does not create a device if there is an existing device but the token provided has spaces' do
+      sign_in user
+      token = device.device_token.to_s.scan(/./).join(" ")
+      post :create, { device_token: token, access_token: access_token.token }, format: :json
+      expect(assigns[:existing_devices]).to include(device)
+      expect(response.body).to eql(assigns[:existing_devices].to_json)
+    end
+
     it 'creates a device if one does not exist' do
       sign_in user
       post :create, { device_token: '12345', access_token: access_token.token }, format: :json
@@ -47,6 +55,12 @@ describe V1::DevicesController do
       sign_in user
       post :create, { device_token: '12345', access_token: access_token.token, device_type: 'android'}, format: :json
       expect(assigns[:device].reload.device_type).to eql(:android)
+    end
+
+    it 'strips out whitespace' do
+      sign_in user
+      post :create, { device_token: '12345 1q3234 2435345', access_token: access_token.token, device_type: 'ios'}, format: :json
+      expect(assigns[:device].reload.device_token).to eql('123451q32342435345')
     end
   end
 end
