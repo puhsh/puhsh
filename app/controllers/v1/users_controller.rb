@@ -39,6 +39,7 @@ class V1::UsersController < V1::ApiController
   def watched_posts
     @posts = Post.includes(:item, :post_images, :city, :user)
                  .where('id in (?) or id in (?)', current_user.post_ids_with_offers, current_user.post_ids_with_questions)
+                 .exclude_user(current_user)
                  .recent
     render_paginated @posts
   end
