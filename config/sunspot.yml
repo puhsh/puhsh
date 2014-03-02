@@ -11,7 +11,7 @@ test:
 sandbox:
   solr:
     hostname: 10.41.187.169
-    port: 8080
+    port: 8983
     path: /solr/sandbox
     log_level: WARNING
 production:
