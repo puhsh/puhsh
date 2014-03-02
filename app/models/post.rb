@@ -73,7 +73,7 @@ class Post < ActiveRecord::Base
       end
 
       # Additional Filtering
-      without(:category_id, opts[:without_category_ids]) if opts[:without_category_ids].any?
+      without(:category_id, opts[:without_category_ids]) if opts[:without_category_ids].present?
 
       # Order and Pagination
       order_by :created_at, :desc
