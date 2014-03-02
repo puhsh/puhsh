@@ -11,6 +11,8 @@ class Notification < ActiveRecord::Base
   belongs_to :content, polymorphic: :true
 
   # Callbacks
+  after_commit :increment_unread_count_for_user, on: :create
+  before_save :decrement_unread_count_for_user
   
   # Validations
 
@@ -28,4 +30,17 @@ class Notification < ActiveRecord::Base
     end
   end
 
+  protected
+
+  def increment_unread_count_for_user
+    if !self.read?
+      User.update_counters self.user_id, unread_notifications_count: 1
+    end
+  end
+
+  def decrement_unread_count_for_user
+    if self.read && self.read_changed? && self.read_was == false && self.user.unread_notifications_count > 0
+      User.update_counters self.user_id, unread_notifications_count: -1
+    end
+  end
 end
