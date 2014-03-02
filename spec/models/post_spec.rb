@@ -243,4 +243,29 @@ describe Post do
       expect(post.reload).to be_flagged_by(user.reload)
     end
   end
+
+
+  context '.search' do
+    it { should have_searchable_field(:title) }
+    it { should have_searchable_field(:description) }
+    it { should have_searchable_field(:category_id) }
+    it { should have_searchable_field(:created_at) }
+
+    it 'orders by created at desc' do
+      Post.search('title')
+      expect(Sunspot.session).to have_search_params(:order_by, :created_at, :desc)
+    end
+
+    it 'paginates' do
+      Post.search('title', 1, 30)
+      expect(Sunspot.session).to have_search_params(:paginate)
+    end
+
+    it 'searches without category_id' do
+      Post.search('title', 1, 25, { without_category_ids: [1,2,3,]})
+      expect(Sunspot.session).to have_search_params(:without, :category_id, [1,2,3])
+    end
+
+  end
+
 end
