@@ -44,7 +44,13 @@ class V1::PostsController < V1::ApiController
   def search
     if params[:query]
       @posts = Post.search(params[:query], params[:page], params[:per_page])
-      render_paginated @posts, already_paginated: true
+      
+      if params[:title_only]
+        @posts = @posts.collect(&:title)
+        render json: @posts
+      else
+        render_paginated @posts, already_paginated: true
+      end
     else
       bad_request!('Query param is required.')
     end
