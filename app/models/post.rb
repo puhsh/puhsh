@@ -58,6 +58,7 @@ class Post < ActiveRecord::Base
   searchable do 
     text :title, boost: 5.0
     text :description
+    integer :category_id
     time :created_at
   end
 
