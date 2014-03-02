@@ -12,10 +12,11 @@ sandbox:
   solr:
     hostname: 10.41.187.169
     port: 8983
-    path: /solr/puhsh/multicore/sandbox
+    path: /solr/sandbox
     log_level: WARNING
 production:
   solr:
-    hostname: localhost
+    hostname: 10.41.187.169
     port: 8983
+    path: /solr/production
     log_level: WARNING
