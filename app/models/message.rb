@@ -8,6 +8,7 @@ class Message < ActiveRecord::Base
   # Relations
   belongs_to :sender, class_name: 'User', foreign_key: 'sender_id'
   belongs_to :recipient, class_name: 'User', foreign_key: 'recipient_id'
+  has_many :notifications, as: :content, dependent: :destroy
 
   # Callbacks
   after_commit :send_new_message_email, on: :create
@@ -31,8 +32,12 @@ class Message < ActiveRecord::Base
     Message.where("id in (#{query})").sent_or_received_by_user(user).newest
   end
 
-  def notification_text(actor)
-    "<b>#{actor.first_name} #{actor.last_name}</b> just sent you a new message."
+  def notification_text(actor, for_type = nil)
+    if for_type == :device
+      "#{actor.first_name} #{actor.last_name} just sent you a new message."
+    else
+      "<b>#{actor.first_name} #{actor.last_name}</b> just sent you a new message."
+    end
   end
 
   protected

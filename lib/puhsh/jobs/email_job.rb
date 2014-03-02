@@ -19,8 +19,12 @@ module Puhsh
         Resque.enqueue(self, :send_new_message_email, opts)
       end
 
-      def self.send_new_question_email(opts)
-        Resque.enqueue(self, :send_new_question_email, opts)
+      def self.send_new_question_email_to_post_creator(opts)
+        Resque.enqueue(self, :send_new_question_email_to_post_creator, opts)
+      end
+
+      def self.send_new_question_email_to_others(opts)
+        Resque.enqueue(self, :send_new_question_email_to_others, opts)
       end
 
       def send_welcome_email(opts)
@@ -47,11 +51,23 @@ module Puhsh
         end
       end
 
-      def send_new_question_email(opts)
+      def send_new_question_email_to_post_creator(opts)
         opts = HashWithIndifferentAccess.new(opts)
         question = Question.find_by_id(opts[:question_id])
         if question
           UserMailer.new_question_email(question).deliver
+        end
+      end
+
+      def send_new_question_email_to_others(opts)
+        opts = HashWithIndifferentAccess.new(opts)
+        question = Question.find_by_id(opts[:question_id])
+        actor = question.user
+        if question && question.post && actor
+          users_to_receive_email = Question.includes(:user).where(post_id: question.post_id).where('user_id != ?', question.user).where('user_id != ?', question.post.user).collect(&:user)
+          users_to_receive_email.each do |user|
+            UserMailer.new_question_after_question_email(question, user).deliver
+          end
         end
       end
     end

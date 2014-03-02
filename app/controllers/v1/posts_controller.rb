@@ -42,12 +42,27 @@ class V1::PostsController < V1::ApiController
   end
 
   def search
+    opts = {}
+
     if params[:query]
-      @posts = Post.search(params[:query], params[:page], params[:per_page])
-      render_paginated @posts, already_paginated: true
+      opts[:without_category_ids] = params[:without_category_ids] if params[:without_category_ids]
+      @posts = Post.search(params[:query], params[:page], params[:per_page], opts)
+      
+      if params[:title_only]
+        @posts = @posts.collect(&:title)
+        render json: @posts
+      else
+        render_paginated @posts, already_paginated: true
+      end
     else
       bad_request!('Query param is required.')
     end
+  end
+
+  def participants
+    @post = Post.find(params[:id])
+    @users = User.where(id: @post.activity.collect(&:user_id)).where('id != ?', @post.user_id)
+    render json: @users, each_serializer: SimpleUserSerializer
   end
 
   protected 

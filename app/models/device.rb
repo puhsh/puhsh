@@ -12,11 +12,15 @@ class Device < ActiveRecord::Base
   validates :device_token, presence: true
 
   def fire_notification!(message, event)
-    if self.android? && message
-      self.send_gcm_notification(message)
-    elsif self.ios? && message && event
-      self.send_apn_notification(message, event)
-    else
+    begin
+      if self.android? && message
+        self.send_gcm_notification(message)
+      elsif self.ios? && message && event
+        self.send_apn_notification(message, event)
+      else
+        nil
+      end
+    rescue
       nil
     end
   end

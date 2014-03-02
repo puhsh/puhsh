@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140225140626) do
+ActiveRecord::Schema.define(:version => 20140302181424) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20140225140626) do
   create_table "offers", :force => true do |t|
     t.integer  "user_id"
     t.integer  "item_id"
+    t.integer  "post_id"
     t.string   "status",          :default => "pending"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
@@ -319,16 +320,17 @@ ActiveRecord::Schema.define(:version => 20140225140626) do
     t.string   "gender"
     t.string   "facebook_email"
     t.string   "contact_email"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.integer  "sign_in_count",        :default => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.integer  "sign_in_count",              :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "posts_count",          :default => 0
-    t.integer  "posts_flagged_count",  :default => 0
-    t.integer  "star_count",           :default => 0
+    t.integer  "posts_count",                :default => 0
+    t.integer  "posts_flagged_count",        :default => 0
+    t.integer  "star_count",                 :default => 0
+    t.integer  "unread_notifications_count", :default => 0
   end
 
   add_index "users", ["city_id"], :name => "index_users_on_city_id"

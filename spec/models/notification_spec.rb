@@ -35,4 +35,45 @@ describe Notification do
       expect(notification3.reload).to_not be_read
     end
   end
+
+  describe '.increment_unread_count_for_user' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:actor) { FactoryGirl.create(:user) }
+    let!(:message) { FactoryGirl.create(:message, sender: actor, recipient: user, content: 'Hello') }
+    let!(:notification) { FactoryGirl.build(:notification, user: user, actor: actor, content: message) }
+
+    it 'updates the unread count for a user if the notification is unread' do
+      notification.save
+      expect(user.reload.unread_notifications_count).to eql(1)
+    end
+
+    it 'does not update the unread count for a user if the notification is read' do
+      notification.read = true
+      notification.save
+      expect(user.reload.unread_notifications_count).to eql(0)
+    end
+  end
+
+  describe '.decrement_unread_count_for_user' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:actor) { FactoryGirl.create(:user) }
+    let!(:message) { FactoryGirl.create(:message, sender: actor, recipient: user, content: 'Hello') }
+    let!(:notification) { FactoryGirl.build(:notification, user: user, actor: actor, content: message) }
+
+    it 'updates the read count for a user if the notification is marked as read' do
+      notification.save
+      expect(user.reload.unread_notifications_count).to eql(1)
+      notification.mark_as_read!
+      expect(user.reload.unread_notifications_count).to eql(0)
+    end
+
+    it 'does not update the unread count for a user if the notification unread count was 0' do
+      notification.save
+      expect(user.reload.unread_notifications_count).to eql(1)
+      user.unread_notifications_count = 0
+      user.save
+      notification.mark_as_read!
+      expect(user.reload.unread_notifications_count).to_not eql(-1)
+    end
+  end
 end

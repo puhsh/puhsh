@@ -192,8 +192,8 @@ describe V1::UsersController do
     let!(:post2) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
     let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
     let!(:item2) { FactoryGirl.create(:item, post: post2, price_cents: 1000) }
-    let!(:question) { FactoryGirl.create(:question, item: item, user: user, content: 'Is this item free?') }
-    let!(:offer) { FactoryGirl.create(:offer, item: item2, user: user, amount_cents: 4000) }
+    let!(:question) { FactoryGirl.create(:question, item: item, user: user, content: 'Is this item free?', post: post) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item2, user: user, amount_cents: 4000, post: post2) }
 
     context 'without access token' do
       it 'is forbidden' do

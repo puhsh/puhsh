@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Message do
   it { should belong_to(:sender) }
   it { should belong_to(:recipient) }
+  it { should have_many(:notifications) }
 
   describe '.content' do
     let!(:sender) { FactoryGirl.create(:user) }

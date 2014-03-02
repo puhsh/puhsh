@@ -5,10 +5,10 @@ class V1::DevicesController < V1::ApiController
   load_and_authorize_resource
 
   def create
-    @existing_devices = Device.where(user_id: current_user.id, device_token: params[:device_token])
+    @existing_devices = Device.where(user_id: current_user.id, device_token: params[:device_token].delete(" "))
     
     if @existing_devices.blank?
-      @device = Device.new(user: current_user, device_token: params[:device_token])
+      @device = Device.new(user: current_user, device_token: params[:device_token].delete(" "))
       @device.device_type = params[:device_type] || 'ios'
       if @device.save
         render json: @device

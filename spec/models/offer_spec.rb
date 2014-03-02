@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Offer do
   it { should belong_to(:user) }
   it { should belong_to(:item) }
+  it { should belong_to(:post) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:item) { FactoryGirl.create(:item) }
@@ -61,20 +62,9 @@ describe Offer do
     let(:item) { FactoryGirl.create(:item, post: post) }
 
     it 'stores the post id in redis for the user' do
-      offer = Offer.create(user: user, item: item)
+      offer = Offer.create(user: user, item: item, post: post)
       offer.run_callbacks(:commit)
       expect(user.reload.post_ids_with_offers.members).to include(post.id.to_s)
-    end
-  end
-
-  describe '.store_offer_id_for_post' do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:post) { FactoryGirl.create(:post, user: user) }
-    let(:item) { FactoryGirl.create(:item, post: post) }
-
-    it 'stores the offer id in redis for the post' do
-      offer = Offer.create(user: user, item: item)
-      expect(post.reload.offer_ids.members).to include(offer.id.to_s)
     end
   end
 end

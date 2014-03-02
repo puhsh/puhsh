@@ -23,6 +23,7 @@ class Post < ActiveRecord::Base
   belongs_to :subcategory
   has_many :post_images, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_many :offers, dependent: :destroy
 
   # Callbacks
   before_save :add_category, :set_city
@@ -57,33 +58,41 @@ class Post < ActiveRecord::Base
   searchable do 
     text :title, boost: 5.0
     text :description
+    integer :category_id
     time :created_at
   end
 
   # Methods
-  def self.search(query, page = 1, per_page = 25)
+  def self.search(query, page = 1, per_page = 25, opts = {})
+    defaults = { without_category_ids: [] }
+    opts = defaults.merge(opts)
+
     Sunspot.search Post do
       fulltext query do
-        fields(:title, :description)
+        fields(:title)
       end
+
+      # Additional Filtering
+      without(:category_id, opts[:without_category_ids]) if opts[:without_category_ids].present?
+
+      # Order and Pagination
       order_by :created_at, :desc
       paginate page: page, per_page: per_page
     end.results
-  end
-
-  def offers
-    Offer.includes(:user).where(id: offer_ids.members)
   end
 
   # TODO Remove this once the client starts sending post id
   def questions_redis
     Question.includes(:user).where(id: question_ids.members)
   end
+
+  def questions
+    Question.includes(:user).where(id: question_ids.members)
+  end
   
   # TODO Change this once client starts sending post id
   def activity
-    (offers + questions_redis).sort_by(&:created_at)
-    # (offers + questions).sort_by(&:created_at)
+    (offers + questions).sort_by(&:created_at)
   end
 
   def update_status!(status)

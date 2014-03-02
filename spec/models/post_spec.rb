@@ -9,6 +9,7 @@ describe Post do
   it { should belong_to(:subcategory) }
   it { should have_many(:post_images) }
   it { should have_many(:questions) }
+  it { should have_many(:offers) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }
@@ -170,7 +171,7 @@ describe Post do
     let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
     let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
     let!(:item) { FactoryGirl.create(:item, post: new_post, price_cents: 1000) }
-    let!(:offer) { FactoryGirl.create(:offer, item: item) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item, post: new_post) }
 
     it 'returns the offers based on the ids in the redis set' do
       expect(new_post.reload.offers).to include(offer)
@@ -183,7 +184,7 @@ describe Post do
     let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
     let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
     let!(:item) { FactoryGirl.create(:item, post: new_post, price_cents: 1000) }
-    let!(:offer) { FactoryGirl.create(:offer, item: item) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item, post: new_post) }
 
     it 'returns the offers and questions for a post in descending order' do
       Timecop.travel(Date.today + 3.weeks) do

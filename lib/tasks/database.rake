@@ -38,4 +38,19 @@ namespace :db do
       [filename_gzip_with_path].each { |x| File.delete(x) }
     end
   end
+
+  desc 'Generates the script to convert from latin1_sweedish_ci to UTF8'
+  task :convert_to_utdf8 => :environment do
+    tables = ActiveRecord::Base.connection.tables
+    collation = "utf8_unicode_ci"
+    char_set = "utf8"
+    db = "puhsh_#{Rails.env}"
+    puts "USE #{db};"
+    puts "ALTER DATABASE #{db} CHARACTER SET #{char_set} COLLATE #{collation};"
+    tables.each do |t|
+      puts "ALTER TABLE #{t} CHARACTER SET #{char_set} COLLATE #{collation};" # changes for new records
+      puts "ALTER TABLE #{t} CONVERT TO CHARACTER SET #{char_set} COLLATE #{collation};" # migrates old records
+    end
+  end
+
 end
