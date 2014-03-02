@@ -376,6 +376,7 @@ GEM
     sunspot (2.1.0)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
+    sunspot_matchers (2.1.0.0)
     sunspot_rails (2.1.0)
       nokogiri
       rails (>= 3)
@@ -488,6 +489,7 @@ DEPENDENCIES
   sitemap_generator (= 4.2.0)
   spork (= 1.0.0rc4)
   statsd-ruby (= 1.2.1)
+  sunspot_matchers (= 2.1.0.0)
   sunspot_rails (= 2.1.0)
   sunspot_solr (= 2.1.0)
   symbolize (= 4.4.1)

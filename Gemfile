@@ -62,6 +62,7 @@ group :development, :test do
   gem 'rspec-rails', '2.14.1'
   gem 'shoulda', '3.5.0'
   gem 'spork', '1.0.0rc4'
+  gem 'sunspot_matchers', '2.1.0.0'
   gem 'timecop', '0.7.1'
   gem 'vcr', '2.8.0'
   gem 'webmock', '1.16.1', require: false
