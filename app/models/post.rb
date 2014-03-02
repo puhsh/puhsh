@@ -63,11 +63,19 @@ class Post < ActiveRecord::Base
   end
 
   # Methods
-  def self.search(query, page = 1, per_page = 25)
+  def self.search(query, page = 1, per_page = 25, opts = {})
+    defaults = { without_category_ids: [] }
+    opts = defaults.merge(opts)
+
     Sunspot.search Post do
       fulltext query do
         fields(:title, :description)
       end
+
+      # Additional Filtering
+      without(:category_id, opts[:without_category_ids]) if opts[:without_category_ids].any?
+
+      # Order and Pagination
       order_by :created_at, :desc
       paginate page: page, per_page: per_page
     end.results

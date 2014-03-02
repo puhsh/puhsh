@@ -42,8 +42,11 @@ class V1::PostsController < V1::ApiController
   end
 
   def search
+    opts = {}
+
     if params[:query]
-      @posts = Post.search(params[:query], params[:page], params[:per_page])
+      opts[:without_category_ids] = params[:without_category_ids] if params[:without_category_ids]
+      @posts = Post.search(params[:query], params[:page], params[:per_page], opts)
       
       if params[:title_only]
         @posts = @posts.collect(&:title)
