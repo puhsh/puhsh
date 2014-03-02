@@ -69,7 +69,7 @@ class Post < ActiveRecord::Base
 
     Sunspot.search Post do
       fulltext query do
-        fields(:title, :description)
+        fields(:title)
       end
 
       # Additional Filtering
