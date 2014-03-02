@@ -13,7 +13,7 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :info
 set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/assets vendor/bundle public/system solr}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/assets vendor/bundle public/system}
 set :rvm_ruby_version, 'ruby-2.0.0-p247@puhsh'
 set :max_asset_age, 2 
 SSHKit.config.command_map[:whenever] = "bundle exec whenever"
@@ -99,28 +99,6 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       within current_path do
         execute "kill -s HUP `cat #{current_path}/tmp/pids/resque-pool.pid`"
-      end
-    end
-  end
-
-  desc 'Stop Solr'
-  task :stop_solr do
-    on roles(:web, :solr), in: :sequence, wait: 5 do
-      within current_path do
-        with rails_env: fetch(:rails_env) do
-          execute :bundle, :exec, "sunspot-solr stop --port=8983 --pid-dir=tmp/pids"
-        end
-      end
-    end
-  end
-
-  desc 'Start Solr'
-  task :start_solr do
-    on roles(:web, :solr), wait: 5 do
-      within current_path do
-        with rails_env: fetch(:rails_env) do
-          execute :bundle, :exec, "sunspot-solr start --port=8983 --pid-dir=tmp/pids --data-directory=#{current_path}/solr/data"
-        end
       end
     end
   end
