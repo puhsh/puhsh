@@ -61,4 +61,5 @@ after_fork do |server, worker|
   config =  YAML.load_file("#{Rails.root}/config/redis.yml")[Rails.env]
   $redis.client.disconnect
   $redis = Redis.new(config.symbolize_keys!)
+  Resque.redis = $redis
 end
