@@ -14,9 +14,10 @@ class City < ActiveRecord::Base
   
   # Solr
   searchable do 
-    text :state, :name
+    text :name, boost: 5.0
+    text :state
     text :zipcode do
-      self.zipcodes.collect(&:code)
+      self.zipcodes.map { |x| x.code }
     end
   end
 
