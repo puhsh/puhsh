@@ -30,10 +30,12 @@ class Question < ActiveRecord::Base
   end
 
   def notification_text(actor, for_type = nil)
+    text = self.post.question_ids.count > 1 ? 'also left a comment' : 'left a comment'
+
     if for_type == :device
-      "#{actor.first_name} #{actor.last_name} left a comment on #{post.title}"
+      "#{actor.first_name} #{actor.last_name} #{text} on #{post.title}"
     else
-      "<b>#{actor.first_name} #{actor.last_name}</b> left a comment on <b>#{post.title}</b>"
+      "<b>#{actor.first_name} #{actor.last_name}</b> #{text} on <b>#{post.title}</b>"
     end
   end
 
