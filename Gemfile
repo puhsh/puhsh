@@ -13,6 +13,9 @@ gem 'redis', '3.0.7'
 gem 'resque', '1.25.1', require: 'resque/server'
 gem 'resque-pool', '0.3.0'
 
+# Cache / Session Store
+gem 'redis-store', '1.1.4'
+
 # View Engine
 gem 'haml', '4.0.5'
 
@@ -62,6 +65,7 @@ group :development, :test do
   gem 'rspec-rails', '2.14.1'
   gem 'shoulda', '3.5.0'
   gem 'spork', '1.0.0rc4'
+  gem 'sunspot_matchers', '2.1.0.0', require: false
   gem 'timecop', '0.7.1'
   gem 'vcr', '2.8.0'
   gem 'webmock', '1.16.1', require: false

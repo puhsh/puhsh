@@ -6,8 +6,8 @@ require 'shoulda'
 require 'cancan/matchers'
 require "paperclip/matchers"
 require 'fakeredis'
-require 'sunspot/rails/spec_helper'
 require 'mandrill_mailer/offline'
+require 'sunspot_matchers'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -20,19 +20,22 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include Warden::Test::Helpers
   config.include Paperclip::Shoulda::Matchers
+  config.include SunspotMatchers
   config.order = "random"
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
 
+  config.before do
+    Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
+  end
+
   config.before(:each) do
-    # We don't need redis running in the test environment
     $redis = Redis.new
-    ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
   end
 
   config.after(:each) do
-    ::Sunspot.session = ::Sunspot.session.original_session
+    Sunspot.session = Sunspot.session.original_session
   end
 
   OmniAuth.config.test_mode = true

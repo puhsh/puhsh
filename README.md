@@ -4,7 +4,7 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 
 #### Code
 * Rails 3.2
-* Ruby 2.0.0
+* Ruby 2.1.1
 * RVM
 
 #### Front End

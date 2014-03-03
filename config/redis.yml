@@ -17,7 +17,7 @@ sandbox:
   thread_safe: true
 
 production:
-  host: 127.0.0.1
+  host: 10.81.99.132
   port: 6379
   db: 0  
   thread_safe: true

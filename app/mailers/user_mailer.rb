@@ -67,7 +67,7 @@ class UserMailer < MandrillMailer::TemplateMailer
                   inline_css: true
   end
 
-  def new_question_after_question_email(quesiton, user)
+  def new_question_after_question_email(question, user)
     @question = question
     @post = @question.item.post
     @question_user = @question.user
