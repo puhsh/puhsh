@@ -64,7 +64,7 @@ module Puhsh
         question = Question.find_by_id(opts[:question_id])
         actor = question.user
         if question && question.post && actor
-          users_to_receive_email = Question.includes(:user).where(post_id: question.post_id).where('user_id != ?', question.user).where('user_id != ?', question.post.user).collect(&:user)
+          users_to_receive_email = Question.includes(:user).where(post_id: question.post_id).where('user_id != ?', question.user).where('user_id != ?', question.post.user).collect(&:user).uniq
           users_to_receive_email.each do |user|
             UserMailer.new_question_after_question_email(question, user).deliver
           end
