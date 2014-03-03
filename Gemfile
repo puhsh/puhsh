@@ -13,6 +13,9 @@ gem 'redis', '3.0.7'
 gem 'resque', '1.25.1', require: 'resque/server'
 gem 'resque-pool', '0.3.0'
 
+# Cache / Session Store
+gem 'redis-store', '1.1.4'
+
 # View Engine
 gem 'haml', '4.0.5'
 
