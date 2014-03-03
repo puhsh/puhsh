@@ -40,8 +40,6 @@ Puhsh::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production
-  config.gem "redis-store", lib: "redis-store"
-  require 'redis-store'
   config.cache_store = :redis_store, { host: '10.81.99.132',
                                        post: 6379,
                                        db: 0,
