@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   belongs_to :post
   has_many :offers, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_one :item_transaction, dependent: :nullify
 
   # Callbacks
   

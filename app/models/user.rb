@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
   has_many :received_messages, class_name: 'Message', foreign_key: 'recipient_id', dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :sold_items, class_name: 'ItemTransaction', foreign_key: 'seller_id', dependent: :nullify
+  has_many :bought_items, class_name: 'ItemTransaction', foreign_key: 'buyer_id', dependent: :nullify
 
   # Callbacks
   before_save :set_home_city, :send_welcome_email

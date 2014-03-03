@@ -4,6 +4,7 @@ describe Offer do
   it { should belong_to(:user) }
   it { should belong_to(:item) }
   it { should belong_to(:post) }
+  it { should have_one(:item_transaction) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:item) { FactoryGirl.create(:item) }
