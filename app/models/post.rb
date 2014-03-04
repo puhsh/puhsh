@@ -24,6 +24,7 @@ class Post < ActiveRecord::Base
   has_many :post_images, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :offers, dependent: :destroy
+  has_one :item_transaction, dependent: :nullify
 
   # Callbacks
   before_save :add_category, :set_city

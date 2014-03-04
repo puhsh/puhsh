@@ -42,7 +42,7 @@ describe V1::AuthController do
       end
 
       it 'generates an access token for existing user' do
-        VCR.use_cassette('/v1/auth/find_existing_user') do
+        VCR.use_cassette('/v1/auth/token_existing_user') do
           user = test_users.create(true, {'verified' => true})
           puhsh_user = FactoryGirl.create(:user, uid: user['id'])
           FacebookTestUser.create(fbid: user['id'])
@@ -55,7 +55,7 @@ describe V1::AuthController do
       end
 
       it 'creates a new user' do
-        VCR.use_cassette('/v1/auth/find_existing_user') do
+        VCR.use_cassette('/v1/auth/new_user') do
           user = test_users.create(true)
           user.merge!({'email' => 'test@test.local', 'verified' => 'true' })
           FacebookTestUser.create(fbid: user['id'])
@@ -67,7 +67,7 @@ describe V1::AuthController do
       end
 
       it 'creates an access token for a new user' do
-        VCR.use_cassette('/v1/auth/find_existing_user') do
+        VCR.use_cassette('/v1/auth/token_new_user') do
           user = test_users.create(true)
           user.merge!({'first_name' => 'test', 'last_name' => 'testlast', 'name' => 'test testlast','email' => 'test@test.local', 'verified' => 'true' })
           FacebookTestUser.create(fbid: user['id'])
@@ -76,6 +76,18 @@ describe V1::AuthController do
           post :create, { facebook_id: user['id'] }, format: :json
           expect(assigns[:user].reload.access_token).to_not be_nil
           expect(assigns[:user].access_token.expired?).to be_false
+        end
+      end
+
+      it 'stores the user\'s access token' do
+        VCR.use_cassette('/v1/auth/store_fb_token') do
+          user = test_users.create(true)
+          user.merge!({'first_name' => 'test', 'last_name' => 'testlast', 'name' => 'test testlast','email' => 'test@test.local', 'verified' => 'true' })
+          FacebookTestUser.create(fbid: user['id'])
+
+          request.env['HTTP_AUTHORIZATION'] = user['access_token']
+          post :create, { facebook_id: user['id'] }, format: :json
+          expect(assigns[:user].reload.facebook_access_token.value).to eql(request.env['HTTP_AUTHORIZATION'])
         end
       end
     end

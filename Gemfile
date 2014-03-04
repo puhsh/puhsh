@@ -14,7 +14,7 @@ gem 'resque', '1.25.1', require: 'resque/server'
 gem 'resque-pool', '0.3.0'
 
 # Cache / Session Store
-gem 'redis-store', '1.1.4'
+gem 'redis-rails', '3.2.4'
 
 # View Engine
 gem 'haml', '4.0.5'
@@ -105,7 +105,7 @@ gem 'hipchat', '0.12.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari', '0.15.0'
-gem 'koala', '1.6.0'
+gem 'koala', '1.9.0'
 gem 'money-rails', '0.9.0'
 gem 'newrelic_rpm', '3.5.8.72'
 gem 'rails_warden', '0.5.7'

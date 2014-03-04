@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140302181424) do
+ActiveRecord::Schema.define(:version => 20140303155702) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -115,6 +115,25 @@ ActiveRecord::Schema.define(:version => 20140302181424) do
 
   add_index "invites", ["uid_invited"], :name => "index_invites_on_uid_invited"
   add_index "invites", ["user_id"], :name => "index_invites_on_user_id"
+
+  create_table "item_transactions", :force => true do |t|
+    t.integer  "seller_id"
+    t.integer  "buyer_id"
+    t.integer  "post_id"
+    t.integer  "item_id"
+    t.integer  "offer_id"
+    t.string   "payment_type"
+    t.date     "sold_on"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "item_transactions", ["buyer_id"], :name => "index_item_transactions_on_buyer_id"
+  add_index "item_transactions", ["item_id"], :name => "index_item_transactions_on_item_id"
+  add_index "item_transactions", ["offer_id"], :name => "index_item_transactions_on_offer_id"
+  add_index "item_transactions", ["payment_type"], :name => "index_item_transactions_on_payment_type"
+  add_index "item_transactions", ["post_id"], :name => "index_item_transactions_on_post_id"
+  add_index "item_transactions", ["seller_id"], :name => "index_item_transactions_on_seller_id"
 
   create_table "items", :force => true do |t|
     t.integer  "post_id"

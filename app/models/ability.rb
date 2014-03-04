@@ -47,6 +47,8 @@ class Ability
       can :read, Notification
 
       can :read, RelatedProduct
+      
+      cannot :manage, ItemTransaction
     end
   end
 end

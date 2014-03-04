@@ -10,6 +10,7 @@ describe Post do
   it { should have_many(:post_images) }
   it { should have_many(:questions) }
   it { should have_many(:offers) }
+  it { should have_one(:item_transaction) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }

@@ -4,6 +4,7 @@ describe Offer do
   it { should belong_to(:user) }
   it { should belong_to(:item) }
   it { should belong_to(:post) }
+  it { should have_one(:item_transaction) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:item) { FactoryGirl.create(:item) }
@@ -65,6 +66,50 @@ describe Offer do
       offer = Offer.create(user: user, item: item, post: post)
       offer.run_callbacks(:commit)
       expect(user.reload.post_ids_with_offers.members).to include(post.id.to_s)
+    end
+  end
+
+  describe '.item_sold!' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user) }
+    let(:post) { FactoryGirl.create(:post, user: user) }
+    let(:item) { FactoryGirl.create(:item, post: post) }
+    let(:offer) { FactoryGirl.create(:offer, post: post, item: item, user: user2) }
+
+    it 'does not generate a transaction if called' do
+      offer.item_sold!
+      expect(offer.reload.item_transaction).to be_nil
+    end
+  end
+
+  describe '.generate_item_transaction_record' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user) }
+    let(:post) { FactoryGirl.create(:post, user: user) }
+    let(:item) { FactoryGirl.create(:item, post: post) }
+    let(:offer) { FactoryGirl.create(:offer, post: post, item: item, user: user2) }
+
+    it 'generates the transaction record if the item was awarded to a buyer' do
+      offer.awarded!
+      expect(offer.reload.item_transaction).to_not be_nil
+    end
+
+    it 'does not generate a transaction record if it is not awarded' do
+      offer.accepted!
+      expect(offer.reload.item_transaction).to be_nil
+    end
+
+    it 'does not generate a second transaction record if the offer is awarded already' do
+      offer.awarded!
+      transaction = offer.reload.item_transaction
+      expect(offer.reload.item_transaction).to_not be_nil
+      offer.awarded!
+      expect(offer.reload.item_transaction).to eql(transaction)
+    end
+
+    it 'sets the sold on time' do
+      offer.awarded!
+      expect(offer.reload.item_transaction.sold_on).to_not be_nil
     end
   end
 end
