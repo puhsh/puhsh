@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://graph.facebook.com/oauth/access_token
+    body:
+      encoding: US-ASCII
+      string: client_id=190163724500680&client_secret=a68155b041911fd97471c4a178d20376&type=client_cred
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1145305'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - x+6ogwn2cOGum/VdTc3Q9+RWfFtnnXkyKI2VdC5EtyQ=
+      Date:
+      - Tue, 04 Mar 2014 13:20:58 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '56'
+    body:
+      encoding: UTF-8
+      string: access_token=190163724500680|LaUu0hIY6ZnPfyTpWaaOArBWxec
+    http_version: 
+  recorded_at: Tue, 04 Mar 2014 13:20:58 GMT
+- request:
+    method: post
+    uri: https://graph.facebook.com/190163724500680/accounts/test-users
+    body:
+      encoding: UTF-8
+      string: installed=true&permissions&access_token=190163724500680%7CLaUu0hIY6ZnPfyTpWaaOArBWxec
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1145305'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - GvEqlYuEKGdpoEaiO4iLNds9nXRJ/K5DzorqdCMY5hk=
+      Date:
+      - Tue, 04 Mar 2014 13:20:59 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '444'
+    body:
+      encoding: UTF-8
+      string: '{"id":"100007851674451","access_token":"CAACs8ZCEZCfsgBAC228pkEqaF2Qcaa7zwVSZCgtmh3TnUZA8eGTkzZAvxZBUsQWFqq5Py4xoKkeH2SPdQXD0jZBcouLkIw3kIcxK0RwCzfqaxgYbbItkxTcWOrQwHYiHh7T2ZBP5ZAg0KfwbJWgKZCOyZA1IEmcYJxcZBARuGhkyxV5hWBlZB7zRRmnEq6vYF7gghb4sZD","login_url":"https:\/\/www.facebook.com\/platform\/test_account_login.php?user_id=100007851674451&n=1aPvnXpcJmfB6Sb","email":"vkjdqsn_bharambestein_1393939258\u0040tfbnw.net","password":"2064680296"}'
+    http_version: 
+  recorded_at: Tue, 04 Mar 2014 13:20:59 GMT
+- request:
+    method: get
+    uri: https://graph.facebook.com/me?access_token=CAACs8ZCEZCfsgBAC228pkEqaF2Qcaa7zwVSZCgtmh3TnUZA8eGTkzZAvxZBUsQWFqq5Py4xoKkeH2SPdQXD0jZBcouLkIw3kIcxK0RwCzfqaxgYbbItkxTcWOrQwHYiHh7T2ZBP5ZAg0KfwbJWgKZCOyZA1IEmcYJxcZBARuGhkyxV5hWBlZB7zRRmnEq6vYF7gghb4sZD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - '2014-03-04T13:20:59+0000'
+      Etag:
+      - '"82cfba3ad93d74fa386a4c6aefd844304ce623a4"'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1145305'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - XjxptGflvaAVKNimSsPTHN8IONXHnz+2jJ1VJi2HUbM=
+      Date:
+      - Tue, 04 Mar 2014 13:21:00 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '304'
+    body:
+      encoding: UTF-8
+      string: '{"id":"100007851674451","name":"Richard Amgheafgddea Bharambestein","first_name":"Richard","middle_name":"Amgheafgddea","last_name":"Bharambestein","link":"https:\/\/www.facebook.com\/profile.php?id=100007851674451","gender":"male","timezone":0,"locale":"en_US","updated_time":"2014-03-04T13:20:59+0000"}'
+    http_version: 
+  recorded_at: Tue, 04 Mar 2014 13:21:00 GMT
+recorded_with: VCR 2.8.0

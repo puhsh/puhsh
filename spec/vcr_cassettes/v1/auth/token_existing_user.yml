@@ -1,0 +1,144 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://graph.facebook.com/oauth/access_token
+    body:
+      encoding: US-ASCII
+      string: client_id=190163724500680&client_secret=a68155b041911fd97471c4a178d20376&type=client_cred
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1145305'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - LtMHC7HeSH465j2s+BZhBlDxa7t6cOunrnm7EpbcZHg=
+      Date:
+      - Tue, 04 Mar 2014 13:20:56 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '56'
+    body:
+      encoding: UTF-8
+      string: access_token=190163724500680|LaUu0hIY6ZnPfyTpWaaOArBWxec
+    http_version: 
+  recorded_at: Tue, 04 Mar 2014 13:20:56 GMT
+- request:
+    method: post
+    uri: https://graph.facebook.com/190163724500680/accounts/test-users
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost\r\nContent-Disposition: form-data; name=\"installed\"\r\n\r\ntrue\r\n-------------RubyMultipartPost\r\nContent-Disposition:
+        form-data; name=\"permissions%5Bverified%5D\"\r\n\r\ntrue\r\n-------------RubyMultipartPost\r\nContent-Disposition:
+        form-data; name=\"access_token\"\r\n\r\n190163724500680|LaUu0hIY6ZnPfyTpWaaOArBWxec\r\n-------------RubyMultipartPost--\r\n\r\n"
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost
+      Content-Length:
+      - '364'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1145305'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - ftF8aUZgvVz4UrdDAPf2mLnPji5jyGg/JlxCqQT1Udc=
+      Date:
+      - Tue, 04 Mar 2014 13:20:57 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '456'
+    body:
+      encoding: UTF-8
+      string: '{"id":"100007939595341","access_token":"CAACs8ZCEZCfsgBAE0n91nUWxZAOLTUa9WiRefj684dNe6sBMsNZAw42m2iKESBAc6l0J98sCWqcRfCNYInEn4wOUst1mWZB2WaZCqSBJXOBvVZBwqcOnIc4ly0pbGFoFqG8U4FcVUL1JlJuevfruHZCKmDZAOIJ1Vea1dGsdEZAK8ZBdR3ZCthDjNlJU0OeiY1VUN4ulsiaReVU4owZDZD","login_url":"https:\/\/www.facebook.com\/platform\/test_account_login.php?user_id=100007939595341&n=jLeNn8PXzKNEEV9","email":"hhvryym_narayananwitz_1393939256\u0040tfbnw.net","password":"2042787754"}'
+    http_version: 
+  recorded_at: Tue, 04 Mar 2014 13:20:57 GMT
+- request:
+    method: get
+    uri: https://graph.facebook.com/me?access_token=CAACs8ZCEZCfsgBAE0n91nUWxZAOLTUa9WiRefj684dNe6sBMsNZAw42m2iKESBAc6l0J98sCWqcRfCNYInEn4wOUst1mWZB2WaZCqSBJXOBvVZBwqcOnIc4ly0pbGFoFqG8U4FcVUL1JlJuevfruHZCKmDZAOIJ1Vea1dGsdEZAK8ZBdR3ZCthDjNlJU0OeiY1VUN4ulsiaReVU4owZDZD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - '2014-03-04T13:20:57+0000'
+      Etag:
+      - '"5b1a35d2d12d499d29eb39c8333ecf6d7b8a6917"'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1145305'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - BGP0+y/ZE8jPn7IdfN1sIphHgqcaaicAAMm/nj/MhiM=
+      Date:
+      - Tue, 04 Mar 2014 13:20:57 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '306'
+    body:
+      encoding: UTF-8
+      string: '{"id":"100007939595341","name":"Dorothy Amgicieiecda Narayananwitz","first_name":"Dorothy","middle_name":"Amgicieiecda","last_name":"Narayananwitz","link":"https:\/\/www.facebook.com\/profile.php?id=100007939595341","gender":"female","timezone":0,"locale":"en_US","updated_time":"2014-03-04T13:20:57+0000"}'
+    http_version: 
+  recorded_at: Tue, 04 Mar 2014 13:20:57 GMT
+recorded_with: VCR 2.8.0

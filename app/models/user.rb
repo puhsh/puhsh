@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   include Redis::Objects
   include Puhsh::Facebook
   include Trackable
+  include OpenGraphed
 
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
