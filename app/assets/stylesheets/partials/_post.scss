@@ -29,12 +29,6 @@
     margin-bottom: rem-calc(45);
     ul.image-list {
       @include block-grid($spacing: 0);
-      li  {
-        img { 
-          width: rem-calc(333);
-          height: auto;
-        }
-      }
     }
   }
 }

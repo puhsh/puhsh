@@ -1,12 +1,8 @@
 #post
   .row#images(ng-controller="PostController")
     .small12.columns
-      %ul.small-block-grid-1.medium-block-grid-3.image-list(ng-repeat="image in post.post_images")
-        %li
-          %img(ng-src="{{image.url}}")
-        %li
-          %img(ng-src="{{image.url}}")
-        %li
+      %ul.small-block-grid-3.image-list
+        %li(ng-repeat="image in post.post_images")
           %img(ng-src="{{image.url}}")
   .row#details
     .small12.columns.text-center
