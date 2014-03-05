@@ -23,3 +23,36 @@
     }
   }
 }
+
+#post {
+  #images {
+    margin-bottom: rem-calc(45);
+    img { 
+      float: left;
+      width: rem-calc(333);
+      height: auto;
+    }
+  }
+}
+
+#post {
+  span.price-inline {
+    @include border-radius($post-price-label-border-radius);
+    background-color: $pink;
+    color: $white;
+    height: rem-calc(45);
+    font-weight: bold;
+    padding: 0 rem-calc(10);
+    text-shadow: 0 3px 5px $black75;
+  }
+  span.price-inline.not-free {
+    &:before {
+      content: '$';
+      font-size: rem-calc(20);
+      vertical-align: super;
+      position: relative;
+      font-weight: normal;
+      top: rem-calc(2);
+    }
+  }
+}

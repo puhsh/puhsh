@@ -1,7 +1,4 @@
 - content_for :nav do
   = render 'shared/nav'
 
-.row
-  .small12.columns
-    #spinner-container(spinner)
-%div(ng-view)
+%section#content(ng-view)

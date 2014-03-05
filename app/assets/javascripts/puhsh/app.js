@@ -1,5 +1,7 @@
 var puhsh = angular.module('puhsh', 
-     ['ngRoute']);
+     ['ngRoute',
+      'puhsh.services',
+      'puhsh.filters']);
 
 puhsh.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
