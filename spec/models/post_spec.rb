@@ -117,8 +117,8 @@ describe Post do
     let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
     let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
 
-    it 'grants a user 1 star after creating a post' do
-      expect(user.reload.star_count).to eql(11)
+    it 'grants a user 10 stars after creating a post' do
+      expect(user.reload.star_count).to eql(20)
     end
   end
 
