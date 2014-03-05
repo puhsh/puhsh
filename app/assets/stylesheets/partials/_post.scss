@@ -27,10 +27,14 @@
 #post {
   #images {
     margin-bottom: rem-calc(45);
-    img { 
-      float: left;
-      width: rem-calc(333);
-      height: auto;
+    ul.image-list {
+      @include block-grid($spacing: 0);
+      li  {
+        img { 
+          width: rem-calc(333);
+          height: auto;
+        }
+      }
     }
   }
 }
