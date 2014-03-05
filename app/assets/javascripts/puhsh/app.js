@@ -1,7 +1,5 @@
 var puhsh = angular.module('puhsh', 
-    ['puhsh.services', 
-     'puhsh.directives.spinner',
-     'ngRoute']);
+     ['ngRoute']);
 
 puhsh.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
@@ -11,5 +9,8 @@ puhsh.config(['$routeProvider', function($routeProvider) {
     }).when('/posts', {
       controller: 'PostsController',
       templateUrl: 'assets/posts.html',
+    }).when('/posts/:id', {
+      controller: 'PostController',
+      templateUrl: 'assets/post.html',
     }).otherwise({ redirectTo: '/' });
 }]);
