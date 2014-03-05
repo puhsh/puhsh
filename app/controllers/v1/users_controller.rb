@@ -28,7 +28,7 @@ class V1::UsersController < V1::ApiController
   def nearby_cities
     @user = User.find(params[:id])
     radius = params[:radius] || 10
-    render_paginated @user.nearby_cities(radius)
+    render json: @user.nearby_cities(radius).limit(100)
   end
 
   def activity
