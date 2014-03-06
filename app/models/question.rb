@@ -30,6 +30,7 @@ class Question < ActiveRecord::Base
   end
 
   def notification_text(actor, for_type = nil)
+    # TODO this isn't working. at create, store if this is the first question created in redis
     text = self.post.question_ids.count > 1 ? 'also left a comment' : 'left a comment'
 
     if for_type == :device
