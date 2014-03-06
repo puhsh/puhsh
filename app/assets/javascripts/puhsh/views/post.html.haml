@@ -5,7 +5,7 @@
         %li(ng-repeat="image in post.post_images")
           %img(ng-src="{{image.url}}")
 
-  .row#details
+  .row#heading
     .small-12.columns.text-center
       %h1 
         {{post.title}}
@@ -20,3 +20,25 @@
           %strong {{post.user.name}}
         %h3.gold.star-count
           %strong {{post.user.star_count}}
+
+  .row#post-details
+    .small-12.medium-6.small-centered.medium-centered.columns
+      %ul.no-bullet.detailed-list
+        %li 
+          %span.text-label
+            %strong Posted:
+        %li 
+          %span.text-label
+            %strong Category:
+          %span {{post.category_name}}
+        %li 
+          %span.text-label
+            %strong Location:
+          %span {{post.city.name}} ({{post.user.location_description}})
+        %li 
+          %span.text-label
+            %strong Pick up:
+        %li 
+          %span.text-label
+            %strong Details:
+          %span {{post.description}}
