@@ -3,6 +3,11 @@
   width: $logo-width;
 }
 
+.avatar {
+  width: $avatar-default-size;
+  height: auto;
+}
+
 @media only screen and (max-width: 40em) { 
   .logo {
     margin-bottom: $image-bottom-margin;

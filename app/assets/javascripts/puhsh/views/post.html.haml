@@ -4,8 +4,19 @@
       %ul.image-list(ng-class="imageBlockGridClass(post.post_images)")
         %li(ng-repeat="image in post.post_images")
           %img(ng-src="{{image.url}}")
+
   .row#details
     .small-12.columns.text-center
       %h1 
         {{post.title}}
         %span.price-inline(ng-class="priceClass(post.item)") {{price(post.item)}}
+
+  .row#seller-info
+    .small-12.medium-6.small-centered.medium-centered.columns
+      .user-info.with-posted-by
+        %img.avatar(ng-src="{{post.user.avatar_urls.large}}")
+        %span.posted-by Posted By:
+        %h3.name
+          %strong {{post.user.name}}
+        %h3.gold.star-count
+          %strong {{post.user.star_count}}
