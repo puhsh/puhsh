@@ -1,5 +1,7 @@
 class Question < ActiveRecord::Base
+  include Redis::Objects
   include Trackable
+
   attr_accessible :user, :user_id, :item, :content, :item_id, :post, :post_id
 
   # Relations
@@ -21,6 +23,7 @@ class Question < ActiveRecord::Base
   validates :content, presence: true
 
   # Redis attributes
+  value :number_of_questions_asked
   
   # Methods
 
@@ -30,8 +33,11 @@ class Question < ActiveRecord::Base
   end
 
   def notification_text(actor, for_type = nil)
-    # TODO this isn't working. at create, store if this is the first question created in redis
-    text = self.post.question_ids.count > 1 ? 'also left a comment' : 'left a comment'
+    if number_of_questions_asked.value.blank?
+      self.number_of_questions_asked = self.post.question_ids.count
+    end
+
+    text = self.number_of_questions_asked.value.to_i > 1 ? 'also left a comment' : 'left a comment'
 
     if for_type == :device
       "#{actor.first_name} #{actor.last_name} #{text} on #{post.title}"
