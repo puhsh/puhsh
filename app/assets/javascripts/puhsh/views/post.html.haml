@@ -1,11 +1,11 @@
 #post
   .row#images(ng-controller="PostController")
-    .small12.columns
-      %ul.small-block-grid-3.image-list
+    .small-12.large-12.columns
+      %ul.image-list(ng-class="imageBlockGridClass(post.post_images)")
         %li(ng-repeat="image in post.post_images")
           %img(ng-src="{{image.url}}")
   .row#details
-    .small12.columns.text-center
+    .small-12.columns.text-center
       %h1 
         {{post.title}}
         %span.price-inline(ng-class="priceClass(post.item)") {{price(post.item)}}

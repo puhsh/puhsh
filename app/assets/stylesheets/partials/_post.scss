@@ -29,6 +29,21 @@
     margin-bottom: rem-calc(45);
     ul.image-list {
       @include block-grid($spacing: 0);
+      text-align: center;
+      li {
+        img {
+          width: rem-calc(330);
+        }
+      }
+
+      &.double {
+        li:first-child {
+          img { float: right; }
+        }
+        li:last-child {
+          img { float: left; }
+        }
+      }
     }
   }
 }

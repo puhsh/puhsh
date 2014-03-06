@@ -18,4 +18,14 @@ puhsh.controller('PostController', ['$scope', '$routeParams', '$filter', 'Post',
       return 'not-free';
     }
   }
+
+  $scope.imageBlockGridClass = function(post_images) {
+    var numOfElements = _.size(post_images);
+    if (numOfElements === 2) {
+      return 'double small-block-grid-' + numOfElements;
+    } else {
+      return 'small-block-grid-' + numOfElements;
+    }
+  }
+
 }]);
