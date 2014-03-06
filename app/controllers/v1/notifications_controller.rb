@@ -12,11 +12,15 @@ class V1::NotificationsController < V1::ApiController
 
   def update
     @notification = Notification.find(params[:id])
-    if @notification
-      @notification.mark_as_read!
-      render json: @notification.reload
-    else
-      not_found!
+    @notification.mark_as_read!
+    render json: @notification.reload
+  end
+
+  def mark_all_as_read
+    if params[:notification_id]
+      @notification = Notification.find(params[:notification_id])
     end
+    Notification.mark_all_as_read!(current_user, @notification)
+    render json: {}
   end
 end

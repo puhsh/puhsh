@@ -7,8 +7,13 @@ module Readable
   end
 
   module ClassMethods
-    def mark_all_as_read!(user)
-      unread.by_recipient(user).update_all(read: true, read_at: DateTime.now)
+    def mark_all_as_read!(user, oldest_resource = nil)
+      if oldest_resource
+        resources = unread.by_recipient(user).where('id <= ?', oldest_resource.id)
+      else
+        resources = unread.by_recipient(user)      
+      end
+      resources.update_all(read: true, read_at: DateTime.now)
     end
   end
 

@@ -90,7 +90,11 @@ Puhsh::Application.routes.draw do
     resources :messages, only: [:index, :create, :update]
 
     # Notifications
-    resources :notifications, only: [:index, :update]
+    resources :notifications, only: [:index, :update] do
+      collection do
+        post :mark_all_as_read
+      end
+    end
   end
   
   ###############
