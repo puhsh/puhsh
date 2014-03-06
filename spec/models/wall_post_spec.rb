@@ -29,6 +29,17 @@ describe WallPost do
         expect(invalid).to_not be_valid
       end
     end
+
+    context ':sms_share' do
+      it 'can only have one wall post of this type' do
+        wall_post.post_type = :sms_share
+        wall_post.save
+        expect(wall_post).to be_valid
+
+        invalid = WallPost.create(user: user, post_type: :sms_share)
+        expect(invalid).to_not be_valid
+      end
+    end
   end
 
   describe '.reward_stars' do
