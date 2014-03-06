@@ -36,9 +36,9 @@ describe Notification do
     end
 
     it 'marks all received notifications older than the current resource as read if a specific resource is passed in' do
-      Notification.mark_all_as_read!(user, notification2)
-      expect(notification.reload).to_not be_read
-      expect(notification2.reload).to be_read
+      Notification.mark_all_as_read!(user, notification)
+      expect(notification.reload).to be_read
+      expect(notification2.reload).to_not be_read
       expect(notification3.reload).to_not be_read
     end
   end
