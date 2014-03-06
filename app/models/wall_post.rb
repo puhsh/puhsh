@@ -3,7 +3,7 @@ class WallPost < ActiveRecord::Base
   include Trackable
 
   attr_accessible :user, :post_type
-  symbolize :post_type, in: [:alpha_share] , methods: true, scopes: false, validates: true
+  symbolize :post_type, in: [:alpha_share, :post_share, :sms_share] , methods: true, scopes: false, validates: true
 
   # Relations
   belongs_to :user
