@@ -6,7 +6,7 @@ class V1::RelatedProductsController < V1::ApiController
 
   def index
     @post = Post.find(params[:post_id])
-    @related_product = RelatedProduct.new.find_related_products(@post.title)
+    @related_product = RelatedProduct.new.find_related_products(@post.title, @post.category_name)
     render json: @related_product
   end
 end
