@@ -158,7 +158,6 @@ class User < ActiveRecord::Base
     self.contact_email.present?
   end
 
-  # TODO Add a spec for this
   def reset_unread_notifications_count!
     self.update_column(:unread_notifications_count, Notification.unread.where(user_id: self.id).count)
   end

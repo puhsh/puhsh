@@ -476,6 +476,25 @@ describe User do
     end
   end
 
+  describe '.reset_unread_notifications_count!' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:actor) { FactoryGirl.create(:user) }
+    let!(:message) { FactoryGirl.create(:message, sender: actor, recipient: user, content: 'Hello') }
+    let!(:message2) { FactoryGirl.create(:message, sender: actor, recipient: user, content: 'Hello') }
+    let!(:message3) { FactoryGirl.create(:message, sender: user, recipient: actor, content: 'Hello') }
+    let!(:notification) { FactoryGirl.create(:notification, user: user, actor: actor, content: message) }
+    let!(:notification2) { FactoryGirl.create(:notification, user: user, actor: actor, content: message2) }
+    let!(:notification3) { FactoryGirl.create(:notification, user: actor, actor: user, content: message3) }
+
+    it 'resets the notification count to the amount unread' do
+      expect(user.reload.unread_notifications_count).to eql(2)
+      notification.mark_as_read!
+      notification2.mark_as_read!
+      user.reset_unread_notifications_count!
+      expect(user.reload.unread_notifications_count).to eql(0)
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }
