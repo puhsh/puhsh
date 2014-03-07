@@ -19,8 +19,8 @@ describe RelatedProduct do
   end
 
   describe '.search_index' do
-    it 'is only Baby related items' do
-      expect(related_product.search_index).to eql 'Baby'
+    it 'is only All related items' do
+      expect(related_product.search_index).to eql 'All'
     end
   end
 
@@ -38,7 +38,7 @@ describe RelatedProduct do
 
   describe '.default_search_criteria' do
     it 'has default search criteria' do
-      expect(related_product.default_search_criteria).to eql({"SearchIndex"=>"Baby", "Sort"=>"salesrank", "ResponseGroup"=>"Small,Images,ItemAttributes"})
+      expect(related_product.default_search_criteria).to eql({"SearchIndex"=>"All", "Sort"=>"salesrank", "ResponseGroup"=>"Small,Images,ItemAttributes"})
     end
   end
 
