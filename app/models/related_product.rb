@@ -60,7 +60,7 @@ class RelatedProduct
     when 'Sports'
       'SportingGoods'
     else
-      'All'
+      'Baby'
     end
   end
 end
