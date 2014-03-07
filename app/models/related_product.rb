@@ -29,7 +29,7 @@ class RelatedProduct
   end
 
   def response_group
-    'Small,Images,ItemAttributes'
+    'Small,Images,ItemAttributes,OfferSummary'
   end
 
   protected
@@ -39,8 +39,11 @@ class RelatedProduct
     items = response_hash['ItemSearchResponse']['Items']
     item = items['Item'].try(&:sample) unless response_hash.empty? || items['Item'].nil?
 
-    if item
-      { title: item['ItemAttributes'].try { |x| x['Title'] }, list_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, url: item['DetailPageURL'], image_url: item['LargeImage'].try { |x| x['URL'] } }
+    if item && item['ItemAttributes'].present? && item['ItemAttributes']['ListPrice'].present? && item['OfferSummary'].present?
+      { 
+        title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['OfferSummary']['LowestNewPrice'], 
+        list_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, url: item['DetailPageURL'], image_url: item['LargeImage'].try { |x| x['URL'] } 
+      }
     else
       {}
     end

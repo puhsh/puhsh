@@ -32,13 +32,13 @@ describe RelatedProduct do
 
   describe '.response_group' do
     it 'returns small information, images, and item attributes' do
-      expect(related_product.response_group).to eql 'Small,Images,ItemAttributes'
+      expect(related_product.response_group).to eql 'Small,Images,ItemAttributes,OfferSummary'
     end
   end
 
   describe '.default_search_criteria' do
     it 'has default search criteria' do
-      expect(related_product.default_search_criteria).to eql({"SearchIndex"=>"Baby", "Sort"=>"salesrank", "ResponseGroup"=>"Small,Images,ItemAttributes"})
+      expect(related_product.default_search_criteria).to eql({"SearchIndex"=>"Baby", "Sort"=>"salesrank", "ResponseGroup"=>"Small,Images,ItemAttributes,OfferSummary"})
     end
   end
 
