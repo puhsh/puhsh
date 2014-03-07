@@ -21,6 +21,7 @@ class V1::NotificationsController < V1::ApiController
       @notification = Notification.find(params[:notification_id])
     end
     Notification.mark_all_as_read!(current_user, @notification)
+    current_user.reset_unread_notifications_count!
     render json: {}
   end
 end

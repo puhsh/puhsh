@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
 
-  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email, :star_count
+  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email, :star_count, :unread_notifications_count
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
@@ -156,6 +156,11 @@ class User < ActiveRecord::Base
 
   def contactable?
     self.contact_email.present?
+  end
+
+  # TODO Add a spec for this
+  def reset_unread_notifications_count!
+    self.update_column(:unread_notifications_count, Notification.unread.where(user_id: self.id).count)
   end
 
   protected
