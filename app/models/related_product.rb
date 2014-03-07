@@ -7,9 +7,9 @@ class RelatedProduct
     @api = Vacuum.new.configure(AMAZON_ADS_API_CONFIG)
   end
 
-  def find_related_products(search_terms = nil, post_category_name = nil)
+  def find_related_products(search_terms = nil, post_category_name = nil, post_subcategory_name = nil)
     if search_terms
-      params = default_search_criteria.merge({'Keywords' => search_terms, 'SearchIndex' => search_index(post_category_name)})
+      params = default_search_criteria.merge({'Keywords' => search_terms, 'SearchIndex' => search_index(post_category_name, post_subcategory_name)})
       parsed_results(self.api.item_search(params))
     else
       {}
@@ -20,8 +20,8 @@ class RelatedProduct
     {'SearchIndex' => search_index, 'Sort' => default_sort, 'ResponseGroup' => response_group}
   end
 
-  def search_index(post_category_name = nil)
-    amazon_category_mapping(post_category_name)
+  def search_index(post_category_name = nil, post_subcategory_name = nil)
+    amazon_category_mapping(post_category_name, post_subcategory_name)
   end
 
   def default_sort
@@ -54,16 +54,60 @@ class RelatedProduct
   # post_category_name - The name of post's category. Defaults to nil
   #
   # Returns a string of Amazon specific categories
-  def amazon_category_mapping(post_category_name = nil)
+  def amazon_category_mapping(post_category_name = nil, post_subcategory_name = nil)
     case post_category_name
     when "Kid's Stuff"
-      'Baby'
+      if post_subcategory_name
+        amazon_category_mapping_to_kids_subcategories(post_subcategory_name)
+      else
+        'Baby'
+      end
     when "Womens"
-      'Apparel'
+      if post_subcategory_name
+        amazon_category_mapping_to_womens_subcategories(post_subcategory_name)
+      else
+        'Apparel'
+      end
     when 'Sports'
-      'SportingGoods'
+      if post_subcategory_name
+        amazon_category_mapping_to_sports_subcategories(post_subcategory_name)
+      else
+        'SportingGoods'
+      end
     else
+      'All'
+    end
+  end
+
+  def amazon_category_mapping_to_kids_subcategories(post_subcategory_name)
+    if ['Lots & Multiple Items', 'Misc & Other'].include?(post_subcategory_name)
+      'All'
+    elsif post_subcategory_name == 'Shoes'
+      'Shoes'
+    elsif post_subcategory_name == 'Toys & Games'
+      'Toys'
+    else 
       'Baby'
+    end
+  end
+
+  def amazon_category_mapping_to_womens_subcategories(post_subcategory_name)
+    if post_subcategory_name == 'Jewelry'
+      'Jewelry'
+    elsif post_subcategory_name == 'Makeup & Fragrance'
+      'Beauty'
+    elsif post_subcategory_name == 'Shoes & Boots'
+      'Shoes'
+    else
+      'Apparel'
+    end
+  end
+
+  def amazon_category_mapping_to_sports_subcategories(post_subcategory_name)
+    if post_subcategory_name == 'Other'
+      'All'
+    else 
+      'SportingGoods'
     end
   end
 end
