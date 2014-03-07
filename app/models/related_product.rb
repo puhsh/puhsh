@@ -9,7 +9,7 @@ class RelatedProduct
 
   def find_related_products(search_terms = nil, post_category_name = nil, post_subcategory_name = nil)
     if search_terms
-      params = default_search_criteria.merge({'Keywords' => search_terms, 'SearchIndex' => search_index(post_category_name, post_subcategory_name)})
+      params = default_search_criteria.merge({'Keywords' => search_terms, 'Title' => search_terms, 'SearchIndex' => search_index(post_category_name, post_subcategory_name)})
       parsed_results(self.api.item_search(params))
     else
       {}
@@ -57,23 +57,11 @@ class RelatedProduct
   def amazon_category_mapping(post_category_name = nil, post_subcategory_name = nil)
     case post_category_name
     when "Kid's Stuff"
-      if post_subcategory_name
-        amazon_category_mapping_to_kids_subcategories(post_subcategory_name)
-      else
-        'Baby'
-      end
+      'Baby'
     when "Womens"
-      if post_subcategory_name
-        amazon_category_mapping_to_womens_subcategories(post_subcategory_name)
-      else
-        'Apparel'
-      end
+      'Apparel'
     when 'Sports'
-      if post_subcategory_name
-        amazon_category_mapping_to_sports_subcategories(post_subcategory_name)
-      else
-        'SportingGoods'
-      end
+      'SportingGoods'
     else
       'All'
     end
