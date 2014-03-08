@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Keywords=Test&Operation=ItemSearch&ResponseGroup=Small%2CImages%2CItemAttributes&SearchIndex=Baby&Service=AWSECommerceService&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-02-19T05%3A28%3A53Z&Version=2011-08-01&Signature=YV6TbN3BlBHKYUIEemL7r15Azx2j%2B20BeGXjUy3AON0%3D
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Operation=ItemSearch&ResponseGroup=Small%2CImages%2CItemAttributes%2COfferSummary&SearchIndex=Baby&Service=AWSECommerceService&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-03-08T17%3A42%3A31Z&Title=Test&Version=2011-08-01&Signature=vn5ukJ2iOX1lFaKIa1birOqnLS29DTByzxkHnJlwGQ0%3D
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       message: 
     headers:
       Date:
-      - Wed, 19 Feb 2014 05:28:54 GMT
+      - Sat, 08 Mar 2014 17:42:31 GMT
       Server:
       - Server
       Content-Type:
@@ -28,438 +28,17 @@ http_interactions:
       - ''
     body:
       encoding: UTF-8
-      string: '<?xml version="1.0" ?><ItemSearchResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><HTTPHeaders><Header
-        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>c7d51719-6482-4410-a8b0-62a2859c7c30</RequestId><Arguments><Argument
+      string: <?xml version="1.0" ?><ItemSearchResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><HTTPHeaders><Header
+        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>05fae78f-32ce-4cbb-9817-7370f850235a</RequestId><Arguments><Argument
         Name="Operation" Value="ItemSearch"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
+        Name="Signature" Value="vn5ukJ2iOX1lFaKIa1birOqnLS29DTByzxkHnJlwGQ0="></Argument><Argument
         Name="AssociateTag" Value="puhsh-20"></Argument><Argument Name="Version" Value="2011-08-01"></Argument><Argument
-        Name="Keywords" Value="Test"></Argument><Argument Name="Sort" Value="salesrank"></Argument><Argument
-        Name="SignatureMethod" Value="HmacSHA256"></Argument><Argument Name="SearchIndex"
-        Value="Baby"></Argument><Argument Name="SignatureVersion" Value="2"></Argument><Argument
-        Name="Signature" Value="YV6TbN3BlBHKYUIEemL7r15Azx2j+20BeGXjUy3AON0="></Argument><Argument
-        Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument Name="Timestamp"
-        Value="2014-02-19T05:28:53Z"></Argument><Argument Name="ResponseGroup" Value="Small,Images,ItemAttributes"></Argument></Arguments><RequestProcessingTime>0.1273940000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>Test</Keywords><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><SearchIndex>Baby</SearchIndex><Sort>salesrank</Sort></ItemSearchRequest></Request><TotalResults>7064</TotalResults><TotalPages>707</TotalPages><MoreSearchResultsUrl>http://www.amazon.com/gp/redirect.html?camp=2025&amp;creative=386001&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fsearch%3Fkeywords%3DTest%26url%3Dsearch-alias%253Dbaby-products&amp;linkCode=xm2&amp;tag=puhsh-20&amp;SubscriptionId=AKIAIO4ZPZLNHU3QUX5A</MoreSearchResultsUrl><Item><ASIN>B0062V8PPI</ASIN><ParentASIN>B00DFJW3XK</ParentASIN><DetailPageURL>http://www.amazon.com/Pampers-Softcare-Fresh-Wipes-Count/dp/B0062V8PPI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0062V8PPI</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Pampers-Softcare-Fresh-Wipes-Count/dp/tech-data/B0062V8PPI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB0062V8PPI%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB0062V8PPI%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB0062V8PPI%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B0062V8PPI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B0062V8PPI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B0062V8PPI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0062V8PPI</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51U1LpT13-L.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51z3C1sIn%2BL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51z3C1sIn%2BL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51z3C1sIn%2BL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51z3C1sIn%2BL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51z3C1sIn%2BL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51z3C1sIn%2BL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51%2B5L8JNBFL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51%2B5L8JNBFL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51%2B5L8JNBFL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51%2B5L8JNBFL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51%2B5L8JNBFL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51%2B5L8JNBFL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51R%2BNqeJGOL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51R%2BNqeJGOL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51R%2BNqeJGOL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51R%2BNqeJGOL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51R%2BNqeJGOL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51R%2BNqeJGOL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
-        and Beauty</Binding><Brand>Pampers</Brand><CatalogNumberList><CatalogNumberListElement>10037000282508</CatalogNumberListElement></CatalogNumberList><EAN>0037000282501</EAN><EANList><EANListElement>0037000282501</EANListElement></EANList><Feature>Made
-        with pure water and lotion with vitamin E</Feature><Feature>Pampers soft care
-        baby wipes are hypoallergenic</Feature><Feature>Pleasant baby powder scent</Feature><Feature>Thousands
-        of soft cleansing buds to help leave baby?s skin feeling perfectly clean</Feature><Feature>Ships
-        in Certified Frustration-Free Packaging</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
-        Units="hundredths-inches">1088</Height><Length Units="hundredths-inches">794</Length><Width
-        Units="hundredths-inches">931</Width></ItemDimensions><Label>Pampers</Label><ListPrice><Amount>1493</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$14.93</FormattedPrice></ListPrice><Manufacturer>Pampers</Manufacturer><MPN>28250</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">790</Height><Length Units="hundredths-inches">1100</Length><Weight
-        Units="hundredths-pounds">890</Weight><Width Units="hundredths-inches">940</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>28250</PartNumber><ProductGroup>Health
-        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2011-11-02</PublicationDate><Publisher>Pampers</Publisher><Size>504
-        Count</Size><Studio>Pampers</Studio><Title>Pampers Softcare Baby Fresh Wipes
-        7x box, 504 Count</Title><UPC>037000282501</UPC><UPCList><UPCListElement>037000282501</UPCListElement></UPCList></ItemAttributes></Item><Item><ASIN>B00DDMJ0JE</ASIN><ParentASIN>B00ECUOPKU</ParentASIN><DetailPageURL>http://www.amazon.com/Luvs-Ultra-Leakguards-Diapers-Count/dp/B00DDMJ0JE%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00DDMJ0JE</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Luvs-Ultra-Leakguards-Diapers-Count/dp/tech-data/B00DDMJ0JE%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00DDMJ0JE</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB00DDMJ0JE%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00DDMJ0JE</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB00DDMJ0JE%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00DDMJ0JE</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB00DDMJ0JE%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00DDMJ0JE</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B00DDMJ0JE%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00DDMJ0JE</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B00DDMJ0JE%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00DDMJ0JE</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B00DDMJ0JE%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00DDMJ0JE</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/511yQrmj9ML.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
-        and Beauty</Binding><Brand>Luvs</Brand><CatalogNumberList><CatalogNumberListElement>10037000859502</CatalogNumberListElement></CatalogNumberList><EAN>0037000859505</EAN><EANList><EANListElement>0037000859505</EANListElement></EANList><Feature>NightLock:
-        Our largest absorbency area ever helps lock away leaks, even overnight.</Feature><Feature>Locks
-        away wetness better than Huggies Snug &amp; Dry (Sizes 36).</Feature><Feature>Money-Back
-        Guaranteewe''ll refund your money if you''re not satisfied.</Feature><Feature>Luvs
-        Ultra Leakguards Diapers.</Feature><ItemDimensions><Height Units="hundredths-inches">1344</Height><Length
-        Units="hundredths-inches">1000</Length><Weight Units="hundredths-pounds">1091</Weight><Width
-        Units="hundredths-inches">1750</Width></ItemDimensions><Label>Luvs</Label><ListPrice><Amount>3669</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$36.69</FormattedPrice></ListPrice><Manufacturer>Luvs</Manufacturer><ManufacturerMaximumAge
-        Units="months">36</ManufacturerMaximumAge><ManufacturerMinimumAge Units="months">12</ManufacturerMinimumAge><Model>NA</Model><MPN>037000859505</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">1100</Height><Length Units="hundredths-inches">1750</Length><Weight
-        Units="hundredths-pounds">1100</Weight><Width Units="hundredths-inches">1300</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>037000859505</PartNumber><ProductGroup>Health
-        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2013-12-05</PublicationDate><Publisher>Luvs</Publisher><ReleaseDate>2013-09-09</ReleaseDate><Size>4</Size><Studio>Luvs</Studio><Title>Luvs
-        With Ultra Leakguards Size 4 Diapers 160 Count</Title><UPC>037000859505</UPC><UPCList><UPCListElement>037000859505</UPCListElement></UPCList></ItemAttributes></Item><Item><ASIN>B005UEB96K</ASIN><ParentASIN>B00DDSXXWS</ParentASIN><DetailPageURL>http://www.amazon.com/Aquaphor-Healing-Ointment-Diaper-Protectant/dp/B005UEB96K%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB005UEB96K</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Aquaphor-Healing-Ointment-Diaper-Protectant/dp/tech-data/B005UEB96K%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB005UEB96K</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB005UEB96K%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB005UEB96K</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB005UEB96K%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB005UEB96K</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB005UEB96K%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB005UEB96K</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B005UEB96K%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB005UEB96K</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B005UEB96K%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB005UEB96K</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B005UEB96K%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB005UEB96K</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">70</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">150</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">469</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">28</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">70</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">70</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">103</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">150</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51mJTmzHOlL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">469</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51bS-CxdgEL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51bS-CxdgEL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51bS-CxdgEL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51bS-CxdgEL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51bS-CxdgEL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51bS-CxdgEL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
-        and Beauty</Binding><Brand>Aquaphor</Brand><CatalogNumberList><CatalogNumberListElement>072140633868</CatalogNumberListElement></CatalogNumberList><EAN>0072140633868</EAN><EANList><EANListElement>0072140633868</EANListElement></EANList><Feature>Gentle
-        formula for the sensitive skin of babies, soothes and protects dry, chapped,
-        cracked skin and helps prevent chafing, and dry skin resulting from wind,
-        cold or dry air</Feature><Feature>Soothes red, irritated noses and cheeks
-        resulting from a cold or drool rash</Feature><Feature>Protects to help heal
-        minor cuts, scrapes and burns</Feature><Feature>Releives diaper rash in as
-        little as 6 hours</Feature><Feature>Can also be used to prevent diaper rash
-        before it starts and to help make diaper change clean up easier!</Feature><IsAutographed>0</IsAutographed><IsMemorabilia>0</IsMemorabilia><ItemDimensions><Height
-        Units="hundredths-inches">380</Height><Length Units="hundredths-inches">365</Length><Weight
-        Units="pounds">0</Weight><Width Units="hundredths-inches">360</Width></ItemDimensions><Label>Aquaphor</Label><ListPrice><Amount>2455</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$24.55</FormattedPrice></ListPrice><Manufacturer>Aquaphor</Manufacturer><ManufacturerMinimumAge
-        Units="months">0</ManufacturerMinimumAge><Model>dc1210-14</Model><MPN>63386</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">360</Height><Length Units="hundredths-inches">370</Length><Weight
-        Units="hundredths-pounds">80</Weight><Width Units="hundredths-inches">370</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>63386</PartNumber><ProductGroup>Health
-        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><Publisher>Aquaphor</Publisher><Size>14
-        Ounce</Size><Studio>Aquaphor</Studio><Title>Aquaphor Baby Healing Ointment
-        Diaper Rash and Dry Skin Protectant, 14 oz Jar</Title><UPC>072140633868</UPC><UPCList><UPCListElement>072140633868</UPCListElement></UPCList></ItemAttributes></Item><Item><ASIN>B000YDDF6O</ASIN><DetailPageURL>http://www.amazon.com/Baby-Einstein-Take-Along-Tunes/dp/B000YDDF6O%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000YDDF6O</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Baby-Einstein-Take-Along-Tunes/dp/tech-data/B000YDDF6O%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000YDDF6O</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB000YDDF6O%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000YDDF6O</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB000YDDF6O%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000YDDF6O</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB000YDDF6O%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000YDDF6O</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B000YDDF6O%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000YDDF6O</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B000YDDF6O%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000YDDF6O</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B000YDDF6O%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000YDDF6O</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41wtuTNVhmL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="swatch"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/412CRH-Kn0L._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/412CRH-Kn0L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/412CRH-Kn0L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/412CRH-Kn0L._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/412CRH-Kn0L._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/412CRH-Kn0L.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51TpzsjoxVL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51TpzsjoxVL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51TpzsjoxVL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51TpzsjoxVL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51TpzsjoxVL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51TpzsjoxVL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51yrvf1BDrL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51yrvf1BDrL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51yrvf1BDrL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51yrvf1BDrL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51yrvf1BDrL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51yrvf1BDrL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/414ASGHUK0L._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/414ASGHUK0L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/414ASGHUK0L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/414ASGHUK0L._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/414ASGHUK0L._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/414ASGHUK0L.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Baby
-        Product</Binding><Brand>Baby Einstein</Brand><CatalogNumberList><CatalogNumberListElement>10-9323-01</CatalogNumberListElement><CatalogNumberListElement>30704</CatalogNumberListElement></CatalogNumberList><Color>Red</Color><EAN>5334999518648</EAN><EANList><EANListElement>5334999518648</EANListElement><EANListElement>7332779061467</EANListElement><EANListElement>0173764337818</EANListElement><EANListElement>7897557068231</EANListElement><EANListElement>0074451307049</EANListElement></EANList><Feature>7
-        baby friendly classical melodies</Feature><Feature>Volume Control</Feature><Feature>The
-        colorful and easy to grasp Caterpillar handle ensures that baby can "take
-        along tunes" anywhere</Feature><Feature>Off/Low/High volume switch</Feature><Feature>Promotes
-        auditory development and music appreciation</Feature><Genre>New Age</Genre><IsAutographed>0</IsAutographed><IsMemorabilia>0</IsMemorabilia><ItemDimensions><Height
-        Units="hundredths-inches">108</Height><Length Units="hundredths-inches">513</Length><Weight
-        Units="hundredths-pounds">23</Weight><Width Units="hundredths-inches">513</Width></ItemDimensions><Label>KIDS
-        II</Label><LegalDisclaimer>IN NO EVENT, REGARDLESS OF CAUSE, SHALL WE BE LIABLE
-        FOR ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES OF
-        ANY KIND, WHETHER ARISING UNDER BREACH OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
-        STRICT LIABILITY OR OTHERWISE, AND WHETHER BASED ON THIS AGREEMENT OR OTHERWISE,
-        EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</LegalDisclaimer><ListPrice><Amount>999</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$9.99</FormattedPrice></ListPrice><Manufacturer>KIDS
-        II</Manufacturer><ManufacturerMaximumAge Units="months">36</ManufacturerMaximumAge><ManufacturerMinimumAge
-        Units="months">3</ManufacturerMinimumAge><Model>30704</Model><MPN>30704</MPN><NumberOfDiscs>1</NumberOfDiscs><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">120</Height><Length Units="hundredths-inches">660</Length><Weight
-        Units="hundredths-pounds">45</Weight><Width Units="hundredths-inches">520</Width></PackageDimensions><PartNumber>30704</PartNumber><ProductGroup>Baby
-        Product</ProductGroup><ProductTypeName>BABY_PRODUCT</ProductTypeName><Publisher>KIDS
-        II</Publisher><ReleaseDate>2007-10-19</ReleaseDate><Studio>KIDS II</Studio><Title>Baby
-        Einstein Take Along Tunes</Title><UPC>173764337818</UPC><UPCList><UPCListElement>173764337818</UPCListElement><UPCListElement>074451307049</UPCListElement></UPCList><Warranty>1
-        year limited</Warranty></ItemAttributes></Item><Item><ASIN>B000IDSLOG</ASIN><DetailPageURL>http://www.amazon.com/Vulli-Sophie-the-Giraffe-Teether/dp/B000IDSLOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000IDSLOG</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Vulli-Sophie-the-Giraffe-Teether/dp/tech-data/B000IDSLOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000IDSLOG</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB000IDSLOG%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000IDSLOG</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB000IDSLOG%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000IDSLOG</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB000IDSLOG%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000IDSLOG</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B000IDSLOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000IDSLOG</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B000IDSLOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000IDSLOG</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B000IDSLOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000IDSLOG</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">72</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">153</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">478</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">29</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">72</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">72</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">105</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">153</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41XxjQd%2BXlL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">478</Width></LargeImage></ImageSet><ImageSet
-        Category="swatch"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41N270glyQL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">14</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41N270glyQL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">36</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41N270glyQL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">36</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41N270glyQL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">52</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41N270glyQL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">76</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41N270glyQL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">238</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41LSCXv0u%2BL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">22</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41LSCXv0u%2BL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">55</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41LSCXv0u%2BL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">55</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41LSCXv0u%2BL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">80</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41LSCXv0u%2BL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">116</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41LSCXv0u%2BL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">364</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41BGUQl4OXL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">22</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41BGUQl4OXL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">55</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41BGUQl4OXL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">55</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41BGUQl4OXL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">80</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41BGUQl4OXL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">116</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41BGUQl4OXL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">364</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51kl-D-vF%2BL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">22</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51kl-D-vF%2BL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">55</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51kl-D-vF%2BL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">55</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51kl-D-vF%2BL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">80</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51kl-D-vF%2BL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">116</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51kl-D-vF%2BL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">364</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/5173ggrE7GL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">22</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/5173ggrE7GL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">55</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/5173ggrE7GL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">55</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/5173ggrE7GL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">80</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/5173ggrE7GL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">116</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/5173ggrE7GL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">364</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Baby
-        Product</Binding><Brand>Vulli</Brand><CatalogNumberList><CatalogNumberListElement>VUL-616324</CatalogNumberListElement><CatalogNumberListElement>6163243</CatalogNumberListElement><CatalogNumberListElement>10-7625-01</CatalogNumberListElement></CatalogNumberList><EAN>7123290657792</EAN><EANList><EANListElement>7123290657792</EANListElement><EANListElement>5147841260974</EANListElement><EANListElement>0400000001036</EANListElement><EANListElement>5334999096399</EANListElement><EANListElement>3056566163243</EANListElement><EANListElement>0305655616324</EANListElement></EANList><Feature>Phthalates
-        and BPA free</Feature><Feature>Facilitate baby development</Feature><Feature>Numerous
-        parts to chew and play safely</Feature><Feature>Made of 100% natural rubber
-        and food paint which can fade</Feature><Feature>Individually hand painted,
-        each unit is unique</Feature><IsAutographed>0</IsAutographed><IsMemorabilia>0</IsMemorabilia><ItemDimensions><Height
-        Units="hundredths-inches">700</Height><Length Units="hundredths-inches">100</Length><Weight
-        Units="hundredths-pounds">18</Weight><Width Units="hundredths-inches">400</Width></ItemDimensions><Label>Vulli</Label><LegalDisclaimer>Brand
-        New,Guarantee 100% Genuine Product, Satisfaction Guaranteed, Worldwide Shipping
-        Quickly . Buy with Confidence! Thank you for your order.</LegalDisclaimer><ListPrice><Amount>2500</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$25.00</FormattedPrice></ListPrice><Manufacturer>Vulli</Manufacturer><ManufacturerMaximumAge
-        Units="months">18</ManufacturerMaximumAge><ManufacturerMinimumAge Units="months">0</ManufacturerMinimumAge><Model>6163243</Model><MPN>616324</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">177</Height><Length Units="hundredths-inches">1000</Length><Weight
-        Units="hundredths-pounds">26</Weight><Width Units="hundredths-inches">551</Width></PackageDimensions><PartNumber>616324</PartNumber><ProductGroup>Baby
-        Product</ProductGroup><ProductTypeName>BABY_PRODUCT</ProductTypeName><Publisher>Vulli</Publisher><ReleaseDate>2008-11-18</ReleaseDate><Size>10</Size><Studio>Vulli</Studio><Title>Vulli
-        Sophie the Giraffe Teether</Title><UPC>305655616324</UPC><UPCList><UPCListElement>305655616324</UPCListElement><UPCListElement>400000001036</UPCListElement></UPCList></ItemAttributes></Item><Item><ASIN>B0030VJ79Q</ASIN><ParentASIN>B00AEBR6DY</ParentASIN><DetailPageURL>http://www.amazon.com/Happy-Organic-Spinach-4-0-Ounce-Pouches/dp/B0030VJ79Q%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0030VJ79Q</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Happy-Organic-Spinach-4-0-Ounce-Pouches/dp/tech-data/B0030VJ79Q%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0030VJ79Q</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB0030VJ79Q%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0030VJ79Q</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB0030VJ79Q%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0030VJ79Q</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB0030VJ79Q%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0030VJ79Q</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B0030VJ79Q%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0030VJ79Q</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B0030VJ79Q%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0030VJ79Q</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B0030VJ79Q%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0030VJ79Q</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51gpHpprBPL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51Pwy-tu1TL._SL30_.jpg</URL><Height
-        Units="pixels">23</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51Pwy-tu1TL._SL75_.jpg</URL><Height
-        Units="pixels">58</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51Pwy-tu1TL._SL75_.jpg</URL><Height
-        Units="pixels">58</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51Pwy-tu1TL._SL110_.jpg</URL><Height
-        Units="pixels">85</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51Pwy-tu1TL._SL160_.jpg</URL><Height
-        Units="pixels">124</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51Pwy-tu1TL.jpg</URL><Height
-        Units="pixels">386</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51smqNVo1PL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">12</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51smqNVo1PL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">30</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51smqNVo1PL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">30</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51smqNVo1PL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">44</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51smqNVo1PL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">64</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51smqNVo1PL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">199</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41Dx0TQDjGL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">15</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41Dx0TQDjGL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">37</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41Dx0TQDjGL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">37</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41Dx0TQDjGL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">54</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41Dx0TQDjGL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">78</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41Dx0TQDjGL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">244</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41NVQ6xFG5L._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">17</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41NVQ6xFG5L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">43</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41NVQ6xFG5L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">43</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41NVQ6xFG5L._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">63</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41NVQ6xFG5L._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">92</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41NVQ6xFG5L.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">286</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51WR0fAfb6L._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">14</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51WR0fAfb6L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">34</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51WR0fAfb6L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">34</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51WR0fAfb6L._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">50</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51WR0fAfb6L._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">73</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51WR0fAfb6L.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">229</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41gDcS5qVLL._SL30_.jpg</URL><Height
-        Units="pixels">10</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41gDcS5qVLL._SL75_.jpg</URL><Height
-        Units="pixels">24</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41gDcS5qVLL._SL75_.jpg</URL><Height
-        Units="pixels">24</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41gDcS5qVLL._SL110_.jpg</URL><Height
-        Units="pixels">36</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41gDcS5qVLL._SL160_.jpg</URL><Height
-        Units="pixels">52</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41gDcS5qVLL.jpg</URL><Height
-        Units="pixels">162</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51MQKzAEsrL._SL30_.jpg</URL><Height
-        Units="pixels">25</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51MQKzAEsrL._SL75_.jpg</URL><Height
-        Units="pixels">62</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51MQKzAEsrL._SL75_.jpg</URL><Height
-        Units="pixels">62</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51MQKzAEsrL._SL110_.jpg</URL><Height
-        Units="pixels">91</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51MQKzAEsrL._SL160_.jpg</URL><Height
-        Units="pixels">132</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51MQKzAEsrL.jpg</URL><Height
-        Units="pixels">414</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Grocery</Binding><Brand>HAPPYBABY</Brand><CatalogNumberList><CatalogNumberListElement>8-52697-00129-3</CatalogNumberListElement></CatalogNumberList><EAN>0852697001293</EAN><EANList><EANListElement>0852697001293</EANListElement></EANList><Feature>A
-        unique recipe of fruits and veggies combined with super grains--a recipe that
-        is sure to delight your toddler</Feature><Feature>Pack of sixteen 4.22-ounce
-        pouches</Feature><Feature>They are all organic with 100% natural ingredients,
-        no pesticides, no chemical fertilizers, no genetic modifications, and no preservatives</Feature><Feature>Contains
-        no gluten, wheat, soy, dairy, or added sugars</Feature><Feature>Ships in Certified
-        Frustration-Free Packaging</Feature><Feature>HAPPYBABY is committed to providing
-        families with the healthiest, most optimal nutrition possible</Feature><Feature>Made
-        out of organic pears, organic mango, organic spinach, salba, organic lemon
-        juice concentrate, and ascorbic acid</Feature><Feature>Rich in antioxidants
-        and contains 822 milligram of omega-3s per serving</Feature><ItemDimensions><Height
-        Units="hundredths-inches">650</Height><Length Units="hundredths-inches">900</Length><Weight
-        Units="hundredths-pounds">435</Weight><Width Units="hundredths-inches">625</Width></ItemDimensions><Label>HAPPYBABY</Label><LegalDisclaimer>This
-        information is intended for your general knowledge only and is not a substitute
-        for professional medical advice or treatment for specific medical conditions.
-        This information is not intended to diagnose, treat, cure or prevent any disease.
-        Always seek the advice of your qualified physician or other health care provider
-        with any questions you may have regarding a medical condition. Never disregard
-        or delay in seeking medical advice.</LegalDisclaimer><ListPrice><Amount>2774</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$27.74</FormattedPrice></ListPrice><Manufacturer>HAPPYBABY</Manufacturer><MPN>00129</MPN><NumberOfItems>16</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">670</Height><Length Units="hundredths-inches">960</Length><Weight
-        Units="hundredths-pounds">530</Weight><Width Units="hundredths-inches">690</Width></PackageDimensions><PackageQuantity>16</PackageQuantity><PartNumber>00129</PartNumber><ProductGroup>Grocery</ProductGroup><ProductTypeName>GROCERY</ProductTypeName><Publisher>HAPPYBABY</Publisher><Size>4.22
-        Ounce Pouches (Pack of 16)</Size><SKU>01644</SKU><Studio>HAPPYBABY</Studio><Title>Happy
-        Tot Organic Baby Food, Stage 4, Spinach, Mango and Pear, 4.0-Ounce Pouches
-        (Pack of 16)</Title><UPC>852697001293</UPC><UPCList><UPCListElement>852697001293</UPCListElement></UPCList></ItemAttributes></Item><Item><ASIN>B008CO606Y</ASIN><ParentASIN>B009RFBW0Q</ParentASIN><DetailPageURL>http://www.amazon.com/Seventh-Generation-Clear-Diapers-Count/dp/B008CO606Y%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB008CO606Y</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Seventh-Generation-Clear-Diapers-Count/dp/tech-data/B008CO606Y%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB008CO606Y</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB008CO606Y%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB008CO606Y</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB008CO606Y%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB008CO606Y</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB008CO606Y%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB008CO606Y</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B008CO606Y%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB008CO606Y</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B008CO606Y%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB008CO606Y</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B008CO606Y%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB008CO606Y</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL._SL75_.jpg</URL><Height
-        Units="pixels">66</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL._SL160_.jpg</URL><Height
-        Units="pixels">140</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL.jpg</URL><Height
-        Units="pixels">439</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL._SL30_.jpg</URL><Height
-        Units="pixels">26</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL._SL75_.jpg</URL><Height
-        Units="pixels">66</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL._SL75_.jpg</URL><Height
-        Units="pixels">66</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL._SL110_.jpg</URL><Height
-        Units="pixels">97</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL._SL160_.jpg</URL><Height
-        Units="pixels">140</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51RE2M54kHL.jpg</URL><Height
-        Units="pixels">439</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41Ix3OF9MYL._SL30_.jpg</URL><Height
-        Units="pixels">19</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41Ix3OF9MYL._SL75_.jpg</URL><Height
-        Units="pixels">47</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41Ix3OF9MYL._SL75_.jpg</URL><Height
-        Units="pixels">47</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41Ix3OF9MYL._SL110_.jpg</URL><Height
-        Units="pixels">69</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41Ix3OF9MYL._SL160_.jpg</URL><Height
-        Units="pixels">100</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41Ix3OF9MYL.jpg</URL><Height
-        Units="pixels">313</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41uCImHdoLL._SL30_.jpg</URL><Height
-        Units="pixels">24</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41uCImHdoLL._SL75_.jpg</URL><Height
-        Units="pixels">59</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41uCImHdoLL._SL75_.jpg</URL><Height
-        Units="pixels">59</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41uCImHdoLL._SL110_.jpg</URL><Height
-        Units="pixels">86</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41uCImHdoLL._SL160_.jpg</URL><Height
-        Units="pixels">125</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41uCImHdoLL.jpg</URL><Height
-        Units="pixels">392</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL30_.jpg</URL><Height
-        Units="pixels">22</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL75_.jpg</URL><Height
-        Units="pixels">56</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL75_.jpg</URL><Height
-        Units="pixels">56</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL110_.jpg</URL><Height
-        Units="pixels">82</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL160_.jpg</URL><Height
-        Units="pixels">120</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL.jpg</URL><Height
-        Units="pixels">375</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL30_.jpg</URL><Height
-        Units="pixels">22</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL75_.jpg</URL><Height
-        Units="pixels">56</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL75_.jpg</URL><Height
-        Units="pixels">56</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL110_.jpg</URL><Height
-        Units="pixels">82</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL._SL160_.jpg</URL><Height
-        Units="pixels">120</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41fupkjCYRL.jpg</URL><Height
-        Units="pixels">375</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41ybFiIKLtL._SL30_.jpg</URL><Height
-        Units="pixels">20</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41ybFiIKLtL._SL75_.jpg</URL><Height
-        Units="pixels">50</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41ybFiIKLtL._SL75_.jpg</URL><Height
-        Units="pixels">50</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41ybFiIKLtL._SL110_.jpg</URL><Height
-        Units="pixels">73</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41ybFiIKLtL._SL160_.jpg</URL><Height
-        Units="pixels">107</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41ybFiIKLtL.jpg</URL><Height
-        Units="pixels">333</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41KFSh%2BoKEL._SL30_.jpg</URL><Height
-        Units="pixels">22</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41KFSh%2BoKEL._SL75_.jpg</URL><Height
-        Units="pixels">56</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41KFSh%2BoKEL._SL75_.jpg</URL><Height
-        Units="pixels">56</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41KFSh%2BoKEL._SL110_.jpg</URL><Height
-        Units="pixels">82</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41KFSh%2BoKEL._SL160_.jpg</URL><Height
-        Units="pixels">119</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41KFSh%2BoKEL.jpg</URL><Height
-        Units="pixels">373</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41qQ0WB0w5L._SL30_.jpg</URL><Height
-        Units="pixels">12</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41qQ0WB0w5L._SL75_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41qQ0WB0w5L._SL75_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41qQ0WB0w5L._SL110_.jpg</URL><Height
-        Units="pixels">43</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41qQ0WB0w5L._SL160_.jpg</URL><Height
-        Units="pixels">63</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41qQ0WB0w5L.jpg</URL><Height
-        Units="pixels">197</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
-        and Beauty</Binding><Brand>Seventh Generation</Brand><CatalogNumberList><CatalogNumberListElement>732913440924</CatalogNumberListElement></CatalogNumberList><EAN>0732913440924</EAN><EANList><EANListElement>0732913440924</EANListElement></EANList><Feature>Premium
-        absorbency with a soft and comfortable fit that make Seventh Generation diapers
-        a natural choice</Feature><Feature>Free of whitening and chlorine processing
-        - the only disposable diaper available today with no whitening</Feature><Feature>Free
-        of fragrances (unscented)</Feature><Feature>Free of petroleum based lotions
-        and latex</Feature><Feature>Hypoallergenic</Feature><Feature>Ships in Certified
-        Frustration-Free Packaging</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
-        Units="hundredths-inches">1000</Height><Length Units="hundredths-inches">2350</Length><Weight
-        Units="hundredths-pounds">600</Weight><Width Units="hundredths-inches">1050</Width></ItemDimensions><Label>Seventh
-        Generation</Label><ListPrice><Amount>6000</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$60.00</FormattedPrice></ListPrice><Manufacturer>Seventh
-        Generation</Manufacturer><Model>732913440924</Model><MPN>732913440924</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">960</Height><Length Units="hundredths-inches">2300</Length><Weight
-        Units="hundredths-pounds">975</Weight><Width Units="hundredths-inches">990</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>732913440924</PartNumber><ProductGroup>Health
-        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2012-06-19</PublicationDate><Publisher>Seventh
-        Generation</Publisher><ReleaseDate>2012-08-13</ReleaseDate><Size>4</Size><Studio>Seventh
-        Generation</Studio><Title>Seventh Generation Free and Clear Baby Diapers,
-        Size 4, 135 Count</Title><UPC>732913440924</UPC><UPCList><UPCListElement>732913440924</UPCListElement></UPCList></ItemAttributes></Item><Item><ASIN>B000052XHI</ASIN><ParentASIN>B001QXTTH0</ParentASIN><DetailPageURL>http://www.amazon.com/First-Response-Result-Pregnancy-Packaging/dp/B000052XHI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000052XHI</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Name="Sort" Value="salesrank"></Argument><Argument Name="SignatureMethod"
+        Value="HmacSHA256"></Argument><Argument Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument
+        Name="Timestamp" Value="2014-03-08T17:42:31Z"></Argument><Argument Name="Title"
+        Value="Test"></Argument><Argument Name="ResponseGroup" Value="Small,Images,ItemAttributes,OfferSummary"></Argument><Argument
+        Name="SearchIndex" Value="Baby"></Argument><Argument Name="SignatureVersion"
+        Value="2"></Argument></Arguments><RequestProcessingTime>0.1241230000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><ResponseGroup>OfferSummary</ResponseGroup><SearchIndex>Baby</SearchIndex><Sort>salesrank</Sort><Title>Test</Title></ItemSearchRequest></Request><TotalResults>1115</TotalResults><TotalPages>112</TotalPages><MoreSearchResultsUrl>http://www.amazon.com/gp/redirect.html?camp=2025&amp;creative=386001&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fsearch%3Fkeywords%3DTest%26url%3Dsearch-alias%253Dbaby-products&amp;linkCode=xm2&amp;tag=puhsh-20&amp;SubscriptionId=AKIAIO4ZPZLNHU3QUX5A</MoreSearchResultsUrl><Item><ASIN>B000052XHI</ASIN><ParentASIN>B001QXTTH0</ParentASIN><DetailPageURL>http://www.amazon.com/First-Response-Result-Pregnancy-Packaging/dp/B000052XHI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000052XHI</DetailPageURL><ItemLinks><ItemLink><Description>Technical
         Details</Description><URL>http://www.amazon.com/First-Response-Result-Pregnancy-Packaging/dp/tech-data/B000052XHI%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000052XHI</URL></ItemLink><ItemLink><Description>Add
         To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB000052XHI%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000052XHI</URL></ItemLink><ItemLink><Description>Add
         To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB000052XHI%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000052XHI</URL></ItemLink><ItemLink><Description>Add
@@ -505,118 +84,391 @@ http_interactions:
         and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><Publisher>First
         Response</Publisher><ReleaseDate>2005-04-20</ReleaseDate><Size>3 each</Size><Studio>First
         Response</Studio><Title>First Response Early Result Pregnancy Test, 3 tests,
-        Packaging May Vary</Title><UPC>022600901273</UPC><UPCList><UPCListElement>022600901273</UPCListElement></UPCList></ItemAttributes></Item><Item><ASIN>B000056JMU</ASIN><ParentASIN>B008D47ACG</ParentASIN><DetailPageURL>http://www.amazon.com/Playtex-Drop-Ins-Pre-Sterilized-Bottle-Liners/dp/B000056JMU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000056JMU</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Playtex-Drop-Ins-Pre-Sterilized-Bottle-Liners/dp/tech-data/B000056JMU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000056JMU</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB000056JMU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000056JMU</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB000056JMU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000056JMU</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB000056JMU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000056JMU</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B000056JMU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000056JMU</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B000056JMU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000056JMU</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B000056JMU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000056JMU</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">47</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">100</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">314</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">19</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">47</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">47</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">69</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">100</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">314</Width></LargeImage></ImageSet><ImageSet
-        Category="swatch"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">19</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">47</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">47</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">69</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">100</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/414p01JX8IL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">314</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Baby
-        Product</Binding><Brand>Playtex</Brand><CatalogNumberList><CatalogNumberListElement>PLA05544</CatalogNumberListElement><CatalogNumberListElement>10078300055447</CatalogNumberListElement><CatalogNumberListElement>10-2668-01</CatalogNumberListElement></CatalogNumberList><Department>baby-boys</Department><EAN>0078300055440</EAN><EANList><EANListElement>0078300055440</EANListElement></EANList><Feature>If
-        you prefer a bottle that mimics breastfeeding, choose, Playtex - drop-ins,
-        Clinically proven to reduce colic better than other regularly used bottles,
-        Infants fed with Playtex drop-ins bottles used the same natural suck-swallow-breathe
-        rhythm used during breastfeeding, Playtex Drop-Ins System has the NaturaLatch
-        nipple for easy latch on, You can pump, feed, and store all in one Drop-Ins
-        pre-sterilized liner</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
-        Units="hundredths-inches">850</Height><Length Units="hundredths-inches">450</Length><Weight
-        Units="pounds">1</Weight><Width Units="hundredths-inches">450</Width></ItemDimensions><Label>Playtex</Label><ListPrice><Amount>1385</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$13.85</FormattedPrice></ListPrice><Manufacturer>Playtex</Manufacturer><ManufacturerMaximumAge
-        Units="months">24</ManufacturerMaximumAge><ManufacturerMinimumAge Units="months">0</ManufacturerMinimumAge><Model>78300055440</Model><MPN>05544</MPN><PackageDimensions><Height
-        Units="hundredths-inches">450</Height><Length Units="hundredths-inches">870</Length><Weight
-        Units="hundredths-pounds">45</Weight><Width Units="hundredths-inches">540</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>05544</PartNumber><ProductGroup>Baby
-        Product</ProductGroup><ProductTypeName>BABY_PRODUCT</ProductTypeName><Publisher>Playtex</Publisher><ReleaseDate>2011-11-14</ReleaseDate><Size>8
-        Ounce</Size><Studio>Playtex</Studio><Title>Playtex Drop-Ins Pre-Sterilized
-        Soft Bottle Liners, 8-10 oz. 100 ea</Title><UPC>078300055440</UPC><UPCList><UPCListElement>078300055440</UPCListElement></UPCList></ItemAttributes></Item><Item><ASIN>B0089VO3NW</ASIN><ParentASIN>B003EFLVK6</ParentASIN><DetailPageURL>http://www.amazon.com/Huggies-Little-Diapers-Economy-packaging/dp/B0089VO3NW%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0089VO3NW</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Huggies-Little-Diapers-Economy-packaging/dp/tech-data/B0089VO3NW%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0089VO3NW</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB0089VO3NW%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0089VO3NW</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB0089VO3NW%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0089VO3NW</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB0089VO3NW%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0089VO3NW</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B0089VO3NW%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0089VO3NW</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B0089VO3NW%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0089VO3NW</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B0089VO3NW%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0089VO3NW</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L._SL75_.jpg</URL><Height
-        Units="pixels">67</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L._SL160_.jpg</URL><Height
-        Units="pixels">143</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L.jpg</URL><Height
-        Units="pixels">448</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L._SL30_.jpg</URL><Height
-        Units="pixels">27</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L._SL75_.jpg</URL><Height
-        Units="pixels">67</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L._SL75_.jpg</URL><Height
-        Units="pixels">67</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L._SL110_.jpg</URL><Height
-        Units="pixels">99</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L._SL160_.jpg</URL><Height
-        Units="pixels">143</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51DMGC4M01L.jpg</URL><Height
-        Units="pixels">448</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41Uy8-lOhxL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41Uy8-lOhxL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41Uy8-lOhxL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41Uy8-lOhxL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41Uy8-lOhxL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41Uy8-lOhxL.jpg</URL><Height
+        Packaging May Vary</Title><UPC>022600901273</UPC><UPCList><UPCListElement>022600901273</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>1185</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$11.85</FormattedPrice></LowestNewPrice><TotalNew>21</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B00D05VGC8</ASIN><ParentASIN>B00EM8IHV0</ParentASIN><DetailPageURL>http://www.amazon.com/Clearblue-Advanced-Pregnancy-Weeks-Estimator/dp/B00D05VGC8%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00D05VGC8</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Clearblue-Advanced-Pregnancy-Weeks-Estimator/dp/tech-data/B00D05VGC8%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00D05VGC8</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB00D05VGC8%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00D05VGC8</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB00D05VGC8%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00D05VGC8</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB00D05VGC8%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00D05VGC8</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B00D05VGC8%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00D05VGC8</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B00D05VGC8%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00D05VGC8</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B00D05VGC8%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00D05VGC8</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51vWshzYwgL.jpg</URL><Height
         Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41tgmdi3leL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41tgmdi3leL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41tgmdi3leL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41tgmdi3leL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41tgmdi3leL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41tgmdi3leL.jpg</URL><Height
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51iQCQVT8vL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51iQCQVT8vL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51iQCQVT8vL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51iQCQVT8vL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51iQCQVT8vL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51iQCQVT8vL.jpg</URL><Height
         Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41Nz4FHsS0L._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41Nz4FHsS0L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41Nz4FHsS0L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41Nz4FHsS0L._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41Nz4FHsS0L._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41Nz4FHsS0L.jpg</URL><Height
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51PNiUcl1nL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51PNiUcl1nL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51PNiUcl1nL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51PNiUcl1nL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51PNiUcl1nL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51PNiUcl1nL.jpg</URL><Height
         Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51LvwZ0-2BL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51LvwZ0-2BL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51LvwZ0-2BL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51LvwZ0-2BL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51LvwZ0-2BL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51LvwZ0-2BL.jpg</URL><Height
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51HOuC75PFL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51HOuC75PFL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51HOuC75PFL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51HOuC75PFL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51HOuC75PFL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51HOuC75PFL.jpg</URL><Height
         Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/31aZ5Vn-TbL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/31aZ5Vn-TbL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/31aZ5Vn-TbL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/31aZ5Vn-TbL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/31aZ5Vn-TbL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/31aZ5Vn-TbL.jpg</URL><Height
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51rW83t5SlL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51rW83t5SlL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51rW83t5SlL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51rW83t5SlL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51rW83t5SlL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51rW83t5SlL.jpg</URL><Height
         Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/411SxP7w1JL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/411SxP7w1JL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/411SxP7w1JL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/411SxP7w1JL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/411SxP7w1JL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/411SxP7w1JL.jpg</URL><Height
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/5163jWzhhAL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/5163jWzhhAL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/5163jWzhhAL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/5163jWzhhAL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/5163jWzhhAL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/5163jWzhhAL.jpg</URL><Height
         Units="pixels">500</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
-        and Beauty</Binding><Brand>Huggies</Brand><CatalogNumberList><CatalogNumberListElement>10036000364085</CatalogNumberListElement></CatalogNumberList><EAN>0036000364088</EAN><EANList><EANListElement>0036000364088</EANListElement></EANList><Feature>Fits
-        toddlers from 22 to 37 lbs</Feature><Feature>Only Huggies diapers have a stretchy
-        SnugFit waistband to help our diapers stay in place like no other diaper.</Feature><Feature>Unique
-        contoured shape provides a comfortable fit and stays in place as babies move
-        and play.</Feature><Feature>Now even more absorbent with new and improved
-        LEAK LOCK ? the protection and security you both need between changes.</Feature><Feature>Adorable
-        graphics featuring Winnie the Pooh &amp; Friends Disney designs.</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
-        Units="hundredths-inches">1575</Height><Length Units="hundredths-inches">1800</Length><Weight
-        Units="hundredths-pounds">1380</Weight><Width Units="hundredths-inches">888</Width></ItemDimensions><Label>Huggies</Label><ListPrice><Amount>5674</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$56.74</FormattedPrice></ListPrice><Manufacturer>Huggies</Manufacturer><MPN>36408</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">890</Height><Length Units="hundredths-inches">1780</Length><Weight
-        Units="hundredths-pounds">1410</Weight><Width Units="hundredths-inches">1560</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>36408</PartNumber><ProductGroup>Health
-        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2012-06-08</PublicationDate><Publisher>Huggies</Publisher><ReleaseDate>2012-06-18</ReleaseDate><Size>4</Size><SKU>HD-3215-B1</SKU><Studio>Huggies</Studio><Title>Huggies
-        Little Movers Diapers Economy Plus, Size 4, 160 Count (packaging may vary)</Title><UPC>036000364088</UPC><UPCList><UPCListElement>036000364088</UPCListElement></UPCList></ItemAttributes></Item></Items></ItemSearchResponse>'
+        and Beauty</Binding><Brand>Clearblue Easy</Brand><CatalogNumberList><CatalogNumberListElement>10047400648934</CatalogNumberListElement></CatalogNumberList><EAN>0633472600494</EAN><EANList><EANListElement>0633472600494</EANListElement></EANList><Feature>The
+        First and Only pregnancy test that also estimates how many weeks since ovulation.</Feature><Feature>#1
+        OB/GYN choice and 84% of OB/GYNs agree Weeks Estimator offers helpful information
+        to women detecting pregnancy.</Feature><Feature>It's like 2 Tests in 1!</Feature><Feature>Tells
+        you in words if you are pregnant or not.</Feature><Feature>Results 5 days
+        sooner.</Feature><ItemDimensions><Height Units="hundredths-inches">725</Height><Length
+        Units="hundredths-inches">300</Length><Weight Units="pounds">0.22</Weight><Width
+        Units="hundredths-inches">150</Width></ItemDimensions><Label>Procter &amp;
+        Gamble - HABA Hub</Label><LegalDisclaimer>Actual product packaging and materials
+        may contain more and/or different information than that shown on our Web site.
+        We recommend that you do not solely rely on the information presented and
+        that you always read labels, warnings, and directions before using or consuming
+        a product. Content on this site is for reference purposes and is not intended
+        to substitute for advice given by a physician, pharmacist, or other licensed
+        health-care professional. You should not use this information as self-diagnosis
+        or for treating a health problem or disease. Contact your health-care provider
+        immediately if you suspect that you have a medical problem. Information and
+        statements regarding dietary supplements have not been evaluated by the Food
+        and Drug Administration and are not intended to diagnose, treat, cure, or
+        prevent any disease or health condition. ABC Wholesale assumes no liability
+        for inaccuracies or misstatements about products.</LegalDisclaimer><ListPrice><Amount>1915</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$19.15</FormattedPrice></ListPrice><Manufacturer>Procter
+        &amp; Gamble - HABA Hub</Manufacturer><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
+        Units="hundredths-inches">100</Height><Length Units="hundredths-inches">730</Length><Weight
+        Units="hundredths-pounds">2</Weight><Width Units="hundredths-inches">300</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><ProductGroup>Health
+        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2013-07-30</PublicationDate><Publisher>Procter
+        &amp; Gamble - HABA Hub</Publisher><ReleaseDate>2013-08-27</ReleaseDate><Size>3
+        Count</Size><Studio>Procter &amp; Gamble - HABA Hub</Studio><Title>Clearblue
+        Advanced Pregnancy Test With Weeks Estimator 3 Count</Title><UPC>633472600494</UPC><UPCList><UPCListElement>633472600494</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>1400</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$14.00</FormattedPrice></LowestNewPrice><TotalNew>12</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B001FYLNVU</ASIN><DetailPageURL>http://www.amazon.com/Combo-pack-Ovulation-tests-Pregnancy/dp/B001FYLNVU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB001FYLNVU</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Combo-pack-Ovulation-tests-Pregnancy/dp/tech-data/B001FYLNVU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYLNVU</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB001FYLNVU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYLNVU</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB001FYLNVU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYLNVU</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB001FYLNVU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYLNVU</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B001FYLNVU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYLNVU</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B001FYLNVU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYLNVU</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B001FYLNVU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYLNVU</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL._SL75_.jpg</URL><Height
+        Units="pixels">41</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL._SL160_.jpg</URL><Height
+        Units="pixels">88</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL.jpg</URL><Height
+        Units="pixels">276</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL._SL30_.jpg</URL><Height
+        Units="pixels">17</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL._SL75_.jpg</URL><Height
+        Units="pixels">41</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL._SL75_.jpg</URL><Height
+        Units="pixels">41</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL._SL110_.jpg</URL><Height
+        Units="pixels">61</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL._SL160_.jpg</URL><Height
+        Units="pixels">88</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41YXIVDAxRL.jpg</URL><Height
+        Units="pixels">276</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>WONDFO</Brand><CatalogNumberList><CatalogNumberListElement>Preg-Combopack</CatalogNumberListElement></CatalogNumberList><EAN>0879766001213</EAN><EANList><EANListElement>0879766001213</EANListElement></EANList><Feature>Value
+        Pack of 40 Ovulation Tests and 10 Earliest Detection Pregnancy Tests</Feature><Feature>FDA-approved,
+        highly sensitive</Feature><Feature>Allows you to pinpoint when ovulation occurs
+        - the time you're most likely to conceive</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
+        Units="hundredths-inches">16</Height><Length Units="hundredths-inches">158</Length><Weight
+        Units="ounces">0.1</Weight><Width Units="hundredths-inches">158</Width></ItemDimensions><Label>Wondfo</Label><LegalDisclaimer>Got
+        this few months ago and never used this. I used the same product in the past
+        and it worked for me.</LegalDisclaimer><ListPrice><Amount>1143</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$11.43</FormattedPrice></ListPrice><Manufacturer>Wondfo</Manufacturer><Model>W2-S1&amp;WS-1</Model><MPN>W2-S1&amp;WS-1</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
+        Units="hundredths-inches">150</Height><Length Units="hundredths-inches">940</Length><Weight
+        Units="hundredths-pounds">30</Weight><Width Units="hundredths-inches">540</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>W2-S1&amp;WS-1</PartNumber><ProductGroup>Health
+        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2010-11-03</PublicationDate><Publisher>Wondfo</Publisher><SKU>O8-YHSS-FVD6</SKU><Studio>Wondfo</Studio><Title>Combo
+        pack 40 (LH) Ovulation tests and 10 (HCG) Pregnancy tests</Title><UPC>879766001213</UPC><UPCList><UPCListElement>879766001213</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>1949</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$19.49</FormattedPrice></LowestNewPrice><TotalNew>13</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B00AOJ5R8W</ASIN><ParentASIN>B00CKJ7IW2</ParentASIN><DetailPageURL>http://www.amazon.com/Clearblue-Advanced-Digital-Ovulation-Count/dp/B00AOJ5R8W%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00AOJ5R8W</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Clearblue-Advanced-Digital-Ovulation-Count/dp/tech-data/B00AOJ5R8W%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00AOJ5R8W</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB00AOJ5R8W%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00AOJ5R8W</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB00AOJ5R8W%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00AOJ5R8W</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB00AOJ5R8W%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00AOJ5R8W</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B00AOJ5R8W%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00AOJ5R8W</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B00AOJ5R8W%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00AOJ5R8W</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B00AOJ5R8W%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00AOJ5R8W</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL._SL75_.jpg</URL><Height
+        Units="pixels">36</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL._SL160_.jpg</URL><Height
+        Units="pixels">77</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL.jpg</URL><Height
+        Units="pixels">241</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL._SL30_.jpg</URL><Height
+        Units="pixels">14</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL._SL75_.jpg</URL><Height
+        Units="pixels">36</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL._SL75_.jpg</URL><Height
+        Units="pixels">36</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL._SL110_.jpg</URL><Height
+        Units="pixels">53</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL._SL160_.jpg</URL><Height
+        Units="pixels">77</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41ksPMcRhyL.jpg</URL><Height
+        Units="pixels">241</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/416%2BjBKU9XL._SL30_.jpg</URL><Height
+        Units="pixels">9</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/416%2BjBKU9XL._SL75_.jpg</URL><Height
+        Units="pixels">21</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/416%2BjBKU9XL._SL75_.jpg</URL><Height
+        Units="pixels">21</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/416%2BjBKU9XL._SL110_.jpg</URL><Height
+        Units="pixels">31</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/416%2BjBKU9XL._SL160_.jpg</URL><Height
+        Units="pixels">46</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/416%2BjBKU9XL.jpg</URL><Height
+        Units="pixels">143</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41X5ewYtCJL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">14</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41X5ewYtCJL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">36</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41X5ewYtCJL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">36</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41X5ewYtCJL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">53</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41X5ewYtCJL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">77</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41X5ewYtCJL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">240</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41Ird%2BuGMSL._SL30_.jpg</URL><Height
+        Units="pixels">9</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41Ird%2BuGMSL._SL75_.jpg</URL><Height
+        Units="pixels">22</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41Ird%2BuGMSL._SL75_.jpg</URL><Height
+        Units="pixels">22</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41Ird%2BuGMSL._SL110_.jpg</URL><Height
+        Units="pixels">32</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41Ird%2BuGMSL._SL160_.jpg</URL><Height
+        Units="pixels">46</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41Ird%2BuGMSL.jpg</URL><Height
+        Units="pixels">144</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41EPwvoFGEL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">18</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41EPwvoFGEL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">44</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41EPwvoFGEL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">44</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41EPwvoFGEL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">64</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41EPwvoFGEL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">93</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41EPwvoFGEL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">292</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>Clearblue Easy</Brand><CatalogNumberList><CatalogNumberListElement>10633472600408</CatalogNumberListElement></CatalogNumberList><Color>Purple/blue</Color><EAN>0633472600401</EAN><EANList><EANListElement>0633472600401</EANListElement></EANList><Feature>The
+        only ovulation test that typically identifies your 4 best days to get pregnant.
+        2x any other test.</Feature><Feature>Identifies extra fertile days that no
+        other ovulation test can, so you have more opportunities to get pregnant naturally.</Feature><Feature>The
+        only ovulation test that accurately tracks your personal levels of 2 key fertility
+        hormones.</Feature><Feature>2 month supply.</Feature><Feature>Clear digital
+        results  a Clearblue smiley face on High and Peak fertility days.</Feature><Feature>Reusable
+        Holder.</Feature><Feature>The only digital ovulation test that can adapt every
+        time you test, to suit your unique cycle.</Feature><ItemDimensions><Height
+        Units="hundredths-inches">725</Height><Length Units="hundredths-inches">200</Length><Weight
+        Units="hundredths-pounds">35</Weight><Width Units="hundredths-inches">200</Width></ItemDimensions><Label>Clearblue</Label><LegalDisclaimer>Actual
+        product packaging and materials may contain more and/or different information
+        than that shown on our Web site. We recommend that you do not solely rely
+        on the information presented and that you always read labels, warnings, and
+        directions before using or consuming a product. Content on this site is for
+        reference purposes and is not intended to substitute for advice given by a
+        physician, pharmacist, or other licensed health-care professional. You should
+        not use this information as self-diagnosis or for treating a health problem
+        or disease. Contact your health-care provider immediately if you suspect that
+        you have a medical problem. Information and statements regarding dietary supplements
+        have not been evaluated by the Food and Drug Administration and are not intended
+        to diagnose, treat, cure, or prevent any disease or health condition. ABC
+        Wholesale assumes no liability for inaccuracies or misstatements about products.</LegalDisclaimer><ListPrice><Amount>5240</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$52.40</FormattedPrice></ListPrice><Manufacturer>Clearblue</Manufacturer><Model>NA</Model><MPN>Advanced
+        Digital Test</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
+        Units="hundredths-inches">210</Height><Length Units="hundredths-inches">740</Length><Weight
+        Units="hundredths-pounds">35</Weight><Width Units="hundredths-inches">360</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>Advanced
+        Digital Test</PartNumber><ProductGroup>Health and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><Publisher>Clearblue</Publisher><ReleaseDate>2013-06-15</ReleaseDate><Size>20
+        Count</Size><Studio>Clearblue</Studio><Title>Clearblue Advanced Digital Ovulation
+        Test 20 Count</Title><UPC>633472600401</UPC><UPCList><UPCListElement>633472600401</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>2812</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$28.12</FormattedPrice></LowestNewPrice><TotalNew>20</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B001FYGQ5I</ASIN><DetailPageURL>http://www.amazon.com/20x-Step-Pregnancy-Test-Strips/dp/B001FYGQ5I%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB001FYGQ5I</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/20x-Step-Pregnancy-Test-Strips/dp/tech-data/B001FYGQ5I%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYGQ5I</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB001FYGQ5I%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYGQ5I</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB001FYGQ5I%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYGQ5I</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB001FYGQ5I%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYGQ5I</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B001FYGQ5I%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYGQ5I</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B001FYGQ5I%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYGQ5I</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B001FYGQ5I%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001FYGQ5I</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL._SL75_.jpg</URL><Height
+        Units="pixels">56</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL._SL160_.jpg</URL><Height
+        Units="pixels">119</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL.jpg</URL><Height
+        Units="pixels">373</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL._SL30_.jpg</URL><Height
+        Units="pixels">22</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL._SL75_.jpg</URL><Height
+        Units="pixels">56</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL._SL75_.jpg</URL><Height
+        Units="pixels">56</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL._SL110_.jpg</URL><Height
+        Units="pixels">82</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL._SL160_.jpg</URL><Height
+        Units="pixels">119</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41pkdenl6mL.jpg</URL><Height
+        Units="pixels">373</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41h7pAG7gSL._SL30_.jpg</URL><Height
+        Units="pixels">22</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41h7pAG7gSL._SL75_.jpg</URL><Height
+        Units="pixels">56</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41h7pAG7gSL._SL75_.jpg</URL><Height
+        Units="pixels">56</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41h7pAG7gSL._SL110_.jpg</URL><Height
+        Units="pixels">82</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41h7pAG7gSL._SL160_.jpg</URL><Height
+        Units="pixels">119</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41h7pAG7gSL.jpg</URL><Height
+        Units="pixels">373</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>WONDFO</Brand><EAN>0879766001190</EAN><EANList><EANListElement>0879766001190</EANListElement></EANList><Feature>FDA-approved</Feature><Feature>Easy
+        to use</Feature><Feature>Quick results in 5 minutes</Feature><Feature>New
+        PINK package! Exactly the same product as the blue package except the happy
+        color now</Feature><Feature>Do not buy blue packages since they are old products
+        and could be out of date</Feature><Label>Devon Medical</Label><ListPrice><Amount>1000</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$10.00</FormattedPrice></ListPrice><Manufacturer>Devon
+        Medical</Manufacturer><Model>WS-1</Model><MPN>WS-1</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
+        Units="hundredths-inches">140</Height><Length Units="hundredths-inches">480</Length><Weight
+        Units="hundredths-pounds">10</Weight><Width Units="hundredths-inches">320</Width></PackageDimensions><PackageQuantity>20</PackageQuantity><PartNumber>WS-1</PartNumber><ProductGroup>Health
+        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><Publisher>Devon
+        Medical</Publisher><SKU>AG-8ZR76SP-62SWP</SKU><Studio>Devon Medical</Studio><Title>20x
+        One Step (Hcg) Pregnancy Test Strips</Title><UPC>879766001190</UPC><UPCList><UPCListElement>879766001190</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>1199</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$11.99</FormattedPrice></LowestNewPrice><TotalNew>16</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B004IJHDN6</ASIN><DetailPageURL>http://www.amazon.com/Wondfo-Step-Ovulation-Strips-50-Count/dp/B004IJHDN6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004IJHDN6</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Wondfo-Step-Ovulation-Strips-50-Count/dp/tech-data/B004IJHDN6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004IJHDN6</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB004IJHDN6%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004IJHDN6</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB004IJHDN6%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004IJHDN6</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB004IJHDN6%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004IJHDN6</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B004IJHDN6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004IJHDN6</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B004IJHDN6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004IJHDN6</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B004IJHDN6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004IJHDN6</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL._SL75_.jpg</URL><Height
+        Units="pixels">44</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL._SL160_.jpg</URL><Height
+        Units="pixels">94</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL.jpg</URL><Height
+        Units="pixels">295</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL._SL30_.jpg</URL><Height
+        Units="pixels">18</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL._SL75_.jpg</URL><Height
+        Units="pixels">44</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL._SL75_.jpg</URL><Height
+        Units="pixels">44</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL._SL110_.jpg</URL><Height
+        Units="pixels">65</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL._SL160_.jpg</URL><Height
+        Units="pixels">94</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41bSzfMrcWL.jpg</URL><Height
+        Units="pixels">295</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>WONDFO</Brand><CatalogNumberList><CatalogNumberListElement>OVUL-50-PACK</CatalogNumberListElement></CatalogNumberList><EAN>0010939161338</EAN><EANList><EANListElement>0010939161338</EANListElement></EANList><Feature>Allows
+        you to easily identify your "LH Surge" - the time you're most likely to conceive</Feature><Feature>Quick
+        5 minute results</Feature><Feature>Earliest detection with greatest sensitivity</Feature><Feature>All
+        Tests FDA-Approved and over 99% Accurate</Feature><Feature>50 tests per order</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
+        Units="hundredths-inches">16</Height><Length Units="hundredths-inches">157</Length><Width
+        Units="hundredths-inches">157</Width></ItemDimensions><Label>Wondfo</Label><LegalDisclaimer>This
+        type of diagnostic test is used for pre screening purposes only. To confirm
+        any medical condition you should consult with your physician.</LegalDisclaimer><ListPrice><Amount>1126</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$11.26</FormattedPrice></ListPrice><Manufacturer>Wondfo</Manufacturer><Model>WS</Model><MPN>WS</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
+        Units="hundredths-inches">120</Height><Length Units="hundredths-inches">510</Length><Weight
+        Units="hundredths-pounds">25</Weight><Width Units="hundredths-inches">500</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>WS</PartNumber><ProductGroup>Health
+        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2010-12-23</PublicationDate><Publisher>Wondfo</Publisher><SKU>MG-14DL-NGPN</SKU><Studio>Wondfo</Studio><Title>Wondfo
+        One Step Ovulation (LH) Test Strips, 50-Count</Title><UPC>010939161338</UPC><UPCList><UPCListElement>010939161338</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>2049</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$20.49</FormattedPrice></LowestNewPrice><TotalNew>11</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B004AOMAOG</ASIN><ParentASIN>B00G2GS3M8</ParentASIN><DetailPageURL>http://www.amazon.com/Wondfo-Pregnancy-Test-Strips-50-count/dp/B004AOMAOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004AOMAOG</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Wondfo-Pregnancy-Test-Strips-50-count/dp/tech-data/B004AOMAOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AOMAOG</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB004AOMAOG%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AOMAOG</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB004AOMAOG%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AOMAOG</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB004AOMAOG%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AOMAOG</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B004AOMAOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AOMAOG</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B004AOMAOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AOMAOG</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B004AOMAOG%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AOMAOG</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L._SL75_.jpg</URL><Height
+        Units="pixels">44</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L._SL160_.jpg</URL><Height
+        Units="pixels">94</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L.jpg</URL><Height
+        Units="pixels">295</Height><Width Units="pixels">500</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L._SL30_.jpg</URL><Height
+        Units="pixels">18</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L._SL75_.jpg</URL><Height
+        Units="pixels">44</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L._SL75_.jpg</URL><Height
+        Units="pixels">44</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L._SL110_.jpg</URL><Height
+        Units="pixels">65</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L._SL160_.jpg</URL><Height
+        Units="pixels">94</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41U7VoZu16L.jpg</URL><Height
+        Units="pixels">295</Height><Width Units="pixels">500</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>WONDFO</Brand><CatalogNumberList><CatalogNumberListElement>Preg-50-pack</CatalogNumberListElement></CatalogNumberList><EAN>0879766001374</EAN><EANList><EANListElement>0879766001374</EANListElement></EANList><Feature>One
+        Step HCG Urine Test is a rapid pregnancy test, which you can easily carry
+        out yourself</Feature><Feature>It detects the presence of human chorionic
+        gonadotropin ("HCG"), which appears in urine very early during pregnancy</Feature><Feature>Quick
+        results in 5 minutes</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
+        Units="hundredths-inches">16</Height><Length Units="hundredths-inches">158</Length><Width
+        Units="hundredths-inches">158</Width></ItemDimensions><Label>Wondfo</Label><ListPrice><Amount>1143</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$11.43</FormattedPrice></ListPrice><Manufacturer>Wondfo</Manufacturer><Model>WS-1</Model><MPN>WS-1</MPN><NumberOfItems>50</NumberOfItems><PackageDimensions><Height
+        Units="hundredths-inches">150</Height><Length Units="hundredths-inches">480</Length><Weight
+        Units="hundredths-pounds">25</Weight><Width Units="hundredths-inches">450</Width></PackageDimensions><PackageQuantity>50</PackageQuantity><PartNumber>WS-1</PartNumber><ProductGroup>Health
+        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2010-11-03</PublicationDate><Publisher>Wondfo</Publisher><Size>50-count</Size><SKU>G5-CHHT-RXFT</SKU><Studio>Wondfo</Studio><Title>Wondfo
+        Pregnancy Test Strips, 50-count</Title><UPC>879766001374</UPC><UPCList><UPCListElement>879766001374</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>1400</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$14.00</FormattedPrice></LowestNewPrice><TotalNew>17</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B004AIC7EU</ASIN><DetailPageURL>http://www.amazon.com/Clearblue-Fertility-Monitor-Sticks-count/dp/B004AIC7EU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004AIC7EU</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Clearblue-Fertility-Monitor-Sticks-count/dp/tech-data/B004AIC7EU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AIC7EU</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB004AIC7EU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AIC7EU</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB004AIC7EU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AIC7EU</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB004AIC7EU%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AIC7EU</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B004AIC7EU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AIC7EU</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B004AIC7EU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AIC7EU</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B004AIC7EU%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004AIC7EU</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL.jpg</URL><Height
+        Units="pixels">220</Height><Width Units="pixels">220</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/31B1-AwldzL.jpg</URL><Height
+        Units="pixels">220</Height><Width Units="pixels">220</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>Beststores</Brand><EAN>8856663863597</EAN><EANList><EANListElement>8856663863597</EANListElement><EANListElement>0885371569307</EANListElement></EANList><Feature>Typically
+        identifies up to 6 fertile days.</Feature><Feature>The only method that detects
+        both LH and estrogen hormones.</Feature><Feature>100% natural and non-invasive.</Feature><Feature>Suitable
+        for women with regular and irregular cycles.</Feature><Feature>99% accurate
+        at detecting the LH surge.</Feature><Label>Clearblue Easy</Label><LegalDisclaimer>https://catalog.amazon.com/abis/Display/ItemSelected?asin=B004AIC7EU#</LegalDisclaimer><Manufacturer>Clearblue
+        Easy</Manufacturer><Model>Bes-4069</Model><MPN>Bes-4069</MPN><PackageDimensions><Height
+        Units="hundredths-inches">280</Height><Length Units="hundredths-inches">610</Length><Weight
+        Units="hundredths-pounds">30</Weight><Width Units="hundredths-inches">310</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>Bes-4069</PartNumber><ProductGroup>Health
+        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><Publisher>Clearblue
+        Easy</Publisher><Studio>Clearblue Easy</Studio><Title>Clearblue Easy Fertility
+        Monitor Test Sticks, 30 count (Pack of 1)</Title><UPC>885371569307</UPC><UPCList><UPCListElement>885371569307</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>4280</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$42.80</FormattedPrice></LowestNewPrice><TotalNew>15</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B001E1Y1X6</ASIN><DetailPageURL>http://www.amazon.com/Combo-Ovulation-Pregnancy-Test-Strips/dp/B001E1Y1X6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB001E1Y1X6</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Combo-Ovulation-Pregnancy-Test-Strips/dp/tech-data/B001E1Y1X6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001E1Y1X6</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB001E1Y1X6%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001E1Y1X6</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB001E1Y1X6%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001E1Y1X6</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB001E1Y1X6%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001E1Y1X6</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B001E1Y1X6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001E1Y1X6</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B001E1Y1X6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001E1Y1X6</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B001E1Y1X6%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB001E1Y1X6</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">64</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">136</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">426</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">26</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">64</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">64</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">94</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">136</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51uyI2WhgdL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">426</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>Wondfo</Brand><EAN>4567861431238</EAN><EANList><EANListElement>4567861431238</EANListElement></EANList><Feature>100
+        LH Ovulation Tests</Feature><Feature>20 HCG Pregnanct Tests</Feature><Feature>Easy
+        to Read</Feature><Feature>FDA Approved</Feature><Feature>Quick Results</Feature><Label>Wondfo</Label><Manufacturer>Wondfo</Manufacturer><Model>Won-4066</Model><MPN>W2
+        W1</MPN><PackageDimensions><Height Units="hundredths-inches">200</Height><Length
+        Units="hundredths-inches">1000</Length><Weight Units="hundredths-pounds">65</Weight><Width
+        Units="hundredths-inches">600</Width></PackageDimensions><PackageQuantity>120</PackageQuantity><PartNumber>W2
+        W1</PartNumber><ProductGroup>Health and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><Publisher>Wondfo</Publisher><SKU>AG-8ZR769Y-53ESZ</SKU><Studio>Wondfo</Studio><Title>Combo
+        100 (LH) Ovulation &amp; 20 (HCG) Pregnancy Test Strips</Title></ItemAttributes><OfferSummary><LowestNewPrice><Amount>3359</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$33.59</FormattedPrice></LowestNewPrice><TotalNew>12</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item><Item><ASIN>B000NDS2CC</ASIN><ParentASIN>B005CYJG04</ParentASIN><DetailPageURL>http://www.amazon.com/Clearblue-Plus-Pregnancy-Test-Count/dp/B000NDS2CC%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000NDS2CC</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Clearblue-Plus-Pregnancy-Test-Count/dp/tech-data/B000NDS2CC%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000NDS2CC</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB000NDS2CC%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000NDS2CC</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB000NDS2CC%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000NDS2CC</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB000NDS2CC%26SubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000NDS2CC</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B000NDS2CC%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000NDS2CC</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B000NDS2CC%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000NDS2CC</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B000NDS2CC%3FSubscriptionId%3DAKIAIO4ZPZLNHU3QUX5A%26tag%3Dpuhsh-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000NDS2CC</URL></ItemLink></ItemLinks><SmallImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">31</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">66</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">206</Width></LargeImage><ImageSets><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">12</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">31</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">31</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">45</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">66</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/416eOX6fBiL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">206</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/31hXweWSrwL._SL30_.jpg</URL><Height
+        Units="pixels">6</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/31hXweWSrwL._SL75_.jpg</URL><Height
+        Units="pixels">16</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/31hXweWSrwL._SL75_.jpg</URL><Height
+        Units="pixels">16</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/31hXweWSrwL._SL110_.jpg</URL><Height
+        Units="pixels">24</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/31hXweWSrwL._SL160_.jpg</URL><Height
+        Units="pixels">35</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/31hXweWSrwL.jpg</URL><Height
+        Units="pixels">108</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41FlGR3sH8L._SL30_.jpg</URL><Height
+        Units="pixels">13</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41FlGR3sH8L._SL75_.jpg</URL><Height
+        Units="pixels">31</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41FlGR3sH8L._SL75_.jpg</URL><Height
+        Units="pixels">31</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41FlGR3sH8L._SL110_.jpg</URL><Height
+        Units="pixels">46</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41FlGR3sH8L._SL160_.jpg</URL><Height
+        Units="pixels">67</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41FlGR3sH8L.jpg</URL><Height
+        Units="pixels">209</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/31XALN-GIHL._SL30_.jpg</URL><Height
+        Units="pixels">7</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/31XALN-GIHL._SL75_.jpg</URL><Height
+        Units="pixels">17</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/31XALN-GIHL._SL75_.jpg</URL><Height
+        Units="pixels">17</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/31XALN-GIHL._SL110_.jpg</URL><Height
+        Units="pixels">24</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/31XALN-GIHL._SL160_.jpg</URL><Height
+        Units="pixels">36</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/31XALN-GIHL.jpg</URL><Height
+        Units="pixels">111</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/412tT25LviL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">18</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/412tT25LviL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">45</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/412tT25LviL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">45</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/412tT25LviL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">66</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/412tT25LviL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">96</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/412tT25LviL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">301</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>Clearblue Easy</Brand><CatalogNumberList><CatalogNumberListElement>10633472222785</CatalogNumberListElement></CatalogNumberList><EAN>5013965834486</EAN><EANList><EANListElement>5013965834486</EANListElement><EANListElement>0633472222788</EANListElement></EANList><Feature>As
+        accurate as a doctor's urine test</Feature><Feature>Over 99% accurate from
+        the day of your expected period</Feature><Feature>Easy to use and easy-to-read
+        positive or negative results</Feature><Feature>3 Clearblue Plus Pregnancy
+        Tests included</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
+        Units="hundredths-inches">725</Height><Length Units="hundredths-inches">150</Length><Weight
+        Units="hundredths-pounds">10</Weight><Width Units="hundredths-inches">150</Width></ItemDimensions><Label>Clearblue</Label><ListPrice><Amount>1476</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$14.76</FormattedPrice></ListPrice><Manufacturer>Clearblue</Manufacturer><Model>NA</Model><MPN>PV924338</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
+        Units="hundredths-inches">160</Height><Length Units="hundredths-inches">740</Length><Weight
+        Units="hundredths-pounds">15</Weight><Width Units="hundredths-inches">310</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>PV924338</PartNumber><ProductGroup>Health
+        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><PublicationDate>2010-09-21</PublicationDate><Publisher>Clearblue</Publisher><ReleaseDate>2013-05-27</ReleaseDate><Size>3</Size><SKU>119172</SKU><Studio>Clearblue</Studio><Title>Clearblue
+        Plus Pregnancy Test 3 Count</Title><UPC>633472222788</UPC><UPCList><UPCListElement>633472222788</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>999</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$9.99</FormattedPrice></LowestNewPrice><TotalNew>15</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary></Item></Items></ItemSearchResponse>
     http_version: 
-  recorded_at: Wed, 19 Feb 2014 05:28:54 GMT
+  recorded_at: Sat, 08 Mar 2014 17:42:32 GMT
 recorded_with: VCR 2.8.0

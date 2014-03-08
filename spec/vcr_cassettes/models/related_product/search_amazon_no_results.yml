@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Keywords=1asafddsfasdf&Operation=ItemSearch&ResponseGroup=Small%2CImages%2CItemAttributes&SearchIndex=Baby&Service=AWSECommerceService&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-02-19T05%3A28%3A48Z&Version=2011-08-01&Signature=obiCQt2%2FHDzB2Iv66PkdztZc%2FHA9x9pJk4PeNcQZMcI%3D
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIO4ZPZLNHU3QUX5A&AssociateTag=puhsh-20&Operation=ItemSearch&ResponseGroup=Small%2CImages%2CItemAttributes%2COfferSummary&SearchIndex=All&Service=AWSECommerceService&SignatureMethod=HmacSHA256&SignatureVersion=2&Sort=salesrank&Timestamp=2014-03-08T17%3A41%3A31Z&Title=1asafddsfasdf&Version=2011-08-01&Signature=XzgDdR835t9xvD49TBY6nx20LDgDDysUo9RROwHrLfQ%3D
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       message: 
     headers:
       Date:
-      - Wed, 19 Feb 2014 05:28:48 GMT
+      - Sat, 08 Mar 2014 17:41:31 GMT
       Server:
       - Server
       Content-Type:
@@ -29,17 +29,19 @@ http_interactions:
     body:
       encoding: UTF-8
       string: <?xml version="1.0" ?><ItemSearchResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><HTTPHeaders><Header
-        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>79d8de00-0613-4e75-94a5-bb509b731f42</RequestId><Arguments><Argument
-        Name="Service" Value="AWSECommerceService"></Argument><Argument Name="Keywords"
-        Value="1asafddsfasdf"></Argument><Argument Name="SignatureMethod" Value="HmacSHA256"></Argument><Argument
-        Name="Timestamp" Value="2014-02-19T05:28:48Z"></Argument><Argument Name="Operation"
-        Value="ItemSearch"></Argument><Argument Name="AssociateTag" Value="puhsh-20"></Argument><Argument
-        Name="Version" Value="2011-08-01"></Argument><Argument Name="Sort" Value="salesrank"></Argument><Argument
-        Name="SearchIndex" Value="Baby"></Argument><Argument Name="SignatureVersion"
-        Value="2"></Argument><Argument Name="Signature" Value="obiCQt2/HDzB2Iv66PkdztZc/HA9x9pJk4PeNcQZMcI="></Argument><Argument
-        Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument Name="ResponseGroup"
-        Value="Small,Images,ItemAttributes"></Argument></Arguments><RequestProcessingTime>0.0348290000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>1asafddsfasdf</Keywords><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><SearchIndex>Baby</SearchIndex><Sort>salesrank</Sort></ItemSearchRequest><Errors><Error><Code>AWS.ECommerceService.NoExactMatches</Code><Message>We
-        did not find any matches for your request.</Message></Error></Errors></Request><TotalResults>0</TotalResults><TotalPages>0</TotalPages><MoreSearchResultsUrl>http://www.amazon.com/gp/redirect.html?camp=2025&amp;creative=386001&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fsearch%3Fkeywords%3D1asafddsfasdf%26url%3Dsearch-alias%253Dbaby-products&amp;linkCode=xm2&amp;tag=puhsh-20&amp;SubscriptionId=AKIAIO4ZPZLNHU3QUX5A</MoreSearchResultsUrl></Items></ItemSearchResponse>
+        Name="UserAgent" Value="Jeff/1.0.1 (Language=Ruby; Bryan_Mikaelians_MacBook_Pro_local)"></Header></HTTPHeaders><RequestId>26b7133d-b575-4e81-bfb1-420172773d3a</RequestId><Arguments><Argument
+        Name="Operation" Value="ItemSearch"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
+        Name="AssociateTag" Value="puhsh-20"></Argument><Argument Name="Version" Value="2011-08-01"></Argument><Argument
+        Name="Sort" Value="salesrank"></Argument><Argument Name="SignatureMethod"
+        Value="HmacSHA256"></Argument><Argument Name="SearchIndex" Value="All"></Argument><Argument
+        Name="SignatureVersion" Value="2"></Argument><Argument Name="Signature" Value="XzgDdR835t9xvD49TBY6nx20LDgDDysUo9RROwHrLfQ="></Argument><Argument
+        Name="AWSAccessKeyId" Value="AKIAIO4ZPZLNHU3QUX5A"></Argument><Argument Name="Timestamp"
+        Value="2014-03-08T17:41:31Z"></Argument><Argument Name="Title" Value="1asafddsfasdf"></Argument><Argument
+        Name="ResponseGroup" Value="Small,Images,ItemAttributes,OfferSummary"></Argument></Arguments><RequestProcessingTime>0.0029930000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>False</IsValid><ItemSearchRequest><ResponseGroup>Small</ResponseGroup><ResponseGroup>Images</ResponseGroup><ResponseGroup>ItemAttributes</ResponseGroup><ResponseGroup>OfferSummary</ResponseGroup><SearchIndex>All</SearchIndex><Sort>salesrank</Sort><Title>1asafddsfasdf</Title></ItemSearchRequest><Errors><Error><Code>AWS.RestrictedParameterValueCombination</Code><Message>Your
+        request contained a restricted parameter combination.  When SearchIndex equals
+        All, Title cannot be present.</Message></Error><Error><Code>AWS.RestrictedParameterValueCombination</Code><Message>Your
+        request contained a restricted parameter combination.  When SearchIndex equals
+        All, Sort cannot be present.</Message></Error></Errors></Request></Items></ItemSearchResponse>
     http_version: 
-  recorded_at: Wed, 19 Feb 2014 05:28:48 GMT
+  recorded_at: Sat, 08 Mar 2014 17:41:31 GMT
 recorded_with: VCR 2.8.0
