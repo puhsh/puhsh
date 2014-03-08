@@ -64,11 +64,23 @@ class RelatedProduct
   def amazon_category_mapping(post_category_name = nil, post_subcategory_name = nil)
     case post_category_name
     when "Kid's Stuff"
-      'Baby'
+      if post_subcategory_name
+        amazon_category_mapping_to_kids_subcategories(post_subcategory_name)
+      else
+        'Baby'
+      end
     when "Womens"
-      'Apparel'
+      if post_subcategory_name
+        amazon_category_mapping_to_womens_subcategories(post_subcategory_name)
+      else
+        'Apparel'
+      end
     when 'Sports'
-      'SportingGoods'
+      if post_subcategory_name
+        amazon_category_mapping_to_sports_subcategories(post_subcategory_name)
+      else
+        'SportingGoods'
+      end
     else
       'All'
     end
