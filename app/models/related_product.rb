@@ -40,7 +40,7 @@ class RelatedProduct
 
     if response_hash && response_hash['ItemSearchResponse']
       items = response_hash['ItemSearchResponse']['Items']
-      item = items['Item']
+      item = items['Item'] if items['Item'].count > 0
     end
 
     if item.present? && item['ItemAttributes'].present?
