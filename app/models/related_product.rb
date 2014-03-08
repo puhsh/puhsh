@@ -9,7 +9,7 @@ class RelatedProduct
 
   def find_related_products(search_terms = nil, post_category_name = nil, post_subcategory_name = nil)
     if search_terms
-      params = default_search_criteria.merge({'Keywords' => search_terms, 'Title' => search_terms, 'SearchIndex' => search_index(post_category_name, post_subcategory_name)})
+      params = default_search_criteria.merge({'Keywords' => search_terms, 'SearchIndex' => search_index(post_category_name, post_subcategory_name)})
       parsed_results(self.api.item_search(params))
     else
       {}
@@ -39,11 +39,18 @@ class RelatedProduct
     items = response_hash['ItemSearchResponse']['Items']
     item = items['Item'].try(&:sample) unless response_hash.empty? || items['Item'].nil?
 
-    if item && item['ItemAttributes'].present? && item['ItemAttributes']['ListPrice'].present? && item['OfferSummary'].present?
-      { 
-        title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['OfferSummary']['LowestNewPrice'], 
-        list_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, url: item['DetailPageURL'], image_url: item['LargeImage'].try { |x| x['URL'] } 
-      }
+    if item && item['ItemAttributes'].present? && item['ItemAttributes']['ListPrice'].present? 
+      if item['OfferSummary'].present?
+        { 
+          title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['OfferSummary']['LowestNewPrice'], 
+          list_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, url: item['DetailPageURL'], image_url: item['LargeImage'].try { |x| x['URL'] } 
+        }
+      else
+        { 
+          title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, 
+          list_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, url: item['DetailPageURL'], image_url: item['LargeImage'].try { |x| x['URL'] } 
+        }
+      end
     else
       {}
     end
