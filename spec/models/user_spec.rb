@@ -495,6 +495,23 @@ describe User do
     end
   end
 
+  describe '.change_unsold_posts_city!' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, status: :for_sale) }
+    let!(:city2) { FactoryGirl.create(:city, name: 'New York City', state: 'NY') }
+    let!(:zipcode_nyc) { FactoryGirl.create(:nyc_zip, city_id: city2.id) }
+
+    it 'updates the user\'s posts, that are for sale, city when they change their home city' do
+      expect(post.reload.city).to eql(user.home_city)
+      user.zipcode = zipcode_nyc.code
+      user.save
+      expect(post.reload.city).to eql(city2)
+      expect(post.reload.city).to_not eql(city)
+    end
+  end
+
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
     let(:user) { nil }

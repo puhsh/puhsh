@@ -162,6 +162,10 @@ class User < ActiveRecord::Base
     self.update_column(:unread_notifications_count, Notification.unread.where(user_id: self.id).count)
   end
 
+  def change_unsold_posts_city!
+    Post.for_sale.where(user_id: self.id).update_all(city_id: self.city_id)
+  end
+
   protected
 
   def add_default_role
@@ -174,6 +178,7 @@ class User < ActiveRecord::Base
       if zip
         self.home_city = zip.city
         self.home_city.follow!(self)
+        self.change_unsold_posts_city!
       end
     end
   end
