@@ -63,7 +63,7 @@ class RelatedProduct
   # Returns a string of Amazon specific categories
   def amazon_category_mapping(post_category_name = nil, post_subcategory_name = nil)
     case post_category_name
-    when "Kid's Stuff"
+    when "Kids Stuff"
       if post_subcategory_name
         amazon_category_mapping_to_kids_subcategories(post_subcategory_name)
       else
