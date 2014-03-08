@@ -40,7 +40,7 @@ class RelatedProduct
 
     if response_hash && response_hash['ItemSearchResponse']
       items = response_hash['ItemSearchResponse']['Items']
-      item = items['Items'].try(&:first)
+      item = items['Item'].try(&:first)
     end
 
     if item.present? && item['ItemAttributes'].present?
