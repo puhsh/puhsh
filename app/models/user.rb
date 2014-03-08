@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
 
-  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email, :star_count
+  attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email, :star_count, :unread_notifications_count
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
@@ -158,6 +158,14 @@ class User < ActiveRecord::Base
     self.contact_email.present?
   end
 
+  def reset_unread_notifications_count!
+    self.update_column(:unread_notifications_count, Notification.unread.where(user_id: self.id).count)
+  end
+
+  def change_unsold_posts_city!
+    Post.for_sale.where(user_id: self.id).update_all(city_id: self.city_id)
+  end
+
   protected
 
   def add_default_role
@@ -170,6 +178,7 @@ class User < ActiveRecord::Base
       if zip
         self.home_city = zip.city
         self.home_city.follow!(self)
+        self.change_unsold_posts_city!
       end
     end
   end

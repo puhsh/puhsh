@@ -20,7 +20,7 @@ describe RelatedProduct do
 
   describe '.search_index' do
     it 'is only Baby related items' do
-      expect(related_product.search_index).to eql 'Baby'
+      expect(related_product.search_index).to eql 'All'
     end
   end
 
@@ -32,13 +32,13 @@ describe RelatedProduct do
 
   describe '.response_group' do
     it 'returns small information, images, and item attributes' do
-      expect(related_product.response_group).to eql 'Small,Images,ItemAttributes'
+      expect(related_product.response_group).to eql 'Small,Images,ItemAttributes,OfferSummary'
     end
   end
 
   describe '.default_search_criteria' do
     it 'has default search criteria' do
-      expect(related_product.default_search_criteria).to eql({"SearchIndex"=>"Baby", "Sort"=>"salesrank", "ResponseGroup"=>"Small,Images,ItemAttributes"})
+      expect(related_product.default_search_criteria).to eql({"SearchIndex"=>"All", "Sort"=>"salesrank", "ResponseGroup"=>"Small,Images,ItemAttributes,OfferSummary"})
     end
   end
 
@@ -50,12 +50,6 @@ describe RelatedProduct do
     it 'returns nothing if no match is found' do
       VCR.use_cassette('/models/related_product/search_amazon_no_results', match_requests_on: [:method, search_matcher]) do
         expect(related_product.find_related_products('1asafddsfasdf')).to eql({})
-      end
-    end
-
-    it 'returns data from Amazon\'s API' do
-      VCR.use_cassette('/models/related_product/search_amazon', match_requests_on: [:method, search_matcher]) do
-        expect(related_product.find_related_products('Binky')).to_not eql({})
       end
     end
   end
