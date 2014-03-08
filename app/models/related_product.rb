@@ -36,13 +36,12 @@ class RelatedProduct
 
   def parsed_results(response)
     response_hash = response.to_h
-    items = response_hash['ItemSearchResponse']['Items']
+    items = response_hash['ItemSearchResponse']
 
-    unless response_hash.empty? || items['Item'].nil?
-      if items['Item'].kind_of?(Array)
+    if response_hash && response_hash['ItemSearchResponse']
+      items = response_hash['ItemSearchResponse']['Items']
+      if items
         item = items['Item'].try(&:sample)
-      else
-        item = item['Item']
       end
     end
 
