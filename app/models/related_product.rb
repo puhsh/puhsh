@@ -9,7 +9,7 @@ class RelatedProduct
 
   def find_related_products(search_terms = nil, post_category_name = nil, post_subcategory_name = nil)
     if search_terms
-      params = default_search_criteria.merge({'Title' => search_terms, 'SearchIndex' => search_index(post_category_name, post_subcategory_name)})
+      params = default_search_criteria.merge({'Keywords' => search_terms, 'SearchIndex' => search_index(post_category_name, post_subcategory_name)})
       parsed_results(self.api.item_search(params))
     else
       {}
@@ -40,7 +40,7 @@ class RelatedProduct
 
     if response_hash && response_hash['ItemSearchResponse']
       items = response_hash['ItemSearchResponse']['Items']
-      item = items['Item'].sample if items['Item'].present?
+      item = items['Item'].sample if items['Item'] && items['Item'].count > 0
     end
 
     if item.present? && item['ItemAttributes'].present?
