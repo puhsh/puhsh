@@ -52,12 +52,6 @@ describe RelatedProduct do
         expect(related_product.find_related_products('1asafddsfasdf')).to eql({})
       end
     end
-
-    it 'returns data from Amazon\'s API' do
-      VCR.use_cassette('/models/related_product/search_amazon', match_requests_on: [:method, search_matcher]) do
-        expect(related_product.find_related_products('Binky')).to_not eql({})
-      end
-    end
   end
 
 end

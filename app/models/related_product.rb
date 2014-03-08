@@ -37,9 +37,16 @@ class RelatedProduct
   def parsed_results(response)
     response_hash = response.to_h
     items = response_hash['ItemSearchResponse']['Items']
-    item = items['Item'].try(&:sample) unless response_hash.empty? || items['Item'].nil?
 
-    if item && item['ItemAttributes'].present? && item['ItemAttributes']['ListPrice'].present? 
+    unless response_hash.empty? || items['Item'].nil?
+      if items['Item'].kind_of?(Array)
+        item = items['Item'].try(&:sample)
+      else
+        item = item['Item']
+      end
+    end
+
+    if item && item['ItemAtbtributes'].present? && item['ItemAttributes']['ListPrice'].present? 
       if item['OfferSummary'].present?
         { 
           title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['OfferSummary']['LowestNewPrice'], 
