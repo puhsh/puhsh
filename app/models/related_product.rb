@@ -40,7 +40,7 @@ class RelatedProduct
 
     if response_hash && response_hash['ItemSearchResponse']
       items = response_hash['ItemSearchResponse']['Items']
-      item = items['Item'].sample if items.size > 1
+      item = items['Item'].try(&:sample) if items.size > 1
     end
 
     if item && item['ItemAtbtributes'].present? && item['ItemAttributes']['ListPrice'].present? 
