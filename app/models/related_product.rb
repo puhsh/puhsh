@@ -43,7 +43,7 @@ class RelatedProduct
       item = items['Item'].try(&:sample) if items['Item']
     end
 
-    if item && item['ItemAtbtributes'].present? && item['ItemAttributes']['ListPrice'].present? 
+    if item && item['ItemAttributes'].present? && item['ItemAttributes']['ListPrice'].present? 
       if item['OfferSummary'].present?
         { 
           title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['OfferSummary']['LowestNewPrice'], 
