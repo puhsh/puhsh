@@ -15,15 +15,15 @@ class Post < ActiveRecord::Base
   symbolize :status, in: [:for_sale, :offer_accepted, :withdrawn_by_seller, :sold], methods: true, scopes: :shallow, validate: false, default: :for_sale
 
   # Relations
-  has_one :item, dependent: :destroy
   belongs_to :user, counter_cache: :posts_count
   belongs_to :city
-  has_many :flagged_posts, dependent: :destroy
   belongs_to :category
   belongs_to :subcategory
+  has_one :item, dependent: :destroy
   has_many :post_images, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :offers, dependent: :destroy
+  has_many :flagged_posts, dependent: :destroy
   has_one :item_transaction, dependent: :nullify
 
   # Callbacks

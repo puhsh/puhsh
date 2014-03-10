@@ -36,6 +36,12 @@ class V1::PostsController < V1::ApiController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    render json: @post
+  end
+
   def activity
     @post = Post.find(params[:id])
     render json: @post.activity
@@ -73,10 +79,9 @@ class V1::PostsController < V1::ApiController
     elsif params[:subcategory_id]
       @resource = Subcategory.includes(:posts).find(params[:subcategory_id])
     elsif params[:user_id]
-      @resource = User.find_by_id(params[:user_id])
+      @resource = User.includes(:posts).find_by_id(params[:user_id])
     else
       @resource = nil
     end
   end
-
 end
