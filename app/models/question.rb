@@ -18,6 +18,7 @@ class Question < ActiveRecord::Base
   after_commit :send_new_question_notification_to_post_creator, on: :create
   after_commit :send_new_question_notification_to_others, on: :create
   before_create :assign_post
+  after_commit :remove_post_id_from_redis, on: :destroy
 
   # Validations
   validates :content, presence: true
@@ -77,5 +78,9 @@ class Question < ActiveRecord::Base
 
   def send_new_question_notification_to_others
     Puhsh::Jobs::NotificationJob.send_new_question_notification_to_others({question_id: self.id})
+  end
+
+  def remove_post_id_from_redis
+    self.user.post_ids_with_questions.delete(self.post_id)
   end
 end

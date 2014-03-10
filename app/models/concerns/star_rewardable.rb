@@ -32,7 +32,7 @@ module StarRewardable
   def remove_stars
     case self
     when Post
-      nil
+      Star.create(user: self.user, amount: -10, event: :deleted_post)
     else
       nil
     end
