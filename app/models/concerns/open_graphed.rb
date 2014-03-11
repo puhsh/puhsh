@@ -10,6 +10,10 @@ module OpenGraphed
     self.facebook_access_token = generated_token
   end
 
+  def mutual_friends(other_user)
+    @facebook_connection.get_connections(other_user.uid, 'mutualfriends')
+  end
+
   protected
 
   def facebook_connection
@@ -33,8 +37,8 @@ module OpenGraphed
   end
 
   def exchange_facebook_token!
-   facebook = YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env]
-   new_token = Koala::Facebook::OAuth.new(facebook['id'], facebook['secret']).exchange_access_token_info(self.facebook_access_token.value)
+   facebook = YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env].symbolize_keys!
+   new_token = Koala::Facebook::OAuth.new(facebook[:id], facebook[:secret]).exchange_access_token_info(self.facebook_access_token.value)
 
    self.facebook_access_token = new_token['access_token']
    self.facebook_access_token_expires_at = new_token['expires']
