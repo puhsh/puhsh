@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   include StarRewardable
   include BadgeRewardable
   include Redis::Objects
-  include Puhsh::Facebook
   include Trackable
   include OpenGraphed
 

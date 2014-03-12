@@ -22,7 +22,7 @@ describe V1::AuthController do
           FacebookTestUser.create(fbid: user['id'])
           request.env['HTTP_AUTHORIZATION'] = user['access_token']
 
-          expect(Puhsh::Facebook).to receive(:find_verified_user).with(user['id'], request.env['HTTP_AUTHORIZATION']).and_return(user)
+          expect(User).to receive(:find_verified_user).with(user['id'], request.env['HTTP_AUTHORIZATION']).and_return(user)
           post :create, { facebook_id: user['id'] }, format: :json
           test_users.delete(user)
         end
