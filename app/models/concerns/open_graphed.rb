@@ -43,8 +43,8 @@ module OpenGraphed
   end
 
   def facebook_avatar_url_with_size(original_url, size)
-    if size && valid_avatar_size?(size)
-      base_url = facebook_base_avatar_url(original_url)
+    if size && self.valid_avatar_size?(size)
+      base_url = self.facebook_base_avatar_url(original_url)
       base_url + "?type=#{size.to_s}"
     else
       nil
