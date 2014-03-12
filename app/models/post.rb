@@ -15,15 +15,15 @@ class Post < ActiveRecord::Base
   symbolize :status, in: [:for_sale, :offer_accepted, :withdrawn_by_seller, :sold], methods: true, scopes: :shallow, validate: false, default: :for_sale
 
   # Relations
-  has_one :item, dependent: :destroy
   belongs_to :user, counter_cache: :posts_count
   belongs_to :city
-  has_many :flagged_posts, dependent: :destroy
   belongs_to :category
   belongs_to :subcategory
+  has_one :item, dependent: :destroy
   has_many :post_images, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :offers, dependent: :destroy
+  has_many :flagged_posts, dependent: :destroy
   has_one :item_transaction, dependent: :nullify
 
   # Callbacks
@@ -31,6 +31,7 @@ class Post < ActiveRecord::Base
   after_commit :store_category_name, on: :create
   after_commit :store_subcategory_name, on: :create
   after_commit :send_new_post_email, on: :create
+  after_commit :remove_post_id_from_redis, on: :destroy
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
@@ -50,7 +51,6 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :post_images
 
   # Redis Attributes
-  set   :offer_ids
   set   :question_ids
   value :category_name
   value :subcategory_name
@@ -129,5 +129,14 @@ class Post < ActiveRecord::Base
 
   def send_new_post_email
     Puhsh::Jobs::EmailJob.send_new_post_email({post_id: self.id})
+  end
+
+  def remove_post_id_from_redis
+    u = self.user
+    u.post_ids_with_questions.delete(self.id)
+    u.post_ids_with_offers.delete(self.id)
+    self.question_ids.clear
+    self.category_name = nil
+    self.subcategory_name = nil
   end
 end

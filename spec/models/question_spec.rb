@@ -182,4 +182,18 @@ describe Question do
       ResqueSpec.perform_all(:notifications)
     end
   end
+
+  describe '.remove_post_id_from_redis' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let!(:post) { FactoryGirl.create(:post, user: user) }
+    let!(:item) { FactoryGirl.create(:item, post: post) }
+    let!(:question) { FactoryGirl.create(:question, item: item, user: user2, content: 'Is this a good item?', post: post) }
+
+    it 'removes the post id for the user when destroyed' do
+      expect(user2.reload.post_ids_with_questions.members).to include(post.id.to_s)
+      question.destroy
+      expect(user2.reload.post_ids_with_questions.members).to_not include(post.id.to_s)
+    end
+  end
 end

@@ -21,6 +21,8 @@ ActiveAdmin.register User do
     column :current_sign_in_at
     column :last_sign_in_at
     column :star_count
+    column :posts_count
+    column :posts_flagged_count
     actions
   end
 end

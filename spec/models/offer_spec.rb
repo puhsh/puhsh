@@ -112,4 +112,19 @@ describe Offer do
       expect(offer.reload.item_transaction.sold_on).to_not be_nil
     end
   end
+
+  describe '.remove_post_id_from_redis' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item, post: post, amount_cents: 999, user: user2) }
+
+    it 'removes the post id for the user when destroyed' do
+      expect(user2.reload.post_ids_with_offers.members).to include(post.id.to_s)
+      offer.destroy
+      expect(user2.reload.post_ids_with_offers.members).to_not include(post.id.to_s)
+    end
+  end
 end

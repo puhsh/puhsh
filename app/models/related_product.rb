@@ -40,10 +40,10 @@ class RelatedProduct
 
     if response_hash && response_hash['ItemSearchResponse']
       items = response_hash['ItemSearchResponse']['Items']
-      item = items['Item'].try(&:sample) if items['Item']
+      item = items['Item'].sample if items['Item'] && items['Item'].count > 0
     end
 
-    if item && item['ItemAttributes'].present? && item['ItemAttributes']['ListPrice'].present? 
+    if item.present? && item['ItemAttributes'].present?
       if item['OfferSummary'].present?
         { 
           title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['OfferSummary']['LowestNewPrice'], 

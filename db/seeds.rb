@@ -21,3 +21,6 @@ Badge.delete_all
 ['Early Adopter', 'Newbie Poster', 'Hot Shopper', 'Super Shopper', 'Super Seller', 'First Purchase', 'One Stop Shopper', 'Personal Shopper', 'Power Puhsher', 'School Night', 'Going the Distance', 'Sharer', 'Socialite', 'Over Sharing', 'Trifecta', 'Covering the Bases', 'Road Warrior'].each do |name|
   Badge.create!(name: name)
 end
+
+# Admin User
+AdminUser.create!(:email => 'info@puhsh.com', :password => '12345678', :password_confirmation => '12345678')

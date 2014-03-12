@@ -227,4 +227,34 @@ describe V1::PostsController do
       end
     end
   end
+
+  describe '#destroy' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash) }
+
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        delete :destroy, { id: post.id }, format: :json
+        expect(assigns[:post]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        delete :destroy, { id: post.id }, format: :json
+        expect(assigns[:post]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'deletes the post' do
+        sign_in user
+        delete :destroy, { id: post.id, access_token: access_token.token }, format: :json
+        expect(user.reload.posts).to_not include(assigns[:post])
+      end
+    end
+  end
 end

@@ -55,7 +55,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  config.authentication_method = :current_user_admin?
+  # config.authentication_method = :current_user_admin?
 
 
   # == Current User
@@ -65,7 +65,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # to return the currently logged in user.
-  config.current_user_method = :current_user
+  config.current_user_method = :current_admin_user
 
 
   # == Authentication

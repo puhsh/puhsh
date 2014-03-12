@@ -245,7 +245,6 @@ describe Post do
     end
   end
 
-
   context '.search' do
     it { should have_searchable_field(:title) }
     it { should have_searchable_field(:description) }
@@ -269,4 +268,46 @@ describe Post do
 
   end
 
+  describe '.remove_post_id_from_redis' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:item) { FactoryGirl.create(:item, post: new_post, price_cents: 1000) }
+    let!(:offer) { FactoryGirl.create(:offer, item: item, post: new_post, amount_cents: 999, user: user2) }
+    let!(:question) { FactoryGirl.create(:question, item: item, user: user2, post: new_post, content: 'Test question') }
+
+    it 'clears out the question ids associated to this post' do
+      expect(new_post.question_ids).to_not be_empty
+      new_post.destroy
+      new_post.send(:remove_post_id_from_redis)
+      expect(new_post.question_ids).to be_empty
+    end
+
+    it 'clears out the subcategory and category name' do
+      new_post.destroy
+      new_post.send(:remove_post_id_from_redis)
+      expect(new_post.subcategory_name).to be_nil
+      expect(new_post.category_name).to be_nil
+    end
+  end
+
+  describe '.destroy' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'removes the stars' do
+      expect(user.reload.star_count).to eql(20)
+      new_post.destroy
+      expect(user.reload.star_count).to eql(10)
+    end
+
+    it 'creates a star record with negative stars and a deleted_post event' do
+      new_post.destroy
+      expect(user.reload.stars.collect(&:event)).to include(:deleted_post)
+    end
+  end
 end

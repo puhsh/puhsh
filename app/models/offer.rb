@@ -12,6 +12,7 @@ class Offer < ActiveRecord::Base
   # Callbacks
   after_commit :store_post_id_for_user, on: :create
   before_save :generate_item_transaction_record
+  after_commit :remove_post_id_from_redis, on: :destroy
 
   # Validations
   
@@ -52,5 +53,9 @@ class Offer < ActiveRecord::Base
 
   def generate_item_transaction_record
     item_sold!
+  end
+
+  def remove_post_id_from_redis
+    self.user.post_ids_with_offers.delete(self.post_id)
   end
 end
