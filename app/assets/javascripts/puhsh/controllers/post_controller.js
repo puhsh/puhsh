@@ -1,9 +1,8 @@
 var puhsh = angular.module('puhsh');
 
 puhsh.controller('PostController', ['$scope', '$routeParams', '$filter', 'Post', function($scope, $routeParams, $filter, Post) {
-  var id = $routeParams.id;
   $scope.name = 'Bryan Mikaelian, VP of Develpment';
-  $scope.post = Post.get({id: id});
+  $scope.post = Post.get($routeParams);
 
   $scope.price = function(item) {
     if (item && item.price_cents > 0) {
