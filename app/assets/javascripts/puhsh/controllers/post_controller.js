@@ -28,4 +28,27 @@ puhsh.controller('PostController', ['$scope', '$routeParams', '$filter', 'Post',
     }
   }
 
+  $scope.pickUpName = function(pick_up_location) {
+    switch(pick_up_location) {
+      case 'porch':
+        return 'Porch Pick Up';
+        break;
+      case 'public_location':
+        return 'Public Location';
+        break;
+      case 'house':
+        return 'In My House';
+        break;
+      default:
+        return 'Other';
+    }
+  }
+
+  $scope.categorySubcategoryName = function(category_name, subcategory_name) {
+    return category_name + " : " + subcategory_name;
+  }
+
+  $scope.postedAt = function(created_at) {
+    return moment(created_at).format('MMMM Do YYYY, h:mm A');
+  }
 }]);

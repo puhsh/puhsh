@@ -27,17 +27,19 @@
         %li 
           %span.text-label
             %strong Posted:
+          %span {{postedAt(post.created_at)}}
         %li 
           %span.text-label
             %strong Category:
-          %span {{post.category_name}}
+          %span {{categorySubcategoryName(post.category_name, post.subcategory_name)}}
         %li 
           %span.text-label
             %strong Location:
-          %span {{post.city.name}} ({{post.user.location_description}})
+          %span {{post.user.home_city.name}} ({{post.user.location_description}})
         %li 
           %span.text-label
-            %strong Pick up:
+            %strong Pick up: 
+          %span {{pickUpName(post.pick_up_location)}}
         %li 
           %span.text-label
             %strong Details:
