@@ -220,4 +220,23 @@ describe V1::UsersController do
       end
     end
   end
+
+  describe '#mutual_friends' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        get :mutual_friends, { id: user.id }, format: :json
+        expect(assigns[:mutual_friends]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        get :mutual_friends, { id: user.id }, format: :json
+        expect(assigns[:mutual_friends]).to be_nil
+      end
+    end
+  end
 end

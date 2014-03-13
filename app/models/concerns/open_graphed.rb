@@ -25,11 +25,11 @@ module OpenGraphed
   end
 
   def facebook_friends
-    @facebook_conection.get_connections('me', 'friends')
+    self.facebook_connection.get_connections('me', 'friends', user_fields)
   end
 
-  def mutual_friends(other_user)
-    @facebook_connection.get_connections(other_user.uid, 'mutualfriends')
+  def mutual_friends(other_user_uid)
+    self.facebook_connection.get_connections(other_user_uid, 'mutualfriends')
   end
 
   def facebook_friends_on_puhsh(page = 1, per_page = 20)
@@ -37,9 +37,17 @@ module OpenGraphed
     User.where(uid: uids).page(page).per(per_page)
   end
 
-  def mutual_friends_on_puhsh(page = 1, per_page = 20)
-    uids = mutual_friends.map { |x| x['id'] }
-    User.where(uid: uids).page(page).per(per_page)
+  def mutual_friends_on_puhsh(uid, opts={})
+    data = self.mutual_friends(uid)
+    uids = data.map { |x| x['id'] }
+    puhsh_users = User.where(uid: uids).limit(30)
+    if opts[:keep_facebook_users]
+      puhsh_users_uids = puhsh_users.collect(&:uid)
+      non_puhsh_users = data.reject { |x| puhsh_users_uids.include?(x['id']) }
+      puhsh_users | non_puhsh_users
+    else
+      puhsh_users
+    end
   end
 
   def facebook_avatar_url_with_size(original_url, size)
@@ -62,7 +70,7 @@ module OpenGraphed
       exchange_facebook_token!
     end
 
-    self.facebook_access_token.value
+    self.facebook_access_token.value 
   end
 
   def access_token_expired?
@@ -83,6 +91,10 @@ module OpenGraphed
 
   def facebook_base_avatar_url(url)
     url.split('?').first
+  end
+
+  def user_fields
+    {fields: 'id,first_name,last_name,name'}
   end
 
   def valid_avatar_size?(size)

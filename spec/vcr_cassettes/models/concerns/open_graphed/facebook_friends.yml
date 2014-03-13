@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://graph.facebook.com/oauth/access_token
+    body:
+      encoding: US-ASCII
+      string: client_id=190163724500680&client_secret=a68155b041911fd97471c4a178d20376&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Fb-Rev:
+      - '1160178'
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Date:
+      - Thu, 13 Mar 2014 16:10:35 GMT
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      X-Fb-Debug:
+      - 9wOzkGsM6KeTc4Wp212hTF6GIvfWLAm+10Gyo8NmF4o=
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '56'
+    body:
+      encoding: UTF-8
+      string: access_token=190163724500680|LaUu0hIY6ZnPfyTpWaaOArBWxec
+    http_version: 
+  recorded_at: Thu, 13 Mar 2014 16:10:36 GMT
+- request:
+    method: post
+    uri: https://graph.facebook.com/190163724500680/accounts/test-users
+    body:
+      encoding: UTF-8
+      string: installed=true&permissions&access_token=190163724500680%7CLaUu0hIY6ZnPfyTpWaaOArBWxec
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: ''
+    headers:
+      X-Fb-Rev:
+      - '1160178'
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 13 Mar 2014 16:10:36 GMT
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Www-Authenticate:
+      - OAuth "Facebook Platform" "unknown_error" "An unknown error has occurred."
+      X-Fb-Debug:
+      - AvMQhUSZMyg7esC7bjNHGxaISoiyKGuFic3pnnp7B2o=
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '87'
+    body:
+      encoding: UTF-8
+      string: '{"error":{"message":"An unknown error has occurred.","type":"OAuthException","code":1}}'
+    http_version: 
+  recorded_at: Thu, 13 Mar 2014 16:10:36 GMT
+recorded_with: VCR 2.8.0
