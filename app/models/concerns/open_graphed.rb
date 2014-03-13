@@ -25,11 +25,11 @@ module OpenGraphed
   end
 
   def facebook_friends
-    @facebook_conection.get_connections('me', 'friends')
+    self.facebook_connection.get_connections('me', 'friends')
   end
 
-  def mutual_friends(other_user)
-    @facebook_connection.get_connections(other_user.uid, 'mutualfriends')
+  def mutual_friends(other_user_uid)
+    self.facebook_connection.get_connections(other_user_uid, 'mutualfriends')
   end
 
   def facebook_friends_on_puhsh(page = 1, per_page = 20)
