@@ -47,22 +47,4 @@ describe OpenGraphed do
       expect(user.reload.facebook_access_token.value).to eql('test')
     end
   end
-
-  describe '.facebook_friends' do
-    it 'returns your facebook friends from the open graph' do
-      VCR.use_cassette('/models/concerns/open_graphed/facebook_friends') do
-        fb_user = test_users.create(true)
-        fb_user2 = test_users.create(true)
-        test_users.befriend(fb_user, fb_user2)
-        user.uid = fb_user['id']
-        user.facebook_access_token = fb_user['access_token']
-        user.facebook_access_token_expires_at = (Time.now + 1).to_i
-        user.save
-
-        expect(user.facebook_friends.map { |x| x['id'] }).to include(fb_user2['id'])
-        test_users.delete(fb_user)
-        test_users.delete(fb_user2)
-      end
-    end
-  end
 end

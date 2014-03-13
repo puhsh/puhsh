@@ -43,4 +43,10 @@ class V1::UsersController < V1::ApiController
                  .recent
     render_paginated @posts
   end
+
+  def mutual_friends
+    @user = User.find(params[:id])
+    @mutual_friends = current_user.mutual_friends_on_puhsh(@user.uid, {keep_facebook_users: true})
+    render json: @mutual_friends, each_serializer: FacebookUserSerializer
+  end
 end
