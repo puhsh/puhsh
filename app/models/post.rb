@@ -51,7 +51,6 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :post_images
 
   # Redis Attributes
-  set   :question_ids
   value :category_name
   value :subcategory_name
   
@@ -81,17 +80,7 @@ class Post < ActiveRecord::Base
       paginate page: page, per_page: per_page
     end.results
   end
-
-  # TODO Remove this once the client starts sending post id
-  def questions_redis
-    Question.includes(:user).where(id: question_ids.members)
-  end
-
-  def questions
-    Question.includes(:user).where(id: question_ids.members)
-  end
   
-  # TODO Change this once client starts sending post id
   def activity
     (offers + questions).sort_by(&:created_at)
   end

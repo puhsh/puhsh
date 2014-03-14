@@ -11,13 +11,11 @@ class Question < ActiveRecord::Base
   has_many :notifications, as: :content, dependent: :destroy
 
   # Callbacks
-  after_commit :store_post_id_for_user, on: :create
-  after_commit :store_question_id_for_post, on: :create
   after_commit :send_new_question_email_to_post_creator, on: :create
   after_commit :send_new_question_email_to_others, on: :create
   after_commit :send_new_question_notification_to_post_creator, on: :create
   after_commit :send_new_question_notification_to_others, on: :create
-  before_create :assign_post
+  after_commit :store_post_id_for_user, on: :create
   after_commit :remove_post_id_from_redis, on: :destroy
 
   # Validations
@@ -28,9 +26,8 @@ class Question < ActiveRecord::Base
   
   # Methods
 
-  # TODO Clean this up once client sends post id over
   def asked_by_post_creator?
-    self.item.post.user_id == self.user_id
+    self.post.user_id == self.user_id
   end
 
   def notification_text(actor, for_type = nil)
@@ -49,19 +46,8 @@ class Question < ActiveRecord::Base
 
   protected
 
-  # TODO Clean this up once client sends post id over
   def store_post_id_for_user
-    self.user.post_ids_with_questions << self.item.post_id
-  end
-
-  # TODO Remove this once client starts sending post id over
-  def store_question_id_for_post
-    self.item.post.question_ids << self.id
-  end
-
-  # TODO Remove this callback once client sends post id over
-  def assign_post
-    self.post_id = self.item.post_id
+    self.user.post_ids_with_questions << self.post_id
   end
 
   def send_new_question_email_to_post_creator
