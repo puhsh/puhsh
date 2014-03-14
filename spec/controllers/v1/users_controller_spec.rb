@@ -116,12 +116,24 @@ describe V1::UsersController do
 
   describe '#activity' do
     let!(:city) { FactoryGirl.create(:city) }
-    let!(:user) { FactoryGirl.create(:user, home_city: city) }
-    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
-    let!(:user3) { FactoryGirl.create(:user, home_city: city) }
+    let!(:city2) { FactoryGirl.create(:city, name: 'New York City', state: 'NY') }
+    let!(:zipcode) { FactoryGirl.create(:zipcode, city_id: city.id) }
+    let!(:zipcode_nyc) { FactoryGirl.create(:nyc_zip, city_id: city2.id) }
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user2) { FactoryGirl.create(:user) }
+    let!(:user3) { FactoryGirl.create(:user) }
     let!(:category) { FactoryGirl.create(:category) }
     let!(:subcategory) { FactoryGirl.create(:subcategory, category: Category.first) }
     let!(:post) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
+
+    before do
+      user.zipcode = zipcode.code
+      user.home_city = city
+      user.save
+      user2.zipcode = zipcode_nyc.code
+      user2.home_city = city2
+      user2.save
+    end
 
     context 'without access token' do
       it 'is forbidden' do
@@ -156,7 +168,7 @@ describe V1::UsersController do
       end
 
       it 'does return posts for cities the user is following' do
-        FactoryGirl.create(:followed_city, city: city, user: user)
+        FollowedCity.create(user: user, city: city2)
         sign_in user
         get :activity, { id: user.id, access_token: access_token.token }, format: :json
         expect(assigns[:posts]).to include(post)
@@ -171,7 +183,7 @@ describe V1::UsersController do
       end
 
       it 'returns the posts from newest to oldest' do
-        FactoryGirl.create(:followed_city, city: city, user: user)
+        FollowedCity.create(user: user, city: city2)
         Timecop.travel(Date.today + 10.day) do
           post3 = FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
           sign_in user

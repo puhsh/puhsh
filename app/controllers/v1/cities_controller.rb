@@ -6,8 +6,13 @@ class V1::CitiesController < V1::ApiController
   skip_authorize_resource only: :search
 
   def index
-    @cities = City.where(id: current_user.followed_city_ids.members)
-    render_paginated @cities
+    if params[:zipcode_id]
+      zip = Zipcode.find_by_id(params[:zipcode_id]) || Zipcode.find_by_code(params[:zipcode_id])
+      @cities = Zipcode.includes(:city).near(zip, 10).map(&:city).uniq
+    else
+      @cities = City.where(id: current_user.followed_city_ids.members)
+    end
+    render json: @cities
   end
 
   def search

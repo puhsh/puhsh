@@ -15,17 +15,6 @@ describe Question do
     end
   end
 
-  describe '.store_question_id_for_post' do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:post) { FactoryGirl.create(:post, user: user) }
-    let(:item) { FactoryGirl.create(:item, post: post) }
-
-    it 'stores the question id in redis for the post' do
-      question = Question.create(user: user, item: item, content: 'Is this a good item?', post: post)
-      expect(post.reload.question_ids.members).to include(question.id.to_s)
-    end
-  end
-
   describe '.store_post_id_for_user' do
     let(:user) { FactoryGirl.create(:user) }
     let(:post) { FactoryGirl.create(:post, user: user) }

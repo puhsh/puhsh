@@ -57,6 +57,9 @@ Puhsh::Application.routes.draw do
       end
     end
 
+    # Zip Codes
+    match 'zipcodes/:zipcode_id/cities', to: 'cities#index', via: :get
+
     # Categories
     resources :categories, only: [:index, :show] do 
       resources :posts

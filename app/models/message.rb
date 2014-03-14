@@ -24,7 +24,7 @@ class Message < ActiveRecord::Base
   scope :grouped_by_recipient, group(:recipient_id)
   scope :between_sender_and_recipient, ->(sender, recipient) { where('(sender_id = ? and recipient_id = ?) or (sender_id = ? and recipient_id = ?)', sender, recipient, recipient, sender) } 
   scope :sent_or_received_by_user, ->(user) { where('sender_id = ? or recipient_id = ?', user, user) }
-  scope :unread_count, ->(sender, recipient) { between_sender_and_recipient(sender, recipient).unread }
+  scope :unread_count, ->(sender_id, recipient_id) { where(sender_id: sender_id, recipient_id: recipient_id).unread }
 
   # Methods
   def self.recent_conversations_for_user(user)

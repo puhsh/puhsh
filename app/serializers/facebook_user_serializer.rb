@@ -1,6 +1,6 @@
 class FacebookUserSerializer < ActiveModel::Serializer
   attributes :id, :uid, :first_name, :last_name, :name, :avatar_urls, :star_count, :avatar_url, :zipcode, :longitude, :latitude, :location_description, :gender, 
-             :facebook_email, :contact_email, :is_following, :unread_notifications_count
+             :facebook_email, :contact_email, :unread_notifications_count
 
   def id
     object.kind_of?(User) ? object.id : nil
@@ -63,14 +63,6 @@ class FacebookUserSerializer < ActiveModel::Serializer
 
   def contact_email
     object['contact_email']
-  end
-
-  def is_following
-    if current_user && object.kind_of?(User)
-      current_user.following?(object)
-    else
-      false
-    end
   end
   
   def unread_notifications_count
