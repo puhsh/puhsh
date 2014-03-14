@@ -3,6 +3,7 @@ require 'spec_helper'
 describe V1::CitiesController do
   let!(:city) { FactoryGirl.create(:city) }
   let!(:city2) { FactoryGirl.create(:city) }
+  let!(:zipcode) { FactoryGirl.create(:zipcode, city: city) }
 
   describe '#index' do
     let(:user) { FactoryGirl.create(:user) }
@@ -31,7 +32,11 @@ describe V1::CitiesController do
         get :index, { user_id: user.id, access_token: access_token.token }, format: :json
         expect(assigns[:cities]).to include(city)
       end
+
+      it 'finds the zipcode if a zipcode id is passed in' do
+        get :index, { zipcode_id: zipcode.code, access_token: access_token.token }, format: :json
+        expect(assigns[:cities]).to include(city)
+      end
     end
   end
-
 end

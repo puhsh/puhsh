@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140312012107) do
+ActiveRecord::Schema.define(:version => 20140314203251) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -407,6 +407,7 @@ ActiveRecord::Schema.define(:version => 20140312012107) do
 
   add_index "zipcodes", ["city_id"], :name => "index_zipcodes_on_city_id"
   add_index "zipcodes", ["city_name"], :name => "index_zipcodes_on_city_name"
+  add_index "zipcodes", ["code"], :name => "index_zipcodes_on_code"
   add_index "zipcodes", ["latitude"], :name => "index_zipcodes_on_latitude"
   add_index "zipcodes", ["longitude"], :name => "index_zipcodes_on_longitude"
 
