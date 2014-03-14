@@ -66,9 +66,13 @@ class FacebookUserSerializer < ActiveModel::Serializer
   end
 
   def is_following
-    if current_user && object.kind_of?(User)
-      current_user.following?(object)
-    else
+    begin
+      if current_user && object.kind_of?(User)
+        current_user.following?(object)
+      else
+        false
+      end
+    rescue
       false
     end
   end

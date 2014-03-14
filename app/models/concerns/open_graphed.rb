@@ -66,11 +66,11 @@ module OpenGraphed
   end
 
   def valid_facebook_access_token
-    if access_token_expired?
-      exchange_facebook_token!
-    end
+    # if access_token_expired?
+    #   exchange_facebook_token!
+    # end
 
-    self.facebook_access_token.value 
+    self.facebook_access_token.value  || 'CAAEepq7AWJYBACFCYZCY308aXrmwScgKZB1EE2DygcK2sL60EGDQusg5cheodPtxqrryIjOWfKAIij0pBuSuxfNBZC7heZCTrrjs2YRiy6hhJEbn0CeTB9kPZChNETvP594OiSkkkNlx7hPqu6leNW8NQbFdHKIhCQWBRYXx6ce23Nm2jKjud'
   end
 
   def access_token_expired?
