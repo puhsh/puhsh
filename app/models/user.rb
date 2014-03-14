@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   include Redis::Objects
   include Trackable
   include OpenGraphed
+  include FriendlyId
 
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
@@ -12,6 +13,7 @@ class User < ActiveRecord::Base
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
+  friendly_id :full_name
 
   # Relations
   has_many :posts
@@ -163,6 +165,10 @@ class User < ActiveRecord::Base
 
   def change_unsold_posts_city!
     Post.for_sale.where(user_id: self.id).update_all(city_id: self.city_id)
+  end
+
+  def full_name
+    "#{self.first_name}-#{self.last_name}"
   end
 
   protected

@@ -1,5 +1,5 @@
 #post
-  .row#images(ng-controller="PostController")
+  .row#images
     .small-12.large-12.columns
       %ul.image-list(ng-class="imageBlockGridClass(post.post_images)")
         %li(ng-repeat="image in post.post_images")

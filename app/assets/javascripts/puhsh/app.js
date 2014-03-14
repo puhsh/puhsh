@@ -11,8 +11,8 @@ puhsh.config(['$routeProvider', function($routeProvider) {
     }).when('/posts', {
       controller: 'PostsController',
       templateUrl: 'assets/posts.html',
-    }).when('/posts/:id', {
+    }).when('/:city_id/:user_id/:id/', {
       controller: 'PostController',
-      templateUrl: 'assets/post.html',
+      templateUrl: 'assets/post.html'
     }).otherwise({ redirectTo: '/' });
 }]);

@@ -1,7 +1,6 @@
 var puhsh = angular.module('puhsh');
 
-puhsh.controller('PostController', ['$scope', '$routeParams', '$filter', 'Post', function($scope, $routeParams, $filter, Post) {
-  $scope.name = 'Bryan Mikaelian, VP of Develpment';
+puhsh.controller('PostController', ['$window', '$scope', '$routeParams', '$filter', 'Post', function($window, $scope, $routeParams, $filter, Post) {
   $scope.post = Post.get($routeParams);
 
   $scope.price = function(item) {
@@ -49,5 +48,9 @@ puhsh.controller('PostController', ['$scope', '$routeParams', '$filter', 'Post',
 
   $scope.postedAt = function(created_at) {
     return moment(created_at).format('MMMM Do YYYY, h:mm A');
+  }
+
+  $scope.title = function() {
+    return 'X';
   }
 }]);
