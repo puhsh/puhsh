@@ -203,48 +203,41 @@ describe User do
     let!(:zipcode) { FactoryGirl.create(:zipcode, city_id: city.id) }
     let!(:zipcode_nyc) { FactoryGirl.create(:nyc_zip, city_id: city2.id) }
 
-    it 'sets the correct city on create' do
-      user = FactoryGirl.create(:user)
-      user.save
-      expect(user.reload.home_city).to eql(city)
-    end
-
-    it 'sets the correct city on update' do
-      user = FactoryGirl.create(:user, zipcode: nil)
-      user.save
-      expect(user.reload.home_city).to be_nil
-      user.reload.zipcode = '75034'
-      user.save
-      expect(user.reload.home_city).to eql(city)
-    end
-
-    it 'updates the home city when the zipcode changes' do
+    it 'follows the city when the zipcode changes and the home city changed' do
       user = FactoryGirl.create(:user, zipcode: nil)
       user.zipcode = '75034'
-      user.save
-      expect(user.reload.home_city).to eql(city)
-
-      user.zipcode = '10021'
-      user.save
-      expect(user.reload.home_city).to eql(city2)
-      expect(user.reload.home_city).to_not eql(city)
-    end
-
-    it 'follows the home city automatically' do
-      user = FactoryGirl.create(:user)
-      user.save
-      expect(user.reload.followed_cities.map(&:city)).to include(city)
-    end
-
-    it 'follows the city when the zipcode changes' do
-      user = FactoryGirl.create(:user, zipcode: nil)
-      user.zipcode = '75034'
+      user.home_city = city
       user.save
       expect(user.reload.followed_cities.map(&:city)).to include(city)
 
       user.zipcode = '10021'
+      user.home_city = city2
       user.save
       expect(user.reload.followed_cities.map(&:city)).to include(city2)
+    end
+
+    it 'follows the city when the zipcode and home city were blank' do
+      user = FactoryGirl.create(:user, zipcode: nil)
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to_not include(city)
+
+      user.zipcode = '75034'
+      user.home_city = city
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to include(city)
+    end
+
+    it 'does not follow the city when the zipcode changes and the home city remained the same' do
+      user = FactoryGirl.create(:user, zipcode: nil)
+      user.zipcode = '75034'
+      user.home_city = city
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to include(city)
+
+      user.zipcode = '10021'
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to include(city)
+      expect(user.reload.followed_cities.map(&:city)).to_not include(city2)
     end
   end
 
@@ -506,6 +499,7 @@ describe User do
     it 'updates the user\'s posts, that are for sale, city when they change their home city' do
       expect(post.reload.city).to eql(user.home_city)
       user.zipcode = zipcode_nyc.code
+      user.home_city = city2
       user.save
       expect(post.reload.city).to eql(city2)
       expect(post.reload.city).to_not eql(city)

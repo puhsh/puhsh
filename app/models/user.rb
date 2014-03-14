@@ -165,6 +165,10 @@ class User < ActiveRecord::Base
     Post.for_sale.where(user_id: self.id).update_all(city_id: self.city_id)
   end
 
+  def home_city_changed?
+    self.city_id_was != self.city_id
+  end
+
   protected
 
   def add_default_role
@@ -172,13 +176,9 @@ class User < ActiveRecord::Base
   end
 
   def set_home_city
-    if self.zipcode && (self.home_city.blank? || self.zipcode_changed?)
-      zip = Zipcode.near(self, 5).first
-      if zip
-        self.home_city = zip.city
-        self.home_city.follow!(self)
-        self.change_unsold_posts_city!
-      end
+    if self.zipcode && self.home_city && self.home_city_changed? && (self.zipcode_was.blank? || self.zipcode_changed? || self.new_record?)
+      self.home_city.follow!(self)
+      self.change_unsold_posts_city!
     end
   end
 
