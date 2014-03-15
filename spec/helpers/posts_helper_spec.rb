@@ -49,7 +49,7 @@ describe PostsHelper do
 
   describe '.post_location_name' do
     it 'returns the post location name formatted' do
-      expect(post_location_name(user)).to eql("#{user.home_city.name} (#{user.location_description})")
+      expect(post_location_name(user)).to eql("#{user.home_city.name}, #{user.home_city.state.upcase} (#{user.location_description})")
     end
   end
 

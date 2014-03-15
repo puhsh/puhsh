@@ -1,6 +1,10 @@
 - content_for :nav do
   = render 'shared/nav'
 
+- content_for :title do
+  %title= "#{@post.title} - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
+
+
 #post
   .row#images
     .small-12.large-12.columns

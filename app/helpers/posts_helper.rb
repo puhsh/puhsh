@@ -25,7 +25,7 @@ module PostsHelper
 
   def post_location_name(user)
     city = user.home_city
-    "#{city.name} (#{user.location_description})"
+    "#{city.name}, #{city.state.upcase} (#{user.location_description})"
   end
 
   def post_time_posted(post)
