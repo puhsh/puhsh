@@ -32,9 +32,9 @@ class FacebookUserSerializer < ActiveModel::Serializer
 
   def avatar_urls
     {
-      small: "http://graph.facebook.com/#{object['id']}/picture?type=small",
-      normal: "http://graph.facebook.com/#{object['id']}/picture?type=normal",
-      large: "http://graph.facebook.com/#{object['id']}/picture?type=large",
+      small: "http://graph.facebook.com/#{object['uid']}/picture?type=small",
+      normal: "http://graph.facebook.com/#{object['uid']}/picture?type=normal",
+      large: "http://graph.facebook.com/#{object['uid']}/picture?type=large",
     }
   end
 
