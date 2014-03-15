@@ -1,25 +1,29 @@
+- content_for :nav do
+  = render 'shared/nav'
+
 #post
   .row#images
     .small-12.large-12.columns
-      %ul.image-list(ng-class="imageBlockGridClass(post.post_images)")
-        %li(ng-repeat="image in post.post_images")
-          %img(ng-src="{{image.url}}")
+      %ul.image-list(class="#{post_image_list_class(@image_count)}")
+        - @post.post_images.each do |image|
+          %li
+            = image_tag image.image.url
 
   .row#heading
     .small-12.columns.text-center
       %h1 
-        {{post.title}}
-        %span.price-inline(ng-class="priceClass(post.item)") {{price(post.item)}}
+        = @post.title
+        %span.price-inline(class="#{post_item_price_class(@post.item)}")= post_price(@post.item)
 
   .row#seller-info
     .small-12.medium-6.small-centered.medium-centered.columns
       .user-info.with-posted-by
-        %img.avatar(ng-src="{{post.user.avatar_urls.large}}")
+        = image_tag @post.user.other_avatar_urls[:large], class: 'avatar'
         %span.posted-by Posted By:
         %h3.name
-          %strong {{post.user.name}}
+          %strong= @post.user.name
         %h3.gold.star-count
-          %strong {{post.user.star_count}}
+          %strong= @post.user.star_count
 
   .row#post-details
     .small-12.medium-6.small-centered.medium-centered.columns
@@ -27,20 +31,20 @@
         %li 
           %span.text-label
             %strong Posted:
-          %span {{postedAt(post.created_at)}}
+          %span= post_time_posted(@post)
         %li 
           %span.text-label
             %strong Category:
-          %span {{categorySubcategoryName(post.category_name, post.subcategory_name)}}
+          %span= post_category_display_name(@post)
         %li 
           %span.text-label
             %strong Location:
-          %span {{post.user.home_city.name}} ({{post.user.location_description}})
+          %span= post_location_name(@post.user)
         %li 
           %span.text-label
             %strong Pick up: 
-          %span {{pickUpName(post.pick_up_location)}}
+          %span= post_pickup_location_name(@post)
         %li 
           %span.text-label
             %strong Details:
-          %span {{post.description}}
+          %span= @post.description

@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  respond_to :html
+
   def peek_enabled?
     current_user_admin?
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140314203251) do
+ActiveRecord::Schema.define(:version => 20140315144945) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -348,6 +348,7 @@ ActiveRecord::Schema.define(:version => 20140314203251) do
     t.string   "name"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "slug"
     t.string   "avatar_url"
     t.string   "zipcode"
     t.string   "location_description"
@@ -375,6 +376,7 @@ ActiveRecord::Schema.define(:version => 20140314203251) do
   add_index "users", ["last_name"], :name => "index_users_on_last_name"
   add_index "users", ["latitude"], :name => "index_users_on_latitude"
   add_index "users", ["longitude"], :name => "index_users_on_longitude"
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
   add_index "users", ["uid"], :name => "index_users_on_uid", :unique => true
 
   create_table "users_roles", :id => false, :force => true do |t|

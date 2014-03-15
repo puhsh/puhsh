@@ -16,13 +16,7 @@ class V1::PostsController < V1::ApiController
   end
 
   def show
-    if params[:city_id] && params[:user_id]
-      @city = City.find(params[:city_id])
-      @user = User.find(params[:user_id])
-      @post = @city.posts.where(id: params[:id], user_id: @user.id).first
-    else
-      @post = Post.find(params[:id])
-    end
+    @post = Post.find(params[:id])
 
     if @post
       render json: @post
