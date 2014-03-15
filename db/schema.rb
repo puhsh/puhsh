@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140315144945) do
+ActiveRecord::Schema.define(:version => 20140315170903) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20140315144945) do
     t.integer  "category_id"
     t.integer  "subcategory_id"
     t.string   "title"
+    t.string   "slug"
     t.string   "description"
     t.string   "pick_up_location"
     t.string   "payment_type"
@@ -237,6 +238,7 @@ ActiveRecord::Schema.define(:version => 20140315144945) do
 
   add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
   add_index "posts", ["city_id"], :name => "index_posts_on_city_id"
+  add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
   add_index "posts", ["subcategory_id"], :name => "index_posts_on_subcategory_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 

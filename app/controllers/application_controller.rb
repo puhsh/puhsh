@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   respond_to :html
 
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found!
+
   def peek_enabled?
     current_user_admin?
   end
@@ -17,7 +19,7 @@ class ApplicationController < ActionController::Base
     session[:authorized_api_client] = true
   end
 
-  def not_found(exception)
-    render file: 'public/404.html'
+  def not_found!
+    redirect_to 'http://www.puhsh.com/404'
   end
 end
