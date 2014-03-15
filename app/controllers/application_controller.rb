@@ -15,10 +15,6 @@ class ApplicationController < ActionController::Base
 
   protected 
 
-  def authorized_api_client
-    session[:authorized_api_client] = true
-  end
-
   def not_found!
     redirect_to 'http://www.puhsh.com/404'
   end

@@ -72,8 +72,6 @@ class V1::ApiController < ActionController::Metal
       if current_user.access_token.expired?
         unauthorized!
       end
-    elsif internal_request?
-      true
     else
       forbidden!('Invalid Access token') 
     end
@@ -122,10 +120,6 @@ class V1::ApiController < ActionController::Metal
 
   def first_page_url
     url_for(page: 1, format: :json)
-  end
-
-  def internal_request?
-    session[:authorized_api_client] == true
   end
 
   def skip_trackable
