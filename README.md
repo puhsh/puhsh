@@ -52,16 +52,6 @@ Standard stuff here.
 8. `rake db:seed`
 9. `guard init rspec`
 
-
-### Step 3: Angular JS
-Our front end is managed by AngularJS and it comes with its own set of specs and goodies.  Here is what you need to do to get started on the Angular side of things (get your node.js on):
-
-1. `npm install -g karma@canary phantomjs karma-phantomjs-launcher`
-2. `npm install -g karma`
-3. `karma run` and watch all the specs pass.
-4. `karma start` will automatically run specs as you make changes. This is optional.
-
-
 ### Great succes. You are now ready to start working.
 
 ### Contributing
