@@ -11,7 +11,6 @@
 //= require angular-resource/angular-resource.min.js
 //= require underscore/underscore.js
 //= require masonry.min.js
-//= require_tree ./puhsh
 
 
 $(function(){ $(document).foundation(); });
