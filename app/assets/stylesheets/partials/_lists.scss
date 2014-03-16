@@ -2,13 +2,21 @@ ul.detailed-list {
   li {
     height: rem-calc(15);
     margin-bottom: rem-calc(25);
-    font-size: rem-calc(20);
-    span {
+    span, p {
       vertical-align: text-bottom;
       &.text-label {
         float: left;
         width: rem-calc(115);
       }
     }
+  }
+}
+
+ul.entered-inline-list {
+  position: relative;
+  float: left;
+  li {
+    position: relative;
+    right: 50%;
   }
 }

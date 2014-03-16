@@ -18,7 +18,10 @@
       #peek-bar.show-for-large-up
         = render 'peek/bar'
       = yield :nav
-    %section
+    %section#main
       = yield
+      #main_footer
+    %section#footer
+      = render 'shared/footer'
 
     = render 'shared/facebook_sdk'

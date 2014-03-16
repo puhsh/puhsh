@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def facebook_share_this_url
-    "http://www.facebook.com/sharer/sharer.php?u=#{request.url}"
+    request.url
   end
 
   def twitter_tweet_this_url

@@ -32,24 +32,24 @@
     .small-12.medium-6.small-centered.medium-centered.columns
       %ul.no-bullet.detailed-list
         %li 
-          %span.text-label
+          %p.text-label
             %strong Posted:
-          %span= post_time_posted(@post)
+          %p= post_time_posted(@post)
         %li 
-          %span.text-label
+          %p.text-label
             %strong Category:
-          %span= post_category_display_name(@post)
+          %p= post_category_display_name(@post)
         %li 
-          %span.text-label
+          %p.text-label
             %strong Location:
-          %span= post_location_name(@post.user)
-        %li 
-          %span.text-label
+          %p= post_location_name(@post.user)
+        %li
+          %p.text-label
             %strong Pick up: 
-          %span= post_pickup_location_name(@post)
-        %li 
-          %span.text-label
+          %p= post_pickup_location_name(@post)
+        %li
+          %p.text-label
             %strong Details:
-          %span= @post.description
+          %p= @post.description
 
   = render 'shared/app_store_info'
