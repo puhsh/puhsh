@@ -55,7 +55,7 @@ describe PostsHelper do
 
   describe '.post_time_posted' do
     it 'returns a formatted time' do
-      expect(post_time_posted(post)).to eql(post.created_at.strftime("%B #{ActiveSupport::Inflector.ordinalize(post.created_at.day)}, %Y,%l:%m %p"))
+      expect(post_time_posted(post)).to eql(post.created_at.strftime("%B #{ActiveSupport::Inflector.ordinalize(post.created_at.day)}, %Y %l:%m %p"))
     end
   end
 

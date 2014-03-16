@@ -30,7 +30,7 @@ module PostsHelper
 
   def post_time_posted(post)
     day = post.created_at.day
-    post.created_at.strftime("%B #{ActiveSupport::Inflector.ordinalize(day)}, %Y,%l:%m %p")
+    post.created_at.strftime("%B #{ActiveSupport::Inflector.ordinalize(day)}, %Y %l:%m %p")
   end
 
   def post_pickup_location_name(post)
@@ -44,5 +44,11 @@ module PostsHelper
     else
       'Other'
     end
+  end
+
+  def pickup_instructions
+    url = 'http://www.puhsh.com/pickup-instructions.html'
+    r = Net::HTTP.get_response(URI.parse(url))
+    r.body
   end
 end

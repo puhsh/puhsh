@@ -8,6 +8,12 @@ ul.detailed-list {
         float: left;
         width: rem-calc(115);
       }
+
+    }
+    &:last-child {
+      span, p {
+        height: rem-calc(75);
+      }
     }
   }
 }

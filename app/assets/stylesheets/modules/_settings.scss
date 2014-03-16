@@ -161,8 +161,8 @@ $paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
-// $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
+$anchor-font-color: $black;
+$anchor-font-color-hover: scale-color($pink, $lightness: -14%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
@@ -1034,8 +1034,8 @@ $paragraph-text-rendering: optimizeLegibility;
 // $table-even-row-bg: #f9f9f9  ;
 
 // These control the table cell border style
-// $table-border-style: solid;
-// $table-border-size: 1px;
+$table-border-style: solid;
+$table-border-size: 0;
 // $table-border-color: #ddd;
 
 // These control the table head styles
@@ -1101,7 +1101,7 @@ $paragraph-text-rendering: optimizeLegibility;
 // $has-tip-font-weight: bold;
 // $has-tip-font-color: #333;
 // $has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%);
-// $has-tip-font-color-hover: $primary-color;
+$has-tip-font-color-hover: $pink;
 // $has-tip-cursor-type: help;
 
 // $tooltip-padding: rem-calc(12);

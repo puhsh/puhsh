@@ -46,10 +46,14 @@
         %li
           %p.text-label
             %strong Pick up: 
-          %p= post_pickup_location_name(@post)
+          %p 
+            = post_pickup_location_name(@post)
+            %a(href='#' data-reveal-id='pickup-help' data-reveal)
+              %i.fa.fa-question-circle
         %li
           %p.text-label
             %strong Details:
           %p= @post.description
 
   = render 'shared/app_store_info'
+  = render 'shared/modals/pickup_help'
