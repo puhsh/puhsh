@@ -44,6 +44,7 @@ class V1::UsersController < V1::ApiController
                    .for_sale
                    .recent
     end
+
     render_paginated @posts
   end
 
