@@ -20,4 +20,12 @@ module ApplicationHelper
   def pinterest_pin_it_url 
     "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}"
   end
+
+  def ios_app_store_url
+    'https://itunes.apple.com/us/app/puhsh/id761535377?mt=8'
+  end
+
+  def android_app_store_url
+    'https://play.google.com/store/apps/details?id=com.puhsh.puhshandroid&hl=en'
+  end
 end

@@ -1,5 +1,5 @@
 !!! 5
-%html(ng-app='puhsh')
+%html
   %head
     = yield :title
     %meta(charset="utf-8")
@@ -13,9 +13,12 @@
     = javascript_include_tag 'vendor/modernizr'
     = csrf_meta_tags
   %body
+    #fb-root
     %header
       #peek-bar.show-for-large-up
         = render 'peek/bar'
       = yield :nav
-    %section(ng-route)
+    %section
       = yield
+
+    = render 'shared/facebook_sdk'
