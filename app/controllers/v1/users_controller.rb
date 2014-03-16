@@ -36,9 +36,13 @@ class V1::UsersController < V1::ApiController
       @posts = Post.includes(:item, :post_images, :city, :user)
                    .for_users_or_cities(current_user.users_following, current_user.cities_following)
                    .exclude_category_ids(params[:without_category_ids])
+                   .for_sale
                    .recent
     else
-      @posts = Post.includes(:item, :post_images, :city, :user).for_users_or_cities(current_user.users_following, current_user.cities_following).recent
+      @posts = Post.includes(:item, :post_images, :city, :user)
+                   .for_users_or_cities(current_user.users_following, current_user.cities_following)
+                   .for_sale
+                   .recent
     end
     render_paginated @posts
   end
@@ -47,6 +51,7 @@ class V1::UsersController < V1::ApiController
     @posts = Post.includes(:item, :post_images, :city, :user)
                  .where('id in (?) or id in (?)', current_user.post_ids_with_offers, current_user.post_ids_with_questions)
                  .exclude_user(current_user)
+                 .for_sale
                  .recent
     render_paginated @posts
   end

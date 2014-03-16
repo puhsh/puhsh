@@ -8,9 +8,9 @@ class V1::PostsController < V1::ApiController
 
   def index
     if @resource
-      @posts = @resource.posts.includes(:item, :post_images, {user: :home_city}).recent
+      @posts = @resource.posts.includes(:item, :post_images, {user: :home_city}).for_sale.recent
     else
-      @posts = Post.includes(:item, :post_images, :city, {user: :home_city}).recent
+      @posts = Post.includes(:item, :post_images, :city, {user: :home_city}).for_sale.recent
     end
     render_paginated @posts
   end
