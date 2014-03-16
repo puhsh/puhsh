@@ -191,6 +191,30 @@ describe V1::UsersController do
           expect(assigns[:posts].map(&:id)).to eql([post3.id, post.id])
         end
       end
+
+      it 'can exclude categories' do
+        FollowedCity.create(user: user, city: city2)
+        sign_in user
+        get :activity, { id: user.id, access_token: access_token.token, without_category_ids: [post.category_id]}, format: :json
+        expect(assigns[:posts]).to_not include(post)
+      end
+
+      it 'can exclude flagged posts' do
+        FollowedCity.create(user: user, city: city2)
+        FlaggedPost.create(user: user, post: post)
+        sign_in user
+        get :activity, { id: user.id, access_token: access_token.token, without_category_ids: [post.category_id]}, format: :json
+        expect(assigns[:posts]).to_not include(post)
+      end
+
+      it 'can exclude sold posts' do
+        FollowedCity.create(user: user, city: city2)
+        post.status = :sold
+        post.save
+        sign_in user
+        get :activity, { id: user.id, access_token: access_token.token, without_category_ids: [post.category_id]}, format: :json
+        expect(assigns[:posts]).to_not include(post)
+      end
     end
   end
 

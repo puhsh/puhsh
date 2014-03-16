@@ -7,6 +7,7 @@ class FlaggedPost < ActiveRecord::Base
 
   # Callbacks
   after_commit :store_flagged_post_id_for_user, on: :create
+  after_commit :remove_flagged_post_id_for_user, on: :destroy
 
   # Validations
   validates :post_id, uniqueness: { scope: :user_id }
@@ -17,5 +18,9 @@ class FlaggedPost < ActiveRecord::Base
 
   def store_flagged_post_id_for_user
     self.user.flagged_post_ids << self.post_id
+  end
+
+  def remove_flagged_post_id_for_user
+    self.user.flagged_post_ids.delete(self.post_id)
   end
 end
