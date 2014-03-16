@@ -206,6 +206,15 @@ describe V1::UsersController do
         get :activity, { id: user.id, access_token: access_token.token, without_category_ids: [post.category_id]}, format: :json
         expect(assigns[:posts]).to_not include(post)
       end
+
+      it 'can exclude sold posts' do
+        FollowedCity.create(user: user, city: city2)
+        post.status = :sold
+        post.save
+        sign_in user
+        get :activity, { id: user.id, access_token: access_token.token, without_category_ids: [post.category_id]}, format: :json
+        expect(assigns[:posts]).to_not include(post)
+      end
     end
   end
 
