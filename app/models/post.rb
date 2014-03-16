@@ -45,6 +45,7 @@ class Post < ActiveRecord::Base
   scope :for_users, ->(user_ids) { where(user_id: user_ids) }
   scope :for_users_or_cities, ->(user_ids, city_ids) { where('user_id in (?) OR city_id in (?)', user_ids, city_ids) }
   scope :exclude_user, ->(user) { where('user_id != ?', user) }
+  scope :exclude_category_ids, ->(category_ids) { where('category_id not in (?)', category_ids) }
 
   # Nested Attributes
   accepts_nested_attributes_for :item

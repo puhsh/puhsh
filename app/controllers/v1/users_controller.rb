@@ -32,7 +32,14 @@ class V1::UsersController < V1::ApiController
   end
 
   def activity
-    @posts = Post.includes(:item, :post_images, :city, :user).for_users_or_cities(current_user.users_following, current_user.cities_following).recent
+    if params[:without_category_ids]
+      @posts = Post.includes(:item, :post_images, :city, :user)
+                   .for_users_or_cities(current_user.users_following, current_user.cities_following)
+                   .exclude_category_ids(params[:without_category_ids])
+                   .recent
+    else
+      @posts = Post.includes(:item, :post_images, :city, :user).for_users_or_cities(current_user.users_following, current_user.cities_following).recent
+    end
     render_paginated @posts
   end
 
