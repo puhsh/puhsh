@@ -14,6 +14,7 @@ ActiveAdmin.register User do
     column :name
     column :first_name
     column :last_name
+    column :slug
     column :zipcode
     column :facebook_email
     column :contact_email
