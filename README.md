@@ -44,13 +44,14 @@ Standard stuff here.
 
 1. Install the necessary tools (ideally the ones mentioned above)
 2. Clone the repo down
-3. `bundle install`
-4. `rake bower:install`
-5. `rake db:create`
-6. `rake db:test:prepare`
-7. `rake db:schema:load`
-8. `rake db:seed`
-9. `guard init rspec`
+3. `cp config/database.example.yml config/database.yml`
+4. `bundle install`
+5. `rake bower:install`
+6. `rake db:create`
+7. `rake db:test:prepare`
+8. `rake db:schema:load`
+9. `rake db:seed`
+10. `guard init rspec`
 
 ### Great succes. You are now ready to start working.
 
