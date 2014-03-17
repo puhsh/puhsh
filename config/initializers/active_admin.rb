@@ -70,7 +70,7 @@ ActiveAdmin.setup do |config|
 
   # == Authentication
   config.authorization_adapter = 'AdminAuthentication'
-  config.on_unauthorized_access = :not_found
+  config.on_unauthorized_access = :not_found!
 
   # == Logging Out
   #
