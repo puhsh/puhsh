@@ -17,7 +17,7 @@ ActiveAdmin.register Post do
     column :created_at
     column :updated_at
     actions do |post|
-      link_to 'View Page', post_path(post.city_id, post.user_id, post.id), target: :blank
+      link_to 'View Page', post_path(post.city_id, post.user.slug, post.slug), target: :blank
     end
   end
 end
