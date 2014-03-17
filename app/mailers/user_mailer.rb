@@ -1,4 +1,5 @@
 class UserMailer < MandrillMailer::TemplateMailer
+  include Rails.application.routes.url_helpers
   default from: 'puhsher@puhsh.com'
   
   def welcome_email(user)
@@ -16,14 +17,15 @@ class UserMailer < MandrillMailer::TemplateMailer
   def new_post_email(post)
     @post = post
     @user = @post.user
-    @post_url = post_url(@post.city_id, @user.slug, @post.slug)
+    @post_url = post_url(@post.city_id, @user.slug, @post.slug, host: 'https')
     mandrill_mail template: 'item-posted',
                   to: @user.contact_email,
                   vars: {
                     'USER_FIRST_NAME' => @user.first_name,
                     'USER_EMAIL' => @user.contact_email,
                     'POST_TITLE' => @post.title,
-                    'CURRENT_YEAR' => Date.today.year
+                    'CURRENT_YEAR' => Date.today.year,
+                    'VIEW_POST_URL' => @post_url
                   },
                   inline_css: true
   end
