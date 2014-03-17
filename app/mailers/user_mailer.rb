@@ -17,7 +17,7 @@ class UserMailer < MandrillMailer::TemplateMailer
   def new_post_email(post)
     @post = post
     @user = @post.user
-    @post_url = post_url(@post.city_id, @user.slug, @post.slug, host: 'https')
+    @post_url = post_url(@post.city_id, @user.slug, @post.slug, host: 'https://api.puhsh.com')
     mandrill_mail template: 'item-posted',
                   to: @user.contact_email,
                   vars: {
