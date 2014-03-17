@@ -100,6 +100,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def sold!
+    self.update_attributes(status: :sold)
+  end
+
   protected
 
   def add_category

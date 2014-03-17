@@ -42,6 +42,7 @@ class Offer < ActiveRecord::Base
         transaction.payment_type = self.post.payment_type
         transaction.sold_on = DateTime.now
       end.save
+      self.post.sold!
     end
   end
 

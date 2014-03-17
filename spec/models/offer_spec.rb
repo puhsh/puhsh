@@ -111,6 +111,11 @@ describe Offer do
       offer.awarded!
       expect(offer.reload.item_transaction.sold_on).to_not be_nil
     end
+
+    it 'sets the post as sold' do
+      offer.awarded!
+      expect(post.reload).to be_sold
+    end
   end
 
   describe '.remove_post_id_from_redis' do
