@@ -5,8 +5,5 @@ group :vendor do
   asset 'sly', '1.2.3'
   asset 'spin.js', '1.3.3'
   asset 'mousetrap', '1.4.6'
-  asset 'angular', '1.2.12'
-  asset 'angular-route', '1.2.12'
-  asset 'angular-resource', '1.2.12'
   asset 'underscore', '1.6.0'
 end
