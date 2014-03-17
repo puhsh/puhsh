@@ -10,7 +10,6 @@
 //= require angular-route/angular-route.min.js
 //= require angular-resource/angular-resource.min.js
 //= require underscore/underscore.js
-//= require masonry.min.js
 
 
 $(function(){ $(document).foundation(); });
