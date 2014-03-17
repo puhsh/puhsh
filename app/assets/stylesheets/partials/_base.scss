@@ -2,11 +2,15 @@
 @import 'modules/mixins';
 @import 'modules/variables';
 @import 'modules/settings';
+@import 'modules/typography';
 
 html {
   body {
-    section#main {
-      padding: 40px;
+    &.dark {
+      background-color: $black75;
+    }
+    #main {
+      padding: $body-padding 0;
     }
   }
 }

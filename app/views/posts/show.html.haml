@@ -1,0 +1,60 @@
+- content_for :nav do
+  = render 'shared/nav'
+
+- content_for :title do
+  %title= "#{@post.title} - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
+
+#post
+  .row#images
+    .small-12.large-12.columns
+      %ul.image-list.clearing-thumbs(class="#{post_image_list_class(@image_count)}" data-clearing)
+        - @post.post_images.each do |image|
+          %li
+            %a(href="#{image.image.url}")
+              = image_tag image.image.url
+
+  .row#heading
+    .small-12.columns.text-center
+      %h1 
+        = @post.title
+        %span.price-inline(class="#{post_item_price_class(@post.item)}")= post_price(@post.item)
+
+  .row#seller-info
+    .small-12.medium-6.small-centered.medium-centered.columns
+      .user-info.with-posted-by
+        = image_tag @post.user.other_avatar_urls[:large], class: 'avatar'
+        %span.posted-by Posted By:
+        %h3.name
+          %strong= @post.user.name
+        %h3.gold.star-count
+          %strong= @post.user.star_count
+
+  .row#post-details
+    .small-12.medium-6.small-centered.medium-centered.columns
+      %ul.no-bullet.detailed-list
+        %li 
+          %p.text-label
+            %strong Posted:
+          %p= post_time_posted(@post)
+        %li 
+          %p.text-label
+            %strong Category:
+          %p= post_category_display_name(@post)
+        %li 
+          %p.text-label
+            %strong Location:
+          %p= post_location_name(@post.user)
+        %li
+          %p.text-label
+            %strong Pick up: 
+          %p 
+            = post_pickup_location_name(@post)
+            %a(href='#' data-reveal-id='pickup-help' data-reveal)
+              %i.fa.fa-question-circle
+        %li
+          %p.text-label
+            %strong Details:
+          %span= @post.description
+
+  = render 'shared/app_store_info'
+  = render 'shared/modals/pickup_help'

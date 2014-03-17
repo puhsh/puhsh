@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   include Redis::Objects
   include Trackable
   include OpenGraphed
+  include FriendlyId
 
   INVITES_ENABLED = Rails.env.development? ? false : true
   ALPHA_ENABLED = Rails.env.development? ? false : true
@@ -12,6 +13,7 @@ class User < ActiveRecord::Base
   devise :trackable, :omniauthable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
+  friendly_id :full_name_slug, use: :slugged
 
   # Relations
   has_many :posts
@@ -167,6 +169,10 @@ class User < ActiveRecord::Base
 
   def home_city_changed?
     self.city_id_was != self.city_id
+  end
+
+  def full_name_slug
+    "#{self.first_name}#{self.last_name}"
   end
 
   protected

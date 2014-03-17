@@ -1,0 +1,26 @@
+@import 'partials/base';
+
+.user-info {
+  .avatar {
+    margin-right: rem-calc(15);
+    float: left;
+  }
+  .name {
+    margin-bottom: rem-calc(8);
+  }
+  .star-count {
+    strong:before { 
+      font-family: FontAwesome;
+      content: "\f005";
+      margin-right: 5px;
+    }
+  }
+}
+
+.user-info.with-posted-by {
+  .posted-by {
+    font-size: rem-calc(20);
+    font-family: $header-font-family;
+    vertical-align: top;
+  }
+}

@@ -32,6 +32,8 @@ class V1::ApiController < ActionController::Metal
   rescue_from ActiveRecord::RecordNotFound, with: :not_found!
   rescue_from ActionController::RoutingError, with: :not_found!
 
+  WHITELISTED_CONTROLLERS = %w( PostsController )
+
   def render_paginated(resource, opts = {})
     defaults = { already_paginated: false, serializer: nil }
     opts = defaults.merge(opts)
@@ -66,7 +68,7 @@ class V1::ApiController < ActionController::Metal
   protected
 
   def verify_access_token
-    if current_user.access_token && current_user.access_token.token == params[:access_token]
+    if current_user && current_user.access_token && current_user.access_token.token == params[:access_token]
       if current_user.access_token.expired?
         unauthorized!
       end

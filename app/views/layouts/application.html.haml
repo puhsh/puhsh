@@ -1,9 +1,10 @@
 !!! 5
 %html
   %head
-    %title= "Puhsh::#{controller_name.capitalize}"
+    = yield :title
     %meta(charset="utf-8")
-    %meta(name="viewport" content="width=device=width, initial-scale=1.0")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(name='apple-itunes-app' content='app-id=761535377')
     = favicon_link_tag '/favicon.ico'
 
     = stylesheet_link_tag 'application', media: 'all'
@@ -13,9 +14,15 @@
     = javascript_include_tag 'vendor/modernizr'
     = csrf_meta_tags
   %body
+    #fb-root
     %header
-      #peek-bar
+      #peek-bar.show-for-large-up
         = render 'peek/bar'
       = yield :nav
     %section#main
       = yield
+      #main_footer
+    %section#footer
+      = render 'shared/footer'
+
+    = render 'shared/facebook_sdk'

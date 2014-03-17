@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  respond_to :html
+
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found!
+
   def peek_enabled?
     current_user_admin?
   end
@@ -9,7 +13,9 @@ class ApplicationController < ActionController::Base
     current_user.admin? if current_user
   end
 
-  def not_found(exception)
-    render file: 'public/404.html'
+  protected 
+
+  def not_found!
+    redirect_to 'http://www.puhsh.com/404'
   end
 end

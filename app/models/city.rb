@@ -1,5 +1,8 @@
 class City < ActiveRecord::Base
+  include FriendlyId
+
   attr_accessible :state, :name
+  friendly_id :name
 
   # Relations
   has_many :users

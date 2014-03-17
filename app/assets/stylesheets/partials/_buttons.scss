@@ -1,15 +1,37 @@
 @import 'partials/base';
 
-.facebook {
-  @include button(rem-calc(4), $facebookBlue, 5px);
-  &.with-share {
+a.button {
+  @include lighter-text-weight;
+}
+
+a.button.facebook {
+  @include button(rem-calc(4), $facebookBlue, rem-calc(4));
+  vertical-align: top;
+  i {
+    vertical-align: middle;
+    line-height: 2rem;
+    position: relative;
+    top: rem-calc(12);
+  }
+  &.with-share-text {
+    i {
+      margin-right: rem-calc(10);
+    }
+    span {
+      @include lighter-text-weight;
+      vertical-align: middle;
+      font-size: rem-calc(20);
+    }
   }
 }
 
-.twitter {
+a.button.twitter {
   @include button(rem-calc(4), $twitterBlue, 5px);
 }
 
-.pinterest {
+a.button.pinterest {
   @include button(rem-calc(4), $pinterestRed, 5px);
+}
+
+@media only screen { 
 }

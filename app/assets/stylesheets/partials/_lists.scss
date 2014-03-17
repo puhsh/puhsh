@@ -1,0 +1,27 @@
+ul.detailed-list {
+  overflow: hidden;
+  li {
+    @include clearfix;
+    display: table;
+    margin-bottom: rem-calc(25);
+    span, p {
+      vertical-align: middle;
+      display: table-cell;
+      &.text-label {
+        float: left;
+        width: rem-calc(115);
+        padding-bottom: rem-calc(1000);
+        margin-bottom: rem-calc(-1000);
+      }
+    }
+  }
+}
+
+ul.entered-inline-list {
+  position: relative;
+  float: left;
+  li {
+    position: relative;
+    right: 50%;
+  }
+}

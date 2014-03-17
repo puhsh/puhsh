@@ -29,17 +29,20 @@ puhsh is the official repo for the application at www.puhsh.com. Before we get s
 * Infrastructure managed with Chef. See [puhsh/puhsh-chef](https://github.com/puhsh/puhsh-chef)
 * Deployments trigger by Jenkins after successful tests.
 
-#### Bower
+
+## Running puhsh locally
+
+### Step 1: Bower
 [Bower](http://bower.io/) is a front end package manager. It is built on node.js. You will need to use it in order to work on the front end of puhsh. To install:
 
 1. Download and install the latest version of node.js 
 2. `npm install -g bower` 
 
-Boom. Bower is now installed.
+### Step 2: Ruby on Rails
 
-### Enough of the boring crap! I want to start working!
+Standard stuff here.
 
-1. Install the necessary tools (Rails, RVM, Pow, etc)
+1. Install the necessary tools (ideally the ones mentioned above)
 2. Clone the repo down
 3. `bundle install`
 4. `rake bower:install`
@@ -49,8 +52,7 @@ Boom. Bower is now installed.
 8. `rake db:seed`
 9. `guard init rspec`
 
-Great succes. You are now ready to start working.
+### Great succes. You are now ready to start working.
 
 ### Contributing
-
 Now that you have the app ready to go, you can head over to the [contributing](CONTRIBUTING.md) guide.

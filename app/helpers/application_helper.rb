@@ -1,2 +1,35 @@
 module ApplicationHelper
+  def facebook_avatar_url(user, size = nil)
+    valid_sizes = [:large, :square, :normal]
+
+    if size && valid_sizes.include?(size)
+      user.avatar_url.split('?').first + "?type=#{size.to_s}"
+    else
+      user.avatar_url
+    end
+  end
+
+  def facebook_share_this_url
+    request.url
+  end
+
+  def twitter_tweet_this_url
+    "https://www.twitter.com/share?status=#{url_for(only_path: false)}&text=Check this out on Puhsh!"
+  end
+
+  def pinterest_pin_it_url 
+    if @post
+      "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}&media=#{@post.post_images.first.image.url}"
+    else
+      "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}"
+    end
+  end
+
+  def ios_app_store_url
+    'https://itunes.apple.com/us/app/puhsh/id761535377?mt=8'
+  end
+
+  def android_app_store_url
+    'https://play.google.com/store/apps/details?id=com.puhsh.puhshandroid&hl=en'
+  end
 end

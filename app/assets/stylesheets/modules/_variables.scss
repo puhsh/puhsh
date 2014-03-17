@@ -1,5 +1,8 @@
 @import 'functions';
 
+// --
+// Colors
+// --
 $pink: #ec008c;
 $lightPink: #f9abd9;
 $tiffany: #60dfe5;
@@ -18,3 +21,19 @@ $black75: color-opacity($black, 75);
 $black50: color-opacity($black, 50);
 $black25: color-opacity($black, 25);
 $white: #fff;
+
+// --
+// Images
+// --
+$logo-width: rem-calc(185);
+$image-bottom-margin: rem-calc(10);
+
+// --
+// Puhsh Specific Variables
+// --
+$body-padding: rem-calc(10);
+$user-avatar-margin: rem-calc(14);
+$post-border-radius: rem-calc(6);
+$post-price-label-border-radius: rem-calc(6);
+
+$avatar-default-size: rem-calc(100);

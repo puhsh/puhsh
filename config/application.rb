@@ -70,5 +70,8 @@ module Puhsh
 
     # Include Bower Assets
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+
+    # Specify Path for Angular Templates
+    config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'puhsh', 'views')
   end
 end
