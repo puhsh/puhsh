@@ -37,7 +37,7 @@ describe V1::MessagesController do
 
       it 'returns all the messages between two individuals' do
         sign_in user
-        get :index, { access_token: access_token.token, recipient_id: recipient }
+        get :index, { access_token: access_token.token, recipient_id: recipient.id }
         expect(assigns[:messages]).to include(message_sent1)
         expect(assigns[:messages]).to include(message_received1)
       end
