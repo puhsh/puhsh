@@ -18,8 +18,13 @@ describe PostsController do
       expect(response).to redirect_to 'http://www.puhsh.com/404'
     end
 
-    it '404s if it cannot find a post tied to user' do
+    it '404s if it cannot find a post' do
       get :show, { city_id: city.id, user_id: user.id, id: 2131231243234 }, format: :html
+      expect(response).to redirect_to 'http://www.puhsh.com/404'
+    end
+
+    it '404s if it cannot find a post tied to city' do
+      get :show, { city_id: 123214234, user_id: user.id, id: post.id}, format: :html
       expect(response).to redirect_to 'http://www.puhsh.com/404'
     end
   end
