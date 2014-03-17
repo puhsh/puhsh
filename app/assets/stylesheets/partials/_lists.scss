@@ -1,18 +1,17 @@
 ul.detailed-list {
+  overflow: hidden;
   li {
-    height: rem-calc(15);
+    @include clearfix;
+    display: table;
     margin-bottom: rem-calc(25);
     span, p {
-      vertical-align: text-bottom;
+      vertical-align: middle;
+      display: table-cell;
       &.text-label {
         float: left;
         width: rem-calc(115);
-      }
-
-    }
-    &:last-child {
-      span, p {
-        height: rem-calc(125);
+        padding-bottom: rem-calc(1000);
+        margin-bottom: rem-calc(-1000);
       }
     }
   }

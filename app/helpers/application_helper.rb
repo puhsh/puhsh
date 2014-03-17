@@ -14,11 +14,15 @@ module ApplicationHelper
   end
 
   def twitter_tweet_this_url
-    'https://www.twitter.com/share'
+    "https://www.twitter.com/share?status=#{url_for(only_path: false)}&text=Check this out on Puhsh!"
   end
 
   def pinterest_pin_it_url 
-    "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}"
+    if @post
+      "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}&media=#{@post.post_images.first.image.url}"
+    else
+      "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}"
+    end
   end
 
   def ios_app_store_url
