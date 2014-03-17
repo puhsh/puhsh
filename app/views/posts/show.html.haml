@@ -7,10 +7,11 @@
 #post
   .row#images
     .small-12.large-12.columns
-      %ul.image-list(class="#{post_image_list_class(@image_count)}")
+      %ul.image-list.clearing-thumbs(class="#{post_image_list_class(@image_count)}" data-clearing)
         - @post.post_images.each do |image|
           %li
-            = image_tag image.image.url
+            %a(href="#{image.image.url}")
+              = image_tag image.image.url
 
   .row#heading
     .small-12.columns.text-center
