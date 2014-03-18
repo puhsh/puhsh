@@ -52,6 +52,7 @@ Standard stuff here.
 8. `rake db:schema:load`
 9. `rake db:seed`
 10. `guard init rspec`
+11. (Optional) If you would like more cities in your database, checkout `cities.rake`. Execute each rake task in order to populate your city database.
 
 ### Great succes. You are now ready to start working.
 
