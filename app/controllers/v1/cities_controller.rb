@@ -8,7 +8,7 @@ class V1::CitiesController < V1::ApiController
   def index
     if params[:zipcode_id]
       zip = Zipcode.find_by_id(params[:zipcode_id]) || Zipcode.find_by_code(params[:zipcode_id])
-      @cities = Zipcode.includes(:city).near(zip, 10).map(&:city).uniq
+      @cities = Zipcode.includes(:city).near(zip, 5).map(&:city).uniq
     else
       @cities = City.where(id: current_user.followed_city_ids.members)
     end
