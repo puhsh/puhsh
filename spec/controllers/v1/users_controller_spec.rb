@@ -37,7 +37,12 @@ describe V1::UsersController do
   end
 
   describe '#update' do
-    let(:user) { FactoryGirl.create(:user) }
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:zipcode) { FactoryGirl.create(:zipcode, city_id: city.id) }
+    let!(:new_york) { FactoryGirl.create(:city, name: 'New York City', state: 'NY') }
+    let!(:ny_zipcode) { FactoryGirl.create(:nyc_zipcode, city_id: new_york.id) }
+
     context 'without access token' do
       it 'is forbidden' do
         sign_in user
@@ -72,6 +77,22 @@ describe V1::UsersController do
         sign_in user
         put :update, { id: user.id, access_token: access_token.token, user: { contact_email: 'test@test.local' } }, format: :json
         expect(user.reload.contact_email).to eql('test@test.local')
+      end
+
+      it 'updates the home city' do
+        sign_in user
+        put :update, { id: user.id, access_token: access_token.token, user: { city_id: city.id } }, format: :json
+        expect(user.reload.home_city).to eql(city)
+      end
+
+      it 'allows the user to update their home city from an existing one' do
+        user.zipcode = zipcode.code
+        user.home_city = city
+        user.save
+        sign_in user
+        put :update, { id: user.id, access_token: access_token.token, user: { zipcode: ny_zipcode.code, city_id: new_york.id } }, format: :json
+        expect(user.reload.home_city).to eql(new_york)
+        expect(user.reload.zipcode).to eql(ny_zipcode.code)
       end
     end
   end
