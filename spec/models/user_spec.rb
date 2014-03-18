@@ -248,6 +248,16 @@ describe User do
       expect(user.reload.followed_cities.map(&:city)).to include(city)
       expect(user.reload.followed_cities.map(&:city)).to_not include(city2)
     end
+
+    it 'follows the city when the zipcode was present and then the home city was added later' do
+      user = FactoryGirl.create(:user, zipcode: nil)
+      user.zipcode = '75034'
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to_not include(city)
+      user.home_city = city
+      user.save
+      expect(user.reload.followed_cities.map(&:city)).to include(city)
+    end
   end
 
   describe '.add_app_invite!' do

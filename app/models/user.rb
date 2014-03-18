@@ -182,7 +182,7 @@ class User < ActiveRecord::Base
   end
 
   def set_home_city
-    if self.zipcode && self.home_city_changed? && (self.zipcode_was.blank? || self.zipcode_changed? || self.new_record?)
+    if self.zipcode && self.home_city_changed?
       self.home_city.follow!(self)
       self.change_unsold_posts_city!
     end
