@@ -109,6 +109,7 @@ describe User do
   describe '.find_for_facebook_oauth' do
     before { @facebook_invalid = OmniAuth.config.mock_auth[:facebook_invalid] }
     before { @facebook_valid = OmniAuth.config.mock_auth[:facebook] }
+    before { @facebook_valid2 = OmniAuth.config.mock_auth[:facebook2] }
 
     context 'new valid user' do
       it 'creates records for verified users' do
@@ -154,6 +155,14 @@ describe User do
       it 'creates an app invite' do
         user = User.find_for_facebook_oauth(@facebook_valid)
         expect(user.reload.app_invite).to_not be_nil
+      end
+
+      it 'handles duplicates' do
+        user = User.find_for_facebook_oauth(@facebook_valid)
+        user2 = User.find_for_facebook_oauth(@facebook_valid2)
+        expect(user.reload).to be_valid
+        expect(user2.reload).to be_valid
+        expect(user.reload.slug).to_not eql(user2.reload.slug)
       end
     end
 

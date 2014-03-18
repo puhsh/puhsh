@@ -52,6 +52,18 @@ RSpec.configure do |config|
     :verified => true
   }
 
+  omniauth_hash_dup = {
+    :id => '4321',
+    :name => 'John Doe',
+    :first_name => 'John',
+    :last_name => 'Doe',
+    :username => 'johndoe',
+    :location => { :name => 'Dallas, TX' },
+    :gender => 'male',
+    :email => 'john@test.local',
+    :verified => true
+  }
+
   omniauth_hash_invalid = {
     :id => '1234',
     :name => 'John Doe',
@@ -65,6 +77,7 @@ RSpec.configure do |config|
   }
 
   OmniAuth.config.add_mock(:facebook, omniauth_hash)
+  OmniAuth.config.add_mock(:facebook2, omniauth_hash_dup)
   OmniAuth.config.add_mock(:facebook_invalid, omniauth_hash_invalid)
   Geocoder.configure(:lookup => :test)
   Warden.test_mode!
