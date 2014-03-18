@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :city do
     state 'TX'
     name 'Frisco'
+    full_state_name 'Texas'
   end
 
   factory :nyc do

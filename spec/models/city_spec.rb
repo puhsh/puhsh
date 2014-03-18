@@ -16,4 +16,12 @@ describe City do
       expect(user.reload.followed_cities.map(&:city)).to include(city)
     end
   end
+
+  describe '.full_city_state' do
+    let!(:city) { FactoryGirl.create(:city) }
+    it 'sets the slug properly' do
+      expect(city.reload.slug).to eql(city.full_city_state)
+      expect(city.reload.slug).to eql("#{city.name.downcase}-#{city.full_state_name.downcase}")
+    end
+  end
 end

@@ -2,7 +2,7 @@ class City < ActiveRecord::Base
   include FriendlyId
 
   attr_accessible :state, :name, :full_state_name
-  friendly_id :name
+  friendly_id :full_city_state, use: :slugged
 
   # Relations
   has_many :users
@@ -32,6 +32,10 @@ class City < ActiveRecord::Base
       end
       paginate page: page, per_page: per_page
     end.results
+  end
+
+  def full_city_state
+    "#{self.name.try(&:downcase)}-#{self.full_state_name.try(&:downcase)}"
   end
 
   def follow!(user)

@@ -19,6 +19,6 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def url
-    post_url(object.city_id, object.user.slug, object.slug)
+    post_url(object.city.slug, object.user.slug, object.slug)
   end
 end
