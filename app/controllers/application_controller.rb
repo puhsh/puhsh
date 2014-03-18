@@ -14,9 +14,13 @@ class ApplicationController < ActionController::Base
     current_user.admin? if current_user
   end
 
+  def routing_error
+    raise ActionController::RoutingError.new(params[:path])
+  end
+
   protected 
 
   def not_found!
-    redirect_to 'http://www.puhsh.com/404'
+    redirect_to 'http://www.puhsh.com/404' unless Rails.env.development?
   end
 end

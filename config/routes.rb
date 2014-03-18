@@ -109,5 +109,10 @@ Puhsh::Application.routes.draw do
   ###############
   # WEB ROUTES
   ###############
+
+  # Posts
   match '/posts/:city_id/:user_id/:id', to: 'posts#show', via: :get, as: 'post'
+
+  # Custom 404
+  match "*path", :to => "application#routing_error"
 end
