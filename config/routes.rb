@@ -109,5 +109,5 @@ Puhsh::Application.routes.draw do
   ###############
   # WEB ROUTES
   ###############
-  match '/:city_id/:user_id/:id', to: 'posts#show', via: :get, as: 'post'
+  match '/posts/:city_id/:user_id/:id', to: 'posts#show', via: :get, as: 'post'
 end
