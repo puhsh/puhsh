@@ -40,6 +40,17 @@ describe WallPost do
         expect(invalid).to_not be_valid
       end
     end
+
+    context ':app_share' do
+      it 'can only have one wall post of this type' do
+        wall_post.post_type = :app_share
+        wall_post.save
+        expect(wall_post).to be_valid
+
+        invalid = WallPost.create(user: user, post_type: :app_share)
+        expect(invalid).to_not be_valid
+      end
+    end
   end
 
   describe '.reward_stars' do
@@ -51,6 +62,30 @@ describe WallPost do
         wall_post.post_type = :alpha_share
         wall_post.save
         expect(user.reload.star_count).to eql(60)
+      end
+    end
+
+    context ':sms_share' do
+      it 'grants 100 stars when a wall post is created' do
+        wall_post.post_type = :sms_share
+        wall_post.save
+        expect(user.reload.star_count).to eql(110)
+      end
+    end
+
+    context ':post_share' do
+      it 'grants 5 stars when a wall post is created' do
+        wall_post.post_type = :post_share
+        wall_post.save
+        expect(user.reload.star_count).to eql(5)
+      end
+    end
+
+    context ':sold_post_share' do
+      it 'grants 5 stars when a wall post is created' do
+        wall_post.post_type = :sold_post_share
+        wall_post.save
+        expect(user.reload.star_count).to eql(5)
       end
     end
   end
