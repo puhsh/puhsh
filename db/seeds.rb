@@ -1,6 +1,6 @@
 # Populate City Data 
 if Rails.env.development? && City.count == 0
-  City.create(name: 'Frisco', state: 'TX')
+  City.create(name: 'Frisco', state: 'TX', full_state_name: 'Texas')
   Zipcode.create(city: City.first, code: '75034', city_name: 'Frisco', state: 'TX', latitude: 33.1499, longitude: -96.8241)
 end
 

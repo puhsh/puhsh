@@ -1,7 +1,7 @@
 class City < ActiveRecord::Base
   include FriendlyId
 
-  attr_accessible :state, :name
+  attr_accessible :state, :name, :full_state_name
   friendly_id :name
 
   # Relations

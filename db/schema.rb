@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140315170903) do
+ActiveRecord::Schema.define(:version => 20140318115844) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20140315170903) do
   create_table "cities", :force => true do |t|
     t.string "state"
     t.string "name"
+    t.string "full_state_name"
   end
 
   add_index "cities", ["name"], :name => "index_cities_on_city"
