@@ -77,7 +77,7 @@ describe WallPost do
       it 'grants 5 stars when a wall post is created' do
         wall_post.post_type = :post_share
         wall_post.save
-        expect(user.reload.star_count).to eql(5)
+        expect(user.reload.star_count).to eql(15)
       end
     end
 
@@ -85,7 +85,7 @@ describe WallPost do
       it 'grants 5 stars when a wall post is created' do
         wall_post.post_type = :sold_post_share
         wall_post.save
-        expect(user.reload.star_count).to eql(5)
+        expect(user.reload.star_count).to eql(15)
       end
     end
   end
