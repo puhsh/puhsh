@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318123539) do
+ActiveRecord::Schema.define(:version => 20140318125648) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(:version => 20140318123539) do
     t.integer  "item_id"
     t.integer  "offer_id"
     t.string   "payment_type"
-    t.date     "sold_on"
+    t.datetime "sold_on"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(:version => 20140318123539) do
     t.integer  "recipient_id"
     t.string   "content"
     t.boolean  "read",         :default => false
-    t.date     "read_at"
+    t.datetime "read_at"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(:version => 20140318123539) do
     t.integer  "content_id"
     t.string   "content_type"
     t.boolean  "read",         :default => false
-    t.date     "read_at"
+    t.datetime "read_at"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
