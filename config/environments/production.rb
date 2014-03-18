@@ -63,7 +63,8 @@ Puhsh::Application.configure do
     user_name: 'info@puhsh.com',
     password: 'lZJlZOpAZEeY_NDSEL05qA',
     authentication: 'login',
-    domain: 'puhsh.com'
+    domain: 'puhsh.com',
+    host: 'www.puhsh.com'
   }
   
   # Enable threaded mode
