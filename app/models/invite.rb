@@ -6,6 +6,7 @@ class Invite < ActiveRecord::Base
   
   # Relations
   belongs_to :user
+  has_one :star, as: :subject
 
   # Callbacks
   

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Invite do
   it { should belong_to(:user) }
+  it { should have_one(:star) }
 
   let!(:invite) { FactoryGirl.build(:invite) }
 

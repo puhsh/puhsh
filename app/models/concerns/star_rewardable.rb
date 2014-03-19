@@ -11,22 +11,22 @@ module StarRewardable
   def reward_stars
     case self
     when User
-      Star.create(user: self, amount: 10, event: :new_account)
+      Star.create(user: self, amount: 10, event: :new_account, subject: self)
     when Invite
-      Star.create(user: self.user, amount: 3, event: :friend_invite)
+      Star.create(user: self.user, amount: 3, event: :friend_invite, subject: self)
     when Post
-      Star.create(user: self.user, amount: 10, event: :new_post)
+      Star.create(user: self.user, amount: 10, event: :new_post, subject: self)
     when WallPost
       if self.alpha_share?
-        Star.create(user: self.user, amount: 50, event: :shared_wall_post)
+        Star.create(user: self.user, amount: 50, event: :shared_wall_post, subject: self)
       elsif self.post_share?
-        Star.create(user: self.user, amount: 5, event: :shared_wall_post)
+        Star.create(user: self.user, amount: 5, event: :shared_wall_post, subject: self)
       elsif self.sms_share?
-        Star.create(user: self.user, amount: 100, event: :shared_wall_post)
+        Star.create(user: self.user, amount: 100, event: :shared_wall_post, subject: self)
       elsif self.app_share?
-        Star.create(user: self.user, amount: 50, event: :shared_wall_post)
+        Star.create(user: self.user, amount: 50, event: :shared_wall_post, subject: self)
       elsif self.sold_post_share?
-        Star.create(user: self.user, amount: 5, event: :shared_wall_post)
+        Star.create(user: self.user, amount: 5, event: :shared_wall_post, subject: self)
       end
     else
       nil
@@ -36,7 +36,7 @@ module StarRewardable
   def remove_stars
     case self
     when Post
-      Star.create(user: self.user, amount: -10, event: :deleted_post)
+      Star.create(user: self.user, amount: -10, event: :deleted_post, subject: self)
     else
       nil
     end

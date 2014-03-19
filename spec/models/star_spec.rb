@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Star do
   it { should belong_to(:user) }
+  it { should belong_to(:subject) }
 
   let(:user) { FactoryGirl.create(:user) }
   let(:star) { FactoryGirl.create(:star, amount: 10, event: :new_account, user: user) }

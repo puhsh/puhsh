@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe WallPost do
   it { should belong_to(:user) }
+  it { should have_one(:star) }
 
   describe '.post_type' do
     let!(:user) { FactoryGirl.create(:user) }

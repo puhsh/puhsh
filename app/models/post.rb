@@ -28,6 +28,7 @@ class Post < ActiveRecord::Base
   has_many :offers, dependent: :destroy
   has_many :flagged_posts, dependent: :destroy
   has_one :item_transaction, dependent: :nullify
+  has_one :star, as: :subject, dependent: :nullify
 
   # Callbacks
   before_save :add_category, :set_city
