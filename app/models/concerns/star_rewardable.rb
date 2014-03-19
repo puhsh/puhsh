@@ -22,7 +22,7 @@ module StarRewardable
       elsif self.post_share?
         Star.create(user: self.user, amount: 5, event: :shared_wall_post, subject: self)
       elsif self.sms_share?
-        Star.create(user: self.user, amount: 100, event: :shared_wall_post, subject: self)
+        Star.create(user: self.user, amount: 100, event: :shared_sms, subject: self)
       elsif self.app_share?
         Star.create(user: self.user, amount: 50, event: :shared_wall_post, subject: self)
       elsif self.sold_post_share?
