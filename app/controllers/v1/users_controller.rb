@@ -37,13 +37,11 @@ class V1::UsersController < V1::ApiController
                    .for_users_or_cities(current_user.users_following, current_user.cities_following)
                    .exclude_category_ids(params[:without_category_ids])
                    .exclude_post_ids(current_user.flagged_post_ids.members)
-                   .exclude_user(current_user)
                    .recent
     else
       @posts = Post.includes(:item, :post_images, :city, :user)
                    .for_users_or_cities(current_user.users_following, current_user.cities_following)
                    .exclude_post_ids(current_user.flagged_post_ids.members)
-                   .exclude_user(current_user)
                    .recent
     end
     render_paginated @posts

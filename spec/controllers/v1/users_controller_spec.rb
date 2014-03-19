@@ -181,11 +181,11 @@ describe V1::UsersController do
         expect(assigns[:posts]).to_not include(post)
       end
 
-      it 'does not return any posts belonging to the current user' do
+      it 'does return any posts belonging to the current user' do
         post2 = FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category)
         sign_in user
         get :activity, { id: user.id, access_token: access_token.token }, format: :json
-        expect(assigns[:posts]).to_not include(post2)
+        expect(assigns[:posts]).to include(post2)
       end
 
       it 'does return posts for cities the user is following' do
