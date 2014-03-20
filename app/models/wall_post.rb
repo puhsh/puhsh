@@ -30,7 +30,7 @@ class WallPost < ActiveRecord::Base
     if @@POST_TYPE_LIMITS.has_key? self.post_type
       limit = @@POST_TYPE_LIMITS[self.post_type]
       if WallPost.where(user_id: self.user_id, post_type: self.post_type).count > limit
-        errors.add(:post_type, 'cannot have more than #{limit} wall posts of type #{self.post_type}')
+        errors.add(:post_type, "cannot have more than #{limit} wall posts of type #{self.post_type}")
       end
     end
   end
