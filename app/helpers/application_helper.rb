@@ -11,8 +11,9 @@ module ApplicationHelper
 
   def facebook_share_this_url(resource = nil)
     if resource.kind_of?(Post)
-      'http://www.puhsh.com'
+      url_for(only_path: false)
     else
+      'http://www.puhsh.com'
     end
   end
 
