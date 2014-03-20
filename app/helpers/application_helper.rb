@@ -9,19 +9,27 @@ module ApplicationHelper
     end
   end
 
-  def facebook_share_this_url
-    request.url
-  end
-
-  def twitter_tweet_this_url
-    "https://www.twitter.com/share?status=#{url_for(only_path: false)}&text=Check this out on Puhsh!"
-  end
-
-  def pinterest_pin_it_url 
-    if @post
-      "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}&media=#{@post.post_images.first.image.url}"
+  def facebook_share_this_url(resource = nil)
+    if resource.kind_of?(Post)
+      'http://www.puhsh.com'
     else
-      "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}"
+    end
+  end
+
+  def twitter_tweet_this_url(resource = nil)
+    if resource.kind_of?(Post)
+      url = bitly_url(url_for(only_path: false))
+      "https://www.twitter.com/share?url=#{url}&text=Check out #{resource.title} on Puhsh!"
+    else
+      ''
+    end
+  end
+
+  def pinterest_pin_it_url(resource = nil)
+    if resource.kind_of?(Post)
+      "http://www.pinterest.com/pin/create/button/?url=#{url_for(only_path: false)}&media=#{@post.post_images.first.image.url}&description=#{@post.title} (via Puhsh)"
+    else
+      ''
     end
   end
 
@@ -31,5 +39,9 @@ module ApplicationHelper
 
   def android_app_store_url
     'https://play.google.com/store/apps/details?id=com.puhsh.puhshandroid&hl=en'
+  end
+
+  def bitly_url(long_url)
+    Bitly.client.shorten(long_url).short_url
   end
 end

@@ -23,7 +23,8 @@
     %header
       #peek-bar.show-for-large-up
         = render 'peek/bar'
-      = yield :nav
+      %nav#puhsh-logo
+        = render 'shared/nav'
     %section#main
       = yield
       #main_footer

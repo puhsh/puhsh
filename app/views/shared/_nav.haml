@@ -1,12 +1,5 @@
-%nav#puhsh-logo
-  .row.small-only-text-center.clearfix
-    .small-12.medium-6.large-6.columns.medium-text-left
-      = image_tag 'logo-2x.png', class: 'logo'
-    .small-12.medium-6.large-6.columns.medium-text-right
-      %a.button.facebook.with-share-text(onclick="FB.ui({method:'feed', link: '#{facebook_share_this_url}'}, function(response){});")
-        %i.fa.fa-facebook.fa-3x
-        %span Share This
-      %a.button.twitter(href=twitter_tweet_this_url)
-        %i.fa.fa-twitter.fa-2x
-      %a.button.pinterest(href=pinterest_pin_it_url)
-        %i.fa.fa-pinterest.fa-2x
+.row.small-only-text-center.clearfix
+  .small-12.medium-6.large-6.columns.medium-text-left
+    = image_tag 'logo-2x.png', class: 'logo'
+  .small-12.medium-6.large-6.columns.medium-text-right
+    = yield :share_links

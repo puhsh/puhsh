@@ -1,11 +1,18 @@
-- content_for :nav do
-  = render 'shared/nav'
-
 - content_for :og do
   = global_meta_tags title: @post.title, description: @post.description, url: request.url, image: @post.post_images.first.image.url(:small)
 
 - content_for :title do
   %title= "#{@post.title} - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
+
+- content_for :share_links do
+  %a.button.facebook.with-share-text(onclick="FB.ui({method:'feed', link: '#{facebook_share_this_url}'}, function(response){});")
+    %i.fa.fa-facebook.fa-3x
+    %span Share This
+  %a.button.twitter(href="#{twitter_tweet_this_url(@post)}")
+    %i.fa.fa-twitter.fa-2x
+  %a.button.pinterest(href="#{pinterest_pin_it_url(@post)}")
+    %i.fa.fa-pinterest.fa-2x
+
 
 #post
   .row#images
