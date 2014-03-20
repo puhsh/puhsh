@@ -21,7 +21,7 @@ class PostImage < ActiveRecord::Base
     {
       small: self.image.url(:small),
       medium: self.image.url(:medium),
-      large: self.image.url(:large)
+      original: self.image.url(:original)
     }
   end
 
