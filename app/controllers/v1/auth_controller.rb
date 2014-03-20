@@ -7,6 +7,7 @@ class V1::AuthController < V1::ApiController
         @user.generate_access_token!
         @user.store_facebook_access_token!(request.headers['HTTP_AUTHORIZATION'])
         sign_in :user, @user, event: :token_authentication, force: true
+        reset_session
         render json: { user: @user, access_token: @user.reload.access_token.token }
       else
         no_content!
