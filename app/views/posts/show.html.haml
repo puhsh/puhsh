@@ -11,7 +11,7 @@
         - @post.post_images.each do |image|
           %li
             %a(href="#{image.image.url}")
-              = image_tag image.image.url
+              = image_tag image.image.url(:medium)
 
   .row#heading
     .small-12.columns.text-center
