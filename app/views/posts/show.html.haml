@@ -1,6 +1,9 @@
 - content_for :nav do
   = render 'shared/nav'
 
+- content_for :og do
+  = global_meta_tags title: @post.title, description: @post.description, url: request.url, image: @post.post_images.first.image.url(:small)
+
 - content_for :title do
   %title= "#{@post.title} - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
 

@@ -5,6 +5,11 @@
     %meta(charset="utf-8")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta(name='apple-itunes-app' content='app-id=761535377')
+
+    %meta(property='og:site_name' content='Puhsh')
+    %meta(property='og:type' content='website')
+    = yield :og
+
     = favicon_link_tag '/favicon.ico'
 
     = stylesheet_link_tag 'application', media: 'all'
