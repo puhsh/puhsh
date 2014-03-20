@@ -5,7 +5,7 @@ class V1::CategoriesController < V1::ApiController
   load_and_authorize_resource
 
   def index
-    @categories = Category.active.includes(:subcategories).where(subcategories: { status: :active }).alpha_by_subcategory.limit(20)
+    @categories = Category.active.includes(:subcategories).where(subcategories: { status: :active }).alpha_by_category.alpha_by_subcategory.limit(20)
     render json: @categories
   end
 
