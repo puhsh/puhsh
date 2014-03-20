@@ -3,9 +3,9 @@ class PostImage < ActiveRecord::Base
   
   # Paperclip Attributes
   has_attached_file :image,
-                    styles: { original: '1280x1280#' },
+                    styles: { original: '1280x1280#', medium: '640x640#' },
                     s3_permissions: :public_read,
-                    path: "posts/:post_id/post_images/:id.:extension"
+                    path: "posts/:post_id/post_images/:slug-:id-:style.:extension"
 
   # Relations
   belongs_to :post
@@ -13,6 +13,6 @@ class PostImage < ActiveRecord::Base
   # Callbacks
 
   # Validations
-  validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png)
+  validates_attachment_content_type :image, content_type: ['image/jpeg', 'image/jpg', 'image/png']
 
 end

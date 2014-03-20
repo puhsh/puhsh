@@ -7,3 +7,11 @@ Paperclip::Attachment.default_options[:s3_permissions] = :private
 Paperclip.interpolates :post_id do |attachment, style|
   attachment.instance.post.id
 end
+
+Paperclip.interpolates :slug do |attachment, style|
+  attachment.instance.post.slug
+end
+
+Paperclip.interpolates :id do |attaachment, style|
+  attaachment.instance.id
+end

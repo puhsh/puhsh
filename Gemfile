@@ -27,7 +27,7 @@ gem 'omniauth-facebook', '1.5.1'
 gem 'unicorn', '4.8.2'
 
 # Storage
-gem 'paperclip', '4.1.0'
+gem 'paperclip', '3.5.3'
 
 # Email
 gem 'gibbon', '1.0.4'
