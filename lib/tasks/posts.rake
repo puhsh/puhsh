@@ -7,10 +7,12 @@ namespace :posts do
     bucket.objects.each do |object|
       current_key = object.key
       post_image_id = current_key.split("/").last.split(".").first # what a hack but it gets the job done. quickly gets the post image id
-      post_image = PostImage.find(post_image_id)
-      new_key = post_image.image.path
-      new_object = bucket.objects[new_key]
-      object.copy_to new_object, {acl: :public_read}
+      post_image = PostImage.find_by_id(post_image_id)
+      if post_image
+        new_key = post_image.image.path
+        new_object = bucket.objects[new_key]
+        object.copy_to new_object, {acl: :public_read}
+      end
     end
   end
 end

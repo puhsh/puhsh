@@ -15,4 +15,13 @@ class PostImage < ActiveRecord::Base
   # Validations
   validates_attachment_content_type :image, content_type: ['image/jpeg', 'image/jpg', 'image/png']
 
+  # Methods
+
+  def image_urls
+    {
+      medium: self.image.url(:medium),
+      large: self.image.url(:large)
+    }
+  end
+
 end
