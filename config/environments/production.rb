@@ -55,7 +55,7 @@ Puhsh::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
 
-  # Action Mailer
+  # Mandrill Mailer
   config.action_mailer.default_url_options = { 
     address: 'smtp.mandrillapp.com',
     port: 587,
@@ -64,8 +64,10 @@ Puhsh::Application.configure do
     password: 'lZJlZOpAZEeY_NDSEL05qA',
     authentication: 'login',
     domain: 'puhsh.com',
-    host: 'www.puhsh.com'
+    host: 'puhsh.com'
   }
+
+  config.mandrill_mailer.default_url_options = { host: 'puhsh.com' }
   
   # Enable threaded mode
   # config.threadsafe!

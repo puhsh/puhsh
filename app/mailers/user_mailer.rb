@@ -1,5 +1,4 @@
 class UserMailer < MandrillMailer::TemplateMailer
-  include Rails.application.routes.url_helpers
   default from: 'puhsher@puhsh.com'
   
   def welcome_email(user)
