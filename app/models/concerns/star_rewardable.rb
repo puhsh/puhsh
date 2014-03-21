@@ -8,6 +8,10 @@ module StarRewardable
 
   protected
 
+  def reward_additional_stars!(resource, event, amount)
+    Star.create(user: resource.user, amount: amount, event: event, subject: resource)
+  end
+
   def reward_stars
     case self
     when User
@@ -27,6 +31,10 @@ module StarRewardable
         Star.create(user: self.user, amount: 50, event: :shared_wall_post, subject: self)
       elsif self.sold_post_share?
         Star.create(user: self.user, amount: 5, event: :shared_wall_post, subject: self)
+      end
+    when Offer
+      if self.awarded? && !self.sold_offline?
+        Star.create(user: self.user, amount: 10, event: :bought_item, subject: self)
       end
     else
       nil

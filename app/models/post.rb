@@ -106,6 +106,7 @@ class Post < ActiveRecord::Base
 
   def sold!
     self.update_attributes(status: :sold)
+    self.reward_additional_stars!(self, :sold_item, 10)
   end
 
   protected

@@ -311,4 +311,22 @@ describe Post do
       expect(user.reload.stars.collect(&:event)).to include(:deleted_post)
     end
   end
+
+  describe '.sold!' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'rewards the seller stars' do
+      new_post.sold!
+      expect(user.reload.stars.map(&:event)).to include(:sold_item)
+      expect(user.reload.star_count).to eql(30)
+    end
+
+    it 'marks the item as sold' do
+      new_post.sold!
+      expect(new_post.reload).to be_sold
+    end
+  end
 end

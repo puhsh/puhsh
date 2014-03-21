@@ -69,25 +69,13 @@ describe Offer do
     end
   end
 
-  describe '.item_sold!' do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:user2) { FactoryGirl.create(:user) }
-    let(:post) { FactoryGirl.create(:post, user: user) }
-    let(:item) { FactoryGirl.create(:item, post: post) }
-    let(:offer) { FactoryGirl.create(:offer, post: post, item: item, user: user2) }
-
-    it 'does not generate a transaction if called' do
-      offer.item_sold!
-      expect(offer.reload.item_transaction).to be_nil
-    end
-  end
-
   describe '.generate_item_transaction_record' do
     let(:user) { FactoryGirl.create(:user) }
     let(:user2) { FactoryGirl.create(:user) }
     let(:post) { FactoryGirl.create(:post, user: user) }
     let(:item) { FactoryGirl.create(:item, post: post) }
     let(:offer) { FactoryGirl.create(:offer, post: post, item: item, user: user2) }
+    let(:offer2) { FactoryGirl.build(:offer, post: post, item: item, user: user2) }
 
     it 'generates the transaction record if the item was awarded to a buyer' do
       offer.awarded!
@@ -112,10 +100,36 @@ describe Offer do
       expect(offer.reload.item_transaction.sold_on).to_not be_nil
     end
 
+    it 'sets buyer_id to null if the item was sold offline' do
+      offer.user = nil
+      offer.save
+      offer.awarded!
+      expect(offer.reload.item_transaction.buyer_id).to be_nil
+    end
+
+    it 'sets offer_id' do
+      offer.awarded!
+      expect(offer.reload.item_transaction.offer_id).to eql(offer.id)
+    end
+
     it 'sets the post as sold' do
       offer.awarded!
       expect(post.reload).to be_sold
     end
+
+    it 'creates a star for the user who bought the item' do
+      offer2.status = :awarded
+      offer2.save
+      expect(user2.reload.stars.map(&:event)).to include(:bought_item)
+      expect(user2.reload.star_count).to eql(20)
+    end
+
+     it 'does not create any stars if the offer was for a sale offline' do
+       offer.user = nil
+       offer.save
+       offer.awarded!
+       expect(Star.where(subject_id: offer, subject_type: 'Offer')).to be_empty
+     end
   end
 
   describe '.remove_post_id_from_redis' do
