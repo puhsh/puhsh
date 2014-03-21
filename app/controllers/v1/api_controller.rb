@@ -32,7 +32,6 @@ class V1::ApiController < ActionController::Metal
   rescue_from ActiveRecord::RecordNotFound, with: :not_found!
   rescue_from ActionController::RoutingError, with: :not_found!
 
-  WHITELISTED_CONTROLLERS = %w( PostsController )
 
   def render_paginated(resource, opts = {})
     defaults = { already_paginated: false, serializer: nil }
@@ -41,7 +40,7 @@ class V1::ApiController < ActionController::Metal
     if opts[:already_paginated]
       items = resource
       total_pages = items.total_pages
-      current_page = params[:page].to_i || 1
+      current_page = params[:page].present? ? params[:page].to_i : 1
     else
       page = params[:page] || 1
       per_page = params[:per_page] || 25
