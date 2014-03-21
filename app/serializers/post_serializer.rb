@@ -21,7 +21,7 @@ class PostSerializer < ActiveModel::Serializer
   def url
     if object && object.city && object.user
       if Rails.env.production?
-        post_url(object.city.slug, object.user.slug, object.slug, host: 'www.puhsh.com')
+        post_url(object.city.slug, object.user.slug, object.slug, host: 'www.puhsh.com', protocol: 'http')
       else
         post_url(object.city.slug, object.user.slug, object.slug)
       end
