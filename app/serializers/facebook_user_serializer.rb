@@ -3,11 +3,11 @@ class FacebookUserSerializer < ActiveModel::Serializer
              :facebook_email, :contact_email, :unread_notifications_count
 
   def id
-    object.kind_of?(User) ? object.id : nil
+    get_user_id
   end
 
   def uid
-    object.kind_of?(User) ? object.uid : object['id']
+    get_user_uid
   end
 
   def first_name
@@ -27,14 +27,14 @@ class FacebookUserSerializer < ActiveModel::Serializer
   end
 
   def avatar_url
-    "http://graph.facebook.com/#{object['id']}/picture?type=square"
+    "http://graph.facebook.com/#{get_user_uid}/picture?type=square"
   end
 
   def avatar_urls
     {
-      small: "http://graph.facebook.com/#{object['uid']}/picture?type=small",
-      normal: "http://graph.facebook.com/#{object['uid']}/picture?type=normal",
-      large: "http://graph.facebook.com/#{object['uid']}/picture?type=large",
+      small: "http://graph.facebook.com/#{get_user_uid}/picture?type=small",
+      normal: "http://graph.facebook.com/#{get_user_uid}/picture?type=normal",
+      large: "http://graph.facebook.com/#{get_user_uid}/picture?type=large",
     }
   end
 
@@ -67,5 +67,15 @@ class FacebookUserSerializer < ActiveModel::Serializer
   
   def unread_notifications_count
     object['unread_notifications_count']
+  end
+
+  protected
+
+  def get_user_id
+    object.kind_of?(User) ? object.id : nil
+  end
+
+  def get_user_uid
+    object.kind_of?(User) ? object.uid : object['id']
   end
 end
