@@ -40,7 +40,7 @@ class RelatedProduct
 
     if response_hash && response_hash['ItemSearchResponse']
       items = response_hash['ItemSearchResponse']['Items']
-      item = items['Item'].sample if items['Item'] && items['Item'].count > 0
+      item = items['Item'].sample if items['Item'] && items['Item'].count > 0 && items['Item'].kind_of?(Array)
     end
 
     if item.present? && item['ItemAttributes'].present?
