@@ -29,7 +29,7 @@ class RelatedProduct
   end
 
   def response_group
-    'Small,Images,ItemAttributes,OfferSummary'
+    'Small,Images,ItemAttributes,OfferSummary,Offers'
   end
 
   protected
@@ -44,9 +44,9 @@ class RelatedProduct
     end
 
     if item.present? && item['ItemAttributes'].present?
-      if item['OfferSummary'].present?
+      if item['Offers'] && item['Offers']['Offer'] && item['Offers']['Offer']['OfferListing']
         { 
-          title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['OfferSummary']['LowestNewPrice'], 
+          title: item['ItemAttributes'].try { |x| x['Title'] }, lowest_price: item['Offers']['Offer']['OfferListing']['Price'],
           list_price: item['ItemAttributes'].try { |x| x['ListPrice'] }, url: item['DetailPageURL'], image_url: item['LargeImage'].try { |x| x['URL'] } 
         }
       else
