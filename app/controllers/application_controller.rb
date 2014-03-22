@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found!
-  rescue_from ActionController::RoutingError, with: :not_found!
+  rescue_from ActionController::RoutingError do |exception|
+    not_found!
+  end
 
   def peek_enabled?
     current_user_admin?
