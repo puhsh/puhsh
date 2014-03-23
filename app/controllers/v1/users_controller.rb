@@ -33,13 +33,13 @@ class V1::UsersController < V1::ApiController
 
   def activity
     if params[:without_category_ids]
-      @posts = Post.includes(:item, :post_images, :city, :user)
+      @posts = Post.includes(:item, {post_images: :post}, :city, :user)
                    .for_users_or_cities(current_user.users_following, current_user.cities_following)
                    .exclude_category_ids(params[:without_category_ids])
                    .exclude_post_ids(current_user.flagged_post_ids.members)
                    .recent
     else
-      @posts = Post.includes(:item, :post_images, :city, :user)
+      @posts = Post.includes(:item, {post_images: :post}, :city, :user)
                    .for_users_or_cities(current_user.users_following, current_user.cities_following)
                    .exclude_post_ids(current_user.flagged_post_ids.members)
                    .recent
