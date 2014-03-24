@@ -23,7 +23,7 @@
     %header
       #peek-bar.show-for-large-up
         = render 'peek/bar'
-      %nav#puhsh-logo
+      %nav#puhsh-logo(class="#{@hide_nav ? 'hide' : 'show'}")
         = render 'shared/nav'
     %section#main
       = yield
