@@ -26,8 +26,9 @@ The work flow is as follows
 
 1. Pull request is merged into Master.
 2. Jenkins pulls down the latest code and runs the tests.
-3a. If the tests all pass, Jenkins deploys to production shortly after.
- b. If the tests fail, no further builds will be deployed to production till all the specs are green again.
+3. After the tests are run:
+  * If the tests all pass, Jenkins deploys to production shortly after.
+  * If the tests fail, no further builds will be deployed to production till all the specs are green again.
 
 ## Development Best Practices
 Here are some recommendations to effectively develop against the Rails App
