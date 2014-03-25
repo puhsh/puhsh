@@ -5,7 +5,7 @@ class V1::StarsController < V1::ApiController
   load_and_authorize_resource
 
   def index
-    @stars = Star.where(user_id: current_user.id).order('created_at desc')
+    @stars = Star.where(user_id: current_user.id).recent
     render json: @stars
   end
 end

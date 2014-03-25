@@ -1,4 +1,5 @@
 class Star < ActiveRecord::Base
+  include Sortable
   attr_accessible :user, :user_id, :amount, :event, :subject, :subject_id, :subject_type
   symbolize :event, in: [:new_account, :alpha_registration, :friend_invite, :new_post, :shared_wall_post, :shared_sms, :deleted_post, :sold_item, :bought_item], scopes: false, methods: false
 
