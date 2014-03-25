@@ -8,7 +8,7 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   belongs_to :item
   belongs_to :post
-  has_one :item_transaction
+  has_one :item_transaction, dependent: :nullify
   has_one :star, as: :subject
 
   # Callbacks
