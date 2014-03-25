@@ -59,7 +59,9 @@ class Offer < ActiveRecord::Base
     if self.was_just_sold? && !self.item_transaction.present?
       ItemTransaction.new.tap do |transaction|
         transaction.seller_id = self.post.user_id
-        transaction.buyer_id = self.user_id.present? ? self.user_id : nil
+        if self.user_id.present?
+          transaction.buyer_id = self.user_id.present?
+        end
         transaction.post_id = self.post_id
         transaction.item_id = self.item_id
         transaction.offer_id = self.id
