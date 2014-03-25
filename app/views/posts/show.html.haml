@@ -27,7 +27,10 @@
     .small-12.columns.text-center
       %h1 
         = @post.title
-        %span.price-inline(class="#{post_item_price_class(@post.item)}")= post_price(@post.item)
+        - if @post.sold?
+          %span.price-inline SOLD
+        - else
+          %span.price-inline(class="#{post_item_price_class(@post.item)}")= post_price(@post.item)
 
   .row#seller-info
     .small-12.medium-6.small-centered.medium-centered.columns
