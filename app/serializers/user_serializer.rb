@@ -3,7 +3,7 @@ class UserSerializer < ActiveModel::Serializer
              :longitude, :home_city, :gender, :facebook_email, :contact_email, :posts_count, :posts_flagged_count,
              :app_invite, :star_count, :is_following, :avatar_urls, :unread_notifications_count
 
-  has_one :home_city
+  has_one :home_city, serializer: HomeCitySerializer
   has_one :app_invite
 
   def is_following

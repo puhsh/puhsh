@@ -317,6 +317,7 @@ describe Post do
     let!(:user) { FactoryGirl.create(:user, home_city: city) }
     let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
     let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:new_post2) { FactoryGirl.build(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
 
     it 'rewards the seller stars' do
       new_post.sold!
@@ -327,6 +328,18 @@ describe Post do
     it 'marks the item as sold' do
       new_post.sold!
       expect(new_post.reload).to be_sold
+    end
+  end
+
+  describe '.store_users_who_have_posted_for_city' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:new_post) { FactoryGirl.build(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'stores the user id in a redis set for the city' do
+      new_post.save
+      expect(city.reload.user_ids_with_posts_in_city.members).to include(user.id.to_s)
     end
   end
 end

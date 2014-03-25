@@ -24,4 +24,31 @@ describe City do
       expect(city.reload.slug).to eql("#{city.name.downcase}-#{city.full_state_name.downcase}")
     end
   end
+
+  describe '.pioneer?' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    it 'is true if the user is the only one with posts in the city' do
+      expect(city.reload.pioneer?(user)).to be_true
+      expect(city.reload.pioneer?(user2)).to be_false
+    end
+
+    it 'is true if the user keeps adding posts to the city but is still the only one posting' do
+      FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory)
+      FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory)
+      FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory)
+      expect(city.reload.pioneer?(user)).to be_true
+      expect(city.reload.pioneer?(user2)).to be_false
+    end
+
+    it 'is false if the user is not the only one with posts in the city' do
+      FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory)
+      expect(city.reload.pioneer?(user)).to be_false
+      expect(city.reload.pioneer?(user2)).to be_false
+    end
+  end
 end

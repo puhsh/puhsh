@@ -1,5 +1,6 @@
 class City < ActiveRecord::Base
   include FriendlyId
+  include Redis::Objects
 
   attr_accessible :state, :name, :full_state_name
   friendly_id :full_city_state, use: :slugged
@@ -14,6 +15,11 @@ class City < ActiveRecord::Base
   # Callbacks
   
   # Validations
+  
+  # Scopes
+
+  # Redis Attributes
+  set :user_ids_with_posts_in_city
   
   # Solr
   searchable do 
@@ -40,5 +46,17 @@ class City < ActiveRecord::Base
 
   def follow!(user)
     FollowedCity.create({user: user, city: self})
+  end
+
+  def number_of_users_with_posts_in_city
+    self.user_ids_with_posts_in_city.members.size
+  end
+
+  def user_has_post_in_city?(user)
+    self.user_ids_with_posts_in_city.member?(user.id.to_s)
+  end
+
+  def pioneer?(user)
+    self.number_of_users_with_posts_in_city == 1 && self.user_has_post_in_city?(user)
   end
 end

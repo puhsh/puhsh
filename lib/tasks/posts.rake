@@ -15,4 +15,12 @@ namespace :posts do
       end
     end
   end
+
+
+  desc 'Store post user ids in cities'
+  task :store_user_ids_for_cities => :environment do
+    Post.includes(:city).find_each do |post|
+      post.send(:store_users_who_have_posted_for_city)
+    end
+  end
 end

@@ -36,6 +36,7 @@ class Post < ActiveRecord::Base
   after_commit :store_subcategory_name, on: :create
   after_commit :send_new_post_email, on: :create
   after_commit :remove_post_id_from_redis, on: :destroy
+  after_commit :store_users_who_have_posted_for_city, on: :create
 
   # Validations
   validates :title, presence: true, length: { maximum: 50 }
@@ -129,6 +130,10 @@ class Post < ActiveRecord::Base
 
   def send_new_post_email
     Puhsh::Jobs::EmailJob.send_new_post_email({post_id: self.id})
+  end
+  
+  def store_users_who_have_posted_for_city
+    self.city.user_ids_with_posts_in_city << self.user_id
   end
 
   def remove_post_id_from_redis

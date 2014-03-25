@@ -3,7 +3,7 @@ class SimpleUserSerializer < ActiveModel::Serializer
              :longitude, :gender, :facebook_email, :contact_email, :posts_count, :posts_flagged_count,
              :star_count, :is_following, :avatar_urls, :unread_notifications_count
 
-  has_one :home_city
+  has_one :home_city, serializer: HomeCitySerializer
 
   def is_following
     current_user ? current_user.following?(object) : false
