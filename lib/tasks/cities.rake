@@ -4,21 +4,21 @@ namespace :cities do
   task :load_us_zipcodes => :environment do
     Zipcode.delete_all
     ActiveRecord::Base.connection.execute('ALTER TABLE zipcodes AUTO_INCREMENT = 1')
-    ActiveRecord::Base.connection.execute(IO.read('db/city_data/us-cities.sql'))
+    if Rails.env.development?
+      ActiveRecord::Base.connection.execute(IO.read('db/city_data/us-cities.sql'))
+    end
   end
 
   desc 'Populate US Cities'
   task :populate_us_cities => :environment do
     City.delete_all
     ActiveRecord::Base.connection.execute('ALTER TABLE cities AUTO_INCREMENT = 1')
-    Zipcode.where('city_id is null').group(:city_name, :state).order('city_name, state asc').find_in_batches(batch_size: 10000) do |zipcodes|
-      zipcodes.each do |zipcode|
-        if zipcode.location_type == 'PRIMARY'
-          city_name = zipcode.city_name.split(" ").map(&:capitalize).join(" ")
-          City.create(state: zipcode.state, name: city_name)
-        else
-          zipcode.destroy
-        end
+    Zipcode.where('city_id is null').group(:city_name, :state).order('city_name, state asc').find_each do |zipcode|
+      if zipcode.location_type == 'PRIMARY'
+        city_name = zipcode.city_name.split(" ").map(&:capitalize).join(" ")
+        City.create(state: zipcode.state, name: city_name)
+      else
+        zipcode.destroy
       end
     end
   end
