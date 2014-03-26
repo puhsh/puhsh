@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140326161025) do
+ActiveRecord::Schema.define(:version => 20140326191603) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -413,6 +413,7 @@ ActiveRecord::Schema.define(:version => 20140326161025) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "location_type"
+    t.string   "reference_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
