@@ -4,23 +4,28 @@ namespace :cities do
   task :load_us_zipcodes => :environment do
     Zipcode.delete_all
     ActiveRecord::Base.connection.execute('ALTER TABLE zipcodes AUTO_INCREMENT = 1')
-    ActiveRecord::Base.connection.execute(IO.read('db/city_data/us-cities.sql'))
+    if Rails.env.development?
+      ActiveRecord::Base.connection.execute(IO.read('db/city_data/us-cities.sql'))
+    end
   end
 
   desc 'Populate US Cities'
   task :populate_us_cities => :environment do
     City.delete_all
     ActiveRecord::Base.connection.execute('ALTER TABLE cities AUTO_INCREMENT = 1')
-    Zipcode.group(:city_name, :state).order('city_name, state asc').find_in_batches(batch_size: 10000) do |zipcodes|
-      zipcodes.each do |zipcode|
-        City.create(state: zipcode.state, name: zipcode.city_name)
+    Zipcode.where('city_id is null').group(:city_name, :state).order('city_name, state asc').find_each do |zipcode|
+      if zipcode.location_type == 'PRIMARY'
+        city_name = zipcode.city_name.split(" ").map(&:capitalize).join(" ")
+        City.create(state: zipcode.state, name: city_name)
+      else
+        zipcode.destroy
       end
     end
   end
 
   desc 'Associate cities to zipcodes'
   task :associate_cities_to_zipcodes => :environment do
-    Zipcode.find_in_batches(batch_size: 10000) do |zipcodes|
+    Zipcode.where('city_id is null').find_in_batches(batch_size: 10000) do |zipcodes|
       zipcodes.each do |zipcode|
         zipcode.city = City.where(name: zipcode.city_name, state: zipcode.state).first
         zipcode.created_at = DateTime.now
@@ -70,6 +75,7 @@ namespace :cities do
       "Oklahoma" => "OK",
       "Oregon" => "OR",
       "Pennsylvania" => "PA",
+      "Puerto Rico" => "PR",
       "Rhode Island" => "RI",
       "South Carolina" => "SC",
       "South Dakota" => "SD",
@@ -80,11 +86,32 @@ namespace :cities do
       "Virginia" => "VA",
       "Washington" => "WA",
       "West Virginia" => "WV",
-      "Wyoming" => "WY"
+      "Wisconsin" => "WI",
+      "Wyoming" => "WY",
+      "Virgin Islands" => "VI",
+      "Washington DC" => "DC",
+      "Guam" => "GU",
+      "US Armed Forces Pacific" => "AP",
+      "Palau" => "PW",
+      "Marshall Islands" => "MH",
+      "Federated States of Micronesia" => "FM",
+      "Northern Mariana Islands" => "MP",
+      "American Samoa" => "AS",
+      "US Armed Forces Europe" => "AE",
+      "US Armed Forces Americas" => "AA"
     }
     states.each do |full_state_name, abbrv|
       cities = City.where(state: abbrv)
       cities.update_all(full_state_name: full_state_name)
+    end
+  end
+
+  desc 'Assign home cities to users'
+  task :assign_home_cities_to_users => :environment do
+    User.find_each do |user|
+      city = Zipcode.near(user, 5).first.city
+      user.home_city = city
+      user.save
     end
   end
 end

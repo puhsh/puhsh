@@ -10,7 +10,7 @@ class City < ActiveRecord::Base
   has_many :followed_cities
   has_many :users, through: :followed_cities
   has_many :posts
-  has_many :zipcodes
+  has_many :zipcodes, dependent: :destroy
 
   # Callbacks
   
