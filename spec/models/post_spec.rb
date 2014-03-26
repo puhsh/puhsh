@@ -115,11 +115,31 @@ describe Post do
   describe '.reward_stars' do
     let!(:city) { FactoryGirl.create(:city) }
     let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user2) { FactoryGirl.create(:user, home_city: city) }
     let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
-    let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:new_post) { FactoryGirl.build(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+    let!(:new_post2) { FactoryGirl.build(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
 
     it 'grants a user 10 stars after creating a post' do
-      expect(user.reload.star_count).to eql(20)
+      new_post.save
+      expect(user.reload.stars.map(&:event)).to include(:new_post)
+    end
+
+    it 'grants a user 10 stars if they pioneered the city' do
+      new_post.save
+      expect(user.reload.stars.map(&:event)).to include(:pioneered_city)
+    end
+
+    it 'does not grant the user 10 additional stars if they did not pioneer the city' do
+      new_post.save
+      city.reload
+      new_post2.save
+      expect(user.reload.stars.map(&:event)).to include(:new_post)
+      expect(user.reload.stars.map(&:event)).to include(:pioneered_city)
+      expect(user.reload.star_count).to eql(30)
+      expect(user2.reload.stars.map(&:event)).to include(:new_post)
+      expect(user2.reload.stars.map(&:event)).to_not include(:pioneered_city)
+      expect(user2.reload.star_count).to eql(20)
     end
   end
 
@@ -312,9 +332,9 @@ describe Post do
     let!(:new_post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
 
     it 'removes the stars' do
-      expect(user.reload.star_count).to eql(20)
+      expect(user.reload.star_count).to eql(30)
       new_post.destroy
-      expect(user.reload.star_count).to eql(10)
+      expect(user.reload.star_count).to eql(20)
     end
 
     it 'creates a star record with negative stars and a deleted_post event' do
@@ -333,7 +353,7 @@ describe Post do
     it 'rewards the seller stars' do
       new_post.sold!
       expect(user.reload.stars.map(&:event)).to include(:sold_item)
-      expect(user.reload.star_count).to eql(30)
+      expect(user.reload.star_count).to eql(40)
     end
 
     it 'marks the item as sold' do
