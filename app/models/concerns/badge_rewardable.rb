@@ -13,6 +13,7 @@ module BadgeRewardable
       Badge.award!('Early Adopter', self) if User::ALPHA_ENABLED
     when Post
       Badge.award!('Newbie Poster', self.user) if self.user.posts_count_was == 0
+      Badge.award!('Pioneer Badge', self.user) if self.city && self.city.posts_count_was == 0
     end
   end
 
