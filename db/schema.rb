@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319121325) do
+ActiveRecord::Schema.define(:version => 20140318125648) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -70,10 +70,11 @@ ActiveRecord::Schema.define(:version => 20140319121325) do
   end
 
   create_table "cities", :force => true do |t|
-    t.string "state"
-    t.string "name"
-    t.string "full_state_name"
-    t.string "slug"
+    t.string  "state"
+    t.string  "name"
+    t.string  "full_state_name"
+    t.string  "slug"
+    t.integer "posts_count",     :default => 0
   end
 
   add_index "cities", ["name"], :name => "index_cities_on_city"
@@ -322,13 +323,10 @@ ActiveRecord::Schema.define(:version => 20140319121325) do
     t.integer  "user_id"
     t.integer  "amount"
     t.string   "event"
-    t.integer  "subject_id"
-    t.string   "subject_type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "stars", ["subject_id", "subject_type"], :name => "index_stars_on_subject_id_and_subject_type"
   add_index "stars", ["user_id"], :name => "index_stars_on_user_id"
 
   create_table "subcategories", :force => true do |t|

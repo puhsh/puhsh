@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
 
   # Relations
   belongs_to :user, counter_cache: :posts_count
-  belongs_to :city
+  belongs_to :city, counter_cache: :posts_count
   belongs_to :category
   belongs_to :subcategory
   has_one :item, dependent: :destroy
