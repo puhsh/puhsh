@@ -11,17 +11,21 @@ namespace :cities do
   task :populate_us_cities => :environment do
     City.delete_all
     ActiveRecord::Base.connection.execute('ALTER TABLE cities AUTO_INCREMENT = 1')
-    Zipcode.group(:city_name, :state).order('city_name, state asc').find_in_batches(batch_size: 10000) do |zipcodes|
+    Zipcode.where('city_id is null').group(:city_name, :state).order('city_name, state asc').find_in_batches(batch_size: 10000) do |zipcodes|
       zipcodes.each do |zipcode|
-        city_name = zipcode.city_name.split(" ").map(&:capitalize).join(" ")
-        City.create(state: zipcode.state, name: city_name)
+        if zipcode.location_type == 'PRIMARY'
+          city_name = zipcode.city_name.split(" ").map(&:capitalize).join(" ")
+          City.create(state: zipcode.state, name: city_name)
+        else
+          zipcode.destroy
+        end
       end
     end
   end
 
   desc 'Associate cities to zipcodes'
   task :associate_cities_to_zipcodes => :environment do
-    Zipcode.find_in_batches(batch_size: 10000) do |zipcodes|
+    Zipcode.where('city_id is null').find_in_batches(batch_size: 10000) do |zipcodes|
       zipcodes.each do |zipcode|
         zipcode.city = City.where(name: zipcode.city_name, state: zipcode.state).first
         zipcode.created_at = DateTime.now

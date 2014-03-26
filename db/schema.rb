@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140326022128) do
+ActiveRecord::Schema.define(:version => 20140326161025) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -412,8 +412,9 @@ ActiveRecord::Schema.define(:version => 20140326022128) do
     t.string   "state"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "location_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "zipcodes", ["city_id"], :name => "index_zipcodes_on_city_id"
