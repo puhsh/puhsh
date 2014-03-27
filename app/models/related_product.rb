@@ -7,11 +7,18 @@ class RelatedProduct
       user_location = [user.latitude, user.longitude].join(",")
       requestor_id = Rails.env.production? ? 'test' : 'test'
 
-       results = Retailigence::Product.search({
-         userlocation: user_location,
-         requestorid: requestor_id,
-         name: query
-       }).results
+      # HACK 
+      # The Retailigence gem we are using does not handle no results found.
+      # Need to roll our own or submit a PR
+      begin
+        results = Retailigence::Product.search({
+          userlocation: user_location,
+          requestorid: requestor_id,
+          name: query
+        }).results
+      rescue
+        results = []
+      end
 
        results = results.reject { |x| x.url.nil? }
        results
