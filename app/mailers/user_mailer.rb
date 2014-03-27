@@ -1,4 +1,5 @@
 class UserMailer < MandrillMailer::TemplateMailer
+  include ApplicationHelper
   default from: 'puhsher@puhsh.com'
   
   def welcome_email(user)
@@ -16,7 +17,7 @@ class UserMailer < MandrillMailer::TemplateMailer
   def new_post_email(post)
     @post = post
     @user = @post.user
-    @post_url = post_url(@post.city.slug, @user.slug, @post.slug)
+    @post_url = bitly_url(post_url(@post.city.slug, @user.slug, @post.slug))
     mandrill_mail template: 'item-posted',
                   to: @user.contact_email,
                   vars: {
