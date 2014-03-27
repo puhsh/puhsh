@@ -617,6 +617,8 @@ describe User do
       it { should be_able_to(:read, Notification.new(user: user2)) }
       
       it { should be_able_to(:read, RelatedProduct.new) }
+
+      it { should_not be_able_to(:manage, FacebookTestUser.new) }
     end
   end
 end

@@ -49,6 +49,8 @@ class Ability
       can :read, RelatedProduct
       
       cannot :manage, ItemTransaction
+
+      cannot :manage, FacebookTestUser
     end
   end
 end
