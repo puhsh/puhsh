@@ -39,7 +39,6 @@ gem 'rapns', '3.4.1'
 
 # Amazon Related
 gem 'aws-sdk', '1.31.3'
-gem 'vacuum', '1.0.0'
 
 # Peek
 gem 'peek', '0.1.6'
