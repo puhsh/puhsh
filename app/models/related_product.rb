@@ -23,7 +23,7 @@ class RelatedProduct
        results = results.reject { |x| x.url.nil? }
        results
     else
-      {}
+      []
     end
   end
 end
