@@ -18,7 +18,8 @@ class RelatedProductSerializer < ActiveModel::Serializer
   end
 
   def image_urls
-    object.product['images'].map { |x| x['ImageInfo'] }
+    mappings = {'imageName' => 'image_name', 'link' => 'link'}
+    object.product['images'].map { |x| Hash[x['ImageInfo'].map { |k,v| [mappings[k], v]}]}
   end
 
   def retailer
