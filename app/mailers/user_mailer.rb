@@ -1,5 +1,6 @@
 class UserMailer < MandrillMailer::TemplateMailer
   include ApplicationHelper
+  include MoneyRails::ActionViewExtension
   default from: 'puhsher@puhsh.com'
   
   def welcome_email(user)
