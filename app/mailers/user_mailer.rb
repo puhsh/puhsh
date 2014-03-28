@@ -19,7 +19,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     @user = @post.user
     @post_url = bitly_url(post_url(@post.city.slug, @user.slug, @post.slug))
     @image_url = @post.post_images.first.image.url(:small)
-    @price = humanized_money_with_symbol(post.item.price)
+    @price = @post.item.price_cents > 0 ? humanized_money_with_symbol(@post.item.price) : 'FREE'
     mandrill_mail template: 'item-posted',
                   to: @user.contact_email,
                   vars: {
