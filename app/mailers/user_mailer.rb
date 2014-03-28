@@ -19,6 +19,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     @user = @post.user
     @post_url = bitly_url(post_url(@post.city.slug, @user.slug, @post.slug))
     @image_url = @post.post_images.first.image.url(:small)
+    @price = humanized_money_with_symbol(post.item.price)
     mandrill_mail template: 'item-posted',
                   to: @user.contact_email,
                   vars: {
@@ -27,7 +28,8 @@ class UserMailer < MandrillMailer::TemplateMailer
                     'POST_TITLE' => @post.title,
                     'CURRENT_YEAR' => Date.today.year,
                     'VIEW_POST_URL' => @post_url,
-                    'VIEW_POST_PHOTO' => @image_url
+                    'VIEW_POST_PHOTO' => @image_url,
+                    'POST_PRICE' => @price
                   },
                   inline_css: true
   end
