@@ -78,7 +78,7 @@ namespace :deploy do
 
   desc 'Stop the resque pool'
   task :stop_resque_pool do
-    on roles(:app), in: :sequence, wait: 5 do
+    on roles(:resque), in: :sequence, wait: 5 do
       within current_path do
         execute "kill -s QUIT `cat #{current_path}/tmp/pids/resque-pool.pid`"
       end
@@ -87,7 +87,7 @@ namespace :deploy do
 
   desc 'Start the resque pool'
   task :start_resque_pool do
-    on roles(:app), in: :sequence, wait: 5 do
+    on roles(:resque), in: :sequence, wait: 5 do
       within current_path do
         execute :bundle, :exec, "resque-pool --daemon --environment #{fetch(:rails_env)}"
       end
@@ -96,7 +96,7 @@ namespace :deploy do
 
   desc 'Restart the resque pool'
   task :restart_resque_pool do
-    on roles(:app), in: :sequence, wait: 5 do
+    on roles(:resque), in: :sequence, wait: 5 do
       within current_path do
         execute "kill -s HUP `cat #{current_path}/tmp/pids/resque-pool.pid`"
       end
