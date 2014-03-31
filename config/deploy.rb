@@ -11,7 +11,7 @@ set :branch, 'master'
 set :user, 'puhsh'
 set :scm, :git
 set :format, :pretty
-set :log_level, :debug
+set :log_level, :info
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/assets vendor/bundle public/system}
 set :rvm_ruby_version, 'ruby-2.1.1@puhsh'
