@@ -3,7 +3,7 @@ lock '3.1.0'
 
 set :ssh_options, {
   keys: ["#{ENV["HOME"]}/.ssh/id_rsa"],
-  forward_agent: true
+  forward_agent: false
 }
 
 set :repo_url, 'git@github.com:puhsh/puhsh.git'
