@@ -27,7 +27,7 @@ module Puhsh
         end
 
         conn.post do |req|
-          req.url = "/events"
+          req.url '/events'
           req.headers['Content-Type'] = 'application/json'
           req.body = opts.to_json
         end
