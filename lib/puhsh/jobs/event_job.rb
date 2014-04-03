@@ -22,16 +22,14 @@ module Puhsh
 
       def create_event!(opts)
         conn = Faraday.new(url: "http://#{PUHSH_EVENTS[:host]}:#{PUHSH_EVENTS[:port]}") do |f|
-          f.request :json
           f.response :logger
           f.adapter  Faraday.default_adapter
         end
 
-        body = '{ "user_id": "#{opts[:user_id]}", "user_ip_address": "#{opts[:user_ip_address]}", "resource_id": "#{opts[:resource_id]}", "resource_type": "#{opts[:resource_type]"}, "controller_name": "#{opts[:controller_name]}", "controller_action": "#{opts[:controller_action]}"}'
-
         conn.post do |req|
           req.url = "/events"
-          req.body = body
+          req.headers['Content-Type'] = 'application/json'
+          req.body = opts.to_json
         end
       end
 
