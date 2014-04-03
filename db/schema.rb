@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140326220445) do
+ActiveRecord::Schema.define(:version => 20140403152302) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -90,6 +90,19 @@ ActiveRecord::Schema.define(:version => 20140326220445) do
   end
 
   add_index "devices", ["user_id"], :name => "index_devices_on_user_id"
+
+  create_table "events", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "user_ip_address"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.string   "controller_name"
+    t.string   "controller_action"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "events", ["user_id", "resource_id", "resource_type", "controller_name", "controller_action"], :name => "index_unique_event_user_resource", :unique => true
 
   create_table "facebook_test_users", :force => true do |t|
     t.string   "fbid"
