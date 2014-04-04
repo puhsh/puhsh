@@ -14,7 +14,7 @@ module Puhsh
       def record_event(opts)
         opts = HashWithIndifferentAccess.new(opts)
         if valid_event?(opts) && PUHSH_EVENTS[:tracking_enabled]
-          create_event!(opts)
+          self.create_event!(opts)
         end
       end
 
@@ -26,7 +26,7 @@ module Puhsh
           f.adapter  Faraday.default_adapter
         end
 
-        opts = { userId: opts[:user_id], userIPAddress: opts[:user_ip_address], resourceId: opts[:resource_id], resourceType: opts[:resource_type], controllerName: opts[:controller_name], controllerAction: opts[:controller_action] }
+        opts = { userId: opts[:user_id], userIPAddress: opts[:user_ip_address], resourceId: opts[:resource_id].to_i, resourceType: opts[:resource_type], controllerName: opts[:controller_name], controllerAction: opts[:controller_action] }
 
         conn.post do |req|
           req.url '/events'
