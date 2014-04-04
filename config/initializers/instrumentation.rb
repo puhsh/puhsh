@@ -22,7 +22,8 @@ ActiveSupport::Notifications.subscribe /process_action.action_controller/ do |*a
   ActiveSupport::Notifications.instrument :performance, 
                                           :measurement => "#{key}.status.#{status}"
   
-  ActiveSupport::Notifications.instrument :event
+  ActiveSupport::Notifications.instrument :event,
+                                          :value => event.payload
 end
 
 ActiveSupport::Notifications.subscribe /performance/ do |name, start, finish, id, payload|
@@ -30,11 +31,12 @@ ActiveSupport::Notifications.subscribe /performance/ do |name, start, finish, id
 end
 
 
-ActiveSupport::Notifications.subscribe /event/ do |payload|
-  if Rails.env.production?
+ActiveSupport::Notifications.subscribe /event/ do |name, start, finish, id, payload|
+  payload = payload[:value]
+  if Rails.env.production? && payload.present?
     opts = { 
       user_id: payload[:user_id], user_ip_address: payload[:user_ip_address], 
-      resource_id: payload[:params][:id], resource_type: params[:resource_type], 
+      resource_id: payload[:params][:id], resource_type: payload[:resource_type], 
       controller_name: payload[:controller], controller_action: payload[:action]
     }
 
