@@ -124,4 +124,10 @@ class V1::ApiController < ActionController::Metal
   def skip_trackable
     request.env["devise.skip_trackable"] = true
   end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:user_id] = current_user.id rescue nil
+    payload[:resource_type] = controller_name.classify rescue nil
+  end
 end

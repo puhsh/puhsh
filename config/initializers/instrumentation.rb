@@ -26,3 +26,16 @@ end
 ActiveSupport::Notifications.subscribe /performance/ do |name, start, finish, id, payload|
   Puhsh::StatsdReporting.send_event_to_statsd(name, payload) if Rails.env.production?
 end
+
+
+ActiveSupport::Notifications.subscribe /event/ do |payload|
+  if Rails.env.production?
+    opts = { 
+      user_id: payload[:user_id], user_ip_address: payload[:user_ip_address], 
+      resource_id: payload[:params][:id], resource_type: params[:resource_type], 
+      controller_name: payload[:controller], controller_action: payload[:action]
+    }
+
+    Puhsh::Jobs::EventJob.record_event(opts)
+  end
+end
