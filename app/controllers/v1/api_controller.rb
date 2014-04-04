@@ -128,6 +128,7 @@ class V1::ApiController < ActionController::Metal
   def append_info_to_payload(payload)
     super
     payload[:user_id] = current_user.id rescue nil
+    payload[:user_ip_address] = current_user.last_sign_in_ip rescue nil
     payload[:resource_type] = controller_name.classify rescue nil
   end
 end

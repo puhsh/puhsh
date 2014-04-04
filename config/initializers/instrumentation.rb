@@ -33,7 +33,7 @@ end
 
 ActiveSupport::Notifications.subscribe /event/ do |name, start, finish, id, payload|
   payload = payload[:value]
-  if Rails.env.production? && payload.present?
+  if Rails.env.production? && payload.present? && payload[:user_id].preesnt?
     opts = { 
       user_id: payload[:user_id], user_ip_address: payload[:user_ip_address], 
       resource_id: payload[:params][:id], resource_type: payload[:resource_type], 
