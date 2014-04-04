@@ -21,6 +21,8 @@ ActiveSupport::Notifications.subscribe /process_action.action_controller/ do |*a
                                           :value => event.payload[:view_runtime]
   ActiveSupport::Notifications.instrument :performance, 
                                           :measurement => "#{key}.status.#{status}"
+  
+  ActiveSupport::Notifications.instrument :event
 end
 
 ActiveSupport::Notifications.subscribe /performance/ do |name, start, finish, id, payload|
