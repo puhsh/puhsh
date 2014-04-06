@@ -6,7 +6,7 @@ class V1::RelatedProductsController < V1::ApiController
 
   def index
     @post = Post.find(params[:post_id])
-    @related_products = RelatedProduct.search(@post.title, current_user)
+    @related_products = RelatedProduct.search(@post.title, current_user, request.session_options[:id])
     render json: @related_products, each_serializer: RelatedProductSerializer
   end
 end
