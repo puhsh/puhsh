@@ -7,7 +7,7 @@ class RelatedProduct
       user_location = [user.latitude, user.longitude].join(",")
 
       client = Sterling::API::Client.new
-      client.products(user_location, query, session_id)
+      client.products(user_location, query, session_id).reject { |x| x.product['images'].empty? }
     else
       []
     end
