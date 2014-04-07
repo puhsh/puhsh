@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :name, presence: true
 
+  # Scopes
+  scope :registered, -> { where('contact_email is not null') }
+  scope :not_registered, -> { where(contact_email: nil) }
+
   # Redis Attributes
   set :followed_city_ids
   set :post_ids_with_offers

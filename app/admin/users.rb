@@ -6,6 +6,9 @@ ActiveAdmin.register User do
   filter :last_name
   filter :zipcode
 
+  scope :registered
+  scope :not_registered
+
   config.sort_order = "id_asc"
 
   index do
