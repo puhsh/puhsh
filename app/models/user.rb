@@ -74,7 +74,6 @@ class User < ActiveRecord::Base
         user.facebook_email = auth[:email]
       end
       
-      user.add_app_invite!
       user
     else
       user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square"

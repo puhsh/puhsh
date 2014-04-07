@@ -39,4 +39,25 @@ describe Device do
       end
     end
   end
+
+  describe '.add_app_invite' do
+    before { @facebook_valid = OmniAuth.config.mock_auth[:facebook] }
+
+    let!(:android) { FactoryGirl.build(:device, device_type: :android) }
+    let!(:ios) { FactoryGirl.build(:device, device_type: :ios) }
+
+    it 'does not create an app invite for a new user if they are an iOS user' do
+      user = User.find_for_facebook_oauth(@facebook_valid)
+      ios.user = user
+      ios.save
+      expect(user.reload.app_invite).to be_nil
+    end
+
+    it 'creates an app invite for a new user if they are an Android user' do
+      user = User.find_for_facebook_oauth(@facebook_valid)
+      android.user = user
+      android.save
+      expect(user.reload.app_invite).to_not be_nil
+    end
+  end
 end

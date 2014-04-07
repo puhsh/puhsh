@@ -152,11 +152,6 @@ describe User do
         expect(user.reload.gender).to eq(@facebook_valid[:gender])
       end
 
-      it 'creates an app invite' do
-        user = User.find_for_facebook_oauth(@facebook_valid)
-        expect(user.reload.app_invite).to_not be_nil
-      end
-
       it 'handles duplicates' do
         user = User.find_for_facebook_oauth(@facebook_valid)
         user2 = User.find_for_facebook_oauth(@facebook_valid2)
@@ -257,15 +252,6 @@ describe User do
       user.home_city = city
       user.save
       expect(user.reload.followed_cities.map(&:city)).to include(city)
-    end
-  end
-
-  describe '.add_app_invite!' do
-    before { @facebook_valid = OmniAuth.config.mock_auth[:facebook] }
-
-    it 'creates an app invite for a new user' do
-      user = User.find_for_facebook_oauth(@facebook_valid)
-      expect(user.reload.app_invite).to_not be_nil
     end
   end
 

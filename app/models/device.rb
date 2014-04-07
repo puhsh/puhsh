@@ -7,6 +7,7 @@ class Device < ActiveRecord::Base
   belongs_to :user
 
   # Callbacks
+  after_create :add_app_invite
 
   # Validations
   validates :device_token, presence: true
@@ -47,5 +48,11 @@ class Device < ActiveRecord::Base
     n.registration_ids = [self.device_token]
     n.data = { message: message }
     n.save!
+  end
+
+  def add_app_invite
+    if self.android?
+      user.add_app_invite!
+    end
   end
 end
