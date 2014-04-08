@@ -43,4 +43,7 @@ Puhsh::Application.configure do
 
   # Paperclip
   config.paperclip_defaults = { url: ':s3_domain_url' }
+
+  # Mass Assignment Exceptions
+  config.active_record.mass_assignment_sanitizer = :strict
 end
