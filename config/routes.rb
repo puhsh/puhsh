@@ -111,11 +111,11 @@ Puhsh::Application.routes.draw do
   ###############
 
   # Posts
-  match '/posts/:city_id/:user_id/:id', to: 'posts#show', via: :get, as: 'post'
+  get '/posts/:city_id/:user_id/:id', to: 'posts#show', via: :get, as: 'post'
 
   # Download page
-  match '/download', to: 'home#download', via: :get
+  get '/download', to: 'home#download', via: :get
 
   # Custom 404
-  match "*path", :to => "application#routing_error"
+  get "*path", :to => "application#routing_error"
 end
