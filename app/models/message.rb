@@ -21,7 +21,7 @@ class Message < ActiveRecord::Base
   scope :by_sender, ->(sender) { where(sender_id: sender.id) }
   scope :by_recipient, ->(recipient) { where(recipient_id: recipient.id) }
   scope :exclude_recipient, ->(recipient) { where('recipient_id != ?', recipient.id) }
-  scope :grouped_by_recipient, group(:recipient_id)
+  scope :grouped_by_recipient, -> { group(:recipient_id) }
   scope :between_sender_and_recipient, ->(sender, recipient) { where('(sender_id = ? and recipient_id = ?) or (sender_id = ? and recipient_id = ?)', sender, recipient, recipient, sender) } 
   scope :sent_or_received_by_user, ->(user) { where('sender_id = ? or recipient_id = ?', user, user) }
   scope :unread_count, ->(sender_id, recipient_id) { where(sender_id: sender_id, recipient_id: recipient_id).unread }

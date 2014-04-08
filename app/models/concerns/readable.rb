@@ -2,8 +2,8 @@ module Readable
   extend ActiveSupport::Concern
 
   included do
-    scope :unread, where(read: false)
-    scope :read, where(read: true)
+    scope :unread, -> { where(read: false) }
+    scope :read, -> { where(read: true) }
   end
 
   module ClassMethods
