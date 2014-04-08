@@ -8,9 +8,7 @@ class RelatedProduct
 
       client = Sterling::API::Client.new
       products = client.products(user_location, query, session_id)
-      if products
-        products.reject { |x| x.product['images'].empty? }
-      end
+      products.reject { |x| x.product['images'].blank? }
     else
       []
     end
