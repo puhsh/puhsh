@@ -8,4 +8,8 @@ class HomeCitySerializer < ActiveModel::Serializer
       false
     end
   end
+
+  def name
+    "#{object.name}, #{object.state}"
+  end
 end
