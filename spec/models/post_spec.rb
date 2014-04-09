@@ -373,4 +373,48 @@ describe Post do
       expect(city.reload.user_ids_with_posts_in_city.members).to include(user.id.to_s)
     end
   end
+
+  describe 'scopes' do
+    let!(:city) { FactoryGirl.create(:city) }
+    let!(:user) { FactoryGirl.create(:user, home_city: city) }
+    let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
+    let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+
+    context '.for_cities' do
+      it 'returns posts for a given set of city ids' do
+        expect(Post.for_cities([city.id])).to include(post)
+      end
+    end
+
+    context '.for_users' do
+      it 'returns posts for a given set of user ids' do
+        expect(Post.for_users([user.id])).to include(post)
+      end
+    end
+
+    context '.for_users_or_cities' do
+      it 'returns posts for a given set of user ids or cities' do
+        expect(Post.for_users_or_cities([5], [city.id])).to include(post)
+        expect(Post.for_users_or_cities([user.id], [5])).to include(post)
+      end
+    end
+
+    context '.exclude_user' do
+      it 'returns posts excluding a specific user' do
+        expect(Post.exclude_user(user)).to_not include(post)
+      end
+    end
+
+    context '.exclude_category_ids' do
+      it 'returns posts excluding a specific set of category ids' do
+        expect(Post.exclude_category_ids([post.category_id])).to_not include(post)
+      end
+    end
+
+    context '.exclude_post_ids' do
+      it 'returns posts excluding a specific set of post ids' do
+        expect(Post.exclude_post_ids([post.id])).to_not include(post)
+      end
+    end
+  end
 end

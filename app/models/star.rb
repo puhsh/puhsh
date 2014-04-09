@@ -21,6 +21,6 @@ class Star < ActiveRecord::Base
   protected
 
   def update_user_star_count
-    self.user.update_attributes(star_count: Star.group(:user_id).calculate(:sum, :amount)) if self.user
+    self.user.update_attributes(star_count: Star.where(user_id: self.user_id).calculate(:sum, :amount)) if self.user
   end
 end
