@@ -19,6 +19,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     @post = post
     @user = @post.user
     @post_url = bitly_url(post_url(@post.city.slug, @user.slug, @post.slug))
+    @description = @post.description
     @image_url = @post.post_images.first.image.url(:small)
     @price = @post.item.price_cents > 0 ? humanized_money_with_symbol(@post.item.price) : 'FREE'
     mandrill_mail template: 'item-posted',
@@ -30,7 +31,8 @@ class UserMailer < MandrillMailer::TemplateMailer
                     'CURRENT_YEAR' => Date.today.year,
                     'VIEW_POST_URL' => @post_url,
                     'VIEW_POST_PHOTO' => @image_url,
-                    'POST_PRICE' => @price
+                    'POST_PRICE' => @price,
+                    'POST_DESCRIPTION' => @description
                   },
                   inline_css: true
   end
