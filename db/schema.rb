@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140403152302) do
+ActiveRecord::Schema.define(:version => 20140410125713) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(:version => 20140403152302) do
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
-    t.string   "content"
+    t.text     "content"
     t.boolean  "read",         :default => false
     t.datetime "read_at"
     t.datetime "created_at",                      :null => false
