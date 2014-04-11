@@ -8,9 +8,13 @@ class V1::PostsController < V1::ApiController
 
   def index
     if @resource
-      @posts = @resource.posts.includes(:item, {post_images: :post}, {user: :home_city}).recent
+      @posts = @resource.posts.includes(:item, {post_images: :post}, {user: :home_city})
+                              .exclude_post_ids(current_user.flagged_post_ids.members)
+                              .recent
     else
-      @posts = Post.includes(:item, {post_images: :post}, :city, {user: :home_city}).recent
+      @posts = Post.includes(:item, {post_images: :post}, :city, {user: :home_city})
+                   .exclude_post_ids(current_user.flagged_post_ids.members)
+                   .recent
     end
     render_paginated @posts
   end
