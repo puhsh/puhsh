@@ -16,7 +16,7 @@ describe Message do
     end
 
     it 'cannot be longer than 160 character' do
-      message.content = "msg " * 100
+      message.content = "msg " * 10000
       message.save
       expect(message).to_not be_valid
     end

@@ -1,13 +1,14 @@
 class UserMailer < MandrillMailer::TemplateMailer
   include ApplicationHelper
+  include PostsHelper
   include MoneyRails::ActionViewExtension
   default from: 'puhsher@puhsh.com'
-  
+
   def welcome_email(user)
     @user = user
     mandrill_mail template: 'Welcome',
                     to: @user.contact_email,
-                    vars: { 
+                    vars: {
                       'USER_FIRST_NAME' => @user.first_name,
                       'USER_EMAIL' => @user.contact_email,
                       'CURRENT_YEAR' => Date.today.year
@@ -20,6 +21,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     @user = @post.user
     @post_url = bitly_url(post_url(@post.city.slug, @user.slug, @post.slug))
     @description = @post.description
+    @post_location = post_location_name(@user)
     @image_url = @post.post_images.first.image.url(:small)
     @price = @post.item.price_cents > 0 ? humanized_money_with_symbol(@post.item.price) : 'FREE'
     mandrill_mail template: 'item-posted',
@@ -32,7 +34,8 @@ class UserMailer < MandrillMailer::TemplateMailer
                     'VIEW_POST_URL' => @post_url,
                     'VIEW_POST_PHOTO' => @image_url,
                     'POST_PRICE' => @price,
-                    'POST_DESCRIPTION' => @description
+                    'POST_DESCRIPTION' => @description,
+                    'POST_LOCATION' => @post_location
                   },
                   inline_css: true
   end

@@ -51,6 +51,7 @@ class V1::UsersController < V1::ApiController
     @posts = Post.includes(:item, :post_images, :city, :user)
                  .where('id in (?) or id in (?)', current_user.post_ids_with_offers, current_user.post_ids_with_questions)
                  .exclude_user(current_user)
+                 .exclude_post_ids(current_user.flagged_post_ids.members)
                  .recent
     render_paginated @posts
   end

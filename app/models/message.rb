@@ -15,7 +15,7 @@ class Message < ActiveRecord::Base
   after_commit :send_new_message_notification, on: :create
   
   # Validations
-  validates :content, presence: true, length: { maximum: 160 }
+  validates :content, presence: true, length: { maximum: 5000 }
 
   # Scopes
   scope :by_sender, ->(sender) { where(sender_id: sender.id) }
