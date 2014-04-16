@@ -48,10 +48,11 @@ class Post < ActiveRecord::Base
   # Scopes
   scope :for_cities, ->(city_ids) { where(city_id: city_ids) }
   scope :for_users, ->(user_ids) { where(user_id: user_ids) }
-  scope :for_users_or_cities, ->(user_ids, city_ids) { where('posts.user_id in (?) OR posts.city_id in (?)', user_ids, city_ids) }
+  scope :for_users_or_cities, ->(user_ids, city_ids) { Post.where(Post.where(user_id: user_ids, city_id: city_ids).where_values.inject(:or)) }
   scope :exclude_user, ->(user) { where.not(user_id: user.id) }
   scope :exclude_category_ids, ->(category_ids) { where.not(category_id: category_ids) }
   scope :exclude_post_ids, ->(post_ids) { where.not(id: post_ids) unless post_ids.blank? } 
+  scope :recent, -> { order('posts.created_at desc') }
 
   # Nested Attributes
   accepts_nested_attributes_for :item
