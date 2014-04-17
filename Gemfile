@@ -105,7 +105,7 @@ gem 'jquery-ui-rails'
 gem 'kaminari', '0.15.1'
 gem 'koala', '1.9.0'
 gem 'money-rails', '0.9.0', require: 'money-rails'
-gem 'newrelic_rpm', '3.5.8.72'
+gem 'newrelic_rpm', '3.7.3.204'
 gem 'open-meta-tags', '0.4.0', require: 'open_meta_tags'
 
 # TODO
