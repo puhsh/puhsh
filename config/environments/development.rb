@@ -46,4 +46,7 @@ Puhsh::Application.configure do
 
   # Mass Assignment Exceptions
   config.active_record.mass_assignment_sanitizer = :strict
+
+  # Join References
+  config.active_record.disable_implicit_join_references = true
 end

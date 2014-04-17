@@ -91,4 +91,7 @@ Puhsh::Application.configure do
 
   # Paperclip
   config.paperclip_defaults = { url: ':s3_alias_url', s3_host_alias: 'd1fakcx7ksmski.cloudfront.net' }
+
+  # Join References
+  config.active_record.disable_implicit_join_references = true
 end

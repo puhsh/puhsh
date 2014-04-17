@@ -85,4 +85,7 @@ Puhsh::Application.configure do
 
   # Paperclip
   config.paperclip_defaults = { url: ':s3_domain_url' }
+  
+  # Join References
+  config.active_record.disable_implicit_join_references = true
 end
