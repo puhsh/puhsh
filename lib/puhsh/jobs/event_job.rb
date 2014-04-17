@@ -36,7 +36,7 @@ module Puhsh
       end
 
       def valid_event?(opts)
-        opts.present? && opts[:user_id] && opts[:user_ip_address] && opts[:resource_id] && opts[:resource_type] && opts[:controller_name] && opts[:controller_action]
+        opts.present? && opts[:user_id] && opts[:user_ip_address] && opts[:resource_type] && opts[:controller_name] && opts[:controller_action]
       end
     end
   end
