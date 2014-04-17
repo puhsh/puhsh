@@ -52,7 +52,6 @@ class Post < ActiveRecord::Base
   scope :exclude_user, ->(user) { where.not(user_id: user.id) }
   scope :exclude_category_ids, ->(category_ids) { where.not(category_id: category_ids) }
   scope :exclude_post_ids, ->(post_ids) { where.not(id: post_ids) unless post_ids.blank? } 
-  scope :recent, -> { order('posts.created_at desc') }
 
   # Nested Attributes
   accepts_nested_attributes_for :item
