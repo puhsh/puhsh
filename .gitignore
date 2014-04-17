@@ -24,7 +24,6 @@ config/database.yml
 .gems/
 .rbenv-gemsets
 .ruby-version
-bin/
 Guardfile
 solr/
 *.pid
