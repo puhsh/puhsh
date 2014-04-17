@@ -34,7 +34,7 @@ describe V1::InvitesController do
       it 'creates multiple invites' do
         sign_in user
         post :create, { invites: [{ user_id: user.id, uid_invited: '123456' }, {user_id: user.id, uid_invited: '654321'}], access_token: access_token.token }, format: :json
-        expect(user.reload.invites).to eql(assigns[:invites])
+        expect(assigns[:invites]).to eql(user.reload.invites.to_a)
       end
 
       it 'creates multiple invites but ignores duplicates' do
@@ -49,7 +49,7 @@ describe V1::InvitesController do
         FactoryGirl.create(:invite, user_id: user.id, uid_invited: '123456')
         sign_in user2
         post :create, { invites: [{ user_id: user2.id, uid_invited: '123456' }], access_token: access_token2.token }, format: :json
-        expect(user2.reload.invites).to eql(assigns[:invites])
+        expect(user2.reload.invites.to_a).to eql(assigns[:invites])
       end
     end
   end
