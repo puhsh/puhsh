@@ -1,4 +1,6 @@
-- content_for :nav do
-  = render 'shared/nav'
-
-%section#content(ng-view)
+.row
+  .small-12
+    %ul.no-bullet
+      - @cities.each do |city|
+        %li
+          = link_to city.slug, city_path(city.slug)

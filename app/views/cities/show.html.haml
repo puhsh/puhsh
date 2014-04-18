@@ -1,0 +1,6 @@
+.row
+  .small-12
+    %ul.no-bullet
+      - @users.each do |user|
+        %li
+          = link_to user.slug, city_user_path(@city.slug, user.slug)

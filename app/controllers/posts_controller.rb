@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 
   def index
+    @cities = City.page(params[:page]).per(50).order('state asc').alpha
+    respond_with @cities
   end
 
   def show

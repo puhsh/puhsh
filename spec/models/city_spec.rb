@@ -6,6 +6,7 @@ describe City do
   it { should have_many(:users).through(:followed_cities) }
   it { should have_many(:posts) }
   it { should have_many(:zipcodes) }
+  it { should have_many(:home_users) }
 
   describe '.follow!' do
     let(:user) { FactoryGirl.create(:user) }

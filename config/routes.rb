@@ -111,7 +111,17 @@ Puhsh::Application.routes.draw do
   ###############
 
   # Posts
+  resources :posts, only: [:index]
+
+  # Posts - SEO
   get '/posts/:city_id/:user_id/:id', to: 'posts#show', via: :get, as: 'post'
+  get '/posts/:city_id', to: 'cities#show', via: :get, as: 'city'
+
+  # Users
+  resources :users, only: [:show]
+  
+  # Users - SEO
+  get '/posts/:city_id/:user_id', to: 'users#show', via: :get, as: 'city_user'
 
   # Download page
   get '/download', to: 'home#download', via: :get

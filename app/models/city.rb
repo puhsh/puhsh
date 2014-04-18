@@ -1,5 +1,6 @@
 class City < ActiveRecord::Base
   include FriendlyId
+  include Sortable
   include Redis::Objects
 
   attr_accessible :state, :name, :full_state_name
@@ -9,6 +10,7 @@ class City < ActiveRecord::Base
   has_many :users
   has_many :followed_cities
   has_many :users, through: :followed_cities
+  has_many :home_users, class_name: 'User', foreign_key: 'city_id', dependent: :nullify
   has_many :posts
   has_many :zipcodes, dependent: :destroy
 
