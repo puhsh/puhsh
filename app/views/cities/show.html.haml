@@ -3,6 +3,6 @@
     %ul.no-bullet
       - @users.each do |user|
         %li
-          = link_to user.slug, city_user_path(@city.slug, user.slug)
+          = link_to user.name, city_user_path(@city.slug, user.slug)
 
     = paginate @users
