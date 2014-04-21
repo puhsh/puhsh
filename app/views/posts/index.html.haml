@@ -4,3 +4,5 @@
       - @cities.each do |city|
         %li
           = link_to city.slug, city_path(city.slug)
+
+    = paginate @cities
