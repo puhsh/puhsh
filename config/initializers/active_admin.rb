@@ -210,28 +210,17 @@ ActiveAdmin.setup do |config|
   #
   # config.filters = true
 
-  # Friendly ID 
-  config.before_filter :revert_friendly_id
-
 end
 
 
 # See
 # http://stackoverflow.com/questions/7684644/activerecordreadonlyrecord-when-using-activeadmin-and-friendly-id
 ActiveAdmin::ResourceController.class_eval do
-  protected
-
-  def revert_friendly_id
-    model_name = self.class.name.match(/::(.*)Controller$/)[1].singularize
-
-    # Will throw a NameError if the class does not exist
-    Module.const_get model_name
-
-    eval(model_name).class_eval do
-      def to_param
-        id.to_s
-      end
+  def find_resource
+    if scoped_collection.is_a? FriendlyId
+      scoped_collection.where(slug: params[:id]).first! 
+    else
+      scoped_collection.where(id: params[:id]).first!
     end
-    rescue NameError
   end
 end
