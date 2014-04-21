@@ -6,8 +6,7 @@ Puhsh::Application.routes.draw do
   ###############
   
   # Root URL
-  # Redirect to wordpress
-  root to: 'posts#index'
+  root to: 'home#download'
   
   # Dev Tools
   mount Peek::Railtie => '/peek'
