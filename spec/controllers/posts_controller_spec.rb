@@ -37,9 +37,9 @@ describe PostsController do
       expect(assigns[:cities]).to include(city)
     end
 
-    it 'does not returns cities without posts' do
+    it 'returns cities without posts' do
       get :index, format: :html
-      expect(assigns[:cities]).to_not include(city2)
+      expect(assigns[:cities]).to include(city2)
     end
   end
 end

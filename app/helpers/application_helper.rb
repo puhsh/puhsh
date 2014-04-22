@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def twitter_tweet_this_url(resource = nil)
     if resource.kind_of?(Post)
-      url = bitly_url(url_for(only_path: false))
+      url = url_for(only_path: false)
       "https://www.twitter.com/share?url=#{url}&text=Check out #{resource.title} on Puhsh!"
     else
       ''
