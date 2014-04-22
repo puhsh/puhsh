@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   include Redis::Objects
   include Trackable
   include OpenGraphed
+  include Sortable
   include FriendlyId
 
   INVITES_ENABLED = Rails.env.development? ? false : true
