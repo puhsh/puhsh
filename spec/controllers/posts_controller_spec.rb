@@ -28,4 +28,18 @@ describe PostsController do
       expect(response).to redirect_to 'http://www.puhsh.com/404'
     end
   end
+
+  context '#index' do
+    let!(:city2) { FactoryGirl.create(:city) }
+
+    it 'returns cities that have posts' do
+      get :index, format: :html
+      expect(assigns[:cities]).to include(city)
+    end
+
+    it 'does not returns cities without posts' do
+      get :index, format: :html
+      expect(assigns[:cities]).to_not include(city2)
+    end
+  end
 end
