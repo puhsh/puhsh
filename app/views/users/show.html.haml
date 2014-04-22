@@ -1,3 +1,5 @@
+- content_for :title do
+  %title= "Posts - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
 .row
   .small-12
     %ul.no-bullet
