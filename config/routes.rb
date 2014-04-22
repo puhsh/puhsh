@@ -125,7 +125,4 @@ Puhsh::Application.routes.draw do
 
   # Download page
   get '/download', to: 'home#download', via: :get
-
-  # Custom 404
-  get "*path", :to => "application#routing_error"
 end
