@@ -83,10 +83,6 @@ group :test do
   gem 'resque_spec', '0.14.4'
 end
 
-group :production do
-  gem 'sitemap_generator', '4.2.0'
-end
-
 # Third Party
 gem 'active_model_serializers', '0.8.1'
 gem 'activeadmin', github: 'gregbell/active_admin'
