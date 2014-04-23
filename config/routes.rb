@@ -81,6 +81,9 @@ Puhsh::Application.routes.draw do
       end
       resources :related_products, only: [:index]
     end
+    
+    # Post Images
+    resources :post_images, only: [:create]
 
     # Flagged Posts
     resources :flagged_posts, only: [:create]
