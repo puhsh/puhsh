@@ -122,6 +122,7 @@ describe V1::PostsController do
 
     context 'with access token and authentication' do
       let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+      let!(:post_image) { FactoryGirl.create(:post_image) }
       
       it 'creates a post' do
         sign_in user
@@ -151,6 +152,13 @@ describe V1::PostsController do
         sign_in user
         post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id, item_attributes: { price_cents: 10.00} }, access_token: access_token.token }, format: :json
         expect(assigns[:post].reload.item).to_not be_nil
+      end
+
+      it 'creates a post and associates an existing post image to the post' do
+        sign_in user
+        expect(post_image.reload.post).to be_nil
+        post :create, { post: { title: 'Test Post', description: 'Test Posting', pick_up_location: 'porch', payment_type: 'cash', category_id: category.id, subcategory_id: subcategory.id, post_images_attributes: [{id: post_image.id }]}, access_token: access_token.token }, format: :json
+        expect(post_image.reload.post).to eql(assigns[:post])
       end
     end
   end
