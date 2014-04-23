@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   ALPHA_ENABLED = false
 
   attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email, :star_count, :unread_notifications_count, :city_id
-  devise :trackable, :omniauthable, omniauth_providers: [:facebook]
+  devise :trackable, :omniauthable, :confirmable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
   friendly_id :full_name_slug, use: :slugged
@@ -196,5 +196,10 @@ class User < ActiveRecord::Base
     if self.recently_registered?
       Puhsh::Jobs::EmailJob.send_welcome_email({user_id: self.id})
     end
+  end
+
+  # TODO Remove this once 1.1.1 is released 
+  def confirmation_required?
+    Rails.env.sandbox?
   end
 end
