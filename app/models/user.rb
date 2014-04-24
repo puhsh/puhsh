@@ -179,6 +179,10 @@ class User < ActiveRecord::Base
     "#{self.first_name}#{self.last_name}"
   end
 
+  def email
+    self.contact_email
+  end
+
   protected
 
   def add_default_role
@@ -200,6 +204,6 @@ class User < ActiveRecord::Base
 
   # TODO Remove this once 1.1.1 is released 
   def confirmation_required?
-    Rails.env.sandbox?
+    Rails.env.sandbox? || Rails.env.development?
   end
 end
