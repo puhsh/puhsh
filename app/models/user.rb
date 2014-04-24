@@ -78,11 +78,8 @@ class User < ActiveRecord::Base
         user.gender = auth[:gender]
         user.facebook_email = auth[:email]
       end
-      
       user
     else
-      user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
-      user.save
       user
     end
   end
