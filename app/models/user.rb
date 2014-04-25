@@ -166,6 +166,10 @@ class User < ActiveRecord::Base
 
   def change_unsold_posts_city!
     Post.for_sale.where(user_id: self.id).update_all(city_id: self.city_id)
+    if self.changed_attributes['city_id']
+      City.reset_counters self.changed_attributes['city_id'], :posts
+      City.reset_counters self.city_id, :posts
+    end
   end
 
   def home_city_changed?

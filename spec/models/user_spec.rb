@@ -509,6 +509,19 @@ describe User do
       expect(post.reload.city).to eql(city2)
       expect(post.reload.city).to_not eql(city)
     end
+
+    it 'updates the posts counts for the previous city and the new city' do
+      expect(city.reload.posts_count).to eql(1)
+      expect(city2.reload.posts_count).to eql(0)
+
+      user.zipcode = zipcode_nyc.code
+      user.home_city = city2
+      user.save
+
+      expect(city.reload.posts_count).to eql(0)
+      expect(city2.reload.posts_count).to eql(1)
+    end
+
   end
 
   describe 'abilities' do
