@@ -60,7 +60,7 @@ class Offer < ActiveRecord::Base
       ItemTransaction.new.tap do |transaction|
         transaction.seller_id = self.post.user_id
         if self.user_id.present?
-          transaction.buyer_id = self.user_id.present?
+          transaction.buyer_id = self.user_id
         end
         transaction.post_id = self.post_id
         transaction.item_id = self.item_id
