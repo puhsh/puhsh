@@ -78,11 +78,8 @@ class User < ActiveRecord::Base
         user.gender = auth[:gender]
         user.facebook_email = auth[:email]
       end
-      
       user
     else
-      user.avatar_url = "http://graph.facebook.com/#{auth[:id]}/picture?type=square"
-      user.save
       user
     end
   end
@@ -169,6 +166,10 @@ class User < ActiveRecord::Base
 
   def change_unsold_posts_city!
     Post.for_sale.where(user_id: self.id).update_all(city_id: self.city_id)
+    if self.changed_attributes['city_id']
+      City.reset_counters self.changed_attributes['city_id'], :posts
+      City.reset_counters self.city_id, :posts
+    end
   end
 
   def home_city_changed?

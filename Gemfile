@@ -63,7 +63,7 @@ group :development, :test do
   gem 'spork', '1.0.0rc4'
   gem 'sunspot_matchers', '2.1.0.0', require: false
   gem 'timecop', '0.7.1'
-  gem 'vcr', '2.8.0'
+  gem 'vcr', '2.9.0'
   gem 'webmock', '1.16.1', require: false
 end
 
@@ -81,10 +81,6 @@ group :test do
   gem 'ci_reporter', '1.9.1'
   gem 'test_after_commit', '0.2.2'
   gem 'resque_spec', '0.14.4'
-end
-
-group :production do
-  gem 'sitemap_generator', '4.2.0'
 end
 
 # Third Party
@@ -120,4 +116,4 @@ gem 'sterling', '1.1.2'
 gem 'sunspot_rails', '2.1.0'
 gem 'sunspot_solr', '2.1.0'
 gem 'symbolize', '4.4.1'
-gem 'whenever', '0.9.0', require: false
+gem 'whenever', '0.9.2', require: false
