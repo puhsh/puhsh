@@ -18,7 +18,7 @@ set :rvm_ruby_version, 'ruby-2.1.1@puhsh'
 set :max_asset_age, 2 
 SSHKit.config.command_map[:whenever] = "bundle exec whenever"
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
-set :whenever_roles, ['job']
+set :whenever_roles, [:job, :app]
 set :keep_releases, 10
 
 namespace :deploy do
