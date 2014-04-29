@@ -3,7 +3,7 @@
 ##################
 
 if environment == 'production'
-  every 1.minute, roles: [:job]  do
+  every :day, at: '1:30 am', roles: [:job]  do
     rake 'db:backup', environment: 'production'
   end
 end
