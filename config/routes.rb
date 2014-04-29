@@ -12,6 +12,9 @@ Puhsh::Application.routes.draw do
   mount Peek::Railtie => '/peek'
   ActiveAdmin.routes(self)
   mount Resque::Server, at: '/resque', constraints: Puhsh::AdminConstraints
+  if Rails.env.development?
+    mount MailPreview, at: '/mail_view'
+  end
 
   # Devise
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }

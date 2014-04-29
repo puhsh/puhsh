@@ -16,6 +16,13 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: https://github.com/basecamp/mail_view.git
+  revision: bc6ab46866a1544cb2c40877142087b0898485eb
+  specs:
+    mail_view (2.0.4)
+      tilt
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -476,6 +483,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari (= 0.15.1)
   koala (= 1.9.0)
+  mail_view!
   mandrill-api (~> 1.0.49)
   mandrill_mailer (= 0.4.3)
   money-rails (= 0.9.0)

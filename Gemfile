@@ -74,6 +74,7 @@ group :development do
   gem 'capistrano-rails', '1.1'
   gem 'guard', '2.2.5'
   gem 'guard-rspec', '4.2.3'
+  gem 'mail_view', :git => 'https://github.com/basecamp/mail_view.git'
   gem 'ruby_gntp'
 end
 
