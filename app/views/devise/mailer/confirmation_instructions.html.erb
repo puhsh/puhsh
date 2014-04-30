@@ -41,7 +41,7 @@
 						
 						
 						<br/>
-                        <a class="btnsocial" href="http://deeplink.me/<%= user_confirmation_url %>" target="_blank" style="margin: 0;padding: 10px 15px;font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #FFF;text-decoration: none;background-color: #ec008c;font-weight: bold;text-align: center;cursor: pointer;display: inline-block;">Verify Email Address</a>
+                        <a class="btnsocial" href="<%= user_confirmation_url(confirmation_token: @token)%>" target="_blank" style="margin: 0;padding: 10px 15px;font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #FFF;text-decoration: none;background-color: #ec008c;font-weight: bold;text-align: center;cursor: pointer;display: inline-block;">Verify Email Address</a>
 										</center>		
 						<br/>
 						<br/>							
