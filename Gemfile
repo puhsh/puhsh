@@ -74,7 +74,6 @@ group :development do
   gem 'capistrano-rails', '1.1'
   gem 'guard', '2.2.5'
   gem 'guard-rspec', '4.2.3'
-  gem 'mail_view', :git => 'https://github.com/basecamp/mail_view.git'
   gem 'ruby_gntp'
 end
 
@@ -101,6 +100,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari', '0.15.1'
 gem 'koala', '1.9.0'
+gem 'mail_view', :git => 'https://github.com/basecamp/mail_view.git'
 gem 'money-rails', '0.9.0', require: 'money-rails'
 gem 'newrelic_rpm', '3.7.3.204'
 gem 'open-meta-tags', '0.4.0', require: 'open_meta_tags'
