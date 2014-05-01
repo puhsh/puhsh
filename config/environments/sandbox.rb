@@ -65,6 +65,7 @@ Puhsh::Application.configure do
     domain: 'puhsh.com'
   }
   config.mandrill_mailer.default_url_options = { host: 'puhsh.com' }
+  config.action_mailer.default_url_options = { host: 'puhsh.com' }
 
   # Enable threaded mode
   # config.threadsafe!
