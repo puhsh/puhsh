@@ -29,5 +29,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_confirmation_path_for(resource_name, resource)
+    deeplinkme_url
   end
 end
