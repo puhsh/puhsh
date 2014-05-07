@@ -80,7 +80,7 @@ module Puhsh
         post = Post.find_by_id(opts[:post_id])
         user = User.find_by_id(opts[:user_id])
         if post && user
-          UserMailer.item_purchased(post, user)
+          UserMailer.item_purchased(post, user).deliver
         end
       end
     end
