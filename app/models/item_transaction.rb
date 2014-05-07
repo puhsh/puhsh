@@ -9,8 +9,17 @@ class ItemTransaction < ActiveRecord::Base
   belongs_to :offer
 
   # Callbacks
+  after_commit :send_item_purchased_email, on: :create
   
   # Validations
 
   # Methods
+  
+  protected
+
+  def send_item_purchased_email
+    if !self.offer.sold_offline?
+      Puhsh::Jobs::EmailJob.send_item_purchased_email({post_id: self.post_id, user_id: self.buyer_id})
+    end
+  end
 end
