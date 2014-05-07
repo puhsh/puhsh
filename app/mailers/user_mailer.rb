@@ -104,7 +104,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     @post_url = bitly_url(post_url(@post.city.slug, @user.slug, @post.slug))
     @price = item_price(@post)
     @image_url = @post.post_images.first.image.url(:small)
-    mandril_mail template: 'item-purchased',
+    mandrill_mail template: 'item-purchased',
                  to: @user.contact_email,
                  vars: { 
                    'POST_TITLE' => @post.title,
