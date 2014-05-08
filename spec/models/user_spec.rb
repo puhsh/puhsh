@@ -445,6 +445,20 @@ describe User do
     end
   end
 
+  describe '.send_facebook_friend_joined_email' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:new_user) { FactoryGirl.build(:user) }
+    let!(:user_existing) { FactoryGirl.create(:user, contact_email: 'test@test.local') }
+    before { ResqueSpec.reset! }
+
+    it 'sends an email to the user\'s facebook friends when they join' do
+      new_user.save
+      expect(Puhsh::Jobs::EmailJob).to have_queued(:send_facebook_friend_joined_email, {user_id: new_user.id}).in(:email)
+      expect_any_instance_of(Puhsh::Jobs::EmailJob).to receive(:send_facebook_friend_joined_email).with({'user_id' => user_existing.id})
+      ResqueSpec.perform_all(:email)
+    end
+  end
+
   describe '.contactable?' do
     let!(:new_user) { FactoryGirl.build(:user) }
 

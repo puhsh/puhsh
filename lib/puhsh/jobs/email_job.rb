@@ -31,6 +31,10 @@ module Puhsh
         Resque.enqueue(self, :send_item_purchased_email, opts)
       end
 
+      def self.send_facebook_friend_joined_email(opts)
+        Resque.enqueue(self, :send_facebook_friend_joined_email, opts)
+      end
+
       def send_welcome_email(opts)
         opts = HashWithIndifferentAccess.new(opts)
         user = User.find_by_id(opts[:user_id])
@@ -81,6 +85,16 @@ module Puhsh
         user = User.find_by_id(opts[:user_id])
         if post && user
           UserMailer.item_purchased(post, user).deliver
+        end
+      end
+
+      def send_facebook_friend_joined_email(opts)
+        opts = HashWithIndifferentAccess.new(opts)
+        user = User.find_by_id(opts[:user_id])
+        if user
+          user.facebook_friends_on_puhsh.registered.find_each do |facebook_friend_user|
+            UserMailer.facebook_friend_joined(user, facebook_friend_user).deliver
+          end
         end
       end
     end

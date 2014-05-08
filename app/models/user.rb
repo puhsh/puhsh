@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   before_save :set_home_city, :send_welcome_email
   after_commit :add_default_role, on: :create
   after_validation :geocode
+  after_commit :send_facebook_friend_joined_email, on: :create
 
   # Validations
   validates :uid, presence: true, uniqueness: true
@@ -197,5 +198,9 @@ class User < ActiveRecord::Base
     if self.recently_registered?
       Puhsh::Jobs::EmailJob.send_welcome_email({user_id: self.id})
     end
+  end
+
+  def send_facebook_friend_joined_email
+    Puhsh::Jobs::EmailJob.send_facebook_friend_joined_email({user_id: self.id})
   end
 end
