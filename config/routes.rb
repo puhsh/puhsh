@@ -6,7 +6,7 @@ Puhsh::Application.routes.draw do
   ###############
   
   # Root URL
-  root to: 'home#download'
+  root to: 'posts#index'
   
   # Dev Tools
   mount Peek::Railtie => '/peek'
