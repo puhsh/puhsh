@@ -120,7 +120,7 @@ class UserMailer < MandrillMailer::TemplateMailer
   def facebook_friend_joined(user_that_joined, user)
     @user_that_joined = user_that_joined
     @user = user
-    @user_that_joined_gender = @user_that_joined_gender.gender == 'male' ? 'His' : 'Her'
+    @user_that_joined_gender = @user_that_joined.gender == 'male' ? 'His' : 'Her'
     mandrill_mailer template: 'facebook-friend-joined',
                     to: @user.contact_email,
                     vars: {
