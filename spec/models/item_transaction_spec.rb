@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'vcr_helper'
 
 describe ItemTransaction do
   it { should belong_to(:seller) }
@@ -9,8 +10,8 @@ describe ItemTransaction do
 
 
   describe '.send_item_purchased_email' do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:user2) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, contact_email: nil) }
+    let(:user2) { FactoryGirl.create(:user, contact_email: nil) }
     let(:post) { FactoryGirl.create(:post, user: user) }
     let(:item) { FactoryGirl.create(:item, post: post) }
     let(:offer) { FactoryGirl.create(:offer, post: post, item: item, user: user2) }
