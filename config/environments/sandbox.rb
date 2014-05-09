@@ -60,7 +60,7 @@ Puhsh::Application.configure do
     port: 587,
     enable_starttls_auto: true,
     user_name: 'info@puhsh.com',
-    password: '_3e2bCMgFGlZBg21hjVy1w',
+    password: '3QALcfGTpGQZ5Omul2X0gw',
     authentication: 'login',
     domain: 'puhsh.com',
     host: 'puhsh.com'
