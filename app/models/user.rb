@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   has_many :bought_items, class_name: 'ItemTransaction', foreign_key: 'buyer_id', dependent: :nullify
 
   # Callbacks
-  before_save :set_home_city, :send_welcome_email
+  before_save :set_home_city, :send_welcome_email, :send_confirmation_instructions
   after_commit :add_default_role, on: :create
   after_commit :skip_confirmation_notification!, on: :create
   after_validation :geocode
@@ -207,5 +207,9 @@ class User < ActiveRecord::Base
   # TODO Remove this once 1.1.1 is released 
   def confirmation_required?
     Rails.env.sandbox? || Rails.env.development?
+  end
+
+  def send_confirmation_instructions
+    Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
   end
 end
