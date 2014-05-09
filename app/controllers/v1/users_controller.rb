@@ -63,4 +63,10 @@ class V1::UsersController < V1::ApiController
     @items = [ActiveModel::ArraySerializer.new(@mutual_friends, each_serializer: FacebookUserSerializer)]
     render json: @items
   end
+
+  def confirm
+    @user = User.find(params[:id])
+    @user.resend_confirmation_instructions
+    render json: @user
+  end
 end

@@ -42,6 +42,7 @@ Puhsh::Application.routes.draw do
         get :followers, to: 'followers#index'
         get :watched_posts
         get :mutual_friends
+        post :confirm
       end
     end
     resources :devices, only: [:create]

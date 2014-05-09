@@ -185,6 +185,12 @@ class User < ActiveRecord::Base
     self.contact_email
   end
 
+  def send_confirmation_instructions
+    if self.recently_registered?
+      Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
+    end
+  end
+
   protected
 
   def add_default_role
@@ -207,11 +213,5 @@ class User < ActiveRecord::Base
   # TODO Remove this once 1.1.1 is released 
   def confirmation_required?
     Rails.env.sandbox? || Rails.env.development?
-  end
-
-  def send_confirmation_instructions
-    if self.recently_registered?
-      Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
-    end
   end
 end
