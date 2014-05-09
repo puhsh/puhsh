@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   # Callbacks
   before_save :set_home_city, :send_welcome_email
   after_commit :add_default_role, on: :create
+  after_commit :skip_confirmation_notification!, on: :create
   after_validation :geocode
 
   # Validations
