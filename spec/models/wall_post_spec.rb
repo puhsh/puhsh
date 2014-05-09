@@ -89,5 +89,13 @@ describe WallPost do
         expect(user.reload.star_count).to eql(15)
       end
     end
+
+    context ':email_share' do
+      it 'grants 5 stars when a wall post is created' do
+        wall_post.post_type = :email_share
+        wall_post.save
+        expect(user.reload.star_count).to eql(15)
+      end
+    end
   end
 end
