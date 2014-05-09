@@ -210,6 +210,8 @@ class User < ActiveRecord::Base
   end
 
   def send_confirmation_instructions
-    Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
+    if self.recently_registered?
+      Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
+    end
   end
 end
