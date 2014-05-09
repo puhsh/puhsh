@@ -20,10 +20,10 @@ section.heading {
 }
 
 
-// A heading element that contains information about the page
+// A heading element that contains information about the page in a padded section
 //
 // Styleguide 1.1.2.
-header {
+header.padded {
   padding: rem-calc(25);
   background: transparent;
   &.pink {
