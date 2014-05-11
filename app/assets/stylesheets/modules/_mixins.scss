@@ -6,3 +6,10 @@
 @mixin bolder-text-weight {
   font-weight: bold;
 }
+
+// Provides a faded background effect.
+//
+// $color - The color to use for the faded background
+@mixin faded-background($color) {
+  background-color: rgba($color, 0.8);
+}

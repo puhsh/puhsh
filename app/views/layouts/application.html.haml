@@ -24,10 +24,10 @@
       #peek-bar.show-for-large-up
         = render 'peek/bar'
       .container
-        %header.row.padded
-          .small-12
+        = yield :header
     %section#main
-      = yield
+      .container
+        = yield
       #main_footer
 
     = render 'shared/facebook_sdk'

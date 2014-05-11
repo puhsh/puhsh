@@ -1,7 +1,7 @@
 @import 'compass';
 
 // A basic content within a heading that has a minimum height. Every <section.heading > should have 
-// a heading element contained under a <div.container>.
+// a <header> element contained under a <div.container>.
 //
 // .pink              - Pink color for the background
 // .global-image      - Background image of a world map
@@ -16,17 +16,45 @@ section.heading {
   }
   &.global-image {
     @include background(asset-url("global.png"));
+    background-size: cover;
+  }
+
+  header {
+    background-color: rgba(0,0,0,0);
   }
 }
 
-
-// A heading element that contains information about the page in a padded section
+// A container with a background that specifically calls out content.
 //
 // Styleguide 1.1.2.
-header.padded {
-  padding: rem-calc(25);
-  background: transparent;
-  &.pink {
-    background-color: $pink;
+div.callout {
+  @include faded-background($white);
+  margin: rem-calc(25) rem-calc(0);
+  padding: rem-calc(15);
+  border-radius: rem-calc(5);
+  min-height: rem-calc(150);
+  height: rem-calc(150);
+}
+
+// A section that provides user information about downloading the app. Can use a <p.heading> for text
+//
+// Styleguide 1.1.3
+div.app-download-info {
+  p.heading { 
+    font-size: $h3-font-size;
+    font-family: $header-font-family;
+    font-weight: $header-font-weight;
+    margin-bottom: rem-calc(12);
+  }
+  
+  // TODO this needs to be pulled in to its own file
+  img {
+    height: rem-calc(80);
+    margin: 0 rem-calc(10);
+    &.logo {
+      height: rem-calc(26);
+      width: auto;
+      margin: 0;
+    }
   }
 }
