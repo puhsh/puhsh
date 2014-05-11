@@ -17,6 +17,7 @@
 
     = javascript_include_tag 'application'
     = javascript_include_tag 'vendor/modernizr'
+    = yield :scripts
     = csrf_meta_tags
   %body
     #fb-root
@@ -25,9 +26,8 @@
         = render 'peek/bar'
       .container
         = yield :header
-    %section#main
+    %main
       .container
         = yield
-      #main_footer
 
     = render 'shared/facebook_sdk'

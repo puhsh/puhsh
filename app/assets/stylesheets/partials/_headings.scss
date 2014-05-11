@@ -32,6 +32,7 @@ div.callout {
   padding: rem-calc(15);
   border-radius: rem-calc(5);
   min-height: rem-calc(150);
+  max-width: rem-calc(960);
 }
 
 // A section that provides user information about downloading the app. Can use a <p.heading> for faux heading.

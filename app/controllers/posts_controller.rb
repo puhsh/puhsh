@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
 
   def index
-    @cities = City.page(params[:page]).per(500).order('state asc').alpha
-    respond_with @cities
+    @posts = Post.includes({post_images: :post}).recent
+    respond_with @posts
   end
 
   def show
@@ -10,8 +10,10 @@ class PostsController < ApplicationController
     @city = City.friendly.find(params[:city_id])
     if @user && @city
       @post = @user.posts.includes(:item, :post_images, {user: :home_city}).friendly.where('posts.city_id = ?', @city.id).find(params[:id])
-      @image_count = @post.post_images.count if @post
+    else
+      @post = Post.find(params[:id])
     end
+    @image_count = @post.post_images.count if @post
     respond_with @post
   end
 end

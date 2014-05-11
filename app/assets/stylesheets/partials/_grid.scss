@@ -1,0 +1,44 @@
+// A container for any number <article.item> elements to show content or other items. Each container should have 
+// at least one <article.item> which contains some data for each item in a collection
+//
+//
+// Styleguide 3.0
+article.item-container {
+  margin: rem-calc(20) rem-calc(5);
+  padding: rem-calc(5);
+  position: relative;
+  max-width: rem-calc(960);
+
+  // TODO This needs to be cleaned up
+  article.item {
+    @include border-radius(rem-calc(5));
+    padding: 10px;
+    border: rem-calc(1) solid $darkGray;
+    background-color: $white;
+    min-width: rem-calc(220);
+    max-width: rem-calc(220);
+    margin-bottom: rem-calc(20);
+    h6 { 
+      margin: 10px;
+      font-weight: bold;
+    }
+    p {
+      font-size: 16px;
+      color: $black50;
+    }
+    img {
+      height: rem-calc(200);
+      width: auto;
+    }
+
+    span.price {
+      color: $white;
+      @include border-radius(rem-calc(5));
+      background-color: $pink;
+      margin-left: auto;
+      margin-right: auto;
+      width: 160px;
+      padding: 5px 20px;
+    }
+  }
+}

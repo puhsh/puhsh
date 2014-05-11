@@ -22,3 +22,8 @@
 @import 'partials/modals';
 @import 'partials/typography';
 @import 'partials/headings';
+@import 'partials/grid';
+
+body {
+  background-color: $gray;
+}

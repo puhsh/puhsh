@@ -3,3 +3,27 @@
 
 - content_for :header do
   = render 'shared/header'
+
+
+- content_for :scripts do
+  :javascript
+    $(function() {
+      $(".item-container").masonry({columnWidth: 220, itemSelector: '.item', gutter: 20});
+    });
+
+%section.row
+  %article.small-12
+
+%section.row
+  %article.small-12.text-center.item-container#posts
+    - @posts.each do |post|
+      - image = post.post_images.first
+      %article.item#post
+        - if image.image_file_name.present?
+          = image_tag image.image.url(:medium)
+        - else
+          = image_tag 'http://placehold.it/200x200'
+        %h6= post.title
+        %p= post.description
+        %p(style="margin-bottom: 10px;")
+          %span.price= post_price(post.item)

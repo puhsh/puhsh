@@ -13,7 +13,7 @@ module PostsHelper
 
   def post_price(item)
     if item && item.price_cents > 0
-      humanized_money item.price
+      "$#{humanized_money item.price}"
     else
       'FREE'
     end
