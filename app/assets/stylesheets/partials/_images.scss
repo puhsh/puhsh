@@ -13,3 +13,34 @@
     margin-bottom: $image-bottom-margin;
   }
 }
+
+// A basic Puhsh logo that can have various sizes. Defaults to the original size
+//
+// .medium    - A medium style
+// .small     - A small style
+// .inline    - A style ideal for inline usage
+//
+// Styleguide 2.0.0
+img.logo.puhsh {
+  width: auto;
+  margin: 0;
+
+  &.original {
+  }
+
+  &.medium {
+  }
+
+  &.inline {
+    height: rem-calc(26);
+  }
+}
+
+// A standard app store badge that can have various sizes.
+//
+//
+// Styleguide 2.1.0
+img.app-store-badge {
+  height: rem-calc(80);
+  margin: 0 rem-calc(10);
+}
