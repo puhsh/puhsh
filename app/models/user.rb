@@ -187,7 +187,11 @@ class User < ActiveRecord::Base
 
   def send_confirmation_instructions
     if self.recently_registered?
-      Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
+      if Rails.env.development?
+        Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
+      else
+        self.skip_confirmation!
+      end
     end
   end
 
