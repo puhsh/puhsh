@@ -191,7 +191,6 @@ class User < ActiveRecord::Base
         Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
       else
         self.skip_confirmation!
-        self.save
       end
     end
   end
