@@ -242,14 +242,17 @@ describe V1::UsersController do
   describe '#watched_posts' do
     let!(:user) { FactoryGirl.create(:user, home_city: city) }
     let!(:user2) { FactoryGirl.create(:user, home_city: city) }
+    let!(:user3) { FactoryGirl.create(:user, home_city: city) }
     let!(:category) { FactoryGirl.create(:category) }
     let!(:subcategory) { FactoryGirl.create(:subcategory, category: Category.first) }
     let!(:city) { FactoryGirl.create(:city) }
     let!(:post) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
     let!(:post2) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
+    let!(:post3) { FactoryGirl.create(:post, user: user3, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory, category: category) }
     let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
     let!(:item2) { FactoryGirl.create(:item, post: post2, price_cents: 1000) }
     let!(:question) { FactoryGirl.create(:question, item: item, user: user, content: 'Is this item free?', post: post) }
+    let!(:question2) { FactoryGirl.create(:question, item: item, user: user, content: 'Is this item free?', post: post3) }
     let!(:offer) { FactoryGirl.create(:offer, item: item2, user: user, amount_cents: 4000, post: post2) }
 
     context 'without access token' do
@@ -274,6 +277,14 @@ describe V1::UsersController do
         get :watched_posts, { id: user.id, access_token: access_token.token }, format: :json
         expect(assigns[:posts]).to include(post)
         expect(assigns[:posts]).to include(post2)
+        expect(assigns[:posts]).to include(post3)
+      end
+
+      it 'returns all the posts from a specific user that a user has made an offer on or has asked a question on' do
+        get :watched_posts, { id: user.id, user_id: user3.id, access_token: access_token.token }
+        expect(assigns[:posts]).to_not include(post)
+        expect(assigns[:posts]).to_not include(post2)
+        expect(assigns[:posts]).to include(post3)
       end
     end
   end
