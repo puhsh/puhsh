@@ -32,14 +32,9 @@ describe PostsController do
   context '#index' do
     let!(:city2) { FactoryGirl.create(:city) }
 
-    it 'returns cities that have posts' do
+    it 'returns recent posts' do
       get :index, format: :html
-      expect(assigns[:cities]).to include(city)
-    end
-
-    it 'returns cities without posts' do
-      get :index, format: :html
-      expect(assigns[:cities]).to include(city2)
+      expect(assigns[:posts]).to include(post)
     end
   end
 end

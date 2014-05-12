@@ -12,10 +12,7 @@
     });
 
 %section.row
-  %article.small-12
-
-%section.row
-  %article.small-12.text-center.item-container#posts
+  %article.small-12.columns.text-center.item-container#posts
     - @posts.each do |post|
       - image = post.post_images.first
       %article.item#post
