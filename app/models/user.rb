@@ -212,6 +212,6 @@ class User < ActiveRecord::Base
 
   # TODO Remove this once 1.1.1 is released 
   def confirmation_required?
-    Rails.env.sandbox? || Rails.env.development?
+     Rails.env.development?
   end
 end
