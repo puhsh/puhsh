@@ -20,7 +20,6 @@
           = image_tag image.image.url(:medium)
         - else
           = image_tag 'http://placehold.it/200x200'
-        %h6= post.title
+        %p.title= post.title
         %p= post.description
-        %p(style="margin-bottom: 10px;")
-          %span.price= post_price(post.item)
+        %span.label.price= post_price(post.item)

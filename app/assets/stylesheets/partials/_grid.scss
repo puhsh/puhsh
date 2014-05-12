@@ -18,9 +18,11 @@ article.item-container {
     min-width: rem-calc(220);
     max-width: rem-calc(220);
     margin-bottom: rem-calc(20);
-    h6 { 
-      margin: 10px;
+    p.title { 
+      margin: rem-calc(10);
+      margin-bottom: rem-calc(10);
       font-weight: bold;
+      color: $black;
     }
     p {
       font-size: 16px;
@@ -29,16 +31,6 @@ article.item-container {
     img {
       height: rem-calc(200);
       width: auto;
-    }
-
-    span.price {
-      color: $white;
-      @include border-radius(rem-calc(5));
-      background-color: $pink;
-      margin-left: auto;
-      margin-right: auto;
-      width: 160px;
-      padding: 5px 20px;
     }
   }
 }
