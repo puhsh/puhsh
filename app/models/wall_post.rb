@@ -6,11 +6,12 @@ class WallPost < ActiveRecord::Base
   @@POST_TYPE_LIMITS = {
     alpha_share: 3,
     sms_share: 1,
-    app_share: 1
+    app_share: 1,
+    email_share: 1
   }
 
   attr_accessible :user, :post_type
-  symbolize :post_type, in: [:alpha_share, :post_share, :sms_share, :app_share, :sold_post_share] , methods: true, scopes: false, validates: true
+  symbolize :post_type, in: [:alpha_share, :post_share, :sms_share, :app_share, :sold_post_share, :email_share] , methods: true, scopes: false, validates: true
 
   # Relations
   belongs_to :user

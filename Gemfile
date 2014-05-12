@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Rails
-gem 'rails', '4.0.4'
+gem 'rails', '4.0.5'
 
 # MySQL
 gem 'mysql2', '0.3.15'
@@ -49,7 +49,7 @@ gem 'peek-resque', '2.0.1'
 
 # Assets
 gem 'sass-rails', '4.0.3'
-gem 'coffee-rails', '4.0.0'
+gem 'coffee-rails', '4.0.1'
 gem 'uglifier', '2.5.0'
 gem 'compass-rails', '1.1.2'
 gem 'foundation-rails', '5.1.1.0'

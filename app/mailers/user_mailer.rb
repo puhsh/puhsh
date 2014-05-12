@@ -23,7 +23,7 @@ class UserMailer < MandrillMailer::TemplateMailer
     @description = @post.description
     @post_location = post_location_name(@user)
     @image_url = @post.post_images.first.image.url(:small)
-    @price = @post.item.price_cents > 0 ? humanized_money_with_symbol(@post.item.price) : 'FREE'
+    @price = item_price(@post)
     mandrill_mail template: 'item-posted',
                   to: @user.contact_email,
                   vars: {
@@ -96,5 +96,47 @@ class UserMailer < MandrillMailer::TemplateMailer
                     'CURRENT_YEAR' => Date.today.year
                   },
                   inline_css: true
+  end
+
+  def item_purchased(post, user)
+    @user = user
+    @post = post
+    @post_url = bitly_url(post_url(@post.city.slug, @user.slug, @post.slug))
+    @price = item_price(@post)
+    @image_url = @post.post_images.first.image.url(:small)
+    mandrill_mail template: 'item-purchased',
+                 to: @user.contact_email,
+                 vars: { 
+                   'POST_TITLE' => @post.title,
+                   'POST_PRICE' => @price,
+                   'USER_FIRST_NAME' => @user.first_name,
+                   'USER_EMAIL' => @user.contact_email,
+                   'VIEW_POST_URL' => @post_url,
+                   'VIEW_POST_PHOTO' => @image_url,
+                   'CURRENT_YEAR' => Date.today.year
+                 }
+  end
+
+  def facebook_friend_joined(user_that_joined, user)
+    @user_that_joined = user_that_joined
+    @user = user
+    @user_that_joined_gender = @user_that_joined.gender == 'male' ? 'His' : 'Her'
+    mandrill_mail template: 'facebook-friend-joined',
+                    to: @user.contact_email,
+                    vars: {
+                      'USER_FIRST_NAME' => @user.first_name,
+                      'USER_EMAIL' => @user.contact_email,
+                      'OTHER_USER_AVATAR_URL' =>  @user_that_joined.avatar_url,
+                      'OTHER_USER_NAME' => @user_that_joined.name,
+                      'GENDER' => @user_that_joined_gender,
+                      'CURRENT_YEAR' => Date.today.year
+                    }
+
+  end
+
+  private 
+
+  def item_price(post)
+    post.item.price_cents > 0 ? humanized_money_with_symbol(post.item.price) : 'FREE'
   end
 end

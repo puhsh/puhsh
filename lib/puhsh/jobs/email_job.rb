@@ -27,6 +27,14 @@ module Puhsh
         Resque.enqueue(self, :send_new_question_email_to_others, opts)
       end
 
+      def self.send_item_purchased_email(opts)
+        Resque.enqueue(self, :send_item_purchased_email, opts)
+      end
+
+      def self.send_facebook_friend_joined_email(opts)
+        Resque.enqueue(self, :send_facebook_friend_joined_email, opts)
+      end
+
       def send_welcome_email(opts)
         opts = HashWithIndifferentAccess.new(opts)
         user = User.find_by_id(opts[:user_id])
@@ -67,6 +75,25 @@ module Puhsh
           users_to_receive_email = Question.includes(:user).where(post_id: question.post_id).where('user_id != ?', question.user).where('user_id != ?', question.post.user).collect(&:user).uniq
           users_to_receive_email.each do |user|
             UserMailer.new_question_after_question_email(question, user).deliver
+          end
+        end
+      end
+
+      def send_item_purchased_email(opts)
+        opts = HashWithIndifferentAccess.new(opts)
+        post = Post.find_by_id(opts[:post_id])
+        user = User.find_by_id(opts[:user_id])
+        if post && user
+          UserMailer.item_purchased(post, user).deliver
+        end
+      end
+
+      def send_facebook_friend_joined_email(opts)
+        opts = HashWithIndifferentAccess.new(opts)
+        user = User.find_by_id(opts[:user_id])
+        if user
+          user.facebook_friends_on_puhsh.registered.find_each do |facebook_friend_user|
+            UserMailer.facebook_friend_joined(user, facebook_friend_user).deliver
           end
         end
       end

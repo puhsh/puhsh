@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'vcr_helper'
 
 describe User do
 
@@ -425,8 +426,6 @@ describe User do
       user.contact_email = 'new.user@test.local'
       user.save
       expect(Puhsh::Jobs::EmailJob).to have_queued(:send_welcome_email, {user_id: user.id}).in(:email)
-      expect_any_instance_of(Puhsh::Jobs::EmailJob).to receive(:send_welcome_email).with({'user_id' => user.id})
-      ResqueSpec.perform_all(:email)
     end
 
     it 'does not send a welcome email to a brand new user' do
@@ -442,6 +441,23 @@ describe User do
       expect(Puhsh::Jobs::EmailJob).to_not have_queued(:send_welcome_email, {user_id: user_existing.id}).in(:email)
       expect_any_instance_of(Puhsh::Jobs::EmailJob).to_not receive(:send_welcome_email).with({'user_id' => user_existing.id})
       ResqueSpec.perform_all(:email)
+    end
+  end
+
+  describe '.send_facebook_friend_joined_email' do
+    subject(:test_users) { Koala::Facebook::TestUsers.new(app_id: FACEBOOK_APP_ID, secret: FACEBOOK_APP_SECRET) }
+    let!(:new_user) { FactoryGirl.build(:user) }
+    before { ResqueSpec.reset! }
+
+    it 'sends an email to the user\'s facebook friends when they join' do
+      VCR.use_cassette('/models/user/send_facebook_friend_joined_email') do
+        user = test_users.create(true)
+        FacebookTestUser.create(fbid: user['id'])
+        new_user.uid = user['id']
+        new_user.contact_email = 'test@test.local'
+        new_user.save
+        expect(Puhsh::Jobs::EmailJob).to have_queued(:send_facebook_friend_joined_email, {user_id: new_user.reload.id}).in(:email)
+      end
     end
   end
 
