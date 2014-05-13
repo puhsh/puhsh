@@ -8,6 +8,9 @@
 //
 //= require masonry/dist/masonry.pkgd.min
 //= require jquery-waypoints/waypoints.min
+//= require underscore/underscore
+//= require spin.js/spin.js
+//= require spin.js/jquery.spin.js
 
 
 $(function(){ $(document).foundation(); });
