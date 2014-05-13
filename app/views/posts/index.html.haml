@@ -8,18 +8,19 @@
 - content_for :scripts do
   :javascript
     $(function() {
-      $(".item-container").masonry({columnWidth: 220, itemSelector: '.item', gutter: 20});
+      $(".js-grid-list").masonry({columnWidth: 220, itemSelector: '.item', gutter: 20});
     });
 
 %section.row
-  %article.small-12.columns.text-center.item-container#posts
+  %article.small-12.columns.text-center.item-container.js-grid-list#posts
     - @posts.each do |post|
       - image = post.post_images.first
-      %article.item#post
+      %article.item#post(itemscope itemtype='http://schema.org/Product')
         - if image.image_file_name.present?
           = image_tag image.image.url(:medium)
         - else
           = image_tag 'http://placehold.it/200x200'
-        %p.title= post.title
-        %p= post.description
-        %span.label.price= post_price(post.item)
+        %p.title(itemprop='name')= post.title
+        %p(itemprop='description')= post.description
+        #price-container(itemprop="offers" itemscope itemtype="http://schema.org/Offer")
+          %span.label.price(itemprop='price')= post_price(post.item)
