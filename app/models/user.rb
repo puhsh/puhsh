@@ -185,6 +185,7 @@ class User < ActiveRecord::Base
     self.contact_email
   end
 
+  # TODO Enable confirmation once we are ready. For now, use Devise to bypass it.
   def send_confirmation_instructions
     if self.recently_registered?
       if Rails.env.development?
@@ -214,7 +215,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  # TODO Remove this once 1.1.1 is released 
+  # TODO Remove this once 1.1.1 is released and we are ready for confirmations
   def confirmation_required?
      Rails.env.development?
   end
