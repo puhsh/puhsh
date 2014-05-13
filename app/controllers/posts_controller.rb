@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.includes({post_images: :post}).recent
+    @posts = Post.includes({post_images: :post}, :item).recent
     respond_with @posts
   end
 
