@@ -22,5 +22,5 @@
           = image_tag 'http://placehold.it/200x200'
         %p.title(itemprop='name')= post.title
         %p(itemprop='description')= post.description
-        #price-container(itemprop="offers" itemscope itemtype="http://schema.org/Offer")
+        #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
           %span.label.price(itemprop='price')= post_price(post.item)
