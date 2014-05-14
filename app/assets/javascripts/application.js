@@ -8,6 +8,7 @@
 //
 //= require masonry/dist/masonry.pkgd.min
 //= require jquery-waypoints/waypoints.min
+//= require jquery-waypoints/shortcuts/infinite-scroll/waypoints-infinite.min
 //= require underscore/underscore
 //= require spin.js/spin.js
 //= require spin.js/jquery.spin.js
