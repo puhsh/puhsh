@@ -14,7 +14,7 @@
     %i.fa.fa-pinterest.fa-2x
 
 
-#post
+#post(itemscope itemtype='http://schema.org/Product')
   .row#images
     .small-12.large-12.columns
       %ul.image-list.clearing-thumbs(class="#{post_image_list_class(@image_count)}" data-clearing)
@@ -25,12 +25,13 @@
 
   .row#heading
     .small-12.columns.text-center
-      %h1 
+      %h1(itemprop='name')
         = @post.title
-        - if @post.sold?
-          %span.price-inline SOLD
-        - else
-          %span.price-inline(class="#{post_item_price_class(@post.item)}")= post_price(@post.item)
+        #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+          - if @post.sold?
+            %span.price-inline(itemprop='price') SOLD
+          - else
+            %span.price-inline(class="#{post_item_price_class(@post.item)}" itemprop='price')= post_price(@post.item)
 
   .row#seller-info
     .small-12.medium-6.small-centered.medium-centered.columns
@@ -67,7 +68,7 @@
         %li
           %p.text-label
             %strong Details:
-          %span= @post.description
+          %span(itemprop='description')= @post.description
 
   = render 'shared/app_store_info'
   = render 'shared/modals/pickup_help'
