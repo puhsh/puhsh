@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.includes({post_images: :post}, :item).recent
+    @posts = Post.includes({post_images: :post}, :item).page(params[:page]).per(params[:per_page]).recent
     respond_with @posts
   end
 

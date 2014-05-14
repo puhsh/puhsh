@@ -6,9 +6,19 @@
 
 
 - content_for :scripts do
+  // TODO This crap needs to be pulled in to an actual JS file
   :javascript
     $(function() {
-      $(".js-grid-list").masonry({columnWidth: 220, itemSelector: '.item', gutter: 20});
+      $(".js-grid-list").masonry({columnWidth: 220, itemSelector: '.item', gutter: 20, transitionDuration: '0.4s'});
+      $('.js-infinite').waypoint('infinite', {
+        items: '.item',
+        onBeforePageLoad: function() {
+          $('.item').addClass('loaded');
+        },
+        onAfterPageLoad: function() {
+          $('.js-grid-list').masonry('appended', $('.item').not('.loaded'));
+        }
+      });
     });
 
 %section.row
@@ -24,3 +34,4 @@
         %p(itemprop='description')= post.description
         #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
           %span.label.price(itemprop='price')= post_price(post.item)
+    %a.infinite-more-link(href='/posts.html')
