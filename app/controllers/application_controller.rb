@@ -18,9 +18,17 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new(params[:path])
   end
 
+  def deeplinkme_url(url)
+    "http://deeplink.me/#{url}"
+  end
+
   protected 
 
   def not_found
     redirect_to 'http://www.puhsh.com/404' unless Rails.env.development?
+  end
+
+  def after_confirmation_path_for(resource_name, resource)
+    deeplinkme_url
   end
 end

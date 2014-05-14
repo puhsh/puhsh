@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   ALPHA_ENABLED = false
 
   attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email, :star_count, :unread_notifications_count, :city_id
-  devise :trackable, :omniauthable, omniauth_providers: [:facebook]
+  devise :trackable, :omniauthable, :confirmable, omniauth_providers: [:facebook]
   rolify
   geocoded_by :zipcode
   friendly_id :full_name_slug, use: :slugged
@@ -41,8 +41,9 @@ class User < ActiveRecord::Base
   has_many :bought_items, class_name: 'ItemTransaction', foreign_key: 'buyer_id', dependent: :nullify
 
   # Callbacks
-  before_save :set_home_city, :send_welcome_email, :send_facebook_friend_joined_email
+  before_save :set_home_city, :send_welcome_email, :send_confirmation_instructions, :send_facebook_friend_joined_email
   after_commit :add_default_role, on: :create
+  after_commit :skip_confirmation_notification!, on: :create
   after_validation :geocode
 
   # Validations
@@ -180,6 +181,21 @@ class User < ActiveRecord::Base
     "#{self.first_name}#{self.last_name}"
   end
 
+  def email
+    self.contact_email
+  end
+
+  # TODO Enable confirmation once we are ready. For now, use Devise to bypass it.
+  def send_confirmation_instructions
+    if self.recently_registered?
+      if Rails.env.development?
+        Devise::Mailer.confirmation_instructions(self, self.confirmation_token).deliver
+      else
+        self.skip_confirmation!
+      end
+    end
+  end
+
   protected
 
   def add_default_role
@@ -197,6 +213,11 @@ class User < ActiveRecord::Base
     if self.recently_registered?
       Puhsh::Jobs::EmailJob.send_welcome_email({user_id: self.id})
     end
+  end
+
+  # TODO Remove this once 1.1.1 is released and we are ready for confirmations
+  def confirmation_required?
+     Rails.env.development?
   end
 
   def send_facebook_friend_joined_email

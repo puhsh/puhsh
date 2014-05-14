@@ -12,10 +12,13 @@ Puhsh::Application.routes.draw do
   mount Peek::Railtie => '/peek'
   ActiveAdmin.routes(self)
   mount Resque::Server, at: '/resque', constraints: Puhsh::AdminConstraints
+  if Rails.env.development?
+    mount MailPreview, at: '/mail_view'
+  end
 
   # Devise
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
-  
+
   ###############
   # API ROUTES
   ###############
@@ -39,6 +42,7 @@ Puhsh::Application.routes.draw do
         get :followers, to: 'followers#index'
         get :watched_posts
         get :mutual_friends
+        post :confirm
       end
     end
     resources :devices, only: [:create]

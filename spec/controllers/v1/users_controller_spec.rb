@@ -307,4 +307,32 @@ describe V1::UsersController do
       end
     end
   end
+
+  describe '#confirm' do
+    let!(:user) { FactoryGirl.create(:user) }
+    context 'without access token' do
+      it 'is forbidden' do
+        sign_in user
+        post :confirm, { id: user.id }, format: :json
+        expect(assigns[:user]).to be_nil
+      end
+    end
+
+    context 'without authentication' do
+      it 'is forbidden' do
+        post :confirm, { id: user.id }, format: :json
+        expect(assigns[:user]).to be_nil
+      end
+    end
+
+    context 'with access token and authentication' do
+      let!(:access_token) { FactoryGirl.create(:access_token, user: user) }
+
+      it 'sends the confirmation email' do
+        sign_in user
+        post :confirm, { id: user.id, access_token: access_token.token }, format: :json
+        expect(response).to be_success
+      end
+    end
+  end
 end

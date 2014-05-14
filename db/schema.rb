@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421194605) do
+ActiveRecord::Schema.define(version: 20140423172103) do
 
   create_table "access_tokens", force: true do |t|
     t.integer  "user_id"
@@ -388,6 +388,9 @@ ActiveRecord::Schema.define(version: 20140421194605) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.integer  "posts_count",                default: 0
     t.integer  "posts_flagged_count",        default: 0
     t.integer  "star_count",                 default: 0
@@ -395,6 +398,7 @@ ActiveRecord::Schema.define(version: 20140421194605) do
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["first_name"], name: "index_users_on_first_name", using: :btree
   add_index "users", ["last_name"], name: "index_users_on_last_name", using: :btree
   add_index "users", ["latitude"], name: "index_users_on_latitude", using: :btree

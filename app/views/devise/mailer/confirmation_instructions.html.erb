@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Verify Email Address</title>
+</head>
+ 
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" style="margin: 0;padding: 0; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;-webkit-text-size-adjust: none;height: 100%;width: 100%;">
+
+<!-- HEADER -->
+<table bgcolor="#f2f2f2" width="100%" cellpadding="15" border="0">
+	<tr>
+		<td width="600">
+					<table border="0" bgcolor="#f2f2f2" width="100%">
+						<tr valign="middle" align="center">
+						<td align="center"><center><a href="http://www.puhsh.com" target="_blank"><img src="http://www.puhsh.com/email-images/Puhsh-Email-Logo.png" border="0" width="225" height="50"></a></center></td>
+                 		</tr>
+					</table>
+		</td>
+	</tr>
+</table><!-- /HEADER -->
+
+<!-- BODY -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr align="center" valign="middle">
+		<td width="600">
+
+			<table border="0" width="100%" cellpadding="15" cellspacing="15">
+				<tr align="center" valign="top">
+					<td>
+						
+                        <center>
+                          <h3 style="margin: 0;padding: 0;font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;line-height: 1.1;margin-bottom: 0px;color: #333;font-weight: 500;font-size: 30px;"><strong>Hi <%= @resource.first_name %>!</strong></h3><br>
+                        
+						<p style="margin: 0;padding: 0; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom: 0px;font-weight: normal;font-size: 20px;color: #333;line-height: 1.6;">
+						Here is your big chance to prove you are not a robot...
+						<a href="*|#|*" target="_blank" style="text-decoration: none;color: #333;">
+<br>
+						</p>
+						
+						
+						
+						<br/>
+                        <a class="btnsocial" href="<%= user_confirmation_url(confirmation_token: @token)%>" target="_blank" style="margin: 0;padding: 10px 15px;font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #FFF;text-decoration: none;background-color: #ec008c;font-weight: bold;text-align: center;cursor: pointer;display: inline-block;">Verify Email Address</a>
+										</center>		
+						<br/>
+						<br/>							
+										
+                             <hr color="#f2f2f2" width="75%">         
+                                        		
+<!-- social & contact -->
+
+						<table width="300" border="0" cellspacing="20" cellpadding="0"><tr>
+    <td width="32" align="center"><a href="http://www.facebook.com/puhshapp" target="_blank"><img src="http://www.puhsh.com/email-images/icon-facebook.png" border="0" width="32" height="32"></a></td>
+    <td width="32" align="center"><a href="https://twitter.com/puhsh" target="_blank"><img src="http://www.puhsh.com/email-images/icon-twitter.png" border="0" width="32" height="32"></a></td>
+    <td width="32" align="center"><a href="http://www.pinterest.com/puhsh/" target="_blank"><img src="http://www.puhsh.com/email-images/icon-pinterest.png" border="0" width="32" height="32"></a></td>
+    <td width="32" align="center"><a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=761535377&mt=8#" target="_blank"><img src="http://www.puhsh.com/email-images/icon-apple.png" border="0" width="32" height="32"></a></td>
+    <td width="32" align="center"><a href="http://goo.gl/s01x9u" target="_blank"><img src="http://www.puhsh.com/email-images/icon-droid.png" border="0" width="32" height="32"></a></td>
+  </tr>
+</table>
+                                                
+                                                
+                         <hr color="#f2f2f2" width="75%">                                
+												
+					<table width="75%" cellpadding="0" cellspacing="0">
+                
+                
+				<tr>
+					<td align="center">
+						
+                      <p style="margin: 0;padding: 0; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 12px;color: #CCC;line-height: 1.6;">This email was sent to <a href="mailto:*|USER_EMAIL|*" target="_blank" style="margin: 0;padding: 0; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #CCC;text-decoration: none;"><%= @resource.contact_email %></a> You received this becasue you signed up for Puhsh.<br/>
+                        ©<%= Time.now.year %> Puhsh Inc. <a href="https://www.google.com/maps/preview/place/906+W+McDermott+Dr+%23116" target="_blank" style="margin: 0;padding: 0; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #CCC;text-decoration: none;">906 W McDermott Drive Suite 116-175, Allen, TX 75013</a>. All Rights Reserved.</p>
+<p style="margin: 0;padding: 0; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 12px;color: #CCC;line-height: 1.6;">
+							<a href="https://puhsh.zendesk.com" target="_blank" style="margin: 0;padding: 0;font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #999999;text-decoration: none;">Support</a> |
+							<a href="http://www.puhsh.com/privacy/" target="_blank" style="margin: 0;padding: 0;font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #999999;text-decoration: none;">Privacy</a> |
+							<a href="http://www.puhsh.com/terms/" target="_blank" style="margin: 0;padding: 0;font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #999999;text-decoration: none;">Terms</a> |
+							<a href="*|UNSUB|*" target="_blank" style="margin: 0;padding: 0;font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;color: #999999;text-decoration: none;">Unsubscribe</a>
+						</p>
+
+
+					</td>
+				</tr>
+			</table>	
+										
+						
+					
+					
+					</td>
+				</tr>
+			</table>
+			
+									
+		</td>
+		</tr>
+</table><!-- /BODY -->
+</body>
+</html>
