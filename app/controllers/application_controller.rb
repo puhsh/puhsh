@@ -31,4 +31,8 @@ class ApplicationController < ActionController::Base
   def after_confirmation_path_for(resource_name, resource)
     deeplinkme_url
   end
+
+  def hide_header
+    @hide_header = true
+  end
 end
