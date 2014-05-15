@@ -4,23 +4,6 @@
 - content_for :header do
   = render 'shared/header'
 
-
-- content_for :scripts do
-  // TODO This crap needs to be pulled in to an actual JS file
-  :javascript
-    $(function() {
-      $(".js-grid-list").masonry({columnWidth: 220, itemSelector: '.item', gutter: 20, transitionDuration: '0.4s'});
-      $('.js-infinite').waypoint('infinite', {
-        items: '.item',
-        onBeforePageLoad: function() {
-          $('.item').addClass('loaded');
-        },
-        onAfterPageLoad: function() {
-          $('.js-grid-list').masonry('appended', $('.item').not('.loaded'));
-        }
-      });
-    });
-
 %section.row
   %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts
     - @posts.each do |post|
