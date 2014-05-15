@@ -1,3 +1,27 @@
+// A specific styling for an <article.item> tailored to a post in a grid list.
+//
+//
+// Styleguide 3.0.1
+article.item.post-grid-item {
+  p {
+    color: $black50;
+    &.title {
+      color: $black;
+      font-weight: bold;
+      margin: rem-calc(10);
+      margin-bottom: rem-calc(10);
+    }
+  }
+  img {
+    height: rem-calc(200);
+    width: auto;
+  }
+}
+
+
+///
+/// TODO This is all old garbage. Refactor this crap
+///
 @import 'partials/base';
 @import 'compass/css3';
 @import 'compass/utilities';
@@ -78,3 +102,4 @@
     }
   }
 }
+

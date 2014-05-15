@@ -2,35 +2,20 @@
 // at least one <article.item> which contains some data for each item in a collection
 //
 //
-// Styleguide 3.0
+// Styleguide 3.0.0
 article.item-container {
   margin: rem-calc(20) rem-calc(5);
   padding: rem-calc(5);
   position: relative;
   max-width: rem-calc(960);
 
-  // TODO This needs to be cleaned up
   article.item {
     @include border-radius(rem-calc(5));
-    padding: 10px;
+    padding: rem-calc(10);
     border: rem-calc(1) solid $darkGray;
     background-color: $white;
     min-width: rem-calc(220);
     max-width: rem-calc(220);
     margin-bottom: rem-calc(20);
-    p.title { 
-      margin: rem-calc(10);
-      margin-bottom: rem-calc(10);
-      font-weight: bold;
-      color: $black;
-    }
-    p {
-      font-size: 16px;
-      color: $black50;
-    }
-    img {
-      height: rem-calc(200);
-      width: auto;
-    }
   }
 }

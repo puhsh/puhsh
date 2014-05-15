@@ -25,7 +25,7 @@
   %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts
     - @posts.each do |post|
       - image = post.post_images.first
-      %article.item#post(itemscope itemtype='http://schema.org/Product')
+      %article.item.post-grid-item#post(itemscope itemtype='http://schema.org/Product')
         - if image.image_file_name.present?
           = image_tag image.image.url(:medium)
         - else
