@@ -34,4 +34,4 @@
         %p(itemprop='description')= post.description
         #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
           %span.label.price(itemprop='price')= post_price(post.item)
-    %a.infinite-more-link(href='/posts.html')
+    = link_to_next_page @posts, 'Next', class: 'infinite-more-link hide'
