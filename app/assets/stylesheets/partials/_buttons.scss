@@ -1,37 +1,26 @@
-@import 'partials/base';
-
+// A simple <a.button> with various styles.
+//
+// .square       - A square button
+// .facebook     - Facebook specific button
+// .twitter      - Twitter specific button
+// .pinterest    - Pinterest specific button
+//
+// Styleguide 5.0.0
 a.button {
-  @include lighter-text-weight;
-}
-
-a.button.facebook {
-  @include button(rem-calc(4), $facebookBlue, rem-calc(4));
-  vertical-align: top;
-  i {
-    vertical-align: middle;
-    line-height: 2rem;
-    position: relative;
-    top: rem-calc(12);
+  @include button(rem-calc(10));
+  &.square {
+    width: rem-calc(34);
+    vertical-align: text-center;
   }
-  &.with-share-text {
-    i {
-      margin-right: rem-calc(10);
-    }
-    span {
-      @include lighter-text-weight;
-      vertical-align: middle;
-      font-size: rem-calc(20);
-    }
+  &.facebook {
+    @include button(rem-calc(4), $facebookBlue, 5px);
   }
-}
 
-a.button.twitter {
-  @include button(rem-calc(4), $twitterBlue, 5px);
-}
+  &.twitter { 
+    @include button(rem-calc(4), $twitterBlue, 5px);
+  }
 
-a.button.pinterest {
-  @include button(rem-calc(4), $pinterestRed, 5px);
-}
-
-@media only screen { 
+  &.pinterest {
+    @include button(rem-calc(4), $pinterestRed, 5px)
+  }
 }

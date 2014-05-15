@@ -22,8 +22,10 @@
 // Styleguide Section 3.0.0
 @import 'partials/labels';
 
-// Old Styles not in styleguide
+// Styleguide Section 4.0.0
 @import 'partials/buttons';
+
+// Old Styles not in styleguide
 @import 'partials/lists';
 @import 'partials/images';
 @import 'partials/nav';
@@ -31,7 +33,3 @@
 @import 'partials/sections';
 @import 'partials/modals';
 @import 'partials/typography';
-
-body {
-  background-color: $gray;
-}

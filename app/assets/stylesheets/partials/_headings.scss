@@ -9,6 +9,7 @@
 // Styleguide 1.1.1.
 section.heading {
   min-height: rem-calc(200);
+  margin-bottom: rem-calc(20);
 
   &.pink {
     background-color: $pink;

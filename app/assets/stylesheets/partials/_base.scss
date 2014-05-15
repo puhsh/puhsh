@@ -34,12 +34,12 @@ $base-line-height: 150%;
 // $include-html-grid-classes: $include-html-classes;
 // $include-xl-html-grid-classes: false;
 
-// $row-width: rem-calc(1000);
+$row-width: rem-calc(960);
 // $column-gutter: rem-calc(30);
 $total-columns: 12;
 
 // We use these to control various global styles
-// $body-bg: #fff;
+$body-bg: $gray;
 // $body-font-color: #222;
 $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $body-font-weight: normal;
