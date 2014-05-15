@@ -1,6 +1,6 @@
 // A custom <span.label> to display an item price.
 //
-// Styleguide 5.0.0
+// Styleguide 3.0.0
 span.label.price {
   @include label($padding: 5px 20px, $text-size: 16px, $bg: $pink, $radius: 5px);
   margin: rem-calc(0);

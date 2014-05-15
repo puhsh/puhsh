@@ -10,20 +10,28 @@
 @import 'foundation';
 @import 'compass';
 
-// Partials
+// Partials grouped by styleguide section
+
+// Styleguide Section 1.0.0
+@import 'partials/headings';
+
+// Styleguide Section 2.0.0
+@import 'partials/grid';
+@import 'partials/post';
+
+// Styleguide Section 3.0.0
+@import 'partials/labels';
+
+// Old Styles not in styleguide
 @import 'partials/buttons';
 @import 'partials/lists';
 @import 'partials/images';
 @import 'partials/nav';
-@import 'partials/post';
 @import 'partials/user';
 @import 'partials/sections';
 @import 'partials/tooltip';
 @import 'partials/modals';
 @import 'partials/typography';
-@import 'partials/headings';
-@import 'partials/grid';
-@import 'partials/labels';
 
 body {
   background-color: $gray;
