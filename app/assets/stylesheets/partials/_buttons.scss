@@ -9,8 +9,10 @@
 a.button {
   @include button(rem-calc(10));
   &.square {
-    width: rem-calc(34);
-    vertical-align: text-center;
+    i {
+      height: rem-calc(20);
+      width: rem-calc(20);
+    }
   }
   &.facebook {
     @include button(rem-calc(4), $facebookBlue, 5px);
