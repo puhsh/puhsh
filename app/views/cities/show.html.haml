@@ -1,11 +1,36 @@
 - content_for :title do
-  %title= "Users - #{@city.name}, #{@city.full_state_name}"
+  %title= "Posts- #{@city.name}, #{@city.full_state_name}"
 
-.row
-  .small-12
-    %ul.no-bullet
-      - @users.each do |user|
-        %li
-          = link_to user.name, city_user_path(@city.slug, user.slug)
+- content_for :header do
+  = render 'shared/header'
 
-    = paginate @users
+%section.row
+  %article.small-4.columns#search-social
+    .left
+      - # Search Form goes here
+  %article.small-4.small-offset-4.columns.text-center#search-social
+    %h1="#{@city.name}, #{@city.full_state_name}"
+  %article.small-4.columns#search-social
+    .right
+      %a.button.square.facebook(href="https://www.facebook.com/puhshapp" target="_blank")
+        %i.fa.fa-facebook.fa-2x
+      %a.button.square.twitter(href="https://www.twitter.com/puhsh" target="_blank")
+        %i.fa.fa-twitter.fa-2x
+      %a.button.square.pinterest(href="https://www.pinterest.com/puhsh" target="_blank")
+        %i.fa.fa-pinterest.fa-2x
+
+%section.row
+  %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts
+    - @posts.each do |post|
+      - image = post.post_images.first
+      %article.item.post-grid-item#post(itemscope itemtype='http://schema.org/Product')
+        %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
+          - if image.image_file_name.present?
+            = image_tag image.image.url(:medium)
+          - else
+            = image_tag 'http://placehold.it/200x200'
+          %p.title(itemprop='name')= post.title
+          %p(itemprop='description')= post.description
+          #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+            %span.label.price(itemprop='price')= post_price(post.item)
+    = link_to_next_page @posts, 'Next', class: 'infinite-more-link hide'

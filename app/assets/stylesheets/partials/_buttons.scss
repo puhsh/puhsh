@@ -9,6 +9,7 @@
 a.button {
   @include button(rem-calc(10));
   &.square {
+    vertical-align: middle;
     i {
       height: rem-calc(20);
       width: rem-calc(20);

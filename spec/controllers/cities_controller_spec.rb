@@ -7,6 +7,7 @@ describe CitiesController do
   let!(:user2) { FactoryGirl.create(:user, home_city: city2) }
   let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
   let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+  let!(:post2) { FactoryGirl.create(:post, user: user2, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
   let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
 
   context '#show' do
@@ -20,14 +21,14 @@ describe CitiesController do
       expect(assigns[:city]).to eql(city)
     end
 
-    it 'finds the users in the city with posts' do
+    it 'finds the posts in the city' do
       get :show, { city_id: city.slug }, format: :html
-      expect(assigns[:users]).to include(user)
+      expect(assigns[:posts]).to include(post)
     end
 
-    it 'does not find the users in the city without posts' do
+    it 'does not find the posts that are not in the city' do
       get :show, { city_id: city.slug }, format: :html
-      expect(assigns[:users]).to_not include(user2)
+      expect(assigns[:posts]).to_not include(post2)
     end
   end
 end
