@@ -25,3 +25,39 @@ ul.entered-inline-list {
     right: 50%;
   }
 }
+
+// A basic <ul.list> that can span multiple columns. Contains any number of <li.column> elements.
+//
+// .two        - Two column list
+// .three      - Three column list
+// .four       - Four column list
+//
+// Styleguide 5.0.0
+ul.list {
+  width: rem-calc(960);
+  overflow: hidden;
+
+  &.two {
+    li { 
+      width: 50%;
+    }
+  }
+
+  &.three {
+    li { 
+      width: 33.333%;
+    }
+  }
+
+  &.four {
+    li {
+      width: 25%;
+    }
+  }
+
+  li.column {
+    margin: rem-calc(8) 0;
+    float: left;
+    display: inline;
+  }
+}

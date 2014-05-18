@@ -52,4 +52,19 @@ describe City do
       expect(city.reload.pioneer?(user2)).to be_false
     end
   end
+
+  context 'scopes' do
+    describe '.us_states' do
+      let!(:city) { FactoryGirl.create(:city, state: 'TX', full_state_name: 'Texas') }
+      let!(:city2) { FactoryGirl.create(:city, state: 'TX', full_state_name: 'Texas') }
+      let!(:city3) { FactoryGirl.create(:city, state: 'CA', full_state_name: 'California') }
+
+      it 'returns the US states based on all the cities' do
+        expect(City.us_states.map(&:full_state_name)).to include('Texas')
+        expect(City.us_states.map(&:full_state_name)).to include('California')
+        expect(City.us_states.to_a.size).to eql(2)
+      end
+    end
+
+  end
 end

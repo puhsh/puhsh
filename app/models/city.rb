@@ -19,6 +19,7 @@ class City < ActiveRecord::Base
   # Validations
   
   # Scopes
+  scope :us_states, -> { select(:state, :full_state_name, :slug).group(:state) }
 
   # Redis Attributes
   set :user_ids_with_posts_in_city

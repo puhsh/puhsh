@@ -1,0 +1,22 @@
+- content_for :title do
+  %title= "United States"
+
+- content_for :header do
+  = render 'shared/header'
+
+%section.row
+  %article.small-12.columns#search-social
+    .left
+      - # Search Form goes here
+
+%section.row
+  %article.small-12.columns
+    %h1 UNITED STATES
+    .row
+      - @states.each_slice(22) do |states|
+        .small-12.medium-4.columns
+          %ul.no-bullet.list
+            - states.each do |state|
+              %li.column
+                %a(href="#{state_path(name: state.full_state_name.downcase)}")
+                  %strong= state.full_state_name
