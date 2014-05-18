@@ -19,5 +19,5 @@ $(document).foundation()
 
 $(() -> 
   puhsh = new Puhsh
-  puhsh.initializeComponents()
+  puhsh.initialize()
 )

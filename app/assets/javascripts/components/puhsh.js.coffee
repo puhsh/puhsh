@@ -1,7 +1,7 @@
 # Public: A top level class that oversees all components
 class @Puhsh
-  # Public: Initializes all components and assigns them to variables within this class
+  # Public: Initializes everything assigns them to variables within this class
   #
   # Returns nothing
-  initializeComponents: () ->
+  initialize: () ->
     @grid = new Grid
