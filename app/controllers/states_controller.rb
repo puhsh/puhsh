@@ -1,6 +1,6 @@
 class StatesController < ApplicationController
   def index
-    @states = City.us_states.alpha
+    @states = City.us_states.order('full_state_name asc')
     respond_with @states
   end
 
