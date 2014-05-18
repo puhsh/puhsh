@@ -128,6 +128,10 @@ Puhsh::Application.routes.draw do
   get '/states', to: 'states#index', via: :get, as: 'states'
   get '/states/:name', to: 'states#show', via: :get, as: 'state'
 
+  # Cities
+  resources :cities, only: [:show]
+  get '/states/:name/:city_id', to: 'cities#show', via: :get, as: 'cities'
+
   # Users
   resources :users, only: [:show]
   
