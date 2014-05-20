@@ -28,16 +28,14 @@ class City < ActiveRecord::Base
   searchable do 
     text :name, boost: 5.0
     text :state
-    text :zipcode do
-      self.zipcodes.map { |x| x.code }
-    end
+    text :full_state_name
   end
 
   # Methods
   def self.search(query, page = 1, per_page = 25)
     Sunspot.search City do
       fulltext query do
-        fields(:name, :state)
+        fields(:name, :state, :full_state_name)
       end
       paginate page: page, per_page: per_page
     end.results
