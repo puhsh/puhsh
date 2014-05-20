@@ -32,12 +32,15 @@ class City < ActiveRecord::Base
   end
 
   # Methods
-  def self.search(query, page = 1, per_page = 25)
+  def self.search(query, opts = {})
+    defaults = { page: 1, per_page: 25 }
+    opts = defaults.merge(opts)
+
     Sunspot.search City do
       fulltext query do
         fields(:name, :state, :full_state_name)
       end
-      paginate page: page, per_page: per_page
+      paginate page: opts[:page], per_page: opts[:per_page]
     end.results
   end
 

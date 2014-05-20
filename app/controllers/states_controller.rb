@@ -9,4 +9,9 @@ class StatesController < ApplicationController
     @current_state_name = @cities.first.full_state_name
     respond_with @cities
   end
+
+  def search
+    @cities = City.search(params[:query], {page: params[:page], state_name: params[:name]})
+    respond_with @cities
+  end
 end
