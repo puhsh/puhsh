@@ -104,7 +104,6 @@ namespace :deploy do
     end
   end
 
-  before :updated, 'bower:install'
   after :publishing, :restart
   after :restart, :stop_resque_pool
   after :stop_resque_pool, :start_resque_pool

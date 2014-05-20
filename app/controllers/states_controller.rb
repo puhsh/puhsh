@@ -6,8 +6,14 @@ class StatesController < ApplicationController
 
   def show
     @cities = City.where(full_state_name: params[:name]).page(params[:page]).per(100).alpha
-    @current_state_name = @cities.first.full_state_name
-    respond_with @cities
+    respond_with @cities do |format|
+      if @cities.any?
+        @current_state_name = @cities.first.full_state_name
+        format.html
+      else
+        format.html { redirect_to root_url }
+      end
+    end
   end
 
   def search
