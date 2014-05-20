@@ -122,15 +122,13 @@ Puhsh::Application.routes.draw do
 
   # Posts - SEO
   get '/posts/:city_id/:user_id/:id', to: 'posts#show', via: :get, as: 'post'
-  get '/posts/:city_id', to: 'cities#show', via: :get, as: 'city'
 
-  # States
+  # States - SEO
   get '/states', to: 'states#index', via: :get, as: 'states'
   get '/states/:name', to: 'states#show', via: :get, as: 'state'
 
-  # Cities
-  resources :cities, only: [:show]
-  get '/states/:name/:city_id', to: 'cities#show', via: :get, as: 'cities'
+  # Cities - SEO
+  get '/states/:name/:city_name', to: 'cities#show', via: :get, as: 'city'
 
   # Users
   resources :users, only: [:show]

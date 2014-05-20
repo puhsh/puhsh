@@ -1,8 +1,17 @@
 class CitiesController < ApplicationController
-  # TODO this is a n+1 mess
   def show
-    @city = City.includes(posts: [:item, :user, :post_images]).friendly.find(params[:city_id])
-    @posts = @city.posts.page(params[:page]).per(10).recent
-    respond_with @posts
+    @city = City.where(full_state_name: params[:name], name: params[:city_name]).first
+
+    if @city
+      @posts = @city.posts.includes(:item, :user, :city, {post_images: :post}).page(params[:page]).per(10).recent
+    end
+
+    respond_with @posts do |format|
+      if @posts
+        format.html
+      else
+        redirect_to root_url
+      end
+    end
   end
 end

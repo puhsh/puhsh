@@ -45,4 +45,16 @@ module ApplicationHelper
   def bitly_url(long_url)
     Bitly.client.shorten(long_url).short_url
   end
+
+  def column_class(data)
+    if data.size >= 75
+      'medium-3'
+    elsif data.size >= 50
+      'medium-4'
+    elsif data.size >= 25
+      'medium-6'
+    else
+      'medium-12'
+    end
+  end
 end

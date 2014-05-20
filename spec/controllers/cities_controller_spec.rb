@@ -12,22 +12,17 @@ describe CitiesController do
 
   context '#show' do
     it 'finds the city' do
-      get :show, { city_id: city.id }, format: :html
-      expect(assigns[:city]).to eql(city)
-    end
-
-    it 'finds the city using the friendly id' do
-      get :show, { city_id: city.slug }, format: :html
+      get :show, { city_name: city.name, name: city.full_state_name }, format: :html
       expect(assigns[:city]).to eql(city)
     end
 
     it 'finds the posts in the city' do
-      get :show, { city_id: city.slug }, format: :html
+      get :show, { city_name: city.name, name: city.full_state_name }, format: :html
       expect(assigns[:posts]).to include(post)
     end
 
     it 'does not find the posts that are not in the city' do
-      get :show, { city_id: city.slug }, format: :html
+      get :show, { city_name: city.name, name: city.full_state_name }, format: :html
       expect(assigns[:posts]).to_not include(post2)
     end
   end

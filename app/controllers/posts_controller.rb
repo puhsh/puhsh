@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  before_filter :hide_header, only: [:show]
-
   def index
     @posts = Post.includes({post_images: :post}, :item, :city, :user).page(params[:page]).per(10).recent
     respond_with @posts

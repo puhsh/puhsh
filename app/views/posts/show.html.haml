@@ -4,14 +4,18 @@
 - content_for :title do
   %title= "#{@post.title} - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
 
-- content_for :share_links do
-  %a.button.facebook.with-share-text(onclick="FB.ui({method:'feed', link: '#{facebook_share_this_url(@post)}'}, function(response){});")
-    %i.fa.fa-facebook.fa-3x
-    %span Share This
-  %a.button.twitter(href="#{twitter_tweet_this_url(@post)}")
-    %i.fa.fa-twitter.fa-2x
-  %a.button.pinterest(href="#{pinterest_pin_it_url(@post)}")
-    %i.fa.fa-pinterest.fa-2x
+- content_for :header do
+  = render 'shared/header'
+
+.row
+  .small-12.columns
+    .right
+      %a.button.square.facebook.with-share-text(onclick="FB.ui({method:'feed', link: '#{facebook_share_this_url(@post)}'}, function(response){});")
+        %i.fa.fa-facebook.fa-2x
+      %a.button.square.twitter(href="#{twitter_tweet_this_url(@post)}")
+        %i.fa.fa-twitter.fa-2x
+      %a.button.square.pinterest(href="#{pinterest_pin_it_url(@post)}")
+        %i.fa.fa-pinterest.fa-2x
 
 
 #post(itemscope itemtype='http://schema.org/Product')
@@ -70,5 +74,4 @@
             %strong Details:
           %span(itemprop='description')= @post.description
 
-  = render 'shared/app_store_info'
   = render 'shared/modals/pickup_help'

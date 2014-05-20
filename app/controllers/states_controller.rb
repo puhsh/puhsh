@@ -5,7 +5,7 @@ class StatesController < ApplicationController
   end
 
   def show
-    @cities = City.where(full_state_name: params[:name]).alpha
+    @cities = City.where(full_state_name: params[:name]).page(params[:page]).per(100).alpha
     @current_state_name = @cities.first.full_state_name
     respond_with @cities
   end

@@ -13,9 +13,13 @@
   %article.small-12.columns
     %h1="#{@current_state_name}, US"
     .row
-      - @cities.each_slice(100) do |cities|
-        .small-12.medium-4.columns
+      - @cities.each_slice(25) do |cities|
+        .small-12.columns(class="#{column_class(@cities)}")
           %ul.no-bullet.list
             - cities.each do |city|
               %li.column
-                %strong= city_state_name(city)
+                %strong= link_to city_state_name(city), city_path(name: city.full_state_name, city_name: city.name)
+
+%section.row
+  %article.small-12.columns.text-center
+    = paginate @cities
