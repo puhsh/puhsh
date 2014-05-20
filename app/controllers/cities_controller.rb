@@ -8,9 +8,9 @@ class CitiesController < ApplicationController
 
     respond_with @posts do |format|
       if @posts
-        format.html
+        format.html 
       else
-        redirect_to root_url
+        format.html { redirect_to root_url }
       end
     end
   end
