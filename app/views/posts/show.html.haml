@@ -43,7 +43,7 @@
         = image_tag @post.user.other_avatar_urls[:large], class: 'avatar'
         %span.posted-by Posted By:
         %h3.name
-          %strong= @post.user.name
+          %strong= link_to @post.user.name, city_user_path(user_id: @post.user.slug, city_id: @post.city.slug)
         %h3.gold.star-count
           %strong= @post.user.star_count
 
