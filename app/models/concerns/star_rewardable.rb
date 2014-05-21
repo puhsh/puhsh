@@ -33,7 +33,7 @@ module StarRewardable
       elsif self.sold_post_share?
         Star.create(user: self.user, amount: 5, event: :shared_wall_post, subject: self)
       elsif self.email_share?
-        Star.create(user: self.user, amount: 5, event: :shared_email, subject: self)
+        Star.create(user: self.user, amount: 50, event: :shared_email, subject: self)
       end
     when Offer
       if self.awarded? && !self.sold_offline?
