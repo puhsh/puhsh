@@ -29,6 +29,10 @@ class City < ActiveRecord::Base
     text :name, boost: 5.0
     text :state
     text :full_state_name
+
+    # Ordering / Filtering purposes
+    string :name
+    string :full_state_name
   end
 
   # Methods
@@ -40,7 +44,10 @@ class City < ActiveRecord::Base
       fulltext query do
         fields(:name, :state, :full_state_name)
       end
+
       paginate page: opts[:page], per_page: opts[:per_page]
+      order_by :full_state_name, :asc
+      order_by :name, :asc
     end.results
   end
 

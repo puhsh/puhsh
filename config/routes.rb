@@ -125,8 +125,8 @@ Puhsh::Application.routes.draw do
 
   # States - SEO
   get '/states', to: 'states#index', via: :get, as: 'states'
+  get '/states/search', to: 'states#search', via: :get, as: 'state_search'
   get '/states/:name', to: 'states#show', via: :get, as: 'state'
-  get '/states/:name/search', to: 'states#search', via: :get, as: 'state_search'
 
   # Cities - SEO
   get '/states/:name/:city_name', to: 'cities#show', via: :get, as: 'city'

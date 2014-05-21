@@ -39,6 +39,12 @@ describe PostsHelper do
       item.save
       expect(post_price(item)).to eql('FREE')
     end
+
+    it 'returns SOLD for a post that is sold' do
+      post.status = :sold
+      post.save
+      expect(post_price(item)).to eql('SOLD')
+    end
   end
 
   describe '.post_category_display_name' do

@@ -5,10 +5,12 @@
   = render 'shared/header'
 
 %section.row
-  %article.small-3.columns#search
-    .left
-      - # Search Form goes here
-  %article.small-6.small-offset-4.columns
+  %article.small-4.columns#search
+    %form(action=state_search_path)
+      .row
+        .medium-10.small-12.columns
+          = text_field_tag 'query', nil, type: 'search', results: 0
+  %article.small-5.columns
     %h3 Select a State to View Cities
   %article.small-3.columns#social
 
