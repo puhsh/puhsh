@@ -12,10 +12,14 @@ module PostsHelper
   end
 
   def post_price(item)
-    if item && item.price_cents > 0
-      "$#{humanized_money item.price}"
+    if item && item.post.for_sale?
+      if item.price_cents > 0
+        "$#{humanized_money item.price}"
+      else
+        'FREE'
+      end
     else
-      'FREE'
+      'SOLD'
     end
   end
 
