@@ -1,19 +1,17 @@
 - content_for :title do
-  %title= "#{@current_state_name}, US"
+  %title= "Search Results for #{@term}"
 
 - content_for :header do
   = render 'shared/header'
 
 %section.row
   %article.small-3.columns#search
-    .left
-      - # Search Form goes here
   %article.small-6.small-offset-4.columns
   %article.small-3.columns#social
 
 %section.row
   %article.small-12.columns
-    %h1="#{@current_state_name}, US"
+    %h1= "Search Results for #{@term}"
     .row
       - @cities.each_slice(25) do |cities|
         .small-12.columns(class="#{column_class(@cities)}")
