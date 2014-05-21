@@ -6,7 +6,7 @@
 
 %section.row
   %article.small-4.columns#search
-    = form_tag '/states/search' do
+    %form(action=state_search_path)
       .row
         .medium-10.small-12.columns
           = text_field_tag 'query', nil, type: 'search', results: 0

@@ -5,13 +5,17 @@
   = render 'shared/header'
 
 %section.row
-  %article.small-3.columns#search
-  %article.small-6.small-offset-4.columns
+  %article.small-4.columns#search
+    %form(action=state_search_path)
+      .row
+        .medium-10.small-12.columns
+          = text_field_tag 'query', @term, type: 'search', results: 0
+  %article.small-5.columns
+    %h3= "Search Results for #{@term}"
   %article.small-3.columns#social
 
 %section.row
   %article.small-12.columns
-    %h1= "Search Results for #{@term}"
     .row
       - @cities.each_slice(25) do |cities|
         .small-12.columns(class="#{column_class(@cities)}")

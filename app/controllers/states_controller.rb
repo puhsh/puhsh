@@ -18,7 +18,7 @@ class StatesController < ApplicationController
 
   def search
     @term = params[:query].present? ? params[:query] : 'All'
-    @cities = City.search(params[:query], {page: params[:page], state_name: params[:name]})
+    @cities = City.search(params[:query], {page: params[:page]})
     respond_with @cities
   end
 end
