@@ -10,7 +10,6 @@ class Device < ActiveRecord::Base
   after_create :add_app_invite
 
   # Validations
-  validates :device_token, presence: true
 
   def fire_notification!(message, event)
     begin

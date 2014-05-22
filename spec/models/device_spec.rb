@@ -7,10 +7,10 @@ describe Device do
 
   describe '.device_token' do
     let(:device) { FactoryGirl.create(:device, user: user) }
-    it 'is required' do
+    it 'is not required' do
       device.device_token = nil
       device.save
-      expect(device).to_not be_valid
+      expect(device).to be_valid
     end
   end
 
