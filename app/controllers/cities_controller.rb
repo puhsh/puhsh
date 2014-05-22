@@ -1,10 +1,12 @@
 class CitiesController < ApplicationController
   def show
-    @city = City.where(full_state_name: params[:name], name: params[:city_name]).first
-
-    if @city
-      @posts = @city.posts.includes(:item, :user, :city, {post_images: :post}).page(params[:page]).per(10).recent
+    if params[:city_id]
+      @city = City.friendly.find(params[:city_id]) 
+    else
+      @city = City.where(full_state_name: params[:name], name: params[:city_name]).first
     end
+
+    @posts = @city.posts.includes(:item, :user, :city, {post_images: :post}).page(params[:page]).per(10).recent if @city 
 
     respond_with @posts do |format|
       if @posts
