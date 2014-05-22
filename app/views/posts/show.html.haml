@@ -35,7 +35,7 @@
           - if @post.sold?
             %span.price-inline(itemprop='price') SOLD
           - else
-            %span.price-inline(class="#{post_item_price_class(@post.item)}" itemprop='price')= post_price(@post.item)
+            %span.price-inline(itemprop='price')= post_price(@post.item)
 
   .row#seller-info
     .small-12.medium-6.small-centered.medium-centered.columns
