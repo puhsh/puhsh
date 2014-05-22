@@ -15,4 +15,10 @@ class PostsController < ApplicationController
     @image_count = @post.post_images.count if @post
     respond_with @post
   end
+
+  def search
+    @term = params[:query].present? ? params[:query] : 'All'
+    @posts = Post.includes(:item, :user, {post_images: :post}, :city).search(params[:query], params[:page], 10)
+    respond_with @posts
+  end
 end

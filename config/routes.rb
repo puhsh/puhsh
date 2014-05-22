@@ -118,14 +118,18 @@ Puhsh::Application.routes.draw do
   ###############
 
   # Posts
-  resources :posts, only: [:index]
+  resources :posts, only: [:index] do
+    collection do
+      get :search
+    end
+  end
 
   # Posts - SEO
   get '/posts/:city_id/:user_id/:id', to: 'posts#show', via: :get, as: 'post'
 
   # States - SEO
   get '/states', to: 'states#index', via: :get, as: 'states'
-  get '/states/search', to: 'states#search', via: :get, as: 'state_search'
+  get '/states/search', to: 'states#search', via: :get, as: 'search_states'
   get '/states/:name', to: 'states#show', via: :get, as: 'state'
 
   # Cities - SEO
