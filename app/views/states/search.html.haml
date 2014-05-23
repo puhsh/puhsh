@@ -5,12 +5,12 @@
   = render 'shared/header'
 
 %section.row
-  %article.small-4.columns#search
+  %article.small-12.medium-4.columns#search
     %form(action=search_states_path)
       .row
         .medium-10.small-12.columns
           = text_field_tag 'query', @term, type: 'search', results: 0
-  %article.small-5.columns
+  %article.small-12.medium-5.small-only-text-center.columns
     %h3= "Search Results for '#{@term}'"
   %article.small-3.columns#social
 

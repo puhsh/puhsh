@@ -7,7 +7,6 @@ article.item-container {
   margin: rem-calc(20) rem-calc(5);
   padding: rem-calc(5);
   position: relative;
-  max-width: rem-calc(960);
 
   article.item {
     @include border-radius(rem-calc(5));

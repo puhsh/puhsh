@@ -1,26 +1,10 @@
-.logo {
-  height: auto;
-  width: $logo-width;
-}
-
-.avatar {
-  width: $avatar-default-size;
-  height: auto;
-}
-
-@media only screen and (max-width: 40em) { 
-  .logo {
-    margin-bottom: $image-bottom-margin;
-  }
-}
-
 // A basic Puhsh logo that can have various sizes. Defaults to the original size
 //
 // .medium    - A medium style
 // .small     - A small style
 // .inline    - A style ideal for inline usage
 //
-// Styleguide 2.0.0
+// Styleguide 6.0.0
 img.logo.puhsh {
   width: auto;
   margin: 0;
@@ -39,8 +23,8 @@ img.logo.puhsh {
 // A standard app store badge that can have various sizes.
 //
 //
-// Styleguide 2.1.0
+// Styleguide 6.1.0
 img.app-store-badge {
   height: rem-calc(80);
-  margin: 0 rem-calc(10);
+  margin: rem-calc(10) rem-calc(10);
 }
