@@ -15,9 +15,9 @@
 #= require spin.js/spin.js
 #= require spin.js/jquery.spin.js
 
-$(document).foundation()
 
 $(() -> 
   puhsh = new Puhsh
   puhsh.initialize()
+  $(document).foundation()
 )
