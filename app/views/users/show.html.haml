@@ -2,12 +2,12 @@
   %title= "Posts - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
 
 %section.row
-  %article.small-12.medium-4.columns#search-social
+  %article.small-12.medium-3.columns#search
     .left
       - # Search Form goes here
-  %article.small-12.medium-offset-4.columns.text-center#search-social
+  %article.small-12.medium-6.medium-offset-3.columns.text-center
     %h1= @user.name
-  %article.medium-4.columns#search-social
+  %article.medium-3.columns#social
 %section.row
   %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts
     - @posts.each do |post|
