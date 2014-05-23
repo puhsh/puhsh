@@ -1,13 +1,8 @@
 - content_for :title do
   %title= "Posts - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
 
-%section.row
-  %article.small-12.medium-3.columns#search
-    .left
-      - # Search Form goes here
-  %article.small-12.medium-6.medium-offset-3.columns.text-center
-    %h1= @user.name
-  %article.medium-3.columns#social
+= render 'shared/search_social', search_url: nil, term: nil, page_header_text: @user.name, use_small_heading: false
+
 %section.row
   %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts
     - @posts.each do |post|

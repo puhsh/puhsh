@@ -4,15 +4,7 @@
 - content_for :header do
   = render 'shared/header'
 
-%section.row
-  %article.small-12.medium-4.columns#search
-    %form(action=search_states_path)
-      .row
-        .medium-10.small-12.columns
-          = text_field_tag 'query', @term, type: 'search', results: 0
-  %article.small-12.medium-5.small-only-text-center.columns
-    %h3= "Search Results for '#{@term}'"
-  %article.small-3.columns#social
+= render 'shared/search_social', search_url: search_states_path, term: @term, page_header_text: "Search Results for '#{@term}'", use_small_heading: true
 
 %section.row
   %article.small-12.columns

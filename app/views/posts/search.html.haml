@@ -4,14 +4,8 @@
 - content_for :header do
   = render 'shared/header'
 
-%section.row
-  %article.small-12.medium-4.columns#search
-    %form(action=search_posts_path)
-      .row
-        .medium-10.small-12.columns
-          = text_field_tag 'query', @term, type: 'search', results: 0
-  %article.small-12.medium-5.small-only-text-center.end.columns
-    %h3= "Search Results for '#{@term}'"
+= render 'shared/search_social', search_url: search_posts_path, term: @term, page_header_text: "Search Results for '#{@term}'"
+
 %section.row
   %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts
     - @posts.each do |post|
