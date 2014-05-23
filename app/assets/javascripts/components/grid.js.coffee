@@ -4,7 +4,7 @@ class @Grid
     @masonryColumnWidth = 220
     @masonryItemSelector = '.item'
     @masonryGutterSize = 20
-    @masonryTransitionDuration = '0.4s'
+    @masonryTransitionDuration = '0.2s'
 
     @_setupMasonry()
     @_setupInfiniteScroll()
