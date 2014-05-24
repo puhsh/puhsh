@@ -1,0 +1,19 @@
+// Forces all forms to include overrides to how placeholders are styled
+//
+// Styleguide 6.0.0
+form  {
+  @include placeholder {
+    &:before {
+      float: right;
+      font-family: FontAwesome;
+      content: "\f002";
+    }
+  }
+}
+
+// An <input> that is styled with a search look
+//
+//
+// Styleguide 6.1.0
+input.search {
+}

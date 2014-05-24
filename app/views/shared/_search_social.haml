@@ -1,10 +1,13 @@
+- placeholder = placeholder || 'Search'
+
 %section.row#search-social
   %article.small-12.medium-3.columns
     - if search_url
       %form(action=search_url)
         .row
           .small-12.columns
-            = text_field_tag 'query', term, type: 'search', results: 0
+            = text_field_tag 'query', term, results: 0, class: 'search', placeholder: placeholder
+            
   %article.small-12.medium-6.text-center.columns(class="#{search_url.present? ? nil : 'medium-offset-3'}")
     - if (page_header_text && term) || use_small_heading
       %h3=page_header_text

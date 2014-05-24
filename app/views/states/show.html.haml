@@ -4,7 +4,7 @@
 - content_for :header do
   = render 'shared/header'
 
-= render 'shared/search_social', search_url: search_states_path, term: @term, page_header_text: "Select a City to View Posts", use_small_heading: true
+= render 'shared/search_social', search_url: search_states_path, term: @term, page_header_text: "Select a City to View Posts", use_small_heading: true, placeholder: 'Jump to City...'
 
 %section.row
   %article.small-12.columns
