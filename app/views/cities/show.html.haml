@@ -14,9 +14,10 @@
 
 %section.row
   %article.small-12.columns.item-container.js-grid-list.js-infinite#posts
-    - if @founding_user
-      %article.item-sticky.hide-for-small-only
-        %h5="Founded #{city_founded_date(@city, :fancy)}"
+    - dark_feature do 
+      - if @founding_user
+        %article.item-sticky.hide-for-small-only
+          %h5="Founded #{city_founded_date(@city, :fancy)}"
     - @posts.each do |post|
       - image = post.post_images.first
       %article.item.post-grid-item.text-center#post(itemscope itemtype='http://schema.org/Product')

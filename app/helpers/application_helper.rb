@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def dark_feature 
+    yield unless Rails.env.production?
+  end
+
   def facebook_avatar_url(user, size = nil)
     valid_sizes = [:large, :square, :normal]
 
