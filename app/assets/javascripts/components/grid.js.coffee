@@ -3,9 +3,15 @@ class @Grid
   constructor: () ->
     @masonryColumnWidth = 220
     @masonryItemSelector = '.item'
+    @masonryStampItemSelector = '.item-sticky'
     @masonryGutterSize = 20
     @masonryTransitionDuration = '0.2s'
 
+    # Initialize Masonry.js
+    $('.js-grid-list').masonry()
+
+    # Setup all the components for a .js-grid-list
+    @_stampElements()
     @_setupMasonry()
     @_setupInfiniteScroll()
 
@@ -14,6 +20,13 @@ class @Grid
   # Returns nothing.
   _setupMasonry: () ->
     $('.js-grid-list').masonry(columnWidth: @masonryColumnWidth, itemSelector: @masonryItemSelector, gutter: @masonryGutterSize, transitionDuration: @masonryTransitionDuration)
+
+
+  # Private: Cofigures any elements with the class ".item-sticky" to be stamped in the masonry grid
+  # 
+  # Returns nothing.
+  _stampElements: () ->
+    $('.js-grid-list').masonry('stamp', @masonryStampItemSelector)
 
   # Private: Configures elements with class .js-infinite to use an infinite scrolling technique with jquery.waypointsn
   #

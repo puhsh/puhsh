@@ -13,10 +13,13 @@
   %article.medium-3.columns#search-social
 
 %section.row
-  %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts
+  %article.small-12.columns.item-container.js-grid-list.js-infinite#posts
+    - if @founding_user
+      %article.item-sticky.hide-for-small-only
+        %h5="Founded #{city_founded_date(@city, :fancy)}"
     - @posts.each do |post|
       - image = post.post_images.first
-      %article.item.post-grid-item#post(itemscope itemtype='http://schema.org/Product')
+      %article.item.post-grid-item.text-center#post(itemscope itemtype='http://schema.org/Product')
         %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
           - if image.image_file_name.present?
             = image_tag image.image.url(:medium)
