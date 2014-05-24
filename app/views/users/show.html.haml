@@ -1,5 +1,5 @@
 - content_for :title do
-  %title= "Posts - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
+  %title= "#{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase}) - Posts"
 
 = render 'shared/search_social', search_url: nil, term: nil, page_header_text: @user.name, use_small_heading: false
 
