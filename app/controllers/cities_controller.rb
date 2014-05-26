@@ -8,7 +8,7 @@ class CitiesController < ApplicationController
 
     if @city
       @posts = @city.posts.includes(:item, :user, :city, {post_images: :post}).page(params[:page]).per(20).recent
-      @founding_user = @posts.first.try(&:user)
+      @founding_user = @city.posts.first.try(&:user)
     end
 
     respond_with @posts do |format|
