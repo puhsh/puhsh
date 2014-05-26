@@ -24,7 +24,7 @@
               %a(href="#{city_user_path(@founding_user, city_id: @founding_user.home_city.slug)}")
                 %strong= @founding_user.name
             %li
-              %strong.gold.with-star= @founding_user.star_count
+              %strong.gold.with-star= number_with_delimiter(@founding_user.star_count, delimiter: ',')
     - @posts.each do |post|
       - image = post.post_images.first
       %article.item.post-grid-item.text-center#post(itemscope itemtype='http://schema.org/Product')
