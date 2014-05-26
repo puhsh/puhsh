@@ -1,4 +1,9 @@
-.gold {
+// Applies a gold coloring to a paragraph or strong tag.
+//
+// .with-star    - Prepends a star icon
+//
+// Styleguide 9.0.0
+p.gold, strong.gold {
   color: $gold;
   &.with-star:before {
     content: "\f005";
@@ -6,6 +11,7 @@
   }
 }
 
+// TOOD Clean all this up
 .white {
   color: $white;
 }

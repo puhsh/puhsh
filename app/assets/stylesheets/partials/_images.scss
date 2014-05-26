@@ -28,3 +28,18 @@ img.app-store-badge {
   height: rem-calc(80);
   margin: rem-calc(10) rem-calc(10);
 }
+
+
+// A user avatar with various sizes. Always assumes a square size
+//
+// .tiny     - small version the avatar
+//
+// Styleguide 7.2.0
+img.avatar {
+  height: $default-avatar-height;
+  width: auto;
+
+  &.tiny { 
+    height: $default-avatar-height - rem-calc(60);
+  }
+}

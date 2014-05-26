@@ -24,3 +24,24 @@
     vertical-align: top;
   }
 }
+
+
+// A <div> used to display user information. Contains <ul.info> with <li> elements for each peice of data.
+//
+// .with-avatar   - Organizes the information so it is to the right of an <img.avatar>
+//
+// Styleguide 8.0.0
+div.user-details {
+  ul.info {
+    margin-bottom: 0;
+    li {
+      padding-bottom: rem-calc(5);
+    }
+  }
+  &.with-avatar {
+    img.avatar {
+      margin-right: rem-calc(10);
+      float: left;
+    }
+  }
+}

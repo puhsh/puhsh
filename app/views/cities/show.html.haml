@@ -14,10 +14,17 @@
 
 %section.row
   %article.small-12.columns.item-container.js-grid-list.js-infinite#posts
-    - dark_feature do 
-      - if @founding_user
-        %article.item-sticky.hide-for-small-only
-          %h5="Founded #{city_founded_date(@city, :fancy)}"
+    - if @founding_user
+      %article.item-sticky.hide-for-small-only
+        %h5="Founded #{city_founded_date(@city, :fancy)} by:"
+        .user-details.with-avatar
+          = link_to (image_tag @founding_user.other_avatar_urls[:large], class: 'avatar tiny'), city_user_path(@founding_user, city_id: @founding_user.home_city.slug)
+          %ul.no-bullet.info
+            %li.name
+              %a(href="#{city_user_path(@founding_user, city_id: @founding_user.home_city.slug)}")
+                %strong= @founding_user.name
+            %li
+              %strong.gold.with-star= @founding_user.star_count
     - @posts.each do |post|
       - image = post.post_images.first
       %article.item.post-grid-item.text-center#post(itemscope itemtype='http://schema.org/Product')
