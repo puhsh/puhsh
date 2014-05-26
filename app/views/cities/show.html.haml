@@ -8,8 +8,8 @@
   %article.small-12.medium-3.columns#search-social
     .left
       - # Search Form goes here
-  %article.small-12.medium-6.medium-offset-3.columns.text-center#search-social
-    %h1="#{@city.name}, #{@city.full_state_name}"
+  %article.small-12.medium-6.medium-offset-3.columns.text-center#search-social(itemscope itemtype='http://schema.org/Place')
+    %h1(itemprop='name')="#{@city.name}, #{@city.full_state_name}"
   %article.medium-3.columns#search-social
 
 %section.row
@@ -17,12 +17,12 @@
     - if @founding_user
       %article.item-sticky.hide-for-small-only
         %h5="Founded #{city_founded_date(@city, :fancy)} by:"
-        .user-details.with-avatar
-          = link_to (image_tag @founding_user.other_avatar_urls[:large], class: 'avatar tiny'), city_user_path(@founding_user, city_id: @founding_user.home_city.slug)
+        .user-details.with-avatar(itemscope itemtype='http://schema.org/Person')
+          = link_to (image_tag @founding_user.other_avatar_urls[:large], class: 'avatar tiny', itemprop: 'image'), city_user_path(@founding_user, city_id: @founding_user.home_city.slug)
           %ul.no-bullet.info
             %li.name
               %a(href="#{city_user_path(@founding_user, city_id: @founding_user.home_city.slug)}")
-                %strong= @founding_user.name
+                %strong(itemprop='name')= @founding_user.name
             %li
               %strong.gold.with-star= number_with_delimiter(@founding_user.star_count, delimiter: ',')
     - @posts.each do |post|
