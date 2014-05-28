@@ -22,6 +22,19 @@
   %meta(name="identifier-URL" content="#{request.url}")
   %meta(name="directory" content="submission")
   %meta(name="category" content="#{@post.category_name.value} #{@post.subcategory_name.value}")
+  %meta(name="twitter:card" content="product")
+  %meta(name="twitter:site" content="#{request.url}")
+  %meta(name="twitter:creator" content="#{@user.name}, @puhsh")
+  %meta(name="twitter:title" content="#{@post.title}")
+  %meta(name="twitter:description" content="#{@post.description}")
+  %meta(name="twitter:image" content="#{@post.post_images.first.image.url(:medium)}")
+
+  - if @post.item
+    %meta(name="twitter:data1" content="#{humanize_money(@post.item.price)}")
+    %meta(name="twitter:label1" content="Price")
+
+  %meta(name="twitter:data2" content="#{city_state_name(@user.home_city)}")
+  %meta(name="twitter:label2" content="Location")
 
 - content_for :header do
   = render 'shared/header'
