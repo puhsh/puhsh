@@ -4,6 +4,25 @@
 - content_for :title do
   %title= "#{@post.title} - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
 
+- content_for :meta do
+  %meta(name="keywords" content="#{seo_keywords(@post.title)}")
+  %meta(name="description" content="The latest item for sale from #{@user.name} in #{city_state_name(@user.home_city)}: #{@post.title}: #{@post.description}, #{post_time_posted(@post)}")
+  %meta(name="subject" content="#{@post.title}, #{post_price(@post.item)}, #{city_state_name(@user.home_city)}, #{@user.name}, Online Garage Sale")
+  - if @last_question
+    %meta(name="revised" content="#{@last_question.created_at}")
+  %meta(name="abstract" content="#{@post.title}, #{@post.description}, #{@user.name}, #{city_state_name(@user.home_city)}, #{@post.category_name.value}, #{@post.subcategory_name.value}")
+  %meta(name="topic" content= "#{@post.title}, #{@post.category_name.value}, #{@post.subcategory_name.value}")
+  %meta(name="summary" content="#{@user.name} just posted #{@post.title} for sale in #{city_state_name(@user.home_city)} on Puhsh on #{post_time_posted(@post)}")
+  %meta(name="Classification" content="Product")
+  %meta(name="author" content="#{@user.name}, #{city_state_name(@user.home_city)}, #{city_user_url(user_id: @user.slug, city_id: @user.home_city.slug)}")
+  %meta(name="designer" content="#{@user.name}, #{city_state_name(@user.home_city)}")
+  %meta(name="copyright" content="#{post_time_posted(@post)}")
+  %meta(name="owner" content="#{@user.name}, #{city_state_name(@user.home_city)}")
+  %meta(name="url" content=url_for)
+  %meta(name="identifier-URL" content=url_for)
+  %meta(name="directory" content="submission")
+  %meta(name="category" content="#{@post.category_name.value} #{@post.subcategory_name.value}")
+
 - content_for :header do
   = render 'shared/header'
 

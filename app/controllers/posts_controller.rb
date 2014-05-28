@@ -12,7 +12,12 @@ class PostsController < ApplicationController
     else
       @post = Post.find(params[:id])
     end
-    @image_count = @post.post_images.count if @post
+
+    if @post
+      @image_count = @post.post_images.count
+      @last_question = Question.where(post_id: @post.id).recent.limit(1).last
+    end
+
     respond_with @post
   end
 

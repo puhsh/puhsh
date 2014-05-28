@@ -61,4 +61,8 @@ module ApplicationHelper
       'medium-12'
     end
   end
+
+  def seo_keywords(content)
+    content.split.join(", ")
+  end
 end
