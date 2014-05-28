@@ -1,5 +1,5 @@
 - content_for :og do
-  = global_meta_tags title: @post.title, description: @post.description, url: request.url, image: @post.post_images.first.image.url(:small), latitude: @user.latitude, longitude: @user.longitude
+  = global_meta_tags title: @post.title, description: "#{@post.description}, #{@user.location_description}, in #{city_state_name(@user.home_city)}", url: request.url, image: @post.post_images.first.image.url(:small), latitude: @user.latitude, longitude: @user.longitude, :street_address => @user.location_description, locality: @user.home_city.name, region: @user.home_city.state, country_name: 'USA', postal_code: @user.zipcode
 
 - content_for :title do
   %title= "#{@post.title} - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
@@ -18,8 +18,8 @@
   %meta(name="designer" content="#{@user.name}, #{city_state_name(@user.home_city)}")
   %meta(name="copyright" content="#{post_time_posted(@post)}")
   %meta(name="owner" content="#{@user.name}, #{city_state_name(@user.home_city)}")
-  %meta(name="url" content=url_for)
-  %meta(name="identifier-URL" content=url_for)
+  %meta(name="url" content="#{request.url}")
+  %meta(name="identifier-URL" content="#{request.url}")
   %meta(name="directory" content="submission")
   %meta(name="category" content="#{@post.category_name.value} #{@post.subcategory_name.value}")
 
