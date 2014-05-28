@@ -29,8 +29,8 @@
   %meta(name="twitter:description" content="#{@post.description}")
   %meta(name="twitter:image" content="#{@post.post_images.first.image.url(:medium)}")
 
-  - if @post.item
-    %meta(name="twitter:data1" content="#{humanize_money(@post.item.price)}")
+  - if @post.item 
+    %meta(name="twitter:data1" content="#{humanized_money(@post.item.price)}")
     %meta(name="twitter:label1" content="Price")
 
   %meta(name="twitter:data2" content="#{city_state_name(@user.home_city)}")
