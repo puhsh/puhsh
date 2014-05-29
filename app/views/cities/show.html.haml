@@ -18,7 +18,7 @@
       %article.item-sticky.hide-for-small-only
         %h5="Founded #{city_founded_date(@city, :fancy)} by:"
         .user-details.with-avatar(itemscope itemtype='http://schema.org/Person')
-          = link_to (image_tag @founding_user.other_avatar_urls[:large], class: 'avatar tiny', itemprop: 'image'), city_user_path(@founding_user, city_id: @founding_user.home_city.slug)
+          = link_to (image_tag (url_without_protocol(@founding_user.other_avatar_urls[:large])), class: 'avatar tiny', itemprop: 'image'), city_user_path(@founding_user, city_id: @founding_user.home_city.slug)
           %ul.no-bullet.info
             %li.name
               %a(href="#{city_user_path(@founding_user, city_id: @founding_user.home_city.slug)}")

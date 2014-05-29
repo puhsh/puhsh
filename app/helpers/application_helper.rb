@@ -65,4 +65,8 @@ module ApplicationHelper
   def seo_keywords(content)
     content.split.join(", ")
   end
+
+  def url_without_protocol(url)
+    url.split(/^(http|https):/).last
+  end
 end

@@ -70,7 +70,7 @@
   .row#seller-info
     .small-12.medium-6.small-centered.medium-centered.columns
       .user-info.with-posted-by
-        = image_tag @post.user.other_avatar_urls[:large], class: 'avatar', alt: @user.name
+        = image_tag url_without_protocol(@post.user.other_avatar_urls[:large]), class: 'avatar', alt: @user.name
         %span.posted-by Posted By:
         %h3.name
           %strong= link_to @post.user.name, city_user_path(user_id: @post.user.slug, city_id: @post.city.slug)
