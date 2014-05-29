@@ -61,3 +61,18 @@ ul.pagination.fancy-arrows {
     }
   }
 }
+
+// A <ul.inline-no-margin> list is a list that has no margins on the <li> elements. Useful if 
+// you want pictures right next to each other.
+//
+// Styleguide 5.3.0
+ul.inline-no-margin {
+  @include block-grid($spacing: 0);
+  li:first-child {
+    img { float: right; }
+  }
+
+  li:last-child {
+    img { float: left; }
+  }
+}

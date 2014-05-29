@@ -24,4 +24,10 @@ article.item.post-grid-item {
 //
 // Styleguide 2.1.1
 article.content#post {
+  ul#post-images {
+    margin-bottom: rem-calc(20);
+  }
+  h1.title {
+    margin-bottom: rem-calc(15);
+  }
 }

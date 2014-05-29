@@ -34,7 +34,15 @@
   %meta(name="twitter:label2" content="Location")
 
 %section.row
-  %article.small-12.medium-9.content-container.columns.end
+  %article.small-12.medium-9.content-container.columns
     %article.content#post
-      %h1=@post.title
+      %ul.clearing-thumbs#post-images(class="#{post_image_list_class(@image_count)}" data-clearing)
+        - @post.post_images.each do |image|
+          %li
+            %a(href="#{image.image.url}")
+              = image_tag image.image.url(:medium), class: 'photo'
+      %h1.title=@post.title
       %h4=@post.description
+
+  %aside.small-12.medium-3.content-container.columns
+    - # NYI

@@ -43,3 +43,11 @@ img.avatar {
     height: $default-avatar-height - rem-calc(60);
   }
 }
+
+// An image that shows a picture, such as a post image. Always assumes a square size.
+//
+// Styleguide 7.3.0
+img.photo {
+  width: rem-calc(220);
+  height: auto;
+}

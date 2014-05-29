@@ -12,20 +12,20 @@ describe PostsHelper do
   describe '.post_image_list_class' do
     it 'returns the proper class when there is one image' do
       FactoryGirl.create(:post_image, post: post)
-      expect(post_image_list_class(post.post_images.count)).to eql('small-block-grid-1')
+      expect(post_image_list_class(post.post_images.count)).to eql('inline-no-margin small-block-grid-1')
     end
 
     it 'returns the proper class when there are two images' do
       FactoryGirl.create(:post_image, post: post)
       FactoryGirl.create(:post_image, post: post)
-      expect(post_image_list_class(post.post_images.count)).to eql('double small-block-grid-2')
+      expect(post_image_list_class(post.post_images.count)).to eql('inline-no-margin small-block-grid-2')
     end
 
     it 'returns the proper class when there are three images' do
       FactoryGirl.create(:post_image, post: post)
       FactoryGirl.create(:post_image, post: post)
       FactoryGirl.create(:post_image, post: post)
-      expect(post_image_list_class(post.post_images.count)).to eql('small-block-grid-3')
+      expect(post_image_list_class(post.post_images.count)).to eql('inline-no-margin small-block-grid-3')
     end
   end
 
