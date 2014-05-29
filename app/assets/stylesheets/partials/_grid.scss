@@ -1,5 +1,5 @@
 // A container for any number <article.item> elements to show content or other items. Each container should have 
-// at least one <article.item> or <article.item-sticky> which contains some data for each item in a collection
+// at least one <article.item> or <article.item-sticky> which contains some data for each item in a collection.
 //
 //
 // Styleguide 2.0.0
@@ -15,5 +15,22 @@ article.item-container {
     min-width: rem-calc(220);
     max-width: rem-calc(220);
     margin-bottom: rem-calc(20);
+  }
+}
+
+
+// An content container that is designed to show a specific item. Each container can have any number of
+// <article.content> or <aside.content> elements that shows data.
+//
+// Styleguide 2.0.1
+article.content-container {
+  // TODO this margin will go away once a nav bar exists
+  margin-top: rem-calc(40);
+
+  article.content, aside.content {
+    @include bordered(5);
+    padding: rem-calc(20);
+    min-width: initial;
+    max-width:initial;
   }
 }
