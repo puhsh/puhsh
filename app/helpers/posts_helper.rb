@@ -1,10 +1,6 @@
 module PostsHelper
   def post_image_list_class(count)
-    if count == 2
-      'double small-block-grid-2'
-    else
-      "small-block-grid-#{count}"
-    end
+    "inline-no-margin small-block-grid-#{count}"
   end
 
   def post_item_price_class(item)
