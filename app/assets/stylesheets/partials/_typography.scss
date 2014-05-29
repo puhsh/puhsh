@@ -2,30 +2,11 @@
 //
 // .with-star    - Prepends a star icon
 //
-// Styleguide 9.0.0
-p.gold, strong.gold {
+// Styleguide 8.0.0
+.gold {
   color: $gold;
   &.with-star:before {
     content: "\f005";
     font-family: FontAwesome;
-  }
-}
-
-// TOOD Clean all this up
-.white {
-  color: $white;
-}
-
-p {
-  &.light {
-    @include lighter-text-weight;
-  }
-
-  &.large {
-    font-size: rem-calc(20);
-  }
-
-  &.x-large { 
-    font-size: rem-calc(26);
   }
 }
