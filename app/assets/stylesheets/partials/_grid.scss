@@ -9,9 +9,8 @@ article.item-container {
   position: relative;
 
   article.item , article.item-sticky {
-    @include border-radius(rem-calc(5));
+    @include bordered(5);
     padding: rem-calc(10);
-    border: rem-calc(1) solid $darkGray;
     background-color: $white;
     min-width: rem-calc(220);
     max-width: rem-calc(220);

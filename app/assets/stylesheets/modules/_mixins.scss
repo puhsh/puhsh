@@ -23,3 +23,12 @@
   ::-moz-placeholder          {@content}
   :-ms-input-placeholder      {@content}  
 }
+
+
+// Provides a border around an element
+//
+// $radius - The border radius
+@mixin bordered($radius) {
+  @include border-radius(rem-calc($radius));
+  border: rem-calc(1) solid $darkGray;
+}

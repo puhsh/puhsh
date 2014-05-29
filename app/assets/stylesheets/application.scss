@@ -18,6 +18,7 @@
 // Styleguide Section 2.0.0
 @import 'partials/grid';
 @import 'partials/post';
+@import 'partials/user';
 
 // Styleguide Section 3.0.0
 @import 'partials/labels';
@@ -35,12 +36,4 @@
 @import 'partials/images';
 
 // Styleguide Section 8.0.0
-@import 'partials/user';
-
-// Styleguide Section 9.0.0
 @import 'partials/typography';
-
-// Old Styles not in styleguide
-@import 'partials/lists';
-@import 'partials/images';
-@import 'partials/modals';

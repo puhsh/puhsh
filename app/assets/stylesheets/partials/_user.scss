@@ -1,36 +1,8 @@
-@import 'partials/base';
-
-.user-info {
-  .avatar {
-    margin-right: rem-calc(15);
-    float: left;
-  }
-  .name {
-    margin-bottom: rem-calc(8);
-  }
-  .star-count {
-    strong:before { 
-      font-family: FontAwesome;
-      content: "\f005";
-      margin-right: 5px;
-    }
-  }
-}
-
-.user-info.with-posted-by {
-  .posted-by {
-    font-size: rem-calc(20);
-    font-family: $header-font-family;
-    vertical-align: top;
-  }
-}
-
-
 // A <div> used to display user information. Contains <ul.info> with <li> elements for each peice of data.
 //
 // .with-avatar   - Organizes the information so it is to the right of an <img.avatar>
 //
-// Styleguide 8.0.0
+// Styleguide 2.2.0
 div.user-details {
   ul.info {
     margin-bottom: 0;
