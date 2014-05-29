@@ -4,6 +4,7 @@
 // a <header> element contained under a <div.container>.
 //
 // .pink              - Pink color for the background
+// .black             - Black color for background
 // .global-image      - Background image of a world map
 //
 // Styleguide 1.1.1.
@@ -14,9 +15,14 @@ section.heading {
   &.pink {
     background-color: $pink;
   }
+
+  &.black {
+    background-color: $black;
+  }
   &.global-image {
-    @include background(asset-url("global.png"));
-    background-size: cover;
+    @include background(asset-url("banners/global.png"), none, none);
+    background-position: center center;
+    background-size: auto;
   }
 
   header {
