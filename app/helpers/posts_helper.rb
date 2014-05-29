@@ -55,4 +55,12 @@ module PostsHelper
     r = Net::HTTP.get_response(URI.parse(url))
     r.body
   end
+
+  def title_list(posts, amount = 3)
+    posts.take(amount).collect(&:title).join(", ")
+  end
+
+  def category_list(posts, amount = 3)
+    posts.take(amount).collect { |post| "#{post.category_name.value} : #{post.subcategory_name.value}" }.join(", ")
+  end
 end

@@ -1,6 +1,37 @@
 - content_for :title do
   %title= "#{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase}) - Posts"
 
+- content_for :og do
+  = global_meta_tags title: "#{@user.name}, #{city_state_name(@user.home_city)}", 
+                     description: "#{@user.name}, #{@user.location_description}, in #{city_state_name(@user.home_city)}", 
+                     url: request.url, 
+                     image: @posts.first.try { |x| x.post_images.first.image.url(:small) },
+                     latitude: @user.latitude, 
+                     longitude: @user.longitude, 
+                     :street_address => @user.location_description, 
+                     locality: @user.home_city.name, 
+                     region: @user.home_city.state, 
+                     country_name: 'USA', 
+                     postal_code: @user.zipcode
+
+- content_for :meta do
+  %meta(name="keywords" content="#{seo_keywords([@user.name, city_state_name(@user.home_city)])}")
+  - if @posts.present?
+    %meta(name="description" content="Check out #{@user.name}'s items for sale on Puhsh in #{city_state_name(@user.home_city)}: #{title_list(@posts)}")
+    %meta(name="revised" content="#{post_time_posted(@posts.first)}")
+    %meta(name="summary" content="#{@user.name} posted items for sale in #{city_state_name(@user.home_city)}, State on Puhsh on #{post_time_posted(@posts.first)}.")
+    %meta(name="abstract" content="#{@user.name} (#{city_state_name(@user.home_city)}) posted items for sale on Puhsh in: #{category_list(@posts)}")
+
+  %meta(name="subject" content="#{@user.name}, #{city_state_name(@user.home_city)} Puhsh, Online Garage Sales")
+  %meta(name="topic" content="#{@user.name}, #{city_state_name(@user.home_city)}")
+  %meta(name="classification" content="Author, Creator, Seller, #{@user.name}")
+  %meta(name="author" content="#{@user.name}, #{city_state_name(@user.home_city)}, #{request.url}")
+  %meta(name="designer" content="#{@user.name}, #{city_state_name(@user.home_city)}")
+  %meta(name="owner" content="#{@user.name}, #{city_state_name(@user.home_city)}")
+  %meta(name="url" content="#{request.url}")
+  %meta(name="identifier-URL" content="#{request.url}")
+  %meta(name="category" content="Puhsh User")
+
 = render 'shared/search_social', search_url: nil, term: nil, page_header_text: @user.name, use_small_heading: false
 
 %section.row

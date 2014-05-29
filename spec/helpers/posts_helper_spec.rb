@@ -5,6 +5,8 @@ describe PostsHelper do
   let!(:user) { FactoryGirl.create(:user, home_city: city) }
   let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
   let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+  let!(:post2) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+  let!(:post3) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
   let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
 
   describe '.post_image_list_class' do
@@ -94,6 +96,18 @@ describe PostsHelper do
       post.pick_up_location = :other
       post.save
       expect(post_pickup_location_name(post)).to eql('Other')
+    end
+  end
+
+  describe '.title_list' do
+    it 'returns a comma separated list of titles' do 
+      expect(title_list([post, post2, post3])).to eql('Test, Test, Test')
+    end
+  end
+
+  describe '.category_list' do
+    it 'returns a comma separated list of categories and subcategories' do 
+      expect(category_list([post, post2, post3])).to eql("#{post.category_name.value} : #{post.subcategory_name.value}, #{post2.category_name.value} : #{post2.subcategory_name.value}, #{post3.category_name.value} : #{post3.subcategory_name.value}")
     end
   end
 end
