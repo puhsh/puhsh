@@ -1,0 +1,63 @@
+// A basic <ul.list> that can span multiple columns. Contains any number of <li.column> elements.
+//
+// .two        - Two column list
+// .three      - Three column list
+// .four       - Four column list
+//
+// Styleguide 5.0.0
+ul.list {
+  overflow: hidden;
+
+  &.two {
+    li { 
+      width: 50%;
+    }
+  }
+
+  &.three {
+    li { 
+      width: 33.333%;
+    }
+  }
+
+  &.four {
+    li {
+      width: 25%;
+    }
+  }
+
+  li.column {
+    margin: rem-calc(8) 0;
+    float: left;
+    display: inline;
+  }
+}
+
+// Stylings for a <ul.pagination> list that removes border radius from backgrounds
+//
+// Styleguide 5.1.0
+ul.pagination.no-border-radius {
+  li a {
+    border-radius: 0;
+  }
+}
+
+// Stylings for a <ul.pagination> list that adds fancy arrows for previous and next links
+//
+// Styleguide 5.2.0
+ul.pagination.fancy-arrows {
+  li {
+    font-family: FontAwesome;
+    a { 
+      font-weight: lighter;
+    }
+    a.left-arrow[rel='prev']:before {
+      content: "\f060";
+      margin-right: 10px;
+    }
+    a.right-arrow[rel='next']:after {
+      content: "\f061";
+      margin-left: 10px;
+    }
+  }
+}
