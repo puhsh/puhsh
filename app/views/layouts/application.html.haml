@@ -38,7 +38,9 @@
     #fb-root
     #peek-bar.show-for-large-up
       = render 'peek/bar'
-    - unless @hide_header
+    - if @hide_header
+      %br
+    - else
       %section.heading.black
         .container
           = yield :header
