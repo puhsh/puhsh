@@ -1,5 +1,5 @@
 - content_for :title do
-  %title= "#{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase}) - Posts"
+  %title= "#{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase}) - Latest Items for Sale"
 
 - content_for :og do
   = global_meta_tags title: "#{@user.name}, #{city_state_name(@user.home_city)}", 
