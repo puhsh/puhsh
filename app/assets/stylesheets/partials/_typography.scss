@@ -5,6 +5,7 @@
 // Styleguide 8.0.0
 .gold {
   color: $gold;
+  font-weight: bold;
   &.with-star:before {
     content: "\f005";
     font-family: FontAwesome;

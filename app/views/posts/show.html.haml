@@ -41,8 +41,21 @@
           %li
             %a(href="#{image.image.url}")
               = image_tag image.image.url(:medium), class: 'photo'
-      %h1.title=@post.title
-      %h4=@post.description
+      %h1.title= @post.title
+      %p.description= @post.description
+      .user-details.with-avatar.clearfix
+        = image_tag @user.other_avatar_urls[:large], class: 'avatar full'
+        %ul.info.no-bullet
+          %li 
+            %h3
+              %small Posted By:
+          %li
+            %h2
+              %small=@user.name
+          %li
+            %h2.gold.with-star 
+              %small=@user.star_count
+
 
   %aside.small-12.medium-3.content-container.columns
     - # NYI

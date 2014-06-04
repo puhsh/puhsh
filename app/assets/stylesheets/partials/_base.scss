@@ -134,14 +134,14 @@ $h5-font-size: rem-calc(18);
 $h6-font-size: 1rem;
 
 // These control how subheaders are styled.
-// $subheader-font-color: #222;
-// $subheader-font-weight: 200;
+$subheader-font-color: $black;
+$subheader-font-weight: 200;
 // $subheader-top-margin: -0.3rem;
 // $subheader-bottom-margin: rem-calc(7);
 
 // A general <small> styling
-$small-font-size: 50%;
-$small-font-color: #222;
+$small-font-size: 80%;
+$small-font-color: $black;
 
 // We use these to style paragraphs
 $paragraph-font-family: inherit;

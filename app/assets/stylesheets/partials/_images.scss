@@ -1,5 +1,6 @@
 // A basic Puhsh logo that can have various sizes. Defaults to the original size
 //
+// .full      - A full style
 // .medium    - A medium style
 // .small     - A small style
 // .inline    - A style ideal for inline usage
@@ -9,7 +10,8 @@ img.logo.puhsh {
   width: auto;
   margin: 0;
 
-  &.original {
+  &.full {
+    height: rem-calc(100);
   }
 
   &.medium {
