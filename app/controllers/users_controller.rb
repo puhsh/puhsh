@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :hide_header
-
   # TODO this is a n+1 mess
   def show
     id = params[:user_id] || params[:id]
