@@ -20,17 +20,28 @@ article.item-container {
 
 
 // An content container that is designed to show a specific item. Each container can have any number of
-// <article.content> or <aside.content> elements that shows data.
+// <article.content> elements that shows data.
 //
 // Styleguide 2.0.1
-article.content-container {
+article.content-container, aside.content-container {
   // TODO this margin will go away once a nav bar exists
   margin-top: rem-calc(40);
 
-  article.content, aside.content {
+  article.content {
     @include bordered(5);
-    padding: rem-calc(20);
     min-width: initial;
     max-width:initial;
+
+    &.no-top-border-radius {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &.shaded {
+      background-color: $lightGray;
+    }
+    .padded {
+      padding: rem-calc(20);
+    }
   }
 }

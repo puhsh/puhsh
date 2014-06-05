@@ -121,8 +121,8 @@ $header-font-weight: 300;
 $header-font-style: normal;
 $header-font-color: #222;
 $header-line-height: 1.0;
-$header-top-margin: .2rem;
-// $header-bottom-margin: rem-calc(40);
+$header-top-margin: 0;
+$header-bottom-margin: rem-calc(5);
 $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
@@ -140,7 +140,7 @@ $subheader-font-weight: 200;
 // $subheader-bottom-margin: rem-calc(7);
 
 // A general <small> styling
-$small-font-size: 80%;
+$small-font-size: 70%;
 $small-font-color: $black;
 
 // We use these to style paragraphs

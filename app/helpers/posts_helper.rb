@@ -30,7 +30,7 @@ module PostsHelper
 
   def post_time_posted(post)
     day = post.created_at.day
-    Time.zone.local_to_utc(post.created_at).strftime("%B #{ActiveSupport::Inflector.ordinalize(day)}, %Y %l:%m %p")
+    post.created_at.localtime.strftime("%B #{ActiveSupport::Inflector.ordinalize(day)}, %Y %l:%m %p")
   end
 
   def post_pickup_location_name(post)

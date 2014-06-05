@@ -3,11 +3,19 @@
 // .with-star    - Prepends a star icon
 //
 // Styleguide 8.0.0
-.gold {
+.gold, small.gold {
   color: $gold;
   font-weight: bold;
   &.with-star:before {
     content: "\f005";
     font-family: FontAwesome;
+    margin-right: rem-calc(5);
+  }
+}
+
+a {
+  @include link-colors($black, $pink);
+  small { 
+    @include link-colors($black, $pink);
   }
 }

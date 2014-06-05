@@ -76,3 +76,25 @@ ul.inline-no-margin {
     img { float: left; }
   }
 }
+
+
+// A <ul.detailed-list> list can be used to show information in a description list style manner.
+//
+// Styleguide 5.4.0
+ul.detailed-list {
+  overflow: hidden;
+  li {
+    display: table;
+    margin-bottom: rem-calc(25);
+    span, p {
+      vertical-align: middle;
+      display: table-cell;
+      &.text-label {
+        float: left;
+        width: rem-calc(115);
+        padding-bottom: rem-calc(1000);
+        margin-bottom: rem-calc(-1000);
+      }
+    }
+  }
+}

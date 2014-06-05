@@ -33,28 +33,67 @@
   %meta(name="twitter:data2" content="#{city_state_name(@user.home_city)}")
   %meta(name="twitter:label2" content="Location")
 
+- content_for :header do
+  = render 'shared/header'
+
 %section.row
   %article.small-12.medium-9.content-container.columns
     %article.content#post
-      %ul.clearing-thumbs#post-images(class="#{post_image_list_class(@image_count)}" data-clearing)
-        - @post.post_images.each do |image|
-          %li
-            %a(href="#{image.image.url}")
-              = image_tag image.image.url(:medium), class: 'photo'
-      %h1.title= @post.title
-      %p.description= @post.description
-      .user-details.with-avatar.clearfix
-        = image_tag @user.other_avatar_urls[:large], class: 'avatar full'
-        %ul.info.no-bullet
-          %li 
-            %h3
-              %small Posted By:
-          %li
-            %h2
-              %small=@user.name
-          %li
-            %h2.gold.with-star 
-              %small=@user.star_count
+      .padded
+        %ul.clearing-thumbs#post-images(class="#{post_image_list_class(@image_count)}" data-clearing)
+          - @post.post_images.each do |image|
+            %li
+              %a(href="#{image.image.url}")
+                = image_tag image.image.url(:medium), class: 'photo'
+        %h1.title= @post.title
+        %p.description= @post.description
+        .user-details.with-avatar.clearfix
+          = image_tag @user.other_avatar_urls[:large], class: 'avatar full'
+          %span
+            Posted By:
+          #user-name
+            %a(href="#{city_user_path(city_id: @user.home_city.slug, user_id: @user.slug)}")
+              %h2
+                %small=@user.name
+          #star-count
+            %h3.gold.with-star= @user.star_count
 
-  %aside.small-12.medium-3.content-container.columns
-    - # NYI
+        #post-details
+          %ul.detailed-list.no-bullet
+            - dark_feature do
+              %li
+                %p.text-label
+                  %strong Share:
+            %li
+              %p.text-label
+                %strong Posted:
+              %p= post_time_posted(@post)
+            %li
+              %p.text-label
+                %strong Category:
+              %p= post_category_display_name(@post)
+            %li
+              %p.text-label
+                %strong Location:
+              %p= post_location_name(@post.user)
+            %li
+              %p.text-label
+                %strong Pick up:
+              %p
+                = post_pickup_location_name(@post)
+                %a(href='#' data-reveal-id='pickup-help' data-reveal)
+                  %i.fa.fa-question-circle
+
+      %article.content.shaded.no-top-border-radius#download-app
+        .app-download-info.padded
+          .text-center
+            %p.heading 
+              Install the Puhsh App to Buy & Sell:
+            %a(href=ios_app_store_url target='_blank')
+              = image_tag 'app-store-badge-ios.png', class: 'app-store-badge'
+            %a(href=android_app_store_url target='_blank')
+              = image_tag 'app-store-badge-android.png', class: 'app-store-badge'
+
+  - dark_feature do
+    %aside.small-12.medium-3.content-container.columns
+      %article.content
