@@ -38,7 +38,7 @@
 
 %section.row
   %article.small-12.medium-9.content-container.columns
-    %article.content#post
+    %article.content#post(itemscope itemtype='http://schema.org/Product')
       .padded
         %ul.clearing-thumbs#post-images(class="#{post_image_list_class(@image_count)}" data-clearing)
           - @post.post_images.each do |image|
@@ -47,11 +47,11 @@
                 = image_tag image.image.url(:medium), class: 'photo'
         #title-price.clearfix
           .left
-            %h1.title= @post.title
+            %h1.title(itemprop='name')= @post.title
           .right
             %span.label.price.jumbo.shadowed(itemprop='price')= post_price(@post.item)
 
-        %p.description= @post.description
+        %p.description(itemprop='description')= @post.description
         .user-details.with-avatar.clearfix
           = image_tag @user.other_avatar_urls[:large], class: 'avatar full'
           %span
@@ -124,4 +124,4 @@
 
 #pickup-help.reveal-modal(data-reveal)
   %a.close-reveal-modal &#215;
-  -# = pickup_instructions.html_safe
+  = pickup_instructions.html_safe
