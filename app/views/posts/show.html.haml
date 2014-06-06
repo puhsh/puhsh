@@ -45,7 +45,12 @@
             %li
               %a(href="#{image.image.url}")
                 = image_tag image.image.url(:medium), class: 'photo'
-        %h1.title= @post.title
+        #title-price.clearfix
+          .left
+            %h1.title= @post.title
+          .right
+            %span.label.price.jumbo.shadowed(itemprop='price')= post_price(@post.item)
+
         %p.description= @post.description
         .user-details.with-avatar.clearfix
           = image_tag @user.other_avatar_urls[:large], class: 'avatar full'
