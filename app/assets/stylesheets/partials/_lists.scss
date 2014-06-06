@@ -85,7 +85,7 @@ ul.detailed-list {
   overflow: hidden;
   li {
     display: table;
-    margin-bottom: rem-calc(25);
+    margin-bottom: rem-calc(20);
     span, p {
       vertical-align: middle;
       display: table-cell;
@@ -95,6 +95,12 @@ ul.detailed-list {
         padding-bottom: rem-calc(1000);
         margin-bottom: rem-calc(-1000);
       }
+      &.with-links {
+        vertical-align: inherit;
+      }
+    }
+    a.button { 
+      margin-bottom: 0;
     }
   }
 }

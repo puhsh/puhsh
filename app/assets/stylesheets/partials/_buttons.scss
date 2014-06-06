@@ -7,12 +7,15 @@
 //
 // Styleguide 5.0.0
 a.button {
-  @include button(rem-calc(10));
+  @include button(rem-calc(0));
   &.square {
     vertical-align: middle;
+    margin-bottom: 0;
+    padding: rem-calc(3) rem-calc(4) !important;
+    height: rem-calc(30);
+    width: rem-calc(30);
     i {
-      height: rem-calc(20);
-      width: rem-calc(20);
+      font-size: 24px;
     }
   }
   &.facebook {

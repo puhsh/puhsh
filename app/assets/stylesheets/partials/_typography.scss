@@ -13,9 +13,21 @@
   }
 }
 
+// Applies a pink coloring to a paragraph or strong tag.
+//
+// Styleguide 8.0.1
+.pink {
+  color: $pink;
+}
+
 a {
   @include link-colors($black, $pink);
   small { 
     @include link-colors($black, $pink);
+  }
+
+  &.pink {
+    @include hover-link;
+    @include link-colors($pink);
   }
 }

@@ -60,10 +60,17 @@
 
         #post-details
           %ul.detailed-list.no-bullet
-            - dark_feature do
-              %li
-                %p.text-label
-                  %strong Share:
+            %li
+              %p.text-label
+                %strong Share:
+              %p.pink.with-links
+                %a.button.square.facebook.with-share-text(onclick="FB.ui({method:'feed', link: '#{facebook_share_this_url(@post)}'}, function(response){});")
+                  %i.fa.fa-facebook
+                %a.button.square.twitter(href="#{twitter_tweet_this_url(@post)}")
+                  %i.fa.fa-twitter
+                %a.button.square.pinterest(href="#{pinterest_pin_it_url(@post)}")
+                  %i.fa.fa-pinterest
+                = bitly_url(request.url)
             %li
               %p.text-label
                 %strong Posted:
