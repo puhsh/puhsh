@@ -89,9 +89,8 @@
                 %strong Pick up:
               %p
                 = post_pickup_location_name(@post)
-                - dark_feature do
-                  %a(href='#' data-reveal-id='pickup-help' data-reveal)
-                    %i.fa.fa-question-circle
+                %a(href='#' data-reveal-id='pickup-help' data-reveal)
+                  %i.fa.fa-question-circle
 
       %article.content.shaded.no-top-border-radius#download-app
         .app-download-info.padded
@@ -108,3 +107,8 @@
       %article.content
         .padded
           %h1 hello
+
+- cache 'modal-pickup-help' do
+  #pickup-help.reveal-modal(data-reveal)
+    %a.close-reveal-modal &#215;
+    = pickup_instructions.html_safe
