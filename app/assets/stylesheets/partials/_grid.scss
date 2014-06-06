@@ -1,12 +1,18 @@
 // A container for any number <article.item> elements to show content or other items. Each container should have 
 // at least one <article.item> or <article.item-sticky> which contains some data for each item in a collection.
 //
+// .no-padding    - Removes excess padding on the top
 //
 // Styleguide 2.0.0
-article.item-container {
+article.item-container, aside.item-container {
   margin: rem-calc(20) auto;
   padding: rem-calc(5);
   position: relative;
+
+  &.no-padding { 
+    padding-top: 0;
+    margin-top: rem-calc(40);
+  }
 
   article.item , article.item-sticky {
     @include bordered(5);
