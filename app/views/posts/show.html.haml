@@ -75,14 +75,16 @@
             %li
               %p.text-label
                 %strong Location:
-              %p= post_location_name(@post.user)
+              %p
+                = link_to post_location_name(@post.user), city_posts_path(city_id: @post.city.slug)
             %li
               %p.text-label
                 %strong Pick up:
               %p
                 = post_pickup_location_name(@post)
-                %a(href='#' data-reveal-id='pickup-help' data-reveal)
-                  %i.fa.fa-question-circle
+                - dark_feature do
+                  %a(href='#' data-reveal-id='pickup-help' data-reveal)
+                    %i.fa.fa-question-circle
 
       %article.content.shaded.no-top-border-radius#download-app
         .app-download-info.padded
