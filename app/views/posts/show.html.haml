@@ -86,14 +86,16 @@
 
       %article.content.shaded.no-top-border-radius#download-app
         .app-download-info.padded
-          .text-center
+          .text-center.clearfix
             %p.heading 
               Install the Puhsh App to Buy & Sell:
             %a(href=ios_app_store_url target='_blank')
-              = image_tag 'app-store-badge-ios.png', class: 'app-store-badge'
+              = image_tag 'app-store-badge-ios.png', class: 'app-store-badge marginless'
             %a(href=android_app_store_url target='_blank')
-              = image_tag 'app-store-badge-android.png', class: 'app-store-badge'
+              = image_tag 'app-store-badge-android.png', class: 'app-store-badge marginless'
 
   - dark_feature do
     %aside.small-12.medium-3.content-container.columns
       %article.content
+        .padded
+          %h1 hello

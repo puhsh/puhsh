@@ -24,11 +24,22 @@ img.logo.puhsh {
 
 // A standard app store badge that can have various sizes.
 //
+// .medium        - A medium style
+// .marginless    - Removes margins
 //
 // Styleguide 7.1.0
 img.app-store-badge {
   height: rem-calc(80);
   margin: rem-calc(10) rem-calc(10);
+
+  &.marginless {
+    margin: 0;
+    padding: 0 rem-calc(8);
+  }
+
+  &.medium {
+    height: rem-calc(50);
+  }
 }
 
 
