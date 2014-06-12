@@ -74,6 +74,8 @@ group :development do
   gem 'capistrano-rails', '1.1'
   gem 'guard', '2.2.5'
   gem 'guard-rspec', '4.2.3'
+  gem 'pry'
+  gem 'pry-rails'
   gem 'ruby_gntp'
 end
 
