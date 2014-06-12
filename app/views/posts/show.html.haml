@@ -107,20 +107,19 @@
             %a(href=android_app_store_url target='_blank')
               = image_tag 'app-store-badge-android.png', class: 'app-store-badge marginless'
 
-  - dark_feature do
-    %aside.hide-for-small-only.medium-3.item-container.columns.text-center.no-padding
-      - @related_posts.each do |post|
-        - image = post.post_images.first
-        %article.item.post-grid-item#post(itemscope itemtype='http://schema.org/Product')
-          %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
-            - if image.image_file_name.present?
-              = image_tag image.image.url(:medium)
-            - else
-              = image_tag 'http://placehold.it/200x200'
-            %p.title(itemprop='name')= post.title
-            %p(itemprop='description')= post.description
-            #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
-              %span.label.price(itemprop='price')= post_price(post.item)
+  %aside.hide-for-small-only.medium-3.item-container.columns.text-center.no-padding#related-posts
+    - @related_posts.each do |post|
+      - image = post.post_images.first
+      %article.item.post-grid-item#post(itemscope itemtype='http://schema.org/Product')
+        %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
+          - if image.image_file_name.present?
+            = image_tag image.image.url(:medium)
+          - else
+            = image_tag 'http://placehold.it/200x200'
+        %p.title(itemprop='name')= post.title
+        %p(itemprop='description')= post.description
+        #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+          %span.label.price(itemprop='price')= post_price(post.item)
 
 #pickup-help.reveal-modal(data-reveal)
   %a.close-reveal-modal &#215;

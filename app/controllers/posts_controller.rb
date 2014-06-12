@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
     if @post
       @image_count = @post.post_images.count
-      @related_posts = Post.includes({post_images: :post}, :item, :city, :user).recent.limit(3)
+      @related_posts = @user.posts.includes({post_images: :post}, :item, :city, :user).for_sale.where.not(id: @post.id).limit(4).recent
       @questions = @post.questions.recent.limit(25)
       @last_question = @questions.first
     end
