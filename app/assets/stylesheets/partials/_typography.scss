@@ -27,7 +27,11 @@ a {
   }
 
   &.pink {
-    @include hover-link;
     @include link-colors($pink);
+    &:hover { 
+      h1,h2,h3,h4,h5,h6,p,small {
+        color: $pink;
+      }
+    }
   }
 }

@@ -32,15 +32,20 @@ article.item-container, aside.item-container {
 article.content-container, aside.content-container {
   // TODO this margin will go away once a nav bar exists
   margin-top: rem-calc(40);
+  margin-bottom: rem-calc(40);
 
   article.content {
     @include bordered(5);
     min-width: initial;
-    max-width:initial;
+    max-width: initial;
 
     &.no-top-border-radius {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+    }
+
+    &.no-border {
+      border: 0;
     }
 
     &.shaded {

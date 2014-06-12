@@ -10,14 +10,14 @@ class PostsController < ApplicationController
     @user = User.friendly.find(params[:user_id])
     @city = City.friendly.find(params[:city_id])
     if @user && @city
-      @post = @user.posts.includes(:item, :post_images, {user: :home_city}, :questions).friendly.where('posts.city_id = ?', @city.id).find(params[:id])
+      @post = @user.posts.includes(:item, :post_images, {user: :home_city}, {questions: :user}).friendly.where('posts.city_id = ?', @city.id).find(params[:id])
     else
       @post = Post.find(params[:id])
     end
 
     if @post
       @image_count = @post.post_images.count
-      @related_posts = @user.posts.includes({post_images: :post}, :item, :city, :user).for_sale.where.not(id: @post.id).limit(4).recent
+      @related_posts = @user.posts.includes({post_images: :post}, :item, :city, :user).for_sale.where.not(id: @post.id).limit(3)
       @questions = @post.questions.recent.limit(25)
       @last_question = @questions.first
     end

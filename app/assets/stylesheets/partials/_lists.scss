@@ -104,3 +104,17 @@ ul.detailed-list {
     }
   }
 }
+
+// A <ul.content-list> list can be used to show information in a content-style form, similar to <article.item>. Defaults with a top border
+//
+// Styleguide 5.4.0
+ul.content-list {
+  li {
+    min-height: rem-calc(150);
+    border-top: 1px solid $lightGray;
+    .padded {
+      padding: rem-calc(20);
+    }
+  }
+
+}

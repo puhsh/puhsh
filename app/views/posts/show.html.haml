@@ -97,6 +97,26 @@
                 %a(href='#' data-reveal-id='pickup-help' data-reveal)
                   %i.fa.fa-question-circle
 
+      %article.content.no-border.recent-questions
+        %ul.content-list.no-bullet
+          - @questions.each do |question|
+            - user = question.user
+            %li
+              .padded
+                .user-details.with-avatar.clearfix
+                  = image_tag user.other_avatar_urls[:large], class: 'avatar full'
+                  %span
+                    %a.pink(href="#{city_user_path(city_id: user.home_city.slug, user_id: user.slug)}")
+                      %h4
+                        = user.name
+                        %span.gold.with-star= user.star_count
+                  #content-timestamp
+                    %h2
+                      %small= question.content
+                    %h3
+                      %small
+                        = question_time_asked(question)
+
       %article.content.shaded.no-top-border-radius#download-app
         .app-download-info.padded
           .text-center.clearfix
@@ -120,6 +140,7 @@
         %p(itemprop='description')= post.description
         #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
           %span.label.price(itemprop='price')= post_price(post.item)
+
 
 #pickup-help.reveal-modal(data-reveal)
   %a.close-reveal-modal &#215;
