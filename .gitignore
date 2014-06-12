@@ -23,7 +23,6 @@ config/database.yml
 .DS_Store
 .gems/
 .rbenv-gemsets
-.ruby-version
 Guardfile
 solr/
 *.pid
