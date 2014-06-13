@@ -101,20 +101,20 @@
         %ul.content-list.no-bullet
           - @questions.each do |question|
             - user = question.user
-            %li
+            %li(itemscope itemtype='http://schema.org/Comment')
               .padded
                 .user-details.with-avatar.clearfix
                   = image_tag user.other_avatar_urls[:large], class: 'avatar full'
                   %span
                     %a.pink(href="#{city_user_path(city_id: user.home_city.slug, user_id: user.slug)}")
-                      %h4
+                      %h4(itemprop="author")
                         = user.name
                         %span.gold.with-star= user.star_count
                   #content-timestamp
                     %h2
-                      %small= question.content
+                      %small(itemprop="comment")= question.content
                     %h3
-                      %small
+                      %small(itemprop="dateCreated")
                         = question_time_asked(question)
 
       %article.content.shaded.no-top-border-radius#download-app
