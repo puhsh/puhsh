@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :hide_header
-
   def show
     id = params[:user_id] || params[:id]
     @user = User.friendly.find(id)
