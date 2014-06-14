@@ -53,10 +53,10 @@ module PostsHelper
   end
 
   def title_list(posts, amount = 3)
-    posts.take(amount).collect(&:title).join(", ")
+    posts.to_a.take(amount).collect(&:title).join(", ")
   end
 
   def category_list(posts, amount = 3)
-    posts.take(amount).collect { |post| "#{post.category_name.value} : #{post.subcategory_name.value}" }.join(", ")
+    posts.to_a.take(amount).collect { |post| "#{post.category_name.value} : #{post.subcategory_name.value}" }.join(", ")
   end
 end

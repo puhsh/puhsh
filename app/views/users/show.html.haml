@@ -5,7 +5,7 @@
   = global_meta_tags title: "#{@user.name}, #{city_state_name(@user.home_city)}", 
                      description: "#{@user.name}, #{@user.location_description}, in #{city_state_name(@user.home_city)}", 
                      url: request.url, 
-                     image: @posts.first.try { |x| x.post_images.first.image.url(:small) },
+                     image: @posts.to_a.first.try { |x| x.post_images.first.image.url(:small) },
                      latitude: @user.latitude, 
                      longitude: @user.longitude, 
                      :street_address => @user.location_description, 
@@ -34,7 +34,7 @@
 
 - content_for :header do
   = render 'shared/header'
-
+  
 = render 'shared/search_social', search_url: nil, term: nil, page_header_text: @user.name, use_small_heading: false
 
 %section.row

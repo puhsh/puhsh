@@ -4,13 +4,7 @@
 - content_for :header do
   = render 'shared/header'
 
-%section.row
-  %article.small-12.medium-3.columns#search-social
-    .left
-      - # Search Form goes here
-  %article.small-12.medium-6.medium-offset-3.columns.text-center#search-social(itemscope itemtype='http://schema.org/Place')
-    %h1(itemprop='name')="#{@city.name}, #{@city.full_state_name}"
-  %article.medium-3.columns#search-social
+= render 'shared/search_social', search_url: nil, term: nil, page_header_text: "#{@city.name}, #{@city.full_state_name}", use_small_heading: false
 
 %section.row
   %article.small-12.columns.item-container.js-grid-list.js-infinite#posts
