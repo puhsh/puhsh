@@ -49,7 +49,7 @@ module ApplicationHelper
   def bitly_url(long_url)
     begin
       Bitly.client.shorten(long_url).short_url
-    rescue
+    rescue Exception => e
       long_url
     end
   end
