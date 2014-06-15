@@ -19,7 +19,7 @@ article.item.post-grid-item {
 }
 
 
-// A specific styling for an <article.item> tailored to an individual post
+// A specific styling for an <article.content> tailored to an individual post
 //
 //
 // Styleguide 2.1.1
@@ -34,5 +34,11 @@ article.content#post {
 
   #post-details {
     margin-top: rem-calc(20);
+  }
+
+  @media #{$small-only} { 
+    h1.title { 
+      max-width: rem-calc(220);
+    }
   }
 }
