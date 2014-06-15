@@ -1,5 +1,5 @@
 - content_for :og do
-  = global_meta_tags title: @post.title, description: "#{@post.description}, #{@user.location_description}, in #{city_state_name(@user.home_city)}", url: request.url, image: @post.post_images.first.image.url(:small), latitude: @user.latitude, longitude: @user.longitude, :street_address => @user.location_description, locality: @user.home_city.name, region: @user.home_city.state, country_name: 'USA', postal_code: @user.zipcode
+  = global_meta_tags title: @post.title, description: "#{@post.description}, #{@user.location_description}, in #{city_state_name(@user.home_city)}", url: request.url, image: @post.post_images.to_a.first.image.url(:small), latitude: @user.latitude, longitude: @user.longitude, :street_address => @user.location_description, locality: @user.home_city.name, region: @user.home_city.state, country_name: 'USA', postal_code: @user.zipcode
 
 - content_for :title do
   %title= "#{@post.title} - #{@user.name} (#{@user.home_city.name}, #{@user.home_city.state.upcase})"
@@ -24,7 +24,7 @@
   %meta(name="twitter:card" content="product")
   %meta(name="twitter:title" content="#{@post.title}")
   %meta(name="twitter:description" content="#{@post.description}")
-  %meta(name="twitter:image" content="#{@post.post_images.first.image.url(:medium)}")
+  %meta(name="twitter:image" content="#{@post.post_images.to_a.first.image.url(:medium)}")
 
   - if @post.item 
     %meta(name="twitter:data1" content="#{post_price(@post.item)}")
@@ -88,7 +88,7 @@
               %p.text-label
                 %strong Location:
               %p
-                = link_to post_location_name(@post.user), city_posts_path(city_id: @post.city.slug)
+                = link_to post_location_name(@user), city_posts_path(city_id: @post.city.slug)
             %li
               %p.text-label
                 %strong Pick up:
@@ -111,7 +111,7 @@
                         = user.name
                         %span.gold.with-star= user.star_count
                   #content-timestamp
-                    %h2
+                    %h3
                       %small(itemprop="comment")= question.content
                     %h3
                       %small(itemprop="dateCreated")
@@ -129,7 +129,7 @@
 
   %aside.hide-for-small-only.medium-3.item-container.columns.text-center.no-padding#related-posts
     - @related_posts.each do |post|
-      - image = post.post_images.first
+      - image = post.post_images.to_a.first
       %article.item.post-grid-item#post(itemscope itemtype='http://schema.org/Product')
         %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
           - if image.image_file_name.present?
