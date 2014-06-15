@@ -47,7 +47,11 @@ module ApplicationHelper
   end
 
   def bitly_url(long_url)
-    Bitly.client.shorten(long_url).short_url
+    begin
+      Bitly.client.shorten(long_url).short_url
+    rescue
+      long_url
+    end
   end
 
   def column_class(data)
