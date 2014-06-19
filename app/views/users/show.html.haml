@@ -32,8 +32,12 @@
   %meta(name="identifier-URL" content="#{request.url}")
   %meta(name="category" content="Puhsh User")
 
-%header.user-heading.js-cover-image(data-cover-image-url="#{@user.cover_image_url}")
+- cover_image_url = @user.cover_image_url
+
+%header.user-heading.js-cover-image(data-cover-image-url=cover_image_url)
   %section.row.inner
+    - if cover_image_url.blank?
+      = render 'shared/header'
     %article.small-12.columns.user-info
       .user-details.with-avatar.clearfix
         = image_tag @user.other_avatar_urls[:large], class: 'avatar full'
