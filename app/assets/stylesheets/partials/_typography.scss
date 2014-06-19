@@ -1,6 +1,7 @@
 // Applies a gold coloring to a paragraph or strong tag.
 //
 // .with-star    - Prepends a star icon
+// .lighter      - Thins the font out
 //
 // Styleguide 8.0.0
 .gold, small.gold {
@@ -10,6 +11,10 @@
     content: "\f005";
     font-family: FontAwesome;
     margin-right: rem-calc(5);
+  }
+
+  &.lighter {
+    font-weight: lighter;
   }
 }
 

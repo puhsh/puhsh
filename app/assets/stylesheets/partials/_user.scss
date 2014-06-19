@@ -22,7 +22,7 @@ div.user-details {
 header.user-heading {
   background: $black;
   height: rem-calc(380);
-  margin-bottom: 20px;
+  margin-bottom: rem-calc(60);
 
   section.row.inner {
     position: relative;
@@ -33,9 +33,10 @@ header.user-heading {
       border-top-right-radius: 5px;
       background: #f7f7f7;
       padding: 25px;
+      padding-bottom: 0;
       position: absolute;
       height: rem-calc(150);
-      bottom: 0;
+      bottom: -85px;
     }
   }
 }
