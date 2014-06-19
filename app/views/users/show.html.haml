@@ -32,22 +32,19 @@
   %meta(name="identifier-URL" content="#{request.url}")
   %meta(name="category" content="Puhsh User")
 
-%header.user-heading
+%header.user-heading.js-cover-image(data-cover-image-url="#{@user.cover_image_url}")
   %section.row.inner
-    %article.small-12.columns.cover-image
-      .wrapper
-        %img(src="https://scontent-b.xx.fbcdn.net/hphotos-xpa1/t1.0-9/934786_953155541935_676283298_n.jpg")
     %article.small-12.columns.user-info
       .user-details.with-avatar.clearfix
         = image_tag @user.other_avatar_urls[:large], class: 'avatar full'
         %span
-          -# %a.pink(href="#{city_user_path(city_id: @user.home_city.slug, user_id: @user.slug)}")
-          %h1(itemprop="author")
-            = @user.name
-            %span.gold.with-star.lighter= @user.star_count
+          %a.pink(href="#{city_user_path(city_id: @user.home_city.slug, user_id: @user.slug)}")
+            %h1(itemprop="author")
+              = @user.name
+              %span.gold.with-star.lighter= @user.star_count
           %h4.subheader
             ="#{city_state_name(@user.home_city)} (#{@user.location_description})"
-          %a.hide-for-small-only(href="#{request.url}")= request.url
+          %a.pink.hide-for-small-only(href="#{request.url}")= request.url
 
 %section.row
   %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts

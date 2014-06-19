@@ -7,6 +7,10 @@ class @Grid
     @masonryGutterSize = 20
     @masonryTransitionDuration = '0.2s'
 
+    @bindGridElements()
+
+  # Public: Binds all elements with the class js-grid-list to Masonry grid
+  bindGridElements: () ->
     # Initialize Masonry.js
     $('.js-grid-list').masonry()
 
@@ -14,6 +18,7 @@ class @Grid
     @_stampElements()
     @_setupMasonry()
     @_setupInfiniteScroll()
+
 
   # Private: Configures elements with class .js-grid-list to follow a Masonry.js style layout
   #

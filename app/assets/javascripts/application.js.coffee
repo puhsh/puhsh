@@ -14,10 +14,10 @@
 #= require underscore/underscore
 #= require spin.js/spin.js
 #= require spin.js/jquery.spin.js
+#= require jquery-backstretch/jquery.backstretch.min.js
 
 
 $(() -> 
-  puhsh = new Puhsh
-  puhsh.initialize()
+  puhsh = new Puhsh()
   $(document).foundation()
 )

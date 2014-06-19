@@ -20,9 +20,22 @@ div.user-details {
 
 // TODO this is all hacked together. refactor
 header.user-heading {
-  background: $black;
   height: rem-calc(380);
   margin-bottom: rem-calc(60);
+
+  // section.cover-image { 
+  //   .wrapper {
+  //     position: relative;
+  //     height: 380px;
+  //     overflow: hidden;
+  //     img {
+  //       // position: absolute;
+  //       min-width: 100%;
+  //       width: 100%;
+  //       // top: -350px;
+  //     }
+  //   }
+  // }
 
   section.row.inner {
     position: relative;
