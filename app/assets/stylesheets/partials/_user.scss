@@ -23,6 +23,12 @@ header.user-heading {
   height: rem-calc(380);
   margin-bottom: rem-calc(60);
 
+  img { 
+    @media #{$large-up} {
+      top: -150px !important;
+    }
+  }
+
   // section.cover-image { 
   //   .wrapper {
   //     position: relative;
