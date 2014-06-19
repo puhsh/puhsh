@@ -17,3 +17,25 @@ div.user-details {
     }
   }
 }
+
+// TODO this is all hacked together. refactor
+header.user-heading {
+  background: $black;
+  height: rem-calc(380);
+  margin-bottom: 20px;
+
+  section.row.inner {
+    position: relative;
+    height: 100%;
+
+    article.user-info {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      background: #f7f7f7;
+      padding: 25px;
+      position: absolute;
+      height: rem-calc(150);
+      bottom: 0;
+    }
+  }
+}
