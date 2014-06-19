@@ -24,25 +24,10 @@ header.user-heading {
   margin-bottom: rem-calc(60);
 
   img { 
-    @media #{$large-up} {
+    @media #{$xlarge-up} {
       top: -150px !important;
     }
   }
-
-  // section.cover-image { 
-  //   .wrapper {
-  //     position: relative;
-  //     height: 380px;
-  //     overflow: hidden;
-  //     img {
-  //       // position: absolute;
-  //       min-width: 100%;
-  //       width: 100%;
-  //       // top: -350px;
-  //     }
-  //   }
-  // }
-
   section.row.inner {
     position: relative;
     height: 100%;
