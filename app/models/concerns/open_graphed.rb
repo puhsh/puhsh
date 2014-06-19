@@ -83,11 +83,11 @@ module OpenGraphed
   end
 
   def access_token_expired?
-    if self.facebook_access_token_expires_at.value.blank?
-      self.facebook_access_token_expires_at = Koala::Facebook::API.new(self.facebook_access_token.value).debug_token(self.facebook_access_token.value)['data']['expires_at']
+    if self.facebook_access_token_expires_at
+      self.facebook_access_token_expires_at.value.to_i < Time.now.to_i
+    else
+      true
     end
-
-    self.facebook_access_token_expires_at.value.to_i < Time.now.to_i
   end
 
   def exchange_facebook_token!
