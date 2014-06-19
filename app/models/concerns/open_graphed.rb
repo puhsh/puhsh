@@ -20,8 +20,9 @@ module OpenGraphed
     end
   end
 
-  def store_facebook_access_token!(generated_token)
+  def store_facebook_access_token!(generated_token, expires_at = nil)
     self.facebook_access_token = generated_token
+    self.facebook_access_token_expires_at = expires_at
   end
 
   def facebook_friends
@@ -60,10 +61,10 @@ module OpenGraphed
   end
 
   def cover_image_url
-    me = self.facebook_connection.get_object("me", user_fields)
-    if me && me['cover']
+    begin
+      me = self.facebook_connection.get_object("me", user_fields)
       me['cover']['source']
-    else
+    rescue Exception
       nil
     end
   end

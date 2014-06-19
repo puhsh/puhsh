@@ -79,8 +79,10 @@ class User < ActiveRecord::Base
         user.gender = auth[:gender]
         user.facebook_email = auth[:email]
       end
+      user.store_facebook_access_token!(auth[:credentials][:token], auth[:credentials][:expires_at]) if auth[:credentials]
       user
     else
+      user.store_facebook_access_token!(auth[:credentials][:token], auth[:credentials][:expires_at]) if auth[:credentials]
       user
     end
   end
