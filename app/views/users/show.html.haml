@@ -41,7 +41,7 @@
           %a.pink(href="#{city_user_path(city_id: @user.home_city.slug, user_id: @user.slug)}")
             %h1(itemprop="author")
               = @user.name
-              %span.gold.with-star.lighter= @user.star_count
+              %span.gold.with-star.lighter= number_with_delimiter(@user.star_count)
           %h4.subheader
             ="#{city_state_name(@user.home_city)} (#{@user.location_description})"
           %a.pink.hide-for-small-only(href="#{request.url}")= request.url
