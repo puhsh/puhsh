@@ -39,13 +39,13 @@ describe PostsHelper do
     it 'returns FREE for the item that is free' do
       item.price_cents = 0
       item.save
-      expect(post_price(item)).to eql('FREE')
+      expect(post_price(post)).to eql('FREE')
     end
 
     it 'returns SOLD for a post that is sold' do
       post.status = :sold
       post.save
-      expect(post_price(item)).to eql('SOLD')
+      expect(post_price(post)).to eql('SOLD')
     end
   end
 

@@ -5,6 +5,7 @@ describe PostsController do
   let!(:user) { FactoryGirl.create(:user, home_city: city) }
   let(:subcategory) { FactoryGirl.create(:subcategory, name: 'Test Subcategory') }
   let!(:post) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
+  let!(:post2) { FactoryGirl.create(:post, user: user, title: 'Test', description: 'Test post', pick_up_location: :porch, payment_type: :cash, subcategory: subcategory) }
   let!(:item) { FactoryGirl.create(:item, post: post, price_cents: 1000) }
 
   context '#show' do
@@ -35,6 +36,7 @@ describe PostsController do
     it 'returns recent posts' do
       get :index, format: :html
       expect(assigns[:posts]).to include(post)
+      expect(assigns[:posts]).to include(post2)
     end
   end
 end

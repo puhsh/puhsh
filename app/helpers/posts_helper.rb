@@ -7,8 +7,9 @@ module PostsHelper
     'not-free' if item && item.price_cents > 0
   end
 
-  def post_price(item)
-    if item && item.post.for_sale?
+  def post_price(post)
+    item = post.item
+    if item && post.for_sale?
       if item.price_cents > 0
         "$#{humanized_money item.price}"
       else

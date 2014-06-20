@@ -49,7 +49,7 @@
           .left
             %h1.title(itemprop='name')= @post.title
           .right
-            %span.label.price.jumbo.shadowed(itemprop='price')= post_price(@post.item)
+            %span.label.price.jumbo.shadowed(itemprop='price')= post_price(@post)
 
         %p.description(itemprop='description')= @post.description
         .user-details.with-avatar.clearfix
@@ -139,7 +139,7 @@
         %p.title(itemprop='name')= post.title
         %p(itemprop='description')= post.description
         #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
-          %span.label.price(itemprop='price')= post_price(post.item)
+          %span.label.price(itemprop='price')= post_price(post)
 
 
 #pickup-help.reveal-modal(data-reveal)
