@@ -19,5 +19,5 @@
           %p.title(itemprop='name')= post.title
           %p(itemprop='description')= post.description
           #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
-            %span.label.price(itemprop='price')= post_price(post.item)
+            %span.label.price(itemprop='price')= post_price(post)
     = link_to_next_page @posts, 'Next', class: 'infinite-more-link hide', href: "/posts/search/?page=#{@posts.current_page + 1}&query=#{@term}"
