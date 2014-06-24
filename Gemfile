@@ -76,7 +76,7 @@ group :development do
   gem 'guard-rspec', '4.2.3'
   gem 'pry'
   gem 'pry-rails'
-  gem 'ruby_gntp'
+  gem 'terminal-notifier-guard', '1.5.3'
 end
 
 group :test do
