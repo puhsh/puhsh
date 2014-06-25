@@ -1,6 +1,4 @@
 Puhsh::Application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   ###############
   # BEGIN ROUTES
   ###############
@@ -10,14 +8,19 @@ Puhsh::Application.routes.draw do
   
   # Dev Tools
   mount Peek::Railtie => '/peek'
-  ActiveAdmin.routes(self)
   mount Resque::Server, at: '/resque', constraints: Puhsh::AdminConstraints
+
   if Rails.env.development?
     mount MailPreview, at: '/mail_view'
+    mount Kss::Engine => '/kss'
   end
+
+  # Active Admin Admin
+  ActiveAdmin.routes(self)
 
   # Devise
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
   ###############
   # API ROUTES

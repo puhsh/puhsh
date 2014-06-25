@@ -192,6 +192,10 @@ GEM
       addressable
       faraday
       multi_json
+    kss (0.5.0)
+    kss-rails (1.0.2)
+      kss
+      rails (>= 3.0.0)
     listen (2.4.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -485,6 +489,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari (= 0.15.1)
   koala (= 1.9.0)
+  kss-rails
   mail_view!
   mandrill-api (~> 1.0.49)
   mandrill_mailer (= 0.4.3)

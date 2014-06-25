@@ -77,6 +77,7 @@ group :development do
   gem 'pry'
   gem 'pry-rails'
   gem 'terminal-notifier-guard', '1.5.3'
+  gem 'kss-rails'
 end
 
 group :test do
