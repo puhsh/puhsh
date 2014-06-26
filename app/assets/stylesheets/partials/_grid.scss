@@ -27,6 +27,10 @@ article.item-container, aside.item-container {
 
 // An content container that is designed to show a specific item. Each container can have any number of
 // <article.content> elements that shows data.
+// 
+// article.content.no-top-border-radius     - removes top border radius
+// article.content.no-border                - removes border
+// article.content.shaded                   - a shaded background
 //
 // Styleguide 2.0.1
 article.content-container, aside.content-container {
