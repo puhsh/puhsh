@@ -12,10 +12,6 @@ Puhsh::Application.routes.draw do
 
   if Rails.env.development?
     mount MailPreview, at: '/mail_view'
-    mount Kss::Engine => '/styleguide'
-    namespace :styleguide do
-      get '/css', to: 'css#index'
-    end
   end
 
   # Active Admin Admin
