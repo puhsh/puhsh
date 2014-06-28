@@ -36,8 +36,6 @@
 
 %header.user-heading.js-cover-image(data-cover-image-url=cover_image_url)
   %section.row.inner
-    - if cover_image_url.blank?
-      = render 'shared/header'
     %article.small-12.columns.user-info
       .user-details.with-avatar.clearfix
         = image_tag @user.other_avatar_urls[:large], class: 'avatar full'
