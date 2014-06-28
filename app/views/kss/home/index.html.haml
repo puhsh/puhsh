@@ -1,0 +1,21 @@
+- content_for :title do 
+  %title The Official Styleguide for Puhsh.com
+
+.row
+  .small-12.columns
+    #heading.text-center
+      %h1 Eek! A styleguide!
+      %hr
+    #blurb.text-center
+      %p This is the official internal styleguide for the good people at Puhsh. This styleguide is composed of a living CSS styleguide, a JavaScript Styleguide, and recommendations for Ruby, Scala, and Objective-C coding practices.
+      %p Our styleguide should be a living document and can always be improved. Feel free to contribute!
+    #nav
+      %a.button.large.expand(href="/kss/css")
+        View CSS Guide
+      -# %a.button.large.expand
+      -#   View JavaScript Guide
+      -# %a.button.large.expand
+      -#   View Ruby Guide
+
+    = styleguide_block '1.0.0' do 
+      %button(class="$modifier_class") Example Button

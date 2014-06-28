@@ -1,0 +1,24 @@
+// Basic, one off styleguide rules for...well...the styleguide page
+//
+// No styleguide reference.
+
+$header-bottom-margin: rem-calc(10);
+
+body#puhsh-kss-style-guide {
+  .row {
+    margin-top: 20px;
+  }
+
+  .off-canvas-wrap, .inner-wrap {
+    min-height: 100%;
+  }
+  .off-canvas-wrap{  
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .side-bar {
+    background-color: red;
+    min-height: 100%;
+  }
+}

@@ -52,7 +52,7 @@ gem 'sass-rails', '4.0.3'
 gem 'coffee-rails', '4.0.1'
 gem 'uglifier', '2.5.0'
 gem 'compass-rails', '1.1.2'
-gem 'foundation-rails', '5.1.1.0'
+gem 'foundation-rails', '5.3.0.1'
 
 group :development, :test do
   gem 'factory_girl'

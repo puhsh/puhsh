@@ -1,0 +1,30 @@
+!!! 5
+%html
+  %head
+    = yield :title
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+    = yield :meta
+
+    = favicon_link_tag 'favicon.ico'
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css", rel: "stylesheet"
+
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'vendor/modernizr'
+
+    = csrf_meta_tags
+
+  %body#puhsh-kss-style-guide
+    %nav.top-bar(data-topbar)
+      %ul.title-area
+        %li.name
+          %h1
+            = image_tag 'logo-2x.png', class: 'logo puhsh inline'
+      %section.top-bar-section
+        %ul.right
+          %li.active
+            %a(href="/kss/css") SCSS
+  = yield 
