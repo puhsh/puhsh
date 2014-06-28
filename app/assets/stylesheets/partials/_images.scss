@@ -40,6 +40,10 @@ img.app-store-badge {
   &.medium {
     height: rem-calc(50);
   }
+
+  @media #{$small-only} { 
+    margin: rem-calc(10) 0;
+  }
 }
 
 
