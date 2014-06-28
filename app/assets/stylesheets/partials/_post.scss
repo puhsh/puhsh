@@ -38,7 +38,7 @@ article.content#post {
 
   @media #{$small-only} { 
     h1.title { 
-      max-width: rem-calc(220);
+      max-width: rem-calc(190);
     }
   }
 }
