@@ -21,6 +21,9 @@ article.item-container, aside.item-container {
     min-width: rem-calc(220);
     max-width: rem-calc(220);
     margin-bottom: rem-calc(20);
+    a { 
+      display: block;
+    }
   }
 }
 

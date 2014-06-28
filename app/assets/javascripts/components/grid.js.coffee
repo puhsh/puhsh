@@ -24,7 +24,7 @@ class @Grid
   #
   # Returns nothing.
   _setupMasonry: () ->
-    $('.js-grid-list').masonry(columnWidth: @masonryColumnWidth, itemSelector: @masonryItemSelector, gutter: @masonryGutterSize, transitionDuration: @masonryTransitionDuration)
+    $('.js-grid-list').masonry(columnWidth: @masonryColumnWidth, itemSelector: @masonryItemSelector, gutter: @masonryGutterSize, transitionDuration: @masonryTransitionDuration, isFitWidth: true)
 
 
   # Private: Cofigures any elements with the class ".item-sticky" to be stamped in the masonry grid

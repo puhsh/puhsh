@@ -7,28 +7,29 @@
 = render 'shared/search_social', search_url: nil, term: nil, page_header_text: "#{@city.name}, #{@city.full_state_name}", use_small_heading: false
 
 %section.row
-  %article.small-12.columns.item-container.js-grid-list.js-infinite#posts
-    - if @founding_user
-      %article.item-sticky.hide-for-small-only
-        %h5="Founded #{city_founded_date(@city, :fancy)} by:"
-        .user-details.with-avatar(itemscope itemtype='http://schema.org/Person')
-          = link_to (image_tag (url_without_protocol(@founding_user.other_avatar_urls[:large])), class: 'avatar tiny', itemprop: 'image'), city_user_path(@founding_user, city_id: @founding_user.home_city.slug)
-          %ul.no-bullet.info
-            %li.name
-              %a(href="#{city_user_path(@founding_user, city_id: @founding_user.home_city.slug)}")
-                %strong(itemprop='name')= @founding_user.name
-            %li
-              %strong.gold.with-star= number_with_delimiter(@founding_user.star_count, delimiter: ',')
-    - @posts.each do |post|
-      - image = post.post_images.first
-      %article.item.post-grid-item.text-center#post(itemscope itemtype='http://schema.org/Product')
-        %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
-          - if image.image_file_name.present?
-            = image_tag image.image.url(:medium)
-          - else
-            = image_tag 'http://placehold.it/200x200'
-          %p.title(itemprop='name')= post.title
-          %p(itemprop='description')= post.description
-          #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
-            %span.label.price(itemprop='price')= post_price(post)
-    = link_to_next_page @posts, 'Next', class: 'infinite-more-link hide'
+  .small-12.columns
+    %article.item-container.js-grid-list.js-infinite#posts
+      - if @founding_user
+        %article.item-sticky.hide-for-small-only
+          %h5="Founded #{city_founded_date(@city, :fancy)} by:"
+          .user-details.with-avatar(itemscope itemtype='http://schema.org/Person')
+            = link_to (image_tag (url_without_protocol(@founding_user.other_avatar_urls[:large])), class: 'avatar tiny', itemprop: 'image'), city_user_path(@founding_user, city_id: @founding_user.home_city.slug)
+            %ul.no-bullet.info
+              %li.name
+                %a(href="#{city_user_path(@founding_user, city_id: @founding_user.home_city.slug)}")
+                  %strong(itemprop='name')= @founding_user.name
+              %li
+                %strong.gold.with-star= number_with_delimiter(@founding_user.star_count, delimiter: ',')
+      - @posts.each do |post|
+        - image = post.post_images.first
+        %article.item.post-grid-item.text-center#post(itemscope itemtype='http://schema.org/Product')
+          %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
+            - if image.image_file_name.present?
+              = image_tag image.image.url(:medium)
+            - else
+              = image_tag 'http://placehold.it/200x200'
+            %p.title(itemprop='name')= post.title
+            %p(itemprop='description')= post.description
+            #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+              %span.label.price(itemprop='price')= post_price(post)
+      = link_to_next_page @posts, 'Next', class: 'infinite-more-link hide'

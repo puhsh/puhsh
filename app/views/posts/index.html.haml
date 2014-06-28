@@ -7,17 +7,18 @@
 = render 'shared/search_social', search_url: search_posts_path, term: nil, page_header_text: nil, use_small_heading: false
 
 %section.row
-  %article.small-12.columns.text-center.item-container.js-grid-list.js-infinite#posts
-    - @posts.each do |post|
-      - image = post.post_images.first
-      %article.item.post-grid-item#post(itemscope itemtype='http://schema.org/Product')
-        %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
-          - if image && image.image_file_name.present?
-            = image_tag image.image.url(:medium)
-          - else
-            = image_tag 'http://placehold.it/200x200'
-          %p.title(itemprop='name')= post.title
-          %p(itemprop='description')= post.description
-          #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
-            %span.label.price(itemprop='price')= post_price(post)
-    = link_to_next_page @posts, 'Next', class: 'infinite-more-link hide', href: "/posts?page=#{@posts.current_page + 1}"
+  .small-12.columns
+    %article.item-container.js-grid-list.js-infinite#posts
+      - @posts.each do |post|
+        - image = post.post_images.first
+        %article.item.post-grid-item.text-center#post(itemscope itemtype='http://schema.org/Product')
+          %a(href="#{post_path(post, city_id: post.city.slug, user_id: post.user.slug)}")
+            - if image && image.image_file_name.present?
+              = image_tag image.image.url(:medium)
+            - else
+              = image_tag 'http://placehold.it/200x200'
+            %p.title(itemprop='name')= post.title
+            %p(itemprop='description')= post.description
+            #price-container(itemprop='offers' itemscope itemtype='http://schema.org/Offer')
+              %span.label.price(itemprop='price')= post_price(post)
+      = link_to_next_page @posts, 'Next', class: 'infinite-more-link hide', href: "/posts?page=#{@posts.current_page + 1}"
