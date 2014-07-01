@@ -98,7 +98,7 @@ describe Message do
 
     before { ResqueSpec.reset! }
     before do
-      app = Rapns::Apns::App.new
+      app = Rpush::Apns::App.new
       app.name = "puhsh_ios_test"
       app.certificate = File.read("#{Rails.root}/config/certs/puhsh_development.pem")
       app.environment = "development"
