@@ -70,8 +70,8 @@ namespace :deploy do
     end
   end
 
-  desc 'Restart the Rapns daemon for Push Notifications'
-  task :restart_rapns do
+  desc 'Restart the Rpush daemon for Push Notifications'
+  task :restart_rpush do
     on roles(:web), in: :sequence, wait: 5 do
       execute "kill -s HUP `cat #{current_path}/tmp/pids/rapns.puhsh.pid`"
     end

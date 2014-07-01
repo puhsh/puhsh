@@ -1,7 +1,6 @@
- # Rapns configuration. Options set here are overridden by command-line options.
+ # Rpush configuration. Options set here are overridden by command-line options.
 
-Rapns.configure do |config|
-
+ Rpush.configure do |config|
   # Run in the foreground?
   config.foreground = false
 
@@ -22,14 +21,11 @@ Rapns.configure do |config|
 
   # Path to write PID file. Relative to Rails root unless absolute.
   config.pid_file = "#{Rails.root.to_s}/tmp/pids/rapns.puhsh.pid"
+ end
 
-  # Define a custom logger.
-  # config.logger = MyLogger.new
-end
+Rpush.reflect do |on|
 
-Rapns.reflect do |on|
-
-  # Called with a Rapns::Apns::Feedback instance when feedback is received
+  # Called with a Rpush::Apns::Feedback instance when feedback is received
   # from the APNs that a notification has failed to be delivered.
   # Further notifications should not be sent to the device.
   on.apns_feedback do |feedback|
@@ -42,7 +38,7 @@ Rapns.reflect do |on|
   # Called when a notification is queued internally for delivery.
   # The internal queue for each app runner can be inspected:
   #
-  # Rapns::Daemon::AppRunner.runners.each do |app_id, runner|
+  # Rpush::Daemon::AppRunner.runners.each do |app_id, runner|
   #   runner.app
   #   runner.queue_size
   # end
@@ -65,8 +61,20 @@ Rapns.reflect do |on|
   # on.notification_will_retry do |notification|
   # end
 
-  # Called when an APNs connection is lost and will be reconnected.
-  # on.apns_connection_lost do |app, error|
+  # Called when a TCP connection is lost and will be reconnected.
+  # on.tcp_connection_lost do |app, error|
+  # end
+
+  # Called for each recipient which successfully receives a notification. This
+  # can occur more than once for the same notification when there are multiple
+  # recipients.
+  # on.gcm_delivered_to_recipient do |notification, registration_id|
+  # end
+
+  # Called for each recipient which fails to receive a notification. This
+  # can occur more than once for the same notification when there are multiple
+  # recipients. (do not handle invalid registration IDs here)
+  # on.gcm_failed_to_recipient do |notification, error, registration_id|
   # end
 
   # Called when the GCM returns a canonical registration ID.
@@ -74,9 +82,19 @@ Rapns.reflect do |on|
   # on.gcm_canonical_id do |old_id, canonical_id|
   # end
 
-  # Called when an APNs certificate will expire within 1 month.
+  # Called when the GCM returns a failure that indicates an invalid registration id.
+  # You will need to delete the registration_id from your records.
+  # on.gcm_invalid_registration_id do |app, error, registration_id|
+  # end
+
+  # Called when an SSL certificate will expire within 1 month.
   # Implement on.error to catch errors raised when the certificate expires.
-  # on.apns_certificate_will_expire do |app, expiration_time|
+  # on.ssl_certificate_will_expire do |app, expiration_time|
+  # end
+
+  # Called when the ADM returns a canonical registration ID.
+  # You will need to replace old_id with canonical_id in your records.
+  # on.adm_canonical_id do |old_id, canonical_id|
   # end
 
   # Called when an exception is raised.

@@ -302,9 +302,6 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
-    rapns (3.4.1)
-      multi_json (~> 1.0)
-      net-http-persistent
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
@@ -347,6 +344,9 @@ GEM
       rspec-expectations (>= 2.5.0)
       rspec-mocks (>= 2.5.0)
     rolify (3.4.0)
+    rpush (1.0.0)
+      multi_json (~> 1.0)
+      net-http-persistent
     rsolr (1.0.9)
       builder (>= 2.1.2)
     rspec (2.14.1)
@@ -505,7 +505,6 @@ DEPENDENCIES
   pry-rails
   rails (= 4.0.5)
   rails_warden (= 0.5.7)
-  rapns (= 3.4.1)
   redis (= 3.0.7)
   redis-objects (= 0.9.1)
   redis-rails (= 4.0.0)
@@ -513,6 +512,7 @@ DEPENDENCIES
   resque-pool (= 0.3.0)
   resque_spec (= 0.14.4)
   rolify (= 3.4.0)
+  rpush (= 1.0.0)
   rspec-rails (= 2.14.1)
   sass-rails (= 4.0.3)
   shoulda (= 3.5.0)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423172103) do
+ActiveRecord::Schema.define(version: 20140701022749) do
 
   create_table "access_tokens", force: true do |t|
     t.integer  "user_id"
@@ -273,19 +273,34 @@ ActiveRecord::Schema.define(version: 20140423172103) do
   add_index "questions", ["post_id"], name: "index_questions_on_post_id", using: :btree
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
-  create_table "rapns_apps", force: true do |t|
-    t.string   "name",                    null: false
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "rpush_apps", force: true do |t|
+    t.string   "name",                                null: false
     t.string   "environment"
     t.text     "certificate"
     t.string   "password"
-    t.integer  "connections", default: 1, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "type",                    null: false
+    t.integer  "connections",             default: 1, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "type",                                null: false
     t.string   "auth_key"
+    t.string   "client_id"
+    t.string   "client_secret"
+    t.string   "access_token"
+    t.datetime "access_token_expiration"
   end
 
-  create_table "rapns_feedback", force: true do |t|
+  create_table "rpush_feedback", force: true do |t|
     t.string   "device_token", limit: 64, null: false
     t.datetime "failed_at",               null: false
     t.datetime "created_at",              null: false
@@ -293,9 +308,9 @@ ActiveRecord::Schema.define(version: 20140423172103) do
     t.string   "app"
   end
 
-  add_index "rapns_feedback", ["device_token"], name: "index_rapns_feedback_on_device_token", using: :btree
+  add_index "rpush_feedback", ["device_token"], name: "index_rpush_feedback_on_device_token", using: :btree
 
-  create_table "rapns_notifications", force: true do |t|
+  create_table "rpush_notifications", force: true do |t|
     t.integer  "badge"
     t.string   "device_token",      limit: 64
     t.string   "sound",                              default: "default"
@@ -318,20 +333,11 @@ ActiveRecord::Schema.define(version: 20140423172103) do
     t.text     "registration_ids",  limit: 16777215
     t.integer  "app_id",                                                 null: false
     t.integer  "retries",                            default: 0
+    t.string   "uri"
+    t.datetime "fail_after"
   end
 
-  add_index "rapns_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
-
-  create_table "roles", force: true do |t|
-    t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
-  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
 
   create_table "stars", force: true do |t|
     t.integer  "user_id"

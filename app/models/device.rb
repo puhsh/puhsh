@@ -32,8 +32,8 @@ class Device < ActiveRecord::Base
   end
 
   def send_apn_notification(message, event)
-    n = Rapns::Apns::Notification.new
-    n.app = Rapns::Apns::App.find_by_name(apn_app_name)
+    n = Rpush::Apns::Notification.new
+    n.app = Rpush::Apns::App.find_by_name(apn_app_name)
     n.device_token = self.device_token
     n.badge = self.user.unread_notifications_count
     n.alert = message
@@ -42,8 +42,8 @@ class Device < ActiveRecord::Base
   end
 
   def send_gcm_notification(message)
-    n = Rapns::Gcm::Notification.new
-    n.app = Rapns::Gcm::App.find_by_name(apn_app_name)
+    n = Rpush::Gcm::Notification.new
+    n.app = Rpush::Gcm::App.find_by_name(apn_app_name)
     n.registration_ids = [self.device_token]
     n.data = { message: message }
     n.save!

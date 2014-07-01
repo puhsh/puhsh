@@ -35,7 +35,7 @@ gem 'mandrill-api', '~> 1.0.49'
 gem 'mandrill_mailer', '0.4.3'
 
 # APN / GCM
-gem 'rapns', '3.4.1'
+gem 'rpush', '1.0.0'
 
 # Amazon Related
 gem 'aws-sdk', '1.31.3'
