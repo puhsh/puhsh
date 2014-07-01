@@ -13,6 +13,9 @@ class @CoverImage
   bindCoverImages: () ->
     image_url = $(".js-cover-image").data("cover-image-url")
     if image_url
-      $(@coverImageSelector).backstretch(image_url, {centeredY: false, fade: 200})
+      $(@coverImageSelector).backstretch image_url,
+                                         centeredY: false,
+                                         $fade: 200
     else
-      $(".js-cover-image").css({background: @defaultCoverImageBackground})
+      $(".js-cover-image").css
+                            background: @defaultCoverImageBackground
