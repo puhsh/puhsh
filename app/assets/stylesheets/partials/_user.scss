@@ -18,16 +18,20 @@ div.user-details {
   }
 }
 
-// TODO this is all hacked together. refactor
+
+// A <header> used to provide a unique callout for content. Great for user profiles.
+//
+// Styleguide 2.2.1
 header.user-heading {
   height: rem-calc(380);
   margin-bottom: rem-calc(60);
 
   img { 
     @media #{$xlarge-up} {
-      top: -150px !important;
+      top: -250px !important;
     }
   }
+
   section.row.inner {
     position: relative;
     height: 100%;
