@@ -7,7 +7,7 @@ class UserSerializer < ActiveModel::Serializer
   has_one :app_invite
 
   def is_following
-    current_user ? current_user.following?(object) : false
+    scope.try { |x| x.following?(object) }
   end
 
   def avatar_urls
