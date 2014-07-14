@@ -26,12 +26,6 @@ header.user-heading {
   height: rem-calc(380);
   margin-bottom: rem-calc(60);
 
-  img { 
-    @media #{$xlarge-up} {
-      top: -250px !important;
-    }
-  }
-
   section.row.inner {
     position: relative;
     height: 100%;
