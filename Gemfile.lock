@@ -485,7 +485,7 @@ DEPENDENCIES
   haml (= 4.0.5)
   hipchat (= 0.12.0)
   jquery-rails
-  jquery-ui-rails
+  jquery-ui-rails (= 5.0.0)
   kaminari (= 0.15.1)
   koala (= 1.9.0)
   mail_view!
