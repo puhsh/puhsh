@@ -3,8 +3,8 @@ puhsh
 puhsh is the official repo for the application at www.puhsh.com. Before we get started, here is a high level explanation of what makes puhsh.com run:
 
 #### Code
-* Rails 4.0
-* Ruby 2.1.1
+* Rails 4.1
+* Ruby 2.1.2
 * RVM
 
 #### Front End
