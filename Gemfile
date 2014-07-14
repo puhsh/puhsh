@@ -27,7 +27,7 @@ gem 'omniauth-facebook', '1.5.1'
 gem 'unicorn', '4.8.2'
 
 # Storage
-gem 'paperclip', '3.5.3'
+gem 'paperclip', '3.5.4'
 
 # Email
 gem 'gibbon', '1.0.4'
@@ -38,7 +38,7 @@ gem 'mandrill_mailer', '0.4.3'
 gem 'rpush', '1.0.0'
 
 # Amazon Related
-gem 'aws-sdk', '1.31.3'
+gem 'aws-sdk', '1.47.0'
 
 # Peek
 gem 'peek', '0.1.6'
@@ -59,6 +59,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'fakeredis', '0.4.3'
   gem 'rspec-rails', '2.14.1'
+  gem 'minitest' # This is screwy. Thanks shoulda
   gem 'shoulda', '3.5.0'
   gem 'spork', '1.0.0rc4'
   gem 'sunspot_matchers', '2.1.0.0', require: false
@@ -114,6 +115,7 @@ gem 'protected_attributes', '1.0.7'
 gem 'rails_warden', '0.5.7'
 gem 'redis-objects', '0.9.1'
 gem 'rolify', '3.4.0'
+gem 'spring', group: :development
 gem 'statsd-ruby', '1.2.1'
 gem 'sterling', '1.1.2'
 gem 'sunspot_rails', '2.1.0'

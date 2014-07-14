@@ -5,11 +5,8 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
 
-if defined?(Bundler)
-  Bundler.require(:default, Rails.env)
-end
+Bundler.require(*Rails.groups)
 
 module Puhsh
   class Application < Rails::Application

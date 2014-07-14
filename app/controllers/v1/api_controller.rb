@@ -3,6 +3,8 @@ require 'new_relic/agent/instrumentation/rails3/action_controller'
 require 'new_relic/agent/instrumentation/rails3/errors'
 
 class V1::ApiController < ActionController::Metal
+  include AbstractController::Rendering
+  include ActionView::Layouts
   include ActionController::Rendering
   include ActionController::Renderers::All  
   include ActionController::Redirecting
