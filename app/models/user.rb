@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   include StarRewardable
-  include BadgeRewardable
   include Redis::Objects
   include Trackable
   include OpenGraphed
@@ -8,7 +7,6 @@ class User < ActiveRecord::Base
   include FriendlyId
 
   INVITES_ENABLED = Rails.env.development? ? false : true
-  ALPHA_ENABLED = false
 
   attr_accessible :uid, :authentication_token, :home_city, :first_name, :last_name, :email, :name, :zipcode, :location_description, :contact_email, :star_count, :unread_notifications_count, :city_id
   devise :trackable, :omniauthable, :confirmable, omniauth_providers: [:facebook]

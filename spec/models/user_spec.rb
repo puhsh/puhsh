@@ -266,29 +266,6 @@ describe User do
     end
   end
 
-  describe '.award_badges' do
-    let(:user) { FactoryGirl.build(:user) }
-    let!(:badge) { FactoryGirl.create(:badge, name: 'Early Adopter') }
-    
-    context 'Early Adopter' do
-      context 'disabled alpha' do
-        before { User::ALPHA_ENABLED = false }
-        it 'does not award the early adopter badge if the alpha is disabled' do
-          expect(Badge).to_not receive(:award!)
-          user.save
-        end
-      end
-      
-      context 'enabled alpha' do
-        before { User::ALPHA_ENABLED = true }
-        it 'does award the early adopter badge if the alpha is enabled' do
-          expect(Badge).to receive(:award!)
-          user.save
-        end
-      end
-    end
-  end
-
   describe '.nearby_cities' do
     let(:user) { FactoryGirl.create(:user, zipcode: '75034') }
     let!(:city) { FactoryGirl.create(:city) }
