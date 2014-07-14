@@ -45,4 +45,9 @@ Puhsh::Application.configure do
 
   # Join References
   config.active_record.disable_implicit_join_references = true
+
+  # Adds additional error checking when serving assets at runtime.
+  # Checks for improperly declared sprockets dependencies.
+  # Raises helpful error messages.
+  config.assets.raise_runtime_errors = true
 end
