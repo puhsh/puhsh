@@ -158,6 +158,9 @@ GEM
     guard-rspec (4.2.10)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    guard-spring (0.0.4)
+      guard
+      spring
     haml (4.0.5)
       tilt
     has_scope (0.6.0.rc)
@@ -482,6 +485,7 @@ DEPENDENCIES
   geocoder (= 1.1.9)
   gibbon (= 1.0.4)
   guard-rspec (= 4.2.10)
+  guard-spring (= 0.0.4)
   haml (= 4.0.5)
   hipchat (= 0.12.0)
   jquery-rails

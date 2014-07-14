@@ -74,6 +74,7 @@ group :development do
   gem 'capistrano-bundler', '1.1.2'
   gem 'capistrano-rails', '1.1'
   gem 'guard-rspec', '4.2.10'
+  gem 'guard-spring', '0.0.4'
   gem 'pry'
   gem 'pry-rails'
   gem 'terminal-notifier-guard', '1.5.3'
