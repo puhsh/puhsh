@@ -13,7 +13,7 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :info
 set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/assets vendor/bundle public/system}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/assets vendor/bundle public/system}
 set :rvm_ruby_version, 'ruby-2.1.2@puhsh'
 set :max_asset_age, 2 
 SSHKit.config.command_map[:whenever] = "bundle exec whenever -i"
