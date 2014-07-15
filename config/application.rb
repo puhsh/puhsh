@@ -63,5 +63,8 @@ module Puhsh
 
     # Include Bower Assets
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+
+    # EasouSpider causes issues...
+    config.middleware.insert 0, Rack::UTF8Sanitizer
   end
 end
