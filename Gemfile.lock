@@ -283,6 +283,8 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack-utf8_sanitizer (1.2.2)
+      rack (~> 1.0)
     rails (4.1.4)
       actionmailer (= 4.1.4)
       actionpack (= 4.1.4)
@@ -511,6 +513,7 @@ DEPENDENCIES
   protected_attributes (= 1.0.7)
   pry
   pry-rails
+  rack-utf8_sanitizer (= 1.2.2)
   rails (= 4.1.4)
   rails_warden (= 0.5.7)
   redis (= 3.0.7)
