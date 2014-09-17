@@ -11,6 +11,6 @@ sandbox:
   port: 8080
   tracking_enabled: false
 production:
-  host: 10.81.99.133
+  host: 127.0.0.1
   port: 8080
-  tracking_enabled: true
+  tracking_enabled: false
