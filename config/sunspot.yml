@@ -16,7 +16,8 @@ sandbox:
     log_level: WARNING
 production:
   solr:
-    hostname: 10.41.187.169
+    # hostname: 10.41.187.169
+    hostname: localhost
     port: 8983
-    path: /solr/production
+    # path: /solr/production
     log_level: WARNING
