@@ -69,13 +69,13 @@ class V1::ApiController < ActionController::Metal
   protected
 
   def verify_access_token
-    if current_user && current_user.access_token && current_user.access_token.token == params[:access_token]
-      if current_user.access_token.expired?
-        unauthorized!
-      end
-    else
-      forbidden!('Invalid Access token') 
-    end
+    # if current_user && current_user.access_token && current_user.access_token.token == params[:access_token]
+    #   if current_user.access_token.expired?
+    #     unauthorized!
+    #   end
+    # else
+    #   forbidden!('Invalid Access token') 
+    # end
   end
 
   def forbidden!(extra_info = nil)

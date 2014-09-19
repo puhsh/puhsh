@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   before_save :set_home_city, :send_welcome_email, :send_confirmation_instructions, :send_facebook_friend_joined_email
   after_commit :add_default_role, on: :create
   after_commit :skip_confirmation_notification!, on: :create
-  after_validation :geocode
+  # after_validation :geocode
 
   # Validations
   validates :uid, presence: true, uniqueness: true
