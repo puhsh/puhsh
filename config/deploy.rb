@@ -7,7 +7,7 @@ set :ssh_options, {
 }
 
 set :repo_url, 'git@github.com:puhsh/puhsh.git'
-set :branch, 'ec2'
+set :branch, 'master'
 set :user, 'puhsh'
 set :scm, :git
 set :format, :pretty
