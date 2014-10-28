@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Rails
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.6'
 
 # MySQL
 gem 'mysql2', '0.3.15'
