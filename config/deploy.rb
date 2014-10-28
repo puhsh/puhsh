@@ -2,12 +2,12 @@
 lock '3.1.0'
 
 set :ssh_options, {
-  keys: ["#{ENV["HOME"]}/.ssh/id_rsa"],
+  keys: ["#{ENV["HOME"]}/.ssh/id_rsa", "#{ENV["HOME"]}/.ssh/keys/Puhsh.pem"],
   forward_agent: true
 }
 
 set :repo_url, 'git@github.com:puhsh/puhsh.git'
-set :branch, 'master'
+set :branch, 'ec2'
 set :user, 'puhsh'
 set :scm, :git
 set :format, :pretty
