@@ -1,4 +1,4 @@
-server 'ec2-54-88-115-1.compute-1.amazonaws.com', user: 'puhsh', roles: %w{web app db resque job}
+server '54.173.65.224', user: 'puhsh', roles: %w{web app db resque job}
 
 set :application, 'puhsh'
 set :deploy_to, "/var/www/www.puhsh.com"
