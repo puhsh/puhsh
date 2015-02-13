@@ -1,9 +1,9 @@
 class V1::PostsController < V1::ApiController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index, :show]
   before_filter :skip_trackable
-  before_filter :verify_access_token
+  before_filter :verify_access_token, except: [:index, :show]
   authorize_resource
-  skip_authorize_resource only: :search
+  skip_authorize_resource only: [:search, :index, :show]
   before_filter :find_resource_for_posts, only: [:index]
 
   def index
@@ -11,9 +11,12 @@ class V1::PostsController < V1::ApiController
       @posts = @resource.posts.includes(:item, {post_images: :post}, {user: :home_city})
                               .exclude_post_ids(current_user.flagged_post_ids.members)
                               .recent
-    else
+    elsif current_user
       @posts = Post.includes(:item, {post_images: :post}, :city, {user: :home_city})
                    .exclude_post_ids(current_user.flagged_post_ids.members)
+                   .recent
+    else
+      @posts = Post.includes(:item, {post_images: :post}, :city, {user: :home_city})
                    .recent
     end
     render_paginated @posts
@@ -31,7 +34,7 @@ class V1::PostsController < V1::ApiController
 
   def create
     @post = Post.new(params[:post])
-    @post.user = current_user 
+    @post.user = current_user
     @post.category = @post.subcategory.category unless @post.category
 
     if @post.save
@@ -58,7 +61,7 @@ class V1::PostsController < V1::ApiController
     if params[:query]
       opts[:without_category_ids] = params[:without_category_ids] if params[:without_category_ids]
       @posts = Post.search(params[:query], params[:page], params[:per_page], opts)
-      
+
       if params[:title_only]
         @posts = @posts.collect(&:title)
         render json: @posts
@@ -76,7 +79,7 @@ class V1::PostsController < V1::ApiController
     render json: @users, each_serializer: SimpleUserSerializer
   end
 
-  protected 
+  protected
 
   def find_resource_for_posts
     if params[:category_id]
