@@ -15,9 +15,10 @@
 #= require spin.js/spin.js
 #= require spin.js/jquery.spin.js
 #= require jquery-backstretch/jquery.backstretch.min.js
+#= require backbone/backbone.js
+#= require react/react.min.js
 
-
-$(() -> 
+$(() ->
   puhsh = new Puhsh()
   $(document).foundation()
 )

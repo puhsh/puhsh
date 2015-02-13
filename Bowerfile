@@ -6,4 +6,6 @@ group :vendor do
   asset 'jquery-waypoints', '2.0.5'
   asset 'masonry', '3.1.5'
   asset 'jquery-backstretch', '2.0.4'
+  asset 'react', '0.12.2'
+  asset 'backbone', '1.1.2'
 end

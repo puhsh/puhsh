@@ -5,6 +5,8 @@
     "underscore": "1.6.0",
     "jquery-waypoints": "2.0.5",
     "masonry": "3.1.5",
-    "jquery-backstretch": "2.0.4"
+    "jquery-backstretch": "2.0.4",
+    "react": "0.12.2",
+    "backbone": "1.1.2"
   }
 }
