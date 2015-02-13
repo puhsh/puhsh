@@ -2,8 +2,6 @@
 #= require foundation
 #= require peek.js
 #= require peek/views/performance_bar
-#= require_tree ./components
-
 
 #
 # Bower Components
@@ -17,6 +15,10 @@
 #= require jquery-backstretch/jquery.backstretch.min.js
 #= require backbone/backbone.js
 #= require react/react.min.js
+
+#= Bacbkone app
+#= require_tree ./components
+#= require app/app
 
 $(() ->
   puhsh = new Puhsh()

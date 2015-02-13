@@ -1,9 +1,9 @@
 class V1::PostsController < V1::ApiController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :skip_trackable
   before_filter :verify_access_token, except: [:index, :show]
+  before_filter :skip_trackable
   authorize_resource
-  skip_authorize_resource only: [:search, :index, :show]
+  skip_authorize_resource only: [:search]
   before_filter :find_resource_for_posts, only: [:index]
 
   def index
