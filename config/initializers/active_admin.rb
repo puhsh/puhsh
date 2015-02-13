@@ -35,7 +35,7 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   # config.default_namespace = false
-  
+
   # You can customize the settings for each namespace by using
   # a namespace block. For example, to change the site title
   # within a namespace:
@@ -104,7 +104,7 @@ ActiveAdmin.setup do |config|
   # Admin comments are enabled by default.
   #
   # Default:
-  config.allow_comments = false
+  config.comments = false
   #
   # You can turn them on and off for any given namespace by using a
   # namespace config block.
@@ -158,9 +158,9 @@ ActiveAdmin.setup do |config|
   # == Menu System
   #
   # You can add a navigation menu to be used in your application, or configure a provided menu
-  # 
+  #
   # To change the default utility navigation to show a link to your website & a logout btn
-  # 
+  #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :utility_navigation do |menu|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
@@ -184,13 +184,13 @@ ActiveAdmin.setup do |config|
   # To disable/customize for the :admin namespace:
   #
     config.namespace :admin do |admin|
-  
+
       # Disable the links entirely
       admin.download_links = false
-  
+
       # Only show XML & PDF options
       # admin.download_links = [:xml, :pdf]
-  
+
     end
 
 
@@ -204,7 +204,7 @@ ActiveAdmin.setup do |config|
 
   # == Filters
   #
-  # By default the index screen includes a “Filters” sidebar on the right 
+  # By default the index screen includes a “Filters” sidebar on the right
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #
@@ -218,7 +218,7 @@ end
 ActiveAdmin::ResourceController.class_eval do
   def find_resource
     if scoped_collection.is_a? FriendlyId
-      scoped_collection.where(slug: params[:id]).first! 
+      scoped_collection.where(slug: params[:id]).first!
     else
       scoped_collection.where(id: params[:id]).first!
     end

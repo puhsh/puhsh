@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Rails
-gem 'rails', '4.1.6'
+gem 'rails', '4.1.9'
 
 # MySQL
 gem 'mysql2', '0.3.15'
@@ -88,7 +88,7 @@ end
 
 # Third Party
 gem 'active_model_serializers', '0.8.1'
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'activeadmin/active_admin'
 gem 'acts_as_list', '0.3.0'
 gem 'airbrake'
 gem 'bitly', '0.10.1'
