@@ -7,7 +7,7 @@ Puhsh::Application.routes.draw do
   root to: 'posts#index'
 
   # Canvas
-  post "/" => "home#index", as: 'canvas_root'
+  post "/", to: "home#index", as: 'canvas_root'
 
   # Dev Tools
   mount Peek::Railtie => '/peek'
