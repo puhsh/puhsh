@@ -6,18 +6,18 @@ class V1::ApiController < ActionController::Metal
   include AbstractController::Rendering
   include ActionView::Layouts
   include ActionController::Rendering
-  include ActionController::Renderers::All  
+  include ActionController::Renderers::All
   include ActionController::Redirecting
   include AbstractController::Callbacks
   include AbstractController::Helpers
   include ActionController::Instrumentation
-  include ActionController::ParamsWrapper  
+  include ActionController::ParamsWrapper
   include ActionController::MimeResponds
   include ActionController::RequestForgeryProtection
   include ActionController::ForceSSL
-  include ActionController::Rescue    
+  include ActionController::Rescue
   include ActionController::Serialization
-  include Devise::Controllers::Helpers    
+  include Devise::Controllers::Helpers
   include CanCan::ControllerAdditions
   include Rails.application.routes.url_helpers
   include NewRelic::Agent::Instrumentation::ControllerInstrumentation
@@ -43,6 +43,7 @@ class V1::ApiController < ActionController::Metal
       items = resource
       total_pages = items.total_pages
       current_page = params[:page].present? ? params[:page].to_i : 1
+      per_page = 25
     else
       page = params[:page] || 1
       per_page = params[:per_page] || 25
@@ -51,12 +52,15 @@ class V1::ApiController < ActionController::Metal
       total_pages = items.total_pages
     end
 
-    pagination_hash = { 
+    pagination_hash = {
       prev_page_url: prev_page_url(current_page),
       next_page_url: next_page_url(total_pages, current_page),
       current_page_url: current_page_url(current_page),
       last_page_url: last_page_url(total_pages, current_page),
-      first_page_url: first_page_url
+      first_page_url: first_page_url,
+      current_page: current_page,
+      total_pages: total_pages,
+      per_page: per_page
     }
 
     if opts[:serializer]
@@ -74,7 +78,7 @@ class V1::ApiController < ActionController::Metal
         unauthorized!
       end
     else
-      forbidden!('Invalid Access token') 
+      forbidden!('Invalid Access token')
     end
   end
 
@@ -114,7 +118,7 @@ class V1::ApiController < ActionController::Metal
     current_page = current_page < 1 ? 1 : current_page
     url_for(page: current_page, format: :json)
   end
-  
+
   def last_page_url(total_pages, current_page)
     total_pages <= 0 ? url_for(page: current_page, format: :json) : url_for(page: total_pages, format: :json)
   end

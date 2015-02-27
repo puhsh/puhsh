@@ -15,8 +15,8 @@ module Puhsh
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/extras 
-                                #{config.root}/lib 
+    config.autoload_paths += %W(#{config.root}/extras
+                                #{config.root}/lib
                                 #{config.root}/app/controllers/concerns
                                 #{config.root}/app/models/concerns)
 
@@ -66,5 +66,13 @@ module Puhsh
 
     # EasouSpider causes issues...
     config.middleware.insert 0, Rack::UTF8Sanitizer
+
+    # CORS active_support
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins 'localhost:9393'
+        resource '*', headers: :any, methods: [:get]
+      end
+    end
   end
 end

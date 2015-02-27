@@ -112,6 +112,7 @@ gem 'open-meta-tags', '0.4.0', require: 'open_meta_tags'
 # Remove this gem once strong parameters are integrated
 gem 'protected_attributes', '1.0.7'
 
+gem 'rack-cors', require: 'rack/cors'
 gem 'rack-utf8_sanitizer', '1.2.2'
 gem 'rails_warden', '0.5.7'
 gem 'redis-objects', '0.9.1'
