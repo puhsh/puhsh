@@ -1,5 +1,5 @@
 # Workers
-worker_processes 4
+worker_processes 2
 
 # App Directory (via Capistrano)
 rails_env = ENV['RAILS_ENV'] || 'production'
