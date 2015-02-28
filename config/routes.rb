@@ -2,10 +2,13 @@ Puhsh::Application.routes.draw do
   ###############
   # BEGIN ROUTES
   ###############
-  
+
   # Root URL
   root to: 'posts#index'
-  
+
+  # Canvas
+  post "/", to: "posts#index", as: 'canvas_root'
+
   # Dev Tools
   mount Peek::Railtie => '/peek'
   mount Resque::Server, at: '/resque', constraints: Puhsh::AdminConstraints
@@ -67,7 +70,7 @@ Puhsh::Application.routes.draw do
     match 'zipcodes/:zipcode_id/cities', to: 'cities#index', via: :get
 
     # Categories
-    resources :categories, only: [:index, :show] do 
+    resources :categories, only: [:index, :show] do
       resources :posts
     end
 
@@ -87,7 +90,7 @@ Puhsh::Application.routes.draw do
       end
       resources :related_products, only: [:index]
     end
-    
+
     # Post Images
     resources :post_images, only: [:create]
 
@@ -114,7 +117,7 @@ Puhsh::Application.routes.draw do
       end
     end
   end
-  
+
   ###############
   # WEB ROUTES
   ###############
@@ -140,7 +143,7 @@ Puhsh::Application.routes.draw do
 
   # Users
   resources :users, only: [:show]
-  
+
   # Users - SEO
   get '/posts/:city_id/:user_id', to: 'users#show', via: :get, as: 'city_user'
 

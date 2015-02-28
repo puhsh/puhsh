@@ -1,5 +1,5 @@
 # Workers
-worker_processes 4
+worker_processes 2
 
 # App Directory (via Capistrano)
 rails_env = ENV['RAILS_ENV'] || 'production'
@@ -12,7 +12,7 @@ preload_app true
 # Timeout in seconds to nuke workers
 timeout 30
 
-# Logging locations 
+# Logging locations
 stderr_path "#{rails_root}/log/unicorn.stderr.log"
 stdout_path "#{rails_root}/log/unicorn.stdout.log"
 
@@ -26,16 +26,16 @@ pid "#{rails_root}/tmp/pids/unicorn.puhsh.pid"
 check_client_connection false
 
 # Make sure we are using the right unicorn in the right directory
-Unicorn::HttpServer::START_CTX[0] = "#{rails_root}/bin/unicorn"
+# Unicorn::HttpServer::START_CTX[0] = "#{rails_root}/bin/unicorn"
 
-before_fork do |server, worker| 
+before_fork do |server, worker|
   ENV['BUNDLE_GEMFILE'] = "#{rails_root}/Gemfile"
   server.logger.info("RAILS_ENV:: #{rails_env}")
   server.logger.info("Current directory: #{Dir.pwd}")
   server.logger.info("Current Gemfile: #{File.expand_path('Gemfile')}")
   server.logger.info("worker=#{worker.nr} spawning")
 
-  defined?(ActiveRecord::Base) and 
+  defined?(ActiveRecord::Base) and
     ActiveRecord::Base.connection.disconnect!
 
   old_pid = "#{rails_root}/tmp/pids/unicorn.puhsh.pid.oldbin"

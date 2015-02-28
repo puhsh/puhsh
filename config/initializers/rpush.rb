@@ -1,6 +1,6 @@
- # Rpush configuration. Options set here are overridden by command-line options.
+# Rpush configuration. Options set here are overridden by command-line options.
 
- Rpush.configure do |config|
+Rpush.configure do |config|
   # Run in the foreground?
   config.foreground = false
 
@@ -20,8 +20,8 @@
   config.batch_storage_updates = true
 
   # Path to write PID file. Relative to Rails root unless absolute.
-  config.pid_file = "#{Rails.root.to_s}/tmp/pids/rapns.puhsh.pid"
- end
+  config.pid_file = "#{Rails.root.to_s}/tmp/pids/rpush.puhsh.pid"
+end
 
 Rpush.reflect do |on|
 
