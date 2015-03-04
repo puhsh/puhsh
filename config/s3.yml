@@ -4,15 +4,15 @@ s3_defaults: &default_settings
 
 development:
   <<: *default_settings
-  bucket: puhsh_development
+  bucket: puhsh-development
 
 test:
   <<: *default_settings
-  bucket: puhsh_test
+  bucket: puhsh-test
 
 sandbox:
   <<: *default_settings
-  bucket: puhsh_sandbox
+  bucket: puhsh-sandbox
 
 production:
   <<: *default_settings
