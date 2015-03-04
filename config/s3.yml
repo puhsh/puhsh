@@ -16,4 +16,4 @@ sandbox:
 
 production:
   <<: *default_settings
-  bucket: puhsh_production
+  bucket: puhsh-production
