@@ -86,7 +86,7 @@ Puhsh::Application.configure do
   config.gem 'rails_warden'
 
   # Paperclip
-  config.paperclip_defaults = { url: ':s3_alias_url', s3_host_alias: 'd2yeb2t9ieri9i.cloudfront.net' }
+  config.paperclip_defaults = { url: ':s3_alias_url', s3_host_alias: 'cdn.puhsh.com' }
 
   # Join References
   config.active_record.disable_implicit_join_references = true
