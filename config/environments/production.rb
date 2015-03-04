@@ -59,7 +59,7 @@ Puhsh::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Mandrill Mailer
-  config.action_mailer.default_url_options = { 
+  config.action_mailer.default_url_options = {
     address: 'smtp.mandrillapp.com',
     port: 587,
     enable_starttls_auto: true,
@@ -71,7 +71,7 @@ Puhsh::Application.configure do
   }
 
   config.mandrill_mailer.default_url_options = { host: 'puhsh.com' }
-  
+
   # Enable threaded mode
   # config.threadsafe!
 
@@ -86,7 +86,7 @@ Puhsh::Application.configure do
   config.gem 'rails_warden'
 
   # Paperclip
-  config.paperclip_defaults = { url: ':s3_alias_url', s3_host_alias: 'cdn.puhsh.com' }
+  config.paperclip_defaults = { url: ':s3_alias_url', s3_host_alias: 'd2yeb2t9ieri9i.cloudfront.net' }
 
   # Join References
   config.active_record.disable_implicit_join_references = true
