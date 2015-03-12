@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def dark_feature 
+  def dark_feature
     yield unless Rails.env.production?
   end
 
