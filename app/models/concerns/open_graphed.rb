@@ -80,7 +80,7 @@ module OpenGraphed
       exchange_facebook_token!
     end
 
-    self.facebook_access_token.value 
+    self.facebook_access_token.value
   end
 
   def access_token_expired?
@@ -100,7 +100,7 @@ module OpenGraphed
   end
 
   def facebook_base_avatar_url(url)
-    url.split('?').first
+    url.split("http:").last.split('?').first
   end
 
   def user_fields

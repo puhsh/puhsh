@@ -184,7 +184,7 @@ describe User do
     let(:existing_user2) { FactoryGirl.create(:user) }
     let!(:expired_access_token) { FactoryGirl.create(:access_token, user: existing_user, expires_at: 2.weeks.ago) }
     let!(:valid_access_token) { FactoryGirl.create(:access_token, user: existing_user2) }
-    
+
 
     it 'generates an access token for a new user' do
       user.generate_access_token!
@@ -457,7 +457,7 @@ describe User do
     let(:user) { FactoryGirl.create(:user, avatar_url: 'http://graph.facebook.com/1/picture?type=square') }
 
     it 'returns other sizes for the user\'s facebook avatar' do
-      expect(user.other_avatar_urls).to eql({small: 'http://graph.facebook.com/1/picture?type=small&width=100&height=100', normal: 'http://graph.facebook.com/1/picture?type=normal&width=100&height=100', large: 'http://graph.facebook.com/1/picture?type=large&width=100&height=100'})
+      expect(user.other_avatar_urls).to eql({small: '//graph.facebook.com/1/picture?type=small&width=100&height=100', normal: '//graph.facebook.com/1/picture?type=normal&width=100&height=100', large: '//graph.facebook.com/1/picture?type=large&width=100&height=100'})
     end
 
     it 'returns an empty hash if there is no avatar url' do
@@ -522,7 +522,7 @@ describe User do
     let(:user) { nil }
 
     context 'admin' do
-      let(:user) { FactoryGirl.create(:user) } 
+      let(:user) { FactoryGirl.create(:user) }
       before { user.add_role :admin }
 
       it { should be_able_to(:manage, User.new) }
@@ -536,8 +536,8 @@ describe User do
     end
 
     context 'member' do
-      let(:user) { FactoryGirl.create(:user) } 
-      let(:user2) { FactoryGirl.create(:user) } 
+      let(:user) { FactoryGirl.create(:user) }
+      let(:user2) { FactoryGirl.create(:user) }
 
       it { should be_able_to(:manage, user) }
       it { should_not be_able_to(:manage, User.new) }
@@ -607,7 +607,7 @@ describe User do
       it { should be_able_to(:manage, Notification.new(actor: user)) }
       it { should_not be_able_to(:manage, Notification.new(user: user2)) }
       it { should be_able_to(:read, Notification.new(user: user2)) }
-      
+
       it { should be_able_to(:read, RelatedProduct.new) }
 
       it { should_not be_able_to(:manage, FacebookTestUser.new) }
