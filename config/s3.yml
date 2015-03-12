@@ -1,19 +1,19 @@
 s3_defaults: &default_settings
-  access_key_id: 'AKIAJ7FV5OHECYWPCNDA'
-  secret_access_key: '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'
+  access_key_id: 'AKIAJTARV35AERTENQ2A'
+  secret_access_key: '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'
 
 development:
   <<: *default_settings
-  bucket: puhsh_development
+  bucket: puhsh-development
 
 test:
   <<: *default_settings
-  bucket: puhsh_test
+  bucket: puhsh-test
 
 sandbox:
   <<: *default_settings
-  bucket: puhsh_sandbox
+  bucket: puhsh-sandbox
 
 production:
   <<: *default_settings
-  bucket: puhsh
+  bucket: puhsh-production

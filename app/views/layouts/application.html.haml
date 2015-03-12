@@ -37,7 +37,7 @@
     #peek-bar.show-for-large-up
       = render 'peek/bar'
     - if !@hide_header
-      %section.heading.black.js-cover-image(data-cover-image-url="#{image_url('banners/global.png')}")
+      %section.heading.black
         .container
           = yield :header
     %section(role='main')
